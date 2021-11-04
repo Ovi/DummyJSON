@@ -32,7 +32,7 @@
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/carts')
+fetch('https://dummyjson.com/carts')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -92,7 +92,7 @@ fetch('http://dummyjson.com/carts')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/carts/1')
+fetch('https://dummyjson.com/carts/1')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -141,7 +141,7 @@ fetch('http://dummyjson.com/carts/1')
             <pre>
               <code class="language-js">
 // getting carts of user with id 5
-fetch('http://dummyjson.com/carts/user/5')
+fetch('https://dummyjson.com/carts/user/5')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -220,7 +220,7 @@ fetch('http://dummyjson.com/carts/user/5')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/carts/add', {
+fetch('https://dummyjson.com/carts/add', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -316,7 +316,7 @@ fetch('http://dummyjson.com/carts/add', {
             <pre>
               <code class="language-js">
 /* adding products in cart with id 1 */
-fetch('http://dummyjson.com/carts/1', {
+fetch('https://dummyjson.com/carts/1', {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -389,7 +389,7 @@ fetch('http://dummyjson.com/carts/1', {
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/carts/1', {
+fetch('https://dummyjson.com/carts/1', {
   method: 'DELETE',
 })
 .then(res => res.json())

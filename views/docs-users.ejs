@@ -32,7 +32,7 @@
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users')
+fetch('https://dummyjson.com/users')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -130,7 +130,7 @@ fetch('http://dummyjson.com/users')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users/1')
+fetch('https://dummyjson.com/users/1')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -218,7 +218,7 @@ fetch('http://dummyjson.com/users/1')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users/search?q=John')
+fetch('https://dummyjson.com/users/search?q=John')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -273,7 +273,7 @@ fetch('http://dummyjson.com/users/search?q=John')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
+fetch('https://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -333,7 +333,7 @@ fetch('http://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
             <pre>
               <code class="language-js">
 /* getting carts of user with id 5 */
-fetch('http://dummyjson.com/users/5/carts')
+fetch('https://dummyjson.com/users/5/carts')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -390,7 +390,7 @@ fetch('http://dummyjson.com/users/5/carts')
             <pre>
               <code class="language-js">
 /* getting posts of user with id 5 */
-fetch('http://dummyjson.com/users/5/posts')
+fetch('https://dummyjson.com/users/5/posts')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -439,7 +439,7 @@ fetch('http://dummyjson.com/users/5/posts')
             <pre>
               <code class="language-js">
 /* getting todos of user with id 5 */
-fetch('http://dummyjson.com/users/5/todos')
+fetch('https://dummyjson.com/users/5/todos')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -507,7 +507,7 @@ fetch('http://dummyjson.com/users/5/todos')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users/add', {
+fetch('https://dummyjson.com/users/add', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -567,7 +567,7 @@ fetch('http://dummyjson.com/users/add', {
             <pre>
               <code class="language-js">
 /* updating lastName of user with id 1 */
-fetch('http://dummyjson.com/users/1', {
+fetch('https://dummyjson.com/users/1', {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -623,7 +623,7 @@ fetch('http://dummyjson.com/users/1', {
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/users/1', {
+fetch('https://dummyjson.com/users/1', {
   method: 'DELETE',
 })
 .then(res => res.json())

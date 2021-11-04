@@ -32,7 +32,7 @@
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/comments')
+fetch('https://dummyjson.com/comments')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -87,7 +87,7 @@ fetch('http://dummyjson.com/comments')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/comments/1')
+fetch('https://dummyjson.com/comments/1')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -138,7 +138,7 @@ fetch('http://dummyjson.com/comments/1')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/comments?limit=10&skip=10&select=body,postId')
+fetch('https://dummyjson.com/comments?limit=10&skip=10&select=body,postId')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -186,7 +186,7 @@ fetch('http://dummyjson.com/comments?limit=10&skip=10&select=body,postId')
             <pre>
               <code class="language-js">
 /* getting comments of post with id 5 */
-fetch('http://dummyjson.com/comments/post/5')
+fetch('https://dummyjson.com/comments/post/5')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -247,7 +247,7 @@ fetch('http://dummyjson.com/comments/post/5')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/comments/add', {
+fetch('https://dummyjson.com/comments/add', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -308,7 +308,7 @@ fetch('http://dummyjson.com/comments/add', {
             <pre>
               <code class="language-js">
 /* updating body of comment with id 1 */
-fetch('http://dummyjson.com/comments/1', {
+fetch('https://dummyjson.com/comments/1', {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -364,7 +364,7 @@ fetch('http://dummyjson.com/comments/1', {
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/comments/1', {
+fetch('https://dummyjson.com/comments/1', {
   method: 'DELETE',
 })
 .then(res => res.json())

@@ -32,7 +32,7 @@
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products')
+fetch('https://dummyjson.com/products')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -84,7 +84,7 @@ fetch('http://dummyjson.com/products')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/1')
+fetch('https://dummyjson.com/products/1')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -124,7 +124,7 @@ fetch('http://dummyjson.com/products/1')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/search?q=phone')
+fetch('https://dummyjson.com/products/search?q=phone')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -190,7 +190,7 @@ fetch('http://dummyjson.com/products/search?q=phone')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products?limit=10&skip=10&select=title,price')
+fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -236,7 +236,7 @@ fetch('http://dummyjson.com/products?limit=10&skip=10&select=title,price')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/categories')
+fetch('https://dummyjson.com/products/categories')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -287,7 +287,7 @@ fetch('http://dummyjson.com/products/categories')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/category/smartphones')
+fetch('https://dummyjson.com/products/category/smartphones')
 .then(res => res.json())
 .then(console.log);
             </code>
@@ -346,7 +346,7 @@ fetch('http://dummyjson.com/products/category/smartphones')
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/add', {
+fetch('https://dummyjson.com/products/add', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -402,7 +402,7 @@ fetch('http://dummyjson.com/products/add', {
             <pre>
               <code class="language-js">
 /* updating title of product with id 1 */
-fetch('http://dummyjson.com/products/1', {
+fetch('https://dummyjson.com/products/1', {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -462,7 +462,7 @@ fetch('http://dummyjson.com/products/1', {
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('http://dummyjson.com/products/1', {
+fetch('https://dummyjson.com/products/1', {
   method: 'DELETE',
 })
 .then(res => res.json())
