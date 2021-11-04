@@ -1,0 +1,337 @@
+$breakpoints: (
+  "small-phone": 360px,
+  "phone": 480px,
+  "mid-tab": 600px,
+  "tablet": 768px,
+  "desktop": 1366px,
+  "LGdesktop": 1920px
+) !default;
+
+///
+/// Creates a list of static expressions or media types
+///
+/// @author Eduardo Boucas
+///
+/// @example scss - Creates a single media type (screen)
+///  $media-expressions: ('screen': 'screen');
+///
+/// @example scss - Creates a static expression with logical disjunction (OR operator)
+///  $media-expressions: (
+///		'retina2x': (
+///			'(-webkit-min-device-pixel-ratio: 2)',
+///			'(min-resolution: 192dpi)'
+///		)
+///	);
+///
+$media-expressions: (
+  "screen": "screen",
+  "print": "print",
+  "handheld": "handheld",
+  "retina2x": (
+    "(-webkit-min-device-pixel-ratio: 2)",
+    "(min-resolution: 192dpi)"
+  ),
+  "retina3x": (
+    "(-webkit-min-device-pixel-ratio: 3)",
+    "(min-resolution: 350dpi)"
+  )
+) !default;
+
+///
+/// Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+///
+/// @author Eduardo Boucas
+///
+/// @example scss - Interval for pixels is defined as `1` by default
+///  @include media(">128px") {}
+///
+///	 /* Generates: */
+///	 @media (min-width: 129px) {}
+///
+/// @example scss - Interval for ems is defined as `0.01` by default
+///  @include media(">20em") {}
+///
+///	 /* Generates: */
+///	 @media (min-width: 20.01em) {}
+///
+/// @example scss - Interval for rems is defined as `0.1` by default, to be used with `font-size: 62.5%;`
+///  @include media(">2.0rem") {}
+///
+///	 /* Generates: */
+///	 @media (min-width: 2.1rem) {}
+///
+$unit-intervals: (
+  "px": 1,
+  "em": 0.01,
+  "rem": 0.1
+) !default;
+///
+/// Generates a media query based on a list of conditions
+///
+/// @author Eduardo Boucas
+///
+/// @param {List}   $conditions  - Media query conditions
+///
+/// @example scss - With a single set breakpoint
+///  @include media(">phone") { }
+///
+/// @example scss - With two set breakpoints
+///  @include media(">phone", "<=tablet") { }
+///
+/// @example scss - With custom values
+///  @include media(">=358px", "<850px") { }
+///
+/// @example scss - With set breakpoints with custom values
+///  @include media(">desktop", "<=1350px") { }
+///
+/// @example scss - With a static expression
+///  @include media("retina2x") { }
+///
+/// @example scss - Mixing everything
+///  @include media(">=350px", "<tablet", "retina3x") { }
+///
+@mixin media($conditions...) {
+  @for $i from 1 through length($conditions) {
+    $conditions: set-nth(
+      $conditions,
+      $i,
+      parse-expression(nth($conditions, $i))
+    );
+  }
+
+  $branches: get-query-branches($conditions);
+  $query: "";
+
+  @each $branch in $branches {
+    @if (str-length($query) != 0) {
+      $query: $query + ", ";
+    }
+
+    $query: $query + $branch;
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}
+
+///
+/// Reads a list of media query expressions and separates logical disjunctions into different branches
+///
+/// @author Eduardo Boucas
+///
+/// @param {List}   $expressions  - list of expressions
+///
+/// @throws `$expression` is not a valid expression
+///
+/// @return {List | Null}
+///
+@function get-query-branches($expressions) {
+  $result: "";
+  $has-groups: false;
+
+  // Getting initial snapshot and looking for groups
+  @each $expression in $expressions {
+    @if (str-length($result) != 0) {
+      $result: $result + " and ";
+    }
+
+    @if (type-of($expression) == "string") {
+      $result: $result + $expression;
+    } @else if (type-of($expression) == "list") {
+      $result: $result + nth($expression, 1);
+      $has-groups: true;
+    } @else {
+      @warn '#{$expression} is not a valid expression.';
+    }
+  }
+
+  // If we have groups, we have to create all possible combinations
+  @if $has-groups {
+    @each $expression in $expressions {
+      @if (type-of($expression) == "list") {
+        $first: nth($expression, 1);
+
+        @each $member in $expression {
+          @if ($member != $first) {
+            @each $partial in $result {
+              $result: join(
+                $result,
+                str-replace-first($first, $member, $partial)
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @return $result;
+}
+
+///
+/// Parses a string to form a media query expression
+///
+/// @author Eduardo Boucas
+///
+/// @param {String}   $expression  - expression (in string)
+///
+/// @throws Expression with type `type-of($expression)` detected, string expected
+/// @throws `$expression` is missing an operator
+/// @throws Unknown unit: `$unit`
+///
+/// @return {String | Null}
+///
+@function parse-expression($expression) {
+  $operator: "";
+  $value: "";
+  $element: "";
+  $result: "";
+  $is-width: true;
+
+  @if (type-of($expression) != "string") {
+    @warn 'Expression with type `#{type-of($expression)}` detected, string expected.';
+  }
+
+  // Separating the operator from the rest of the expression
+  @if (str-slice($expression, 2, 2) == "=") {
+    $operator: str-slice($expression, 1, 2);
+    $value: str-slice($expression, 3);
+  } @else {
+    $operator: str-slice($expression, 1, 1);
+    $value: str-slice($expression, 2);
+  }
+
+  // Checking what type of expression we're dealing with
+  @if map-has-key($breakpoints, $value) {
+    $result: map-get($breakpoints, $value);
+  } @else if map-has-key($media-expressions, $expression) {
+    $result: map-get($media-expressions, $expression);
+    $is-width: false;
+  } @else {
+    $result: to-number($value);
+  }
+
+  @if ($is-width) {
+    $unit: unit($result);
+    $interval: 0;
+
+    @if (map-has-key($unit-intervals, $unit)) {
+      $interval: map-get($unit-intervals, $unit);
+    } @else {
+      @warn 'Unknown unit: #{$unit}';
+    }
+
+    @if ($operator == ">") {
+      $element: "(min-width: #{$result + $interval})";
+    } @else if ($operator == "<") {
+      $element: "(max-width: #{$result - $interval})";
+    } @else if ($operator == ">=") {
+      $element: "(min-width: #{$result})";
+    } @else if ($operator == "<=") {
+      $element: "(max-width: #{$result})";
+    } @else {
+      @warn '#{$expression} is missing an operator.';
+    }
+  } @else {
+    $element: $result;
+  }
+
+  @return $element;
+}
+
+///
+/// Replaces the first occurence of the string with the replacement string
+///
+/// @author Eduardo Boucas
+///
+/// @param {String}   $search  - The value being searched for
+/// @param {String}   $replace  - The replacement string
+/// @param {String}   $subject  - The string being replaced on
+///
+/// @return {String | Null}
+///
+@function str-replace-first($search, $replace, $subject) {
+  $search-start: str-index($subject, $search);
+
+  @if $search-start == null {
+    @return $subject;
+  }
+
+  $result: str-slice($subject, 0, $search-start - 1);
+  $result: $result + $replace;
+  $result: $result + str-slice($subject, $search-start + str-length($search));
+
+  @return $result;
+}
+
+///
+/// Casts a number to a string
+///
+/// @author Hugo Giraudel
+///
+/// @param {String}   $string  - Number to be parsed
+///
+/// @return {List | Null}
+///
+@function to-number($string) {
+  // Matrices
+  $strings: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9";
+  $numbers: 0 1 2 3 4 5 6 7 8 9;
+
+  // Result
+  $result: 0;
+  $divider: 0;
+  $minus: false;
+
+  // Looping through all characters
+  @for $i from 1 through str-length($string) {
+    $character: str-slice($string, $i, $i);
+    $index: index($strings, $character);
+
+    @if $character == "-" {
+      $minus: true;
+    } @else if $character == "." {
+      $divider: 1;
+    } @else {
+      @if type-of($index) != "number" {
+        $result: if($minus, $result * -1, $result);
+        @return _length($result, str-slice($string, $i));
+      }
+
+      $number: nth($numbers, $index);
+
+      @if $divider == 0 {
+        $result: $result * 10;
+      } @else {
+        // Move the decimal dot to the left
+        $divider: $divider * 10;
+        $number: $number / $divider;
+      }
+
+      $result: $result + $number;
+    }
+  }
+
+  @return if($minus, $result * -1, $result);
+}
+
+@function _length($number, $unit) {
+  $strings: "px" "cm" "mm" "%" "ch" "pica" "in" "em" "rem" "pt" "pc" "ex" "vw"
+    "vh" "vmin" "vmax";
+  $units: 1px 1cm 1mm 1% 1ch 1pica 1in 1em 1rem 1pt 1pc 1ex 1vw 1vh 1vmin 1vmax;
+  $index: index($strings, $unit);
+
+  @if type-of($index) != "number" {
+    @warn 'Unknown unit `#{$unit}`.';
+    @return false;
+  }
+
+  @return $number * nth($units, $index);
+}
+
+/**
+*
+* Testing
+*
+**/

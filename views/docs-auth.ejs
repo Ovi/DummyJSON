@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <h1>Docs</h1>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="auth" class="section-intro">
+          <i class="bx bx-fingerprint"></i>
+          <a href="#auth" class="no-link">Auth</a>
+        </h2>
+
+        <div class="sub-section">
+          <h3 id="login">
+            <a href="#login" class="no-link">Login user and get token</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    <!-- any username/password from users module  -->
+    username: 'kminchelle',
+    password: '0lelplR',
+    // expiresInMins: 60, // optional
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 15,
+  "username": "kminchelle",
+  "email": "kminchelle@qq.com",
+  "firstName": "Jeanne",
+  "lastName": "Halvorson",
+  "gender": "female",
+  "image": "https://robohash.org/autquiaut.png?size=50x50&set=set1",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="happy-coding">
+            <a class="no-link no-underline">Happy Coding &#128521;</a>
+          </h3>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/" class="button ghost">
+          <i class="bx bx-left-arrow"></i>
+          Intro
+        </a>
+        <a href="/docs/products/" class="button">
+          Products
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>

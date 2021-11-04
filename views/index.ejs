@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/static/fav.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/railscasts.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+
+    <link href="/static/css/common.css" rel="stylesheet" />
+    <link href="/static/css/home.css" rel="stylesheet" />
+
+    <script defer src="/static/js/common.js"></script>
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115172241-5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115172241-5');
+    </script>
+
+    <title>
+      DummyJSON - Fake REST API of JSON data for development and prototyping
+    </title>
+  </head>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <main>
+      <section id="hero">
+        <div class="intro">
+          <h1>Dummy<b>JSON</b></h1>
+          <p>
+            Get dummy/fake JSON data to use as placeholder in development or in
+            prototype testing.
+          </p>
+          <span>
+            <a
+              href="https://github.com/Ovi/DummyJSON"
+              target="_blank"
+              class="button"
+            >
+              View on GitHub
+            </a>
+            <a href="/docs" class="button ghost">Read Docs</a>
+          </span>
+        </div>
+
+        <div class="carousel products">
+          <div id="products-list" class="product-details hidden">
+            <blockquote>
+              <pre><code id="product-data" class="json"></code></pre>
+            </blockquote>
+
+            <h3 class="product-title" id="product-title"></h3>
+            &#8212;
+            <small class="product-category" id="product-category"></small>
+
+            <br />
+
+            <h4 class="product-price" id="product-price"></h4>
+            &#8212;
+            <div class="product-rating-container">
+              <span>&#9733;</span> <small id="product-rating"></small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sample">
+        <div class="why-us">
+          <h2>Got tired of Lorem ipsum data?</h2>
+          <p>
+            With DummyJSON, what you get is different types of REST Endpoints
+            filled with JSON data which you can use in developing the frontend
+            with your favorite framework and library without worrying about
+            wring a backend.
+          </p>
+        </div>
+
+        <div class="example">
+          <h2>Example Code</h2>
+          <blockquote id="example">
+            <pre><code class="language-js">
+fetch('http://dummyjson.com/products/1')
+.then(res => res.json())
+.then(json => console.log(json))
+            </code></pre>
+          </blockquote>
+          <button id="request">Try it now 😍</button>
+          <button id="copy-code" class="ghost">Copy Code</button>
+          <blockquote class="try-it-response">
+            <pre><code  id="response" class="language-json">
+{
+  💬: 🤔,
+}
+          </code></pre>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="resources">
+        <div class="resources">
+          <h2>Resources</h2>
+          <p>DummyJSON comes with different sets of common resources:</p>
+        </div>
+
+        <div class="resources-container">
+          <h2>Resources</h2>
+          <p>
+            Following resources are available which you can access via our REST
+            API.
+          </p>
+
+          <table>
+            <tr>
+              <td><a href="/products">/products</a></td>
+              <td>100 products</td>
+            </tr>
+
+            <tr>
+              <td><a href="/carts">/carts</a></td>
+              <td>20 carts</td>
+            </tr>
+
+            <tr>
+              <td><a href="/users">/users</a></td>
+              <td>100 users</td>
+            </tr>
+
+            <tr>
+              <td><a href="/posts">/posts</a></td>
+              <td>150 posts</td>
+            </tr>
+
+            <tr>
+              <td><a href="/comments">/comments</a></td>
+              <td>340 comments</td>
+            </tr>
+
+            <tr>
+              <td><a href="/quotes">/quotes</a></td>
+              <td>100 quotes</td>
+            </tr>
+
+            <tr>
+              <td><a href="/todos">/todos</a></td>
+              <td>150 todos</td>
+            </tr>
+
+            <tr>
+              <td><a>/auth</a></td>
+              <td>to get auth token</td>
+            </tr>
+          </table>
+
+          <p class="resources-note">
+            <b>Note: </b>by default you will get 30 results and the total count,
+            you can pass "skip" & "limit" query string to get more results.
+            <br />
+            For example:
+            <a href="/posts?skip=5&limit=10">/posts?skip=5&limit=10</a>
+          </p>
+        </div>
+
+        <div class="routes-container">
+          <h2>Routes</h2>
+          <p>
+            All HTTP methods are supported. You can use http or https for your
+            requests.
+          </p>
+
+          <table>
+            <tr>
+              <td>GET</td>
+              <td>
+                <a href="/products">/products</a>
+              </td>
+              <td class="comment">// get all products</td>
+            </tr>
+
+            <tr>
+              <td>GET</td>
+              <td>
+                <a href="/products/1">/products/1</a>
+              </td>
+              <td class="comment">// get single product</td>
+            </tr>
+
+            <tr>
+              <td>GET</td>
+              <td>
+                <a href="/products/search?q=Laptop">
+                  /products/search?q=Laptop
+                </a>
+              </td>
+              <td class="comment">// search products</td>
+            </tr>
+
+            <tr>
+              <td>GET</td>
+              <td><a href="/products/categories">/products/categories</a></td>
+              <td class="comment">// get product categories</td>
+            </tr>
+
+            <tr>
+              <td>GET</td>
+              <td>
+                <a href="/products/category/smartphones">
+                  /products/category/smartphones
+                </a>
+              </td>
+              <td class="comment">// get products of a category</td>
+            </tr>
+
+            <tr>
+              <td>POST</td>
+              <td><a>/products/add</a></td>
+              <td class="comment">// add a product</td>
+            </tr>
+
+            <tr>
+              <td>PUT</td>
+              <td><a>/products/1</a></td>
+              <td class="comment">// update a product</td>
+            </tr>
+
+            <tr>
+              <td>PATCH</td>
+              <td><a>/products/1</a></td>
+              <td class="comment">// update a product</td>
+            </tr>
+
+            <tr>
+              <td>DELETE</td>
+              <td><a>/products/1</a></td>
+              <td class="comment">// delete a product</td>
+            </tr>
+
+            <tr>
+              <td>GET (auth)</td>
+              <td>
+                <a href="/auth/products">/auth/products</a>
+              </td>
+              <td class="comment">// get products with auth token</td>
+            </tr>
+          </table>
+
+          <p class="routes-note">
+            <b>Note: </b>see <a href="/docs">DOCS</a> for usage examples.
+          </p>
+        </div>
+      </section>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+
+      <p class="inspiration">
+        Inspired by
+        <a
+          class="no-underline"
+          href="https://jsonplaceholder.typicode.com/"
+          target="_blank"
+        >
+          JSONPlaceholder
+        </a>
+      </p>
+    </main>
+  </body>
+</html>

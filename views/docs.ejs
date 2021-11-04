@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <h1>How to use it</h1>
+        <p>
+          DummyJSON can be used with any type of front end project that needs
+          products, carts, users, todos or any dummy data in JSON format.
+        </p>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+        <p>
+          Feel free to enjoy it in your awesome projects!
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="intro" class="section-intro">
+          <i class="bx bx-paper-plane"></i>
+          <a href="#intro" class="no-link">Intro</a>
+        </h2>
+
+        <div class="sub-section">
+          <h3 id="intro-limit">
+            <a href="#intro-limit" class="no-link">Limiting Resources</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              All the resources can be used with query params to achieve
+              pagination and get limited data.
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1,key2,key3');
+            </code>
+           </pre>
+          </blockquote>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="intro-auth">
+            <a href="#intro-auth" class="no-link">Authorizing Resources</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-lock bx-xs"></i>
+              All resources can be accessed via an authentication token to test
+              as a logged-in user.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              Go to <a href="/docs/auth">auth module</a> and generate an auth
+              token to get data as an authorized user
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* providing token in bearer */
+fetch('http://dummyjson.com/auth/RESOURCE', {
+  method: 'GET', /* or POST/PUT/PATCH/DELETE */
+  headers: {
+    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+    'Content-Type': 'application/json'
+  }, 
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/auth/" class="button">
+          Auth
+          <i class="bx bx-right-arrow"></i>
+        </a>
+        <a href="/docs/products/" class="button">
+          Products
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>

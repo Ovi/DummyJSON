@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <h1>Docs</h1>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="users" class="section-intro">
+          <i class="bx bx-user"></i>
+          <a href="#users" class="no-link">Users</a>
+        </h2>
+
+        <div class="sub-section">
+          <h3 id="all">
+            <a href="#all" class="no-link">Get all users</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Terry",
+      "lastName": "Medhurst",
+      "maidenName": "Smitham",
+      "age": 50,
+      "gender": "male",
+      "email": "atuny0@sohu.com",
+      "phone": "+63 791 675 8914",
+      "username": "atuny0",
+      "password": "9uQFF1Lh",
+      "birthDate": "2000-12-25",
+      "image": "https://robohash.org/hicveldicta.png?size=50x50&set=set1",
+      "bloodGroup": "A−",
+      "height": 189,
+      "weight": 75.4,
+      "eyeColor": "Green",
+      "hair": {
+        "color": "Black",
+        "type": "Strands"
+      },
+      "domain": "slashdot.org",
+      "ip": "117.29.86.254",
+      "address": {
+        "address": "1745 T Street Southeast",
+        "city": "Washington",
+        "coordinates": {
+          "lat": 38.867033,
+          "lng": -76.979235
+        },
+        "postalCode": "20020",
+        "state": "DC"
+      },
+      "macAddress": "13:69:BA:56:A3:74",
+      "university": "Capitol University",
+      "bank": {
+        "cardExpire": "06/22",
+        "cardNumber": "50380955204220685",
+        "cardType": "maestro",
+        "currency": "Peso",
+        "iban": "NO17 0695 2754 967"
+      },
+      "company": {
+        "address": {
+          "address": "629 Debbie Drive",
+          "city": "Nashville",
+          "coordinates": {
+            "lat": 36.208114,
+            "lng": -86.58621199999999
+          },
+          "postalCode": "37076",
+          "state": "TN"
+        },
+        "department": "Marketing",
+        "name": "Blanda-O'Keefe",
+        "title": "Help Desk Operator"
+      },
+      "ein": "20-9487066",
+      "ssn": "661-64-2976",
+      "userAgent": "Mozilla/5.0 ..."
+    },
+    {...},
+    {...}
+    // 30 items
+  ],
+  "total": 100,
+  "skip": 0,
+  "limit": 30
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="single">
+            <a href="#single" class="no-link">Get a single user</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users/1')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "firstName": "Terry",
+  "lastName": "Medhurst",
+  "maidenName": "Smitham",
+  "age": 50,
+  "gender": "male",
+  "email": "atuny0@sohu.com",
+  "phone": "+63 791 675 8914",
+  "username": "atuny0",
+  "password": "9uQFF1Lh",
+  "birthDate": "2000-12-25",
+  "image": "https://robohash.org/hicveldicta.png?size=50x50&set=set1",
+  "bloodGroup": "A−",
+  "height": 189,
+  "weight": 75.4,
+  "eyeColor": "Green",
+  "hair": {
+    "color": "Black",
+    "type": "Strands"
+  },
+  "domain": "slashdot.org",
+  "ip": "117.29.86.254",
+  "address": {
+    "address": "1745 T Street Southeast",
+    "city": "Washington",
+    "coordinates": {
+      "lat": 38.867033,
+      "lng": -76.979235
+    },
+    "postalCode": "20020",
+    "state": "DC"
+  },
+  "macAddress": "13:69:BA:56:A3:74",
+  "university": "Capitol University",
+  "bank": {
+    "cardExpire": "06/22",
+    "cardNumber": "50380955204220685",
+    "cardType": "maestro",
+    "currency": "Peso",
+    "iban": "NO17 0695 2754 967"
+  },
+  "company": {
+    "address": {
+      "address": "629 Debbie Drive",
+      "city": "Nashville",
+      "coordinates": {
+        "lat": 36.208114,
+        "lng": -86.58621199999999
+      },
+      "postalCode": "37076",
+      "state": "TN"
+    },
+    "department": "Marketing",
+    "name": "Blanda-O'Keefe",
+    "title": "Help Desk Operator"
+  },
+  "ein": "20-9487066",
+  "ssn": "661-64-2976",
+  "userAgent": "Mozilla/5.0 ..."
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="search">
+            <a href="#search" class="no-link">Search users</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users/search?q=John')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "users": [
+    {
+      "id": 50,
+      "firstName": "Johnathon", // name matched the search query
+      "lastName": "Predovic",
+      // rest user data
+    }
+  ],
+  "total": 1,
+  "skip": 0,
+  "limit": 1
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="limit_skip">
+            <a href="#limit_skip" class="no-link">Limit and skip users</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              You can pass "limit" and "skip" params to limit and skip the
+              results for pagination.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              You can pass "select" as query params with comma-separated values
+              to select specific data.
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "users": [
+    {
+      "id": 11, // 10 items were skipped
+      "firstName": "Marcel",
+      "age": 39
+    },
+    {
+      "id": 12,
+      "firstName": "Assunta",
+      "age": 42
+    },
+    {
+      "id": 13,
+      "firstName": "Trace",
+      "age": 26
+    },
+    {
+      "id": 14,
+      "firstName": "Enoch",
+      "age": 21
+    },
+    {
+      "id": 15,
+      "firstName": "Jeanne",
+      "age": 26
+    }
+  ],
+  "total": 100,
+  "skip": 10, // 10 items were skipped
+  "limit": 5 // limit was applied
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="carts">
+            <a href="#carts" class="no-link">Get user's carts by user id</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* getting carts of user with id 5 */
+fetch('http://dummyjson.com/users/5/carts')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "carts": [
+    {
+      "id": 19,
+      "products": [
+        {
+          "id": 43,
+          "title": "frock gold printed",
+          "price": 600,
+          "quantity": 3,
+          "total": 1800,
+          "discountPercentage": 15.55,
+          "discountedPrice": 1520
+        },
+        {...},
+        {...}
+        // more products
+      ],
+      "total": 2492,
+      "discountedTotal": 2140,
+      "userId": 5, // user id is 5
+      "totalProducts": 5,
+      "totalQuantity": 14
+    }
+  ],
+  "total": 1,
+  "skip": 0,
+  "limit": 1
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="posts">
+            <a href="#posts" class="no-link">Get user's posts by user id</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* getting posts of user with id 5 */
+fetch('http://dummyjson.com/users/5/posts')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "posts": [
+    {
+      "id": 17,
+      "title": "She was in a hurry.",
+      "body": "She was in a hurry. /*... more data */  ",
+      "userId": 5, // user id is 5
+      "tags": [
+        "french",
+        "magical",
+        "english"
+      ],
+      "reactions": 0
+    },
+    {...},
+    {...}
+  ],
+  "total": 3,
+  "skip": 0,
+  "limit": 3
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="todos">
+            <a href="#todos" class="no-link">Get user's todos by user id</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* getting todos of user with id 5 */
+fetch('http://dummyjson.com/users/5/todos')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "todos": [
+    {
+      "id": 19,
+      "todo": "Create a compost pile",
+      "completed": true,
+      "userId": 5 // user id is 5
+    },
+    {
+      "id": 85,
+      "todo": "Make a budget",
+      "completed": true,
+      "userId": 5
+    },
+    {
+      "id": 103,
+      "todo": "Go to a local thrift shop",
+      "completed": true,
+      "userId": 5
+    }
+  ],
+  "total": 3,
+  "skip": 0,
+  "limit": 3
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="add">
+            <a href="#add" class="no-link">
+              Add a new user
+            </a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Adding a new user will not add it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a POST request and will return the new created
+              user with a new id
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users/add', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    firstName: 'Muhammad',
+    lastName: 'Ovi',
+    age: 250,
+    /* other user data */
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 101,
+  "firstName": "Muhammad",
+  "lastName": "Ovi",
+  "age": 250,
+  /* other user data */
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="update">
+            <a href="#update" class="no-link">
+              Update a user
+            </a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Updating a user will not update it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a PUT/PATCH request and will return the user with
+              modified data
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* updating lastName of user with id 1 */
+fetch('http://dummyjson.com/users/1', {
+  method: 'PUT', /* or PATCH */
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    lastName: 'Owais'
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": "1",
+  "firstName": "Terry",
+  "lastName": "Owais",
+  "email": "atuny0@sohu.com",
+  "phone": "+63 791 675 8914",
+  "gender": "male",
+  /* other user data */
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="delete">
+            <a href="#delete" class="no-link">Delete a user</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Deleting a user will not delete it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a DELETE request and will return deleted user
+              with "isDeleted" & "deletedOn" keys
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/users/1', {
+  method: 'DELETE',
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "firstName": "Terry",
+  "lastName": "Medhurst",
+  "maidenName": "Smitham",
+  "age": 50,
+  "gender": "male",
+
+  /* other user data */
+
+  "isDeleted": true,
+  "deletedOn": /* ISOTime */
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/carts/" class="button ghost">
+          <i class="bx bx-left-arrow"></i>
+          Carts
+        </a>
+        <a href="/docs/posts/" class="button">
+          Posts
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>
