@@ -16,6 +16,22 @@
 
     <script defer src="/static/js/common.js"></script>
     <script defer src="/static/js/main.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115172241-5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115172241-5');
+    </script>
+
     <title>
       DummyJSON - Fake REST API of JSON data for development and prototyping
     </title>

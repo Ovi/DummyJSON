@@ -17,6 +17,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
   <script defer src="/static/js/docs.js"></script>
   <script defer src="/static/js/common.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-115172241-5"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115172241-5');
+  </script>
+
   <title>
     DummyJSON | <%= page ? page.toUpperCase() : 'Docs' %> - Fake REST API of
     JSON data for development
