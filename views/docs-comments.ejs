@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <h1>Docs</h1>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="comments" class="section-intro">
+          <i class="bx bx-comment-dots"></i>
+          <a href="#comments" class="no-link">Comments</a>
+        </h2>
+
+        <div class="sub-section">
+          <h3 id="all">
+            <a href="#all" class="no-link">Get all comments</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/comments')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "comments": [
+    {
+      "id": 1,
+      "body": "This is some awesome thinking!",
+      "postId": 100,
+      "user": {
+        "id": 63,
+        "username": "eburras1q"
+      }
+    },
+    {
+      "id": 2,
+      "body": "What terrific math skills you’re showing!",
+      "postId": 27,
+      "user": {
+        "id": 71,
+        "username": "omarsland1y"
+      }
+    },
+    {...},
+    {...}
+    // 30 items
+  ],
+  "total": 340,
+  "skip": 0,
+  "limit": 30
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="single">
+            <a href="#single" class="no-link">Get a single comment</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/comments/1')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "body": "This is some awesome thinking!",
+  "postId": 100,
+  "user": {
+    "id": 63,
+    "username": "eburras1q"
+  }
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="limit_skip">
+            <a href="#limit_skip" class="no-link">Limit and skip comments</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              You can pass "limit" and "skip" params to limit and skip the
+              results for pagination.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              You can pass "select" as query params with comma-separated values
+              to select specific data.
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/comments?limit=10&skip=10&select=body,postId')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "comments": [
+    {
+      "id": 11,
+      "body": "It was a pleasure to grade this!",
+      "postId": 2,
+      "user": {
+        "id": 68,
+        "username": "rstrettle1v"
+      }
+    },
+    {...},
+    {...},
+    {...}
+    // 10 items
+  ],
+  "total": 340,
+  "skip": 10,
+  "limit": 10
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="post">
+            <a href="#post" class="no-link">Get all comments by post id</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* getting comments of post with id 5 */
+fetch('http://dummyjson.com/comments/post/5')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "comments": [
+    {
+      "id": 64,
+      "body": "You amaze me!",
+      "postId": 5, // post id is 5
+      "user": {
+        "id": 39,
+        "username": "lgherardi12"
+      }
+    },
+    {...},
+    {...}
+  ],
+  "total": 3,
+  "skip": 0,
+  "limit": 3
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="add">
+            <a href="#add" class="no-link">
+              Add a new comment
+            </a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Adding a new comment will not add it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a POST request and will return the new created
+              comment with a new id
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/comments/add', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    body: 'This makes all sense to me!',
+    postId: 3,
+    userId: 5,
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 341,
+  "body": "This makes all sense to me!",
+  "postId": 3,
+  "user": {
+    "id": 5,
+    "username": "kmeus4"
+  }
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="update">
+            <a href="#update" class="no-link">
+              Update a comment
+            </a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Updating a comment will not update it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a PUT/PATCH request and will return the comment
+              with modified data
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* updating body of comment with id 1 */
+fetch('http://dummyjson.com/comments/1', {
+  method: 'PUT', /* or PATCH */
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    body: 'I think I should shift to the moon',
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "body": "I think I should shift to the moon", // only body was updated
+  "postId": 100,
+  "user": {
+    "id": 63,
+    "username": "eburras1q"
+  }
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="delete">
+            <a href="#delete" class="no-link">Delete a comment</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              Deleting a comment will not delete it into the server.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
+              It will simulate a DELETE request and will return deleted comment
+              with "isDeleted" & "deletedOn" keys
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('http://dummyjson.com/comments/1', {
+  method: 'DELETE',
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "body": "This is some awesome thinking!",
+  "postId": 100,
+  "user": {
+      "id": 63,
+      "username": "eburras1q"
+  },
+  "isDeleted": true,
+  "deletedOn": /* ISOTime */
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/posts/" class="button ghost">
+          <i class="bx bx-left-arrow"></i>
+          Posts
+        </a>
+        <a href="/docs/todos/" class="button">
+          Todos
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>
