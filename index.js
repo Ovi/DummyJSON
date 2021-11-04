@@ -47,4 +47,5 @@ app.use(errorMiddleware);
 // start listening
 app.listen(PORT, () => {
   console.info(`[Service:Node] App v${version} running on port ${PORT}`);
+  console.info(`[Service:Node] Env.: ${process.env.NODE_ENV}`);
 });

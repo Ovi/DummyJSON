@@ -16,7 +16,7 @@ const data = {
 
 utils.dataInMemory = data;
 
-utils.isDev = process.env.NODE_ENV === 'development';
+utils.isDev = process.env.NODE_ENV !== 'production';
 
 utils.doTheHeck = async () => {
   const shouldDoAnything = false;
