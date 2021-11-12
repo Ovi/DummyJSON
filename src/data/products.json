@@ -46,8 +46,10 @@
     "stock": 36,
     "brand": "Samsung",
     "category": "smartphones",
-    "thumbnail": "",
-    "images": []
+    "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+    "images": [
+      "https://dummyjson.com/image/i/products/3/1.jpg"
+    ]
   },
   {
     "id": 4,
@@ -78,12 +80,11 @@
     "stock": 32,
     "brand": "Huawei",
     "category": "smartphones",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/5/1.jpg",
       "https://dummyjson.com/image/i/products/5/2.jpg",
-      "https://dummyjson.com/image/i/products/5/3.jpg",
-      "https://dummyjson.com/image/i/products/5/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/5/3.jpg"
     ]
   },
   {
@@ -96,13 +97,12 @@
     "stock": 83,
     "brand": "APPle",
     "category": "laptops",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.png",
     "images": [
       "https://dummyjson.com/image/i/products/6/1.png",
       "https://dummyjson.com/image/i/products/6/2.jpg",
       "https://dummyjson.com/image/i/products/6/3.png",
-      "https://dummyjson.com/image/i/products/6/4.jpg",
-      "https://dummyjson.com/image/i/products/6/thumbnail.png"
+      "https://dummyjson.com/image/i/products/6/4.jpg"
     ]
   },
   {
@@ -375,12 +375,11 @@
     "stock": 133,
     "brand": "Saaf & Khaas",
     "category": "groceries",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/21/thumbnail.png",
     "images": [
       "https://dummyjson.com/image/i/products/21/1.png",
       "https://dummyjson.com/image/i/products/21/2.jpg",
-      "https://dummyjson.com/image/i/products/21/3.jpg",
-      "https://dummyjson.com/image/i/products/21/thumbnail.png"
+      "https://dummyjson.com/image/i/products/21/3.jpg"
     ]
   },
   {
@@ -393,12 +392,11 @@
     "stock": 146,
     "brand": "Bake Parlor Big",
     "category": "groceries",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/22/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/22/1.jpg",
       "https://dummyjson.com/image/i/products/22/2.jpg",
-      "https://dummyjson.com/image/i/products/22/3.jpg",
-      "https://dummyjson.com/image/i/products/22/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/22/3.jpg"
     ]
   },
   {
@@ -695,13 +693,12 @@
     "stock": 20,
     "brand": "Soft Cotton",
     "category": "tops",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/38/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/38/1.png",
       "https://dummyjson.com/image/i/products/38/2.jpg",
       "https://dummyjson.com/image/i/products/38/3.jpg",
-      "https://dummyjson.com/image/i/products/38/4.jpg",
-      "https://dummyjson.com/image/i/products/38/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/38/4.jpg"
     ]
   },
   {
@@ -733,11 +730,10 @@
     "stock": 84,
     "brand": "Top Sweater",
     "category": "tops",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/40/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/40/1.jpg",
-      "https://dummyjson.com/image/i/products/40/2.jpg",
-      "https://dummyjson.com/image/i/products/40/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/40/2.jpg"
     ]
   },
   {
@@ -919,12 +915,11 @@
     "stock": 46,
     "brand": "Arrivals Genuine",
     "category": "womens-shoes",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/50/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/50/1.jpeg",
       "https://dummyjson.com/image/i/products/50/2.jpg",
-      "https://dummyjson.com/image/i/products/50/3.jpg",
-      "https://dummyjson.com/image/i/products/50/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/50/3.jpg"
     ]
   },
   {
@@ -1126,12 +1121,11 @@
     "stock": 91,
     "brand": "Naviforce",
     "category": "mens-watches",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/61/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/61/1.jpg",
       "https://dummyjson.com/image/i/products/61/2.png",
-      "https://dummyjson.com/image/i/products/61/3.jpg",
-      "https://dummyjson.com/image/i/products/61/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/61/3.jpg"
     ]
   },
   {
@@ -1144,11 +1138,10 @@
     "stock": 95,
     "brand": "SKMEI 9117",
     "category": "mens-watches",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/62/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/62/1.jpg",
-      "https://dummyjson.com/image/i/products/62/2.jpg",
-      "https://dummyjson.com/image/i/products/62/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/62/2.jpg"
     ]
   },
   {
@@ -1161,13 +1154,12 @@
     "stock": 142,
     "brand": "SKMEI 9117",
     "category": "mens-watches",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/63/thumbnail.webp",
     "images": [
       "https://dummyjson.com/image/i/products/63/1.jpg",
       "https://dummyjson.com/image/i/products/63/2.jpg",
       "https://dummyjson.com/image/i/products/63/3.png",
-      "https://dummyjson.com/image/i/products/63/4.jpeg",
-      "https://dummyjson.com/image/i/products/63/thumbnail.webp"
+      "https://dummyjson.com/image/i/products/63/4.jpeg"
     ]
   },
   {
@@ -1255,11 +1247,10 @@
     "stock": 77,
     "brand": "Luxury Digital",
     "category": "womens-watches",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/68/thumbnail.webp",
     "images": [
       "https://dummyjson.com/image/i/products/68/1.jpg",
-      "https://dummyjson.com/image/i/products/68/2.jpg",
-      "https://dummyjson.com/image/i/products/68/thumbnail.webp"
+      "https://dummyjson.com/image/i/products/68/2.jpg"
     ]
   },
   {
@@ -1450,8 +1441,10 @@
     "stock": 16,
     "brand": "Fashion Jewellery",
     "category": "womens-jewellery",
-    "thumbnail": "",
-    "images": []
+    "thumbnail": "https://dummyjson.com/image/i/products/79/thumbnail.jpg",
+    "images": [
+      "https://dummyjson.com/image/i/products/79/1.jpg"
+    ]
   },
   {
     "id": 80,
@@ -1687,13 +1680,12 @@
     "stock": 22,
     "brand": "BRAVE BULL",
     "category": "motorcycle",
-    "thumbnail": "",
+    "thumbnail": "https://dummyjson.com/image/i/products/92/thumbnail.jpg",
     "images": [
       "https://dummyjson.com/image/i/products/92/1.jpg",
       "https://dummyjson.com/image/i/products/92/2.jpg",
       "https://dummyjson.com/image/i/products/92/3.jpg",
-      "https://dummyjson.com/image/i/products/92/4.jpg",
-      "https://dummyjson.com/image/i/products/92/thumbnail.jpg"
+      "https://dummyjson.com/image/i/products/92/4.jpg"
     ]
   },
   {
