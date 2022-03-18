@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const forceHTTPS = require('../middleware/forceHTTPS');
 
 const availableResources = [
   'products',
@@ -11,15 +12,15 @@ const availableResources = [
   'auth',
 ];
 
-router.get('/', (req, res) => {
+router.get('/', forceHTTPS, (req, res) => {
   res.render('index', { path: 'home' });
 });
 
-router.get('/docs', (req, res) => {
+router.get('/docs', forceHTTPS, (req, res) => {
   res.render('docs', { path: 'docs', page: '' });
 });
 
-router.get('/docs/:resource', (req, res, next) => {
+router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
   const resource = (req.params.resource || '').toLowerCase();
 
   if (!availableResources.includes(resource)) {
