@@ -32,13 +32,13 @@ I hope you will find it useful.
 
 There are 8 resources available for you:
 
-- products https://dummyjson.com/products/
-- carts https://dummyjson.com/carts/
-- users https://dummyjson.com/users/
-- posts https://dummyjson.com/posts/
-- comments https://dummyjson.com/comments/
-- quotes https://dummyjson.com/quotes/
-- todos https://dummyjson.com/todos/
+- 100 products https://dummyjson.com/products/
+- 20 carts https://dummyjson.com/carts/
+- 100 users https://dummyjson.com/users/
+- 150 posts https://dummyjson.com/posts/
+- 340 comments https://dummyjson.com/comments/
+- 100 quotes https://dummyjson.com/quotes/
+- 150 todos https://dummyjson.com/todos/
 - auth https://dummyjson.com/auth/
 
 ## How to
@@ -51,6 +51,14 @@ you can fetch data with any kind of methods you know(fetch API, Axios, jquery aj
 fetch('https://dummyjson.com/products')
   .then(res => res.json())
   .then(json => console.log(json));
+```
+
+OR
+
+```js
+const res = await fetch('https://dummyjson.com/products');
+const json = await res.json();
+console.log(json);
 ```
 
 Note: Pagination is also supported

@@ -1,7 +1,6 @@
 // require node version>=14.0 to run the app,
 // because we use optional chaining etc...
 const express = require('express');
-
 const injectMiddleWares = require('./src/middleware');
 const errorMiddleware = require('./src/middleware/error');
 const authUser = require('./src/middleware/auth');
@@ -9,7 +8,7 @@ const routes = require('./src/routes');
 const { validateEnvVar, loadDataInMemory } = require('./src/utils/util');
 const { version } = require('./package.json');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV } = process.env;
 
 // validate if we have all the env variables setup.
 validateEnvVar();
@@ -46,6 +45,5 @@ app.use(errorMiddleware);
 
 // start listening
 app.listen(PORT, () => {
-  console.info(`[Service:Node] App v${version} running on port ${PORT}`);
-  console.info(`[Service:Node] Env.: ${process.env.NODE_ENV}`);
+  console.info(`[Node][${NODE_ENV}] App v${version} running on port ${PORT}`);
 });

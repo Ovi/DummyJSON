@@ -9,7 +9,17 @@
       content="Different types of REST Endpoints filled with JSON data to use in developing the frontend without worrying about writing a backend."
     />
     <link rel="icon" type="image/png" href="/static/fav.png" />
-    <link rel="stylesheet" href="/static/highlight.js/railscasts.min.css" />
+
+    <link
+      rel="preload"
+      href="/static/highlight.js/railscasts.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <noscript>
+      <link rel="stylesheet" href="/static/highlight.js/railscasts.min.css" />
+    </noscript>
 
     <link href="/static/css/common.css" rel="stylesheet" />
     <link href="/static/css/home.css" rel="stylesheet" />

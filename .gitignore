@@ -1,6 +1,5 @@
 # Custom configs
 config
-.keep
 yarn.lock
 package-lock.json
 
