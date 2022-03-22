@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 
@@ -10,6 +11,9 @@ const cleanRequest = require('./cleanRequest');
 require('../db/mongoose');
 
 function injectMiddleWares(app) {
+  // enable compression.
+  app.use(compression());
+
   // enable CORS.
   app.use(cors());
 
