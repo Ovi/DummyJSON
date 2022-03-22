@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://dummyjson.com/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/auth/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/products/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/carts/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/users/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/posts/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/comments/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/todos/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/docs/quotes/</loc>
+	<lastmod>2022-03-23T00:00:00+05:00</lastmod>
+	<priority>0.8</priority>
+</url>
+</urlset>

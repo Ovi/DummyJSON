@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const path = require('path');
 const forceHTTPS = require('../middleware/forceHTTPS');
 
 const availableResources = [
@@ -37,6 +38,14 @@ router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
     page: resource,
     description: `REST Endpoints filled with ${resource.toUpperCase()} JSON data to use in developing the frontend without worrying about writing a backend.`,
   });
+});
+
+router.get('/robots.txt', forceHTTPS, (req, res) => {
+  res.sendFile(path.join(__dirname, '../../', 'public', 'robots.txt'));
+});
+
+router.get('/sitemap.xml', forceHTTPS, (req, res) => {
+  res.sendFile(path.join(__dirname, '../../', 'public', 'sitemap.xml'));
 });
 
 module.exports = router;
