@@ -17,7 +17,11 @@ router.get('/', forceHTTPS, (req, res) => {
 });
 
 router.get('/docs', forceHTTPS, (req, res) => {
-  res.render('docs', { path: 'docs', page: '' });
+  res.render('docs', {
+    path: 'docs',
+    page: '',
+    description: `Different types of REST Endpoints filled with JSON data to use in developing the frontend without worrying about writing a backend.`,
+  });
 });
 
 router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
@@ -28,7 +32,11 @@ router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
     return;
   }
 
-  res.render(`docs-${resource}`, { path: 'docs', page: resource });
+  res.render(`docs-${resource}`, {
+    path: 'docs',
+    page: resource,
+    description: `REST Endpoints filled with ${resource.toUpperCase()} JSON data to use in developing the frontend without worrying about writing a backend.`,
+  });
 });
 
 module.exports = router;
