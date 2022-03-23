@@ -20,7 +20,7 @@ function injectMiddleWares(app) {
   // use helmet JS.
   app.use(helmet());
 
-  // user bodyParser
+  // use bodyParser
   app.use(express.json());
 
   applyRateLimit(app);
