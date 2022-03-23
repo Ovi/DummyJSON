@@ -3,6 +3,14 @@ const { isNumber } = require('../utils/util');
 
 const cleanRequest = (req, res, next) => {
   try {
+    // remove trailing slash
+    if (req.path.substr(-1) === '/' && req.path.length > 1) {
+      const query = req.url.slice(req.path.length);
+      const safePath = req.path.slice(0, -1).replace(/\/+/g, '/');
+      res.redirect(301, safePath + query);
+      return;
+    }
+
     const options = {};
     req._options = options;
 
