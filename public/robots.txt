@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow: auth/
 
 Sitemap: https://dummyjson.com/sitemap.xml
