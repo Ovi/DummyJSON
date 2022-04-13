@@ -9,32 +9,24 @@ const LogSchema = new Schema(
       type: String,
     },
 
-    method: {
+    request: {
       required: true,
       type: String,
     },
 
-    url: {
+    response: {
       required: true,
       type: String,
     },
-
-    httpVersion: String,
-
-    ip: String,
 
     userAgent: String,
 
     referer: String,
 
-    status: String,
-
-    responseTime: Number,
-
-    totalTime: Number,
+    totalTimeMS: String,
   },
   {
-    timestamps: true,
+    timestamps: false,
   },
 );
 

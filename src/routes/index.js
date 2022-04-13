@@ -1,6 +1,9 @@
 const router = require('express').Router();
 
+// static page routes
 const staticRoutes = require('./static');
+
+// static resource routes
 const authRoutes = require('./auth');
 const cartRoutes = require('./cart');
 const commentRoutes = require('./comment');

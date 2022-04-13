@@ -31,7 +31,7 @@ body {
   height: 100%;
   width: 100%;
   background: whitesmoke;
-  z-index: 5;
+  z-index: 10;
   font-size: 25px;
 }
 
@@ -107,7 +107,7 @@ header {
   background-color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  z-index: 3;
+  z-index: 7;
 }
 
 header.sticky {
@@ -152,12 +152,6 @@ header nav .items li {
 
 header nav .items li.active {
   font-weight: bold;
-}
-
-@media (max-width: 767px) {
-  header nav .items li.coffee-link {
-    display: none;
-  }
 }
 
 pre code.hljs {

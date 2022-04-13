@@ -10,7 +10,7 @@
 
 header {
   box-shadow: 0px 0px 2px 1px rgba(#000000, 0.25);
-  z-index: 4;
+  z-index: 7;
 }
 
 #nav-opener {
@@ -23,7 +23,7 @@ header {
   right: 10px;
   display: none;
   cursor: pointer;
-  z-index: 4;
+  z-index: 7;
 
   @include media('>=small-phone', '<tablet') {
     display: block;
@@ -40,7 +40,7 @@ aside {
   padding: 5px 15px 50px;
   background-color: #ebebeb;
   box-shadow: 0px 0px 2px 1px rgba(#000000, 0.15);
-  z-index: 4;
+  z-index: 7;
 
   ul {
     list-style: none;
@@ -145,7 +145,7 @@ main {
     width: 0;
     background: #bdbdbd;
     opacity: 0.75;
-    z-index: 3;
+    z-index: 5;
   }
 
   @include media('>=small-phone', '<tablet') {
