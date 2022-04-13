@@ -98,6 +98,32 @@ a.button.ghost {
   background-color: transparent;
 }
 
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #2b2b2b;
+  color: #e6e1dc;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 18px;
+}
+
+.banner .req-count {
+  display: inline-block;
+  margin: 0 3px;
+  font-weight: bold;
+}
+
 header {
   position: fixed;
   height: 65px;
@@ -110,10 +136,15 @@ header {
   z-index: 3;
 }
 
+header.has-banner {
+  top: 40px;
+}
+
 header.sticky {
   background-color: #ebebeb;
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+  top: 0;
 }
 
 header nav {
@@ -152,12 +183,6 @@ header nav .items li {
 
 header nav .items li.active {
   font-weight: bold;
-}
-
-@media (max-width: 767px) {
-  header nav .items li.coffee-link {
-    display: none;
-  }
 }
 
 pre code.hljs {

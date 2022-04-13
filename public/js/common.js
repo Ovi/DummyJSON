@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 
 try {
+  setRequestsCount();
   hljs.highlightAll();
 
   [...document.querySelectorAll('a[href*="#"]')].forEach(el => {
@@ -34,4 +35,13 @@ function scrollToElement(element, parent = window) {
   const position = element.getBoundingClientRect();
 
   parent.scrollTo(position.left, position.top + window.scrollY - 80);
+}
+
+async function setRequestsCount() {
+  fetch('/count')
+    .then(res => res.json())
+    .then(json => {
+      const countContainer = document.querySelector('.req-count');
+      countContainer.textContent = `~${json.count}`;
+    });
 }
