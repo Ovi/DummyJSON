@@ -48,4 +48,8 @@ router.get('/sitemap.xml', forceHTTPS, (req, res) => {
   res.sendFile(path.join(__dirname, '../../', 'public', 'sitemap.xml'));
 });
 
+router.get('/ads.txt', forceHTTPS, (req, res) => {
+  res.sendFile(path.join(__dirname, '../../', 'public', 'ads.txt'));
+});
+
 module.exports = router;

@@ -24,7 +24,7 @@ body {
   height: 100%;
   width: 100%;
   background: whitesmoke;
-  z-index: 5;
+  z-index: 10;
   font-size: 25px;
 }
 
@@ -94,7 +94,7 @@ header {
   padding: 0px 25px;
   background-color: #fff;
   transition: all 0.3s;
-  z-index: 3;
+  z-index: 7;
 
   &.sticky {
     background-color: #ebebeb;
@@ -126,12 +126,6 @@ header {
 
         &.active {
           font-weight: bold;
-        }
-
-        @include media('<tablet') {
-          &.coffee-link {
-            display: none;
-          }
         }
       }
     }

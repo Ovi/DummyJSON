@@ -8,7 +8,7 @@ const routes = require('./src/routes');
 const { validateEnvVar, loadDataInMemory } = require('./src/utils/util');
 const { version } = require('./package.json');
 
-const { PORT = 3000, NODE_ENV } = process.env;
+const { PORT = 4000, NODE_ENV } = process.env;
 
 // validate if we have all the env variables setup.
 validateEnvVar();
