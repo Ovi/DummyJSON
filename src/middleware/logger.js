@@ -27,15 +27,11 @@ function logger(req, res, next) {
 
     const log = new Log({
       time: new Date().toISOString(),
-      method: req.method,
-      url: req.originalUrl || req.url,
-      httpVersion: `${req.httpVersionMajor}.${req.httpVersionMinor}`,
-      ip: getIP(req),
+      request: `${getIP(req)} via ${req.method} @ ${req.originalUrl || req.url}`,
+      response: `${getResponseStatus(req, res)} took ${getResponseTime(req, res)}ms`,
       userAgent: req.headers['user-agent'],
       referer: req.headers.referer || req.headers.referrer,
-      status: getResponseStatus(req, res),
-      responseTime: getResponseTime(req, res),
-      totalTime: getTotalTime(req, res),
+      totalTimeMS: getTotalTime(req, res),
     });
 
     log.save((err, result) => {
