@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.2",
     "mongoose": "^5.13.5",
+    "node-cache": "^5.1.2",
     "on-finished": "^2.3.0",
     "on-headers": "^1.0.2"
   },

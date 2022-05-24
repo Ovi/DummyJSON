@@ -187,4 +187,17 @@ utils.deepFreeze = function(obj) {
   return obj;
 };
 
+utils.formatCount = (count, withAbbr = false, decimals = 2) => {
+  const countAbbreviations = ['', 'k', 'm', 'b', 't'];
+
+  const i = count === 0 ? count : Math.floor(Math.log(count) / Math.log(1000));
+  let result = parseFloat((count / 1000 ** i).toFixed(decimals));
+
+  if (withAbbr && countAbbreviations[i]) {
+    result += countAbbreviations[i];
+  }
+
+  return result;
+};
+
 module.exports = utils;

@@ -13,6 +13,9 @@ const quoteRoutes = require('./quote');
 const todoRoutes = require('./todo');
 const userRoutes = require('./user');
 
+// dynamic resource routes
+const countRoute = require('./count');
+
 router.use('/', staticRoutes);
 router.use('/auth', authRoutes);
 router.use('/carts', cartRoutes);
@@ -22,5 +25,6 @@ router.use('/products', productRoutes);
 router.use('/quotes', quoteRoutes);
 router.use('/todos', todoRoutes);
 router.use('/users', userRoutes);
+router.use('/count', countRoute);
 
 module.exports = router;

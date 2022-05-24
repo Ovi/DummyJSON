@@ -86,6 +86,26 @@ a.button {
   }
 }
 
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #2b2b2b;
+  color: #e6e1dc;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+
+  .req-count {
+    display: inline-block;
+    margin: 0 3px;
+    font-weight: bold;
+  }
+}
+
 header {
   position: fixed;
   height: 65px;
@@ -99,6 +119,7 @@ header {
   &.sticky {
     background-color: #ebebeb;
     box-shadow: 0px 0px 2px 1px rgba(#000000, 0.25);
+    top: 0;
   }
 
   nav {
