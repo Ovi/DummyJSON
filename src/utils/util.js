@@ -52,13 +52,15 @@ utils.getRandomInt = (min = 0, max = 100) => {
 };
 
 utils.loadDataInMemory = async () => {
-  const productsPath = path.join(__dirname, '../', 'data', 'products.json');
-  const cartsPath = path.join(__dirname, '../', 'data', 'carts.json');
-  const usersPath = path.join(__dirname, '../', 'data', 'users.json');
-  const quotesPath = path.join(__dirname, '../', 'data', 'quotes.json');
-  const todosPath = path.join(__dirname, '../', 'data', 'todos.json');
-  const postsPath = path.join(__dirname, '../', 'data', 'posts.json');
-  const commentsPath = path.join(__dirname, '../', 'data', 'comments.json');
+  const baseDir = path.join(__dirname, '../', 'data');
+
+  const productsPath = path.join(baseDir, 'products.json');
+  const cartsPath = path.join(baseDir, 'carts.json');
+  const usersPath = path.join(baseDir, 'users.json');
+  const quotesPath = path.join(baseDir, 'quotes.json');
+  const todosPath = path.join(baseDir, 'todos.json');
+  const postsPath = path.join(baseDir, 'posts.json');
+  const commentsPath = path.join(baseDir, 'comments.json');
 
   const paths = [
     fs.readFile(productsPath, 'utf-8'),
