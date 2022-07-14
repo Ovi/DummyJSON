@@ -199,6 +199,11 @@ main {
 
         a {
           font-weight: bold;
+
+          &.link-secondary {
+            font-weight: normal;
+            text-decoration: underline;
+          }
         }
       }
 

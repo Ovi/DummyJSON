@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-const { ENV_VARIABLES } = require('../constants');
+const { ENV_VARIABLES, httpCodes } = require('../constants');
 
 const utils = {};
 
@@ -12,6 +12,10 @@ const data = {
   todos: [],
   posts: [],
   comments: [],
+  httpCodes: {
+    codes: Object.keys(httpCodes),
+    messages: httpCodes,
+  },
 };
 
 utils.dataInMemory = data;

@@ -7,8 +7,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -20,12 +19,8 @@ body {
 
 .not-supported {
   display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   height: 100%;
@@ -37,40 +32,33 @@ body {
 
 @media (max-width: 359px) {
   .not-supported {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
   }
   body {
     overflow: hidden;
   }
 }
-
 body,
 input,
 button,
 a {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 a:not(.no-underline):not(.button) {
   display: inline-block;
   color: #000;
   text-decoration: none;
-  -webkit-transition: all 1s;
   transition: all 1s;
 }
-
 a:not(.no-underline):not(.button)::after {
-  content: '';
+  content: "";
   width: 0px;
   height: 2px;
   display: block;
   background: #000;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-
 a:not(.no-underline):not(.button):hover::after {
   width: 100%;
 }
@@ -84,15 +72,11 @@ a.button {
   border: 2px solid #0a0a0a;
   background-color: #0a0a0a;
   text-decoration: none;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 a.button:hover {
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
 }
-
 a.button.ghost {
   color: #000;
   background-color: transparent;
@@ -105,52 +89,35 @@ header {
   top: 0px;
   padding: 0px 25px;
   background-color: #fff;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   z-index: 7;
 }
-
 header.sticky {
   background-color: #ebebeb;
-  -webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
   top: 0;
 }
-
 header nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
-
 header nav .logo {
   font-size: 24px;
 }
-
 header nav .logo a {
   text-decoration: none;
   color: inherit;
 }
-
 header nav .items {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   list-style: none;
 }
-
 header nav .items li {
   margin-left: 15px;
 }
-
 header nav .items li.active {
   font-weight: bold;
 }
@@ -172,5 +139,4 @@ pre code.hljs {
 ::selection {
   color: #2e5139;
   background: #49c37c;
-}
-/*# sourceMappingURL=common.css.map */
+}/*# sourceMappingURL=common.css.map */
