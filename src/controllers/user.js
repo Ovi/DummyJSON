@@ -3,6 +3,7 @@ const {
   dataInMemory: frozenData,
   getMultiObjectSubset,
   getObjectSubset,
+  getNestedValue,
 } = require('../utils/util');
 
 const controller = {};
@@ -39,6 +40,32 @@ controller.searchUsers = ({ limit, skip, select, q: searchQuery }) => {
       u.username.toLowerCase().includes(searchQuery)
     );
   });
+  const total = users.length;
+
+  if (skip > 0) {
+    users = users.slice(skip);
+  }
+
+  if (users.length > limit) {
+    users.length = limit;
+  }
+
+  if (select) {
+    users = getMultiObjectSubset(users, select);
+  }
+
+  const result = { users, total, skip, limit: users.length };
+
+  return result;
+};
+
+// filter users
+controller.filterUsers = ({ limit, skip, select, key, value }) => {
+  let [...users] = frozenData.users.filter(u => {
+    const val = getNestedValue(u, key);
+    return val && val.toString() === value;
+  });
+
   const total = users.length;
 
   if (skip > 0) {

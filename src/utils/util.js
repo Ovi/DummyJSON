@@ -206,4 +206,8 @@ utils.formatCount = (count, withAbbr = false, decimals = 2) => {
   return result;
 };
 
+utils.getNestedValue = (obj, keys) => {
+  return keys.split('.').reduce((o, k) => (o || {})[k], obj);
+};
+
 module.exports = utils;
