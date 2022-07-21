@@ -26,11 +26,20 @@ function logger(req, res, next) {
     if (isRequestInWhitelist(req)) return;
 
     const log = new Log({
-      time: new Date().toISOString(),
-      request: `${getIP(req)} via ${req.method} @ ${req.originalUrl || req.url}`,
-      response: `${getResponseStatus(req, res)} took ${getResponseTime(req, res)}ms`,
-      userAgent: req.headers['user-agent'],
-      referer: req.headers.referer || req.headers.referrer,
+      requestMetaData: {
+        requestIP: getIP(req),
+        requestMethod: req.method,
+        requestTimeISO: new Date().toISOString(),
+        requestUA: req.headers['user-agent'],
+        requestURL: req.originalUrl || req.url,
+      },
+
+      responseMetaData: {
+        responseCode: getResponseStatus(req, res),
+        responseTimeMS: getResponseTime(req, res),
+      },
+
+      referrer: req.headers.referer || req.headers.referrer,
       totalTimeMS: getTotalTime(req, res),
     });
 
