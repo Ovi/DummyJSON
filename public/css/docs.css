@@ -230,6 +230,7 @@ main #next-prev-resource a:first-child {
   margin-right: 25px;
 }
 main footer {
+  padding-top: 8px;
   min-height: 40px;
   background-color: #ebebeb;
   display: flex;
