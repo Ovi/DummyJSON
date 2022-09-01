@@ -6,20 +6,12 @@
 main {
   margin-top: 65px;
 }
-
 main #hero {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   min-height: calc(100vh - 65px);
 }
-
 main #hero .intro {
   height: 100%;
   min-width: 50%;
@@ -27,61 +19,46 @@ main #hero .intro {
   text-align: center;
   margin-top: -50px;
 }
-
 main #hero .intro h1 {
   font-weight: 400;
   font-size: 72px;
 }
-
 main #hero .intro p {
   font-size: 24px;
   line-height: 24px;
   font-weight: 300;
   margin-bottom: 50px;
 }
-
 main #hero .intro .button {
   margin-right: 8px;
   margin-bottom: 8px;
 }
-
 main #hero .carousel {
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 50%;
 }
-
 main #hero .carousel blockquote {
   width: 350px;
   font-family: monospace;
   margin-bottom: 15px;
   font-size: 10px;
 }
-
 main #hero .carousel blockquote code {
   min-height: 250px;
   overflow: hidden;
 }
-
 main #hero .carousel .product-title {
   font-weight: 400;
   display: inline-block;
 }
-
 main #hero .carousel .product-price {
   font-family: monospace;
   display: inline-block;
   margin-bottom: 8px;
 }
-
 main #hero .carousel small.product-category {
   font-size: 12px;
   padding: 2px 4px;
@@ -90,11 +67,9 @@ main #hero .carousel small.product-category {
   color: #fff;
   cursor: pointer;
 }
-
 main #hero .carousel .product-rating-container {
   display: inline-block;
 }
-
 @media (min-width: 1920px) {
   main #hero .intro h1 {
     font-size: 100px;
@@ -125,7 +100,6 @@ main #hero .carousel .product-rating-container {
     font-size: 20px;
   }
 }
-
 @media (min-width: 1366px) and (max-width: 1919px) {
   main #hero .intro h1 {
     font-size: 80px;
@@ -142,7 +116,6 @@ main #hero .carousel .product-rating-container {
     min-height: 352px;
   }
 }
-
 @media (min-width: 768px) and (max-width: 1365px) {
   main #hero .intro h1 {
     font-size: 48px;
@@ -154,7 +127,6 @@ main #hero .carousel .product-rating-container {
     line-height: 24px;
   }
 }
-
 @media (min-width: 600px) and (max-width: 767px) {
   main #hero .intro {
     min-width: 100%;
@@ -163,7 +135,6 @@ main #hero .carousel .product-rating-container {
     display: none;
   }
 }
-
 @media (min-width: 480px) and (max-width: 599px) {
   main #hero .intro {
     min-width: 100%;
@@ -178,7 +149,6 @@ main #hero .carousel .product-rating-container {
     display: none;
   }
 }
-
 @media (min-width: 360px) and (max-width: 479px) {
   main #hero .intro {
     min-width: 100%;
@@ -194,54 +164,37 @@ main #hero .carousel .product-rating-container {
     display: none;
   }
 }
-
 main #sample {
   padding: 25px;
   background-color: #f0f0f0;
   color: #2b2b2b;
   height: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 main #sample .why-us {
   text-align: center;
   width: 80%;
 }
-
 main #sample .why-us h2 {
   font-size: 48px;
 }
-
 main #sample .why-us p {
   font-size: 24px;
 }
-
 main #sample .example {
   width: 80%;
 }
-
 main #sample .example blockquote {
   font-family: monospace;
   font-size: 14px;
 }
-
 main #sample .example h2 {
   font-size: 24px;
   padding: 16px 0px;
 }
-
 main #sample .example button {
   cursor: pointer;
   color: #fff;
@@ -251,24 +204,18 @@ main #sample .example button {
   border-radius: 50px;
   border: 2px solid #0a0a0a;
   background-color: #0a0a0a;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 main #sample .example button:hover {
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
 }
-
 main #sample .example button.ghost {
   color: #000;
   background-color: transparent;
 }
-
 main #sample .example .try-it-response {
   margin-bottom: 25px;
 }
-
 @media (min-width: 1920px) {
   main #sample .example {
     width: 80%;
@@ -284,13 +231,11 @@ main #sample .example .try-it-response {
     font-size: 20px;
   }
 }
-
 @media (min-width: 1366px) and (max-width: 1919px) {
   main #sample .why-us p {
     font-size: 22px;
   }
 }
-
 @media (min-width: 768px) and (max-width: 1365px) {
   main #sample .why-us {
     width: 95%;
@@ -305,7 +250,6 @@ main #sample .example .try-it-response {
     width: 95%;
   }
 }
-
 @media (min-width: 600px) and (max-width: 767px) {
   main #sample .why-us {
     width: 95%;
@@ -323,7 +267,6 @@ main #sample .example .try-it-response {
     font-size: 12px;
   }
 }
-
 @media (min-width: 480px) and (max-width: 599px) {
   main #sample {
     padding: 15px;
@@ -344,7 +287,6 @@ main #sample .example .try-it-response {
     font-size: 10px;
   }
 }
-
 @media (min-width: 360px) and (max-width: 479px) {
   main #sample {
     padding: 10px;
@@ -365,40 +307,26 @@ main #sample .example .try-it-response {
     font-size: 10px;
   }
 }
-
 main #resources {
   padding: 25px;
   background-color: #fff;
   color: #2b2b2b;
   height: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 main #resources .resources {
   text-align: center;
   width: 80%;
 }
-
 main #resources .resources h2 {
   font-size: 48px;
 }
-
 main #resources .resources p {
   font-size: 24px;
 }
-
 main #resources .resources-container,
 main #resources .routes-container {
   width: 80%;
@@ -406,60 +334,49 @@ main #resources .routes-container {
   margin: 20px 0;
   padding-bottom: 25px;
 }
-
 main #resources .resources-container a,
 main #resources .routes-container a {
   color: #269253;
   display: inline-block;
 }
-
 main #resources .resources-container a:not([href]),
 main #resources .routes-container a:not([href]) {
   color: inherit;
 }
-
 main #resources .resources-container a::after,
 main #resources .routes-container a::after {
-  content: '';
+  content: "";
   width: 0px;
   height: 2px;
   display: block;
   background: #269253;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-
 main #resources .resources-container a:hover::after,
 main #resources .routes-container a:hover::after {
   width: 100%;
 }
-
 main #resources .resources-container a:not([href]):hover::after,
 main #resources .routes-container a:not([href]):hover::after {
   width: 0;
 }
-
 main #resources .resources-container table tr td,
 main #resources .routes-container table tr td {
   padding: 5px 10px 5px 0;
 }
-
 main #resources .resources-container table tr td.comment,
 main #resources .routes-container table tr td.comment {
   color: #a3a3a3;
 }
-
 main #resources .resources-container .resources-note,
 main #resources .resources-container .routes-note,
 main #resources .routes-container .resources-note,
 main #resources .routes-container .routes-note {
   margin-top: 15px;
 }
-
 main #resources .resources-container {
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
-
 @media (min-width: 768px) and (max-width: 1365px) {
   main #resources {
     padding: 20px;
@@ -474,7 +391,6 @@ main #resources .resources-container {
     font-size: 20px;
   }
 }
-
 @media (min-width: 600px) and (max-width: 767px) {
   main #resources {
     padding: 20px;
@@ -489,15 +405,15 @@ main #resources .resources-container {
     font-size: 18px;
   }
   main #resources .resources-container,
-  main #resources .routes-container {
+main #resources .routes-container {
     width: 90%;
   }
   main #resources .resources-container table tr td,
-  main #resources .routes-container table tr td {
+main #resources .routes-container table tr td {
     padding-bottom: 0;
   }
   main #resources .resources-container table tr td.comment,
-  main #resources .routes-container table tr td.comment {
+main #resources .routes-container table tr td.comment {
     float: left;
     line-height: 22px;
     width: 100%;
@@ -509,7 +425,6 @@ main #resources .resources-container {
     display: block;
   }
 }
-
 @media (min-width: 480px) and (max-width: 599px) {
   main #resources {
     padding: 15px;
@@ -524,15 +439,15 @@ main #resources .resources-container {
     font-size: 16px;
   }
   main #resources .resources-container,
-  main #resources .routes-container {
+main #resources .routes-container {
     width: 95%;
   }
   main #resources .resources-container table tr td,
-  main #resources .routes-container table tr td {
+main #resources .routes-container table tr td {
     padding-bottom: 0;
   }
   main #resources .resources-container table tr td.comment,
-  main #resources .routes-container table tr td.comment {
+main #resources .routes-container table tr td.comment {
     float: left;
     line-height: 22px;
     width: 100%;
@@ -544,7 +459,6 @@ main #resources .resources-container {
     display: block;
   }
 }
-
 @media (min-width: 360px) and (max-width: 479px) {
   main #resources {
     padding: 10px;
@@ -559,15 +473,15 @@ main #resources .resources-container {
     font-size: 16px;
   }
   main #resources .resources-container,
-  main #resources .routes-container {
+main #resources .routes-container {
     width: 95%;
   }
   main #resources .resources-container table tr td,
-  main #resources .routes-container table tr td {
+main #resources .routes-container table tr td {
     padding-bottom: 0;
   }
   main #resources .resources-container table tr td.comment,
-  main #resources .routes-container table tr td.comment {
+main #resources .routes-container table tr td.comment {
     float: left;
     line-height: 22px;
     width: 100%;
@@ -579,31 +493,23 @@ main #resources .resources-container {
     display: block;
   }
 }
-
 main .inspiration {
   text-align: center;
   background-color: #dfdfdf;
   padding: 3px;
   font-size: 12px;
 }
-
 main .inspiration a {
   text-decoration: none;
   color: inherit;
 }
-
 main footer {
+  padding-top: 8px;
   min-height: 40px;
   background-color: #ebebeb;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 pre code.hljs {
@@ -623,5 +529,4 @@ pre code.hljs {
 ::selection {
   color: #2e5139;
   background: #49c37c;
-}
-/*# sourceMappingURL=home.css.map */
+}/*# sourceMappingURL=home.css.map */

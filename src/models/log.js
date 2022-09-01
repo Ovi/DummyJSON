@@ -2,39 +2,42 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const RequestSchema = new Schema(
+  {
+    requestIP: String,
+    requestMethod: String,
+    requestTimeISO: String,
+    requestUA: String,
+    requestURL: String,
+  },
+  { _id: false, timestamps: false },
+);
+
+const ResponseSchema = new Schema(
+  {
+    responseCode: String,
+    responseTimeMS: String,
+  },
+  { _id: false, timestamps: false },
+);
+
 const LogSchema = new Schema(
   {
-    time: {
+    requestMetaData: {
       required: true,
-      type: String,
+      type: RequestSchema,
     },
 
-    method: {
+    responseMetaData: {
       required: true,
-      type: String,
+      type: ResponseSchema,
     },
 
-    url: {
-      required: true,
-      type: String,
-    },
-
-    httpVersion: String,
-
-    ip: String,
-
-    userAgent: String,
-
-    referer: String,
-
-    status: String,
-
-    responseTime: Number,
-
-    totalTime: Number,
+    referrer: String,
+    totalTimeMS: String,
   },
   {
-    timestamps: true,
+    timestamps: false,
   },
 );
 
