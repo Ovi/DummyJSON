@@ -9,6 +9,7 @@ const {
   addNewUser,
   updateUserById,
   deleteUserById,
+  filterUsers,
 } = require('../controllers/user');
 const { verifyUserHandler } = require('../helpers');
 
@@ -17,9 +18,14 @@ router.get('/', (req, res) => {
   res.send(getAllUsers({ ...req._options }));
 });
 
-// search user
+// search users
 router.get('/search', (req, res) => {
   res.send(searchUsers({ ...req._options }));
+});
+
+// filter users
+router.get('/filter', (req, res) => {
+  res.send(filterUsers({ ...req._options }));
 });
 
 // get user by id

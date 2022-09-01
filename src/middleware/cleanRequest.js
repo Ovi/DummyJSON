@@ -14,7 +14,7 @@ const cleanRequest = (req, res, next) => {
     const options = {};
     req._options = options;
 
-    const { limit = 30, skip = 0, q } = req.query;
+    const { limit = 30, skip = 0, q, key, value } = req.query;
     let { select } = req.query;
 
     if (!isNumber(limit)) {
@@ -40,6 +40,8 @@ const cleanRequest = (req, res, next) => {
     options.skip = skip;
     options.select = select;
     options.q = searchQuery;
+    options.key = key;
+    options.value = value;
 
     next();
   } catch (e) {

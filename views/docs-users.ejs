@@ -251,6 +251,63 @@ fetch('https://dummyjson.com/users/search?q=John')
         </div>
 
         <div class="sub-section">
+          <h3 id="filter">
+            <a href="#filter" class="no-link">Filter users</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              You can pass key (nested keys with ".") and value as params to
+              filter users. (key and value are case-sensitive)
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              "limit", "skip" and "select" works too.
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/users/filter?key=hair.color&value=Brown')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "users": [
+    {
+      "firstName": "Demetrius",
+      "hair": {
+        "color": "Brown", // filter matched hair color
+      },
+      "id": 9,
+      "lastName": "Corkery"
+      // rest user data
+    }
+  ],
+  "total": 26,
+  "skip": 0,
+  "limit": 26
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
           <h3 id="limit_skip">
             <a href="#limit_skip" class="no-link">Limit and skip users</a>
           </h3>

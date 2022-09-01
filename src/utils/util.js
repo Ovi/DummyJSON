@@ -193,4 +193,8 @@ utils.deepFreeze = function(obj) {
   return obj;
 };
 
+utils.getNestedValue = (obj, keys) => {
+  return keys.split('.').reduce((o, k) => (o || {})[k], obj);
+};
+
 module.exports = utils;
