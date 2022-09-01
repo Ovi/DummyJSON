@@ -11,6 +11,7 @@ const availableResources = [
   'todos',
   'quotes',
   'auth',
+  'http',
 ];
 
 router.get('/', forceHTTPS, (req, res) => {
