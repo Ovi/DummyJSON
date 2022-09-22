@@ -1,6 +1,6 @@
 {
   "name": "dummy-json-backend",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
