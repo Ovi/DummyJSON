@@ -1,5 +1,5 @@
 const APIError = require('../utils/error');
-const { isNumber } = require('../utils/util');
+const { isNumber, trueTypeOf } = require('../utils/util');
 
 const cleanRequest = (req, res, next) => {
   try {
@@ -25,7 +25,15 @@ const cleanRequest = (req, res, next) => {
       throw new APIError('Invalid skip limit', 400);
     }
 
-    if (select) select = ['id', ...select.split(',')];
+    if (select) {
+      if (trueTypeOf(select) === 'array') {
+        select = ['id', ...select];
+      } else if (trueTypeOf(select) === 'string') {
+        select = ['id', ...select.split(',')];
+      } else {
+        select = null;
+      }
+    }
 
     let searchQuery = q;
 
