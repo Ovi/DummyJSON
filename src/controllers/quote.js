@@ -25,7 +25,7 @@ controller.getAllQuotes = ({ limit, skip }) => {
 controller.getRandomQuote = () => {
   const { quotes } = frozenData;
 
-  const randomIdx = Math.floor(Math.random() * quotes.length + 1);
+  const randomIdx = Math.floor(Math.random() * quotes.length);
 
   return quotes[randomIdx];
 };

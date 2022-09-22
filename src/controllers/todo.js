@@ -29,7 +29,7 @@ controller.getAllTodos = ({ limit, skip }) => {
 controller.getRandomTodo = () => {
   const { todos } = frozenData;
 
-  const randomIdx = Math.floor(Math.random() * todos.length + 1);
+  const randomIdx = Math.floor(Math.random() * todos.length);
 
   return todos[randomIdx];
 };
