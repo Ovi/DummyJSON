@@ -1,6 +1,7 @@
 const constants = {};
 
-constants.ENV_VARIABLES = ['FRONTEND_URL', 'MONGODB_URI', 'JWT_SECRET'];
+constants.REQUIRED_ENV_VARIABLES = ['FRONTEND_URL', 'JWT_SECRET'];
+constants.OPTIONAL_ENV_VARIABLES = ['MONGODB_URI'];
 
 constants.requestWhitelist = ['/favicon.ico', '/static', '/image/i/'];
 
