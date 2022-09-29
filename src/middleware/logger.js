@@ -2,14 +2,15 @@ const onFinished = require('on-finished');
 const onHeaders = require('on-headers');
 const Log = require('../models/log');
 const { isRequestInWhitelist } = require('../helpers');
-const { isDev } = require('../utils/util');
+
+// use database to store logs
+const { MONGODB_URI } = process.env;
+
+if (MONGODB_URI) {
+  require('../db/mongoose');
+}
 
 function logger(req, res, next) {
-  if (isDev) {
-    next();
-    return;
-  }
-
   // request data
   req._startAt = undefined;
   req._startTime = undefined;
@@ -43,14 +44,18 @@ function logger(req, res, next) {
       totalTimeMS: getTotalTime(req, res),
     });
 
-    log.save((err, result) => {
-      if (err) {
-        console.log({ logError: err.message });
-        return;
-      }
+    if (MONGODB_URI) {
+      log.save((err, result) => {
+        if (err) {
+          console.log({ logError: err.message });
+          return;
+        }
 
-      console.log(result);
-    });
+        console.log(result);
+      });
+    } else {
+      console.log(log);
+    }
   }
 
   // record response start

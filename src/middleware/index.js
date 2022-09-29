@@ -7,9 +7,6 @@ const applyRateLimit = require('../utils/applyRateLimit');
 const logger = require('./logger');
 const cleanRequest = require('./cleanRequest');
 
-// use database to store logs
-require('../db/mongoose');
-
 function injectMiddleWares(app) {
   // enable compression.
   app.use(compression());
