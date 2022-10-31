@@ -44,8 +44,8 @@ const cleanRequest = (req, res, next) => {
         .join(' ');
     }
 
-    options.limit = limit;
-    options.skip = skip;
+    options.limit = parseInt(limit, 10);
+    options.skip = parseInt(skip, 10);
     options.select = select;
     options.q = searchQuery;
     options.key = key;
