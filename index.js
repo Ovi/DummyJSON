@@ -28,7 +28,9 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static('./public'));
 
 // serving internal (products) images
-app.use('/image/i', express.static('./src/data/images'));
+app.use('/image/i', (req, res) => {
+  res.redirect(`https://i.dummyjson.com/data${req.path}`);
+});
 
 // routes
 app.use('/', routes);
