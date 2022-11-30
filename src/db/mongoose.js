@@ -22,7 +22,8 @@ mongoose
 mongoose.connection.on('disconnected', () => {
   console.info('[Service:Database] Disconnected.');
 
-  process.exit(1);
+  // [optional] exit app when database is disconnected
+  // process.exit(1);
 });
 
 // If node exits, terminate mongoose connection
