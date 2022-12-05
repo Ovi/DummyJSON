@@ -1,6 +1,10 @@
 const { verifyUserHandler } = require('../helpers');
 const APIError = require('../utils/error');
-const { dataInMemory: frozenData, trueTypeOf } = require('../utils/util');
+const {
+  dataInMemory: frozenData,
+  trueTypeOf,
+  isNumber,
+} = require('../utils/util');
 
 const controller = {};
 
@@ -132,50 +136,48 @@ controller.addNewCart = ({ userId, products = [] }) => {
 };
 
 // update cart by id
-controller.updateCartById = ({ id, ...data }) => {
+controller.updateCartById = ({ id: cartId, ...data }) => {
   const { userId, products = [] } = data;
 
-  const cartFrozen = frozenData.carts.find(c => c.id.toString() === id);
+  const cartFrozen = frozenData.carts.find(c => c.id.toString() === cartId);
 
   // verify if we have valid cart id
   if (!cartFrozen) {
-    throw new APIError(`Cart with id '${id}' not found`, 404);
+    throw new APIError(`Cart with id '${cartId}' not found`, 404);
   }
 
   if (userId) {
     verifyUserHandler(userId);
   }
 
-  const productIds = [];
-  const productQty = [];
-
-  // extract product id and quantity
-  [...products, ...cartFrozen.products].forEach(p => {
-    productIds.push(+(p.id || 0));
-    productQty.push(+(p.quantity || 1));
-  });
-
-  // get all possible products by ids
-  const [...productsByIds] = frozenData.products.filter(p => {
-    return productIds.includes(p.id);
-  });
+  if (trueTypeOf(products) !== 'array') {
+    throw new APIError(
+      `products must be array of objects, containing product id and quantity`,
+      400,
+    );
+  }
 
   // set variables to count the totals of cart by products
   let total = 0;
   let discountedTotal = 0;
   let totalQuantity = 0;
 
-  // get products in the relevant schema
-  const combinedProducts = productsByIds.map((p, idx) => {
+  // filter and get all valid products by user
+  const userProducts = [];
+  products.forEach(p => {
+    const product = frozenData.products.find(({ id }) => +id === +p.id);
+    if (!product) return;
+
     // get quantity of the product
-    const quantity = productQty[idx];
+    let quantity = 1;
+    if (isNumber(p.quantity)) quantity = +p.quantity;
 
     // total price (price * quantity)
-    const priceWithQty = p.price * quantity;
+    const priceWithQty = product.price * quantity;
 
     // apply discount on the product if applicable
     const discountedPrice = Math.round(
-      priceWithQty * ((100 - p.discountPercentage) / 100),
+      priceWithQty * ((100 - product.discountPercentage) / 100),
     );
 
     // update cart variables
@@ -184,25 +186,25 @@ controller.updateCartById = ({ id, ...data }) => {
     totalQuantity += quantity;
 
     // set product with correct schema
-    return {
-      id: p.id,
-      title: p.title,
-      price: p.price,
+    userProducts.push({
+      id: product.id,
+      title: product.title,
+      price: product.price,
       quantity,
       total: priceWithQty,
-      discountPercentage: p.discountPercentage,
+      discountPercentage: product.discountPercentage,
       discountedPrice,
-    };
+    });
   });
 
   // prepare cart
   const cart = {
-    id,
-    products: combinedProducts,
+    id: cartId,
+    products: userProducts,
     total,
     discountedTotal,
     userId: +(userId || cartFrozen.userId), // converting userId to number
-    totalProducts: combinedProducts.length,
+    totalProducts: userProducts.length,
     totalQuantity,
   };
 
