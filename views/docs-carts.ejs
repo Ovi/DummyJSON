@@ -302,6 +302,13 @@ fetch('https://dummyjson.com/carts/add', {
 
             <small>
               <i class="bx bx-error-alt bx-xs"></i>
+              Pass "merge: true" to include old products when updating
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-error-alt bx-xs"></i>
               It will simulate a PUT/PATCH request and will return updated cart
               with modified data
             </small>
@@ -323,6 +330,7 @@ fetch('https://dummyjson.com/carts/1', {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
+    merge: true, // this will include existing products in the cart
     products: [
       {
         id: 1,
