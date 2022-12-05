@@ -137,7 +137,7 @@ controller.addNewCart = ({ userId, products = [] }) => {
 
 // update cart by id
 controller.updateCartById = ({ id: cartId, ...data }) => {
-  const { userId, products = [] } = data;
+  const { userId, products: userProducts = [], merge = false } = data;
 
   const cartFrozen = frozenData.carts.find(c => c.id.toString() === cartId);
 
@@ -150,7 +150,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
     verifyUserHandler(userId);
   }
 
-  if (trueTypeOf(products) !== 'array') {
+  if (trueTypeOf(userProducts) !== 'array') {
     throw new APIError(
       `products must be array of objects, containing product id and quantity`,
       400,
@@ -162,22 +162,34 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
   let discountedTotal = 0;
   let totalQuantity = 0;
 
-  // filter and get all valid products by user
-  const userProducts = [];
-  products.forEach(p => {
-    const product = frozenData.products.find(({ id }) => +id === +p.id);
-    if (!product) return;
+  const productsMap = new Map();
 
+  if (merge) {
+    cartFrozen.products.forEach(p => {
+      const item = frozenData.products.find(({ id }) => +id === +p.id);
+      if (item) productsMap.set(p.id, { ...item, ...p });
+    });
+  }
+
+  // keeping user products after merge so we quantity can be overwritten
+  userProducts.forEach(p => {
+    const item = frozenData.products.find(({ id }) => +id === +p.id);
+    if (item) productsMap.set(p.id, { ...item, ...p });
+  });
+
+  const allProducts = [];
+
+  [...productsMap].forEach(([, p]) => {
     // get quantity of the product
     let quantity = 1;
     if (isNumber(p.quantity)) quantity = +p.quantity;
 
     // total price (price * quantity)
-    const priceWithQty = product.price * quantity;
+    const priceWithQty = p.price * quantity;
 
     // apply discount on the product if applicable
     const discountedPrice = Math.round(
-      priceWithQty * ((100 - product.discountPercentage) / 100),
+      priceWithQty * ((100 - p.discountPercentage) / 100),
     );
 
     // update cart variables
@@ -186,25 +198,25 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
     totalQuantity += quantity;
 
     // set product with correct schema
-    userProducts.push({
-      id: product.id,
-      title: product.title,
-      price: product.price,
+    allProducts.push({
+      id: +p.id,
+      title: p.title,
+      price: p.price,
       quantity,
       total: priceWithQty,
-      discountPercentage: product.discountPercentage,
+      discountPercentage: p.discountPercentage,
       discountedPrice,
     });
   });
 
   // prepare cart
   const cart = {
-    id: cartId,
-    products: userProducts,
+    id: +cartId,
+    products: allProducts,
     total,
     discountedTotal,
     userId: +(userId || cartFrozen.userId), // converting userId to number
-    totalProducts: userProducts.length,
+    totalProducts: allProducts.length,
     totalQuantity,
   };
 
