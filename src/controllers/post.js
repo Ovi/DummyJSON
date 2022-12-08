@@ -111,7 +111,7 @@ controller.updatePost = ({ id, ...data }) => {
   const post = verifyPostHandler(id);
 
   const updatedPost = {
-    id,
+    id: +id, // converting id to number
     title: title || post.title,
     body: body || post.body,
     userId: userId || post.userId,

@@ -211,7 +211,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
 
   // prepare cart
   const cart = {
-    id: +cartId,
+    id: +cartId, // converting cartId to number
     products: allProducts,
     total,
     discountedTotal,

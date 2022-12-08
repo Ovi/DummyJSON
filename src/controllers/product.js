@@ -159,7 +159,7 @@ controller.updateProductById = ({ id, ...data }) => {
   }
 
   const updatedProduct = {
-    id,
+    id: +id, // converting id to number
     title: title || productFrozen.title,
     price: price || productFrozen.price,
     stock: stock || productFrozen.stock,

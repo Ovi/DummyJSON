@@ -94,7 +94,7 @@ controller.updateTodoById = ({ id, ...data }) => {
   }
 
   const updatedTodo = {
-    id,
+    id: +id, // converting id to number,
     todo: todo || foundTodo.todo,
     completed: completed !== undefined ? completed : foundTodo.completed,
     userId: userId || foundTodo.userId,

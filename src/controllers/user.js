@@ -240,7 +240,7 @@ controller.updateUserById = ({ id, ...data }) => {
   const user = verifyUserHandler(id);
 
   const updatedUser = {
-    id,
+    id: +id, // converting id to number
     firstName: firstName || user.firstName,
     lastName: lastName || user.lastName,
     maidenName: maidenName || user.maidenName,
