@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const path = require('path');
-const forceHTTPS = require('../middleware/forceHTTPS');
 
 const availableResources = [
   'products',
@@ -14,11 +13,11 @@ const availableResources = [
   'http',
 ];
 
-router.get('/', forceHTTPS, (req, res) => {
+router.get('/', (req, res) => {
   res.render('index', { path: 'home' });
 });
 
-router.get('/docs', forceHTTPS, (req, res) => {
+router.get('/docs', (req, res) => {
   res.render('docs', {
     path: 'docs',
     page: '',
@@ -26,7 +25,7 @@ router.get('/docs', forceHTTPS, (req, res) => {
   });
 });
 
-router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
+router.get('/docs/:resource', (req, res, next) => {
   const resource = (req.params.resource || '').toLowerCase();
 
   if (!availableResources.includes(resource)) {
@@ -41,15 +40,15 @@ router.get('/docs/:resource', forceHTTPS, (req, res, next) => {
   });
 });
 
-router.get('/robots.txt', forceHTTPS, (req, res) => {
+router.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, '../../', 'public', 'robots.txt'));
 });
 
-router.get('/sitemap.xml', forceHTTPS, (req, res) => {
+router.get('/sitemap.xml', (req, res) => {
   res.sendFile(path.join(__dirname, '../../', 'public', 'sitemap.xml'));
 });
 
-router.get('/ads.txt', forceHTTPS, (req, res) => {
+router.get('/ads.txt', (req, res) => {
   res.sendFile(path.join(__dirname, '../../', 'public', 'ads.txt'));
 });
 

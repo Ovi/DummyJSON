@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const forceHTTPS = require('../middleware/forceHTTPS');
 
 // static page routes
 const staticRoutes = require('./static');
@@ -17,7 +18,7 @@ const httpStatusRoutes = require('./http');
 // dynamic resource routes
 // no-dynamic-routes
 
-router.use('/', staticRoutes);
+router.use('/', forceHTTPS, staticRoutes);
 router.use('/auth', authRoutes);
 router.use('/carts', cartRoutes);
 router.use('/comments', commentRoutes);
