@@ -618,7 +618,17 @@ main {
     }
   }
 
-  .inspiration {
+  footer {
+    padding-top: 8px;
+    min-height: 40px;
+    background-color: #ebebeb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-extra {
     text-align: center;
     background-color: #dfdfdf;
     padding: 3px;
@@ -628,16 +638,6 @@ main {
       text-decoration: none;
       color: inherit;
     }
-  }
-
-  footer {
-    padding-top: 8px;
-    min-height: 40px;
-    background-color: #ebebeb;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 

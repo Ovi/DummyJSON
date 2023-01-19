@@ -22,6 +22,8 @@ function tryIt() {
 
         resContainer.innerHTML = highlighted;
         tryItButton.innerText = buttonText;
+
+        document.querySelector('.on-success-text')?.classList.remove('hidden');
       });
   }
 
