@@ -1,5 +1,8 @@
+const multer = require('multer');
 const APIError = require('../utils/error');
 const { isNumber, trueTypeOf } = require('../utils/util');
+
+const upload = multer(); // for parsing multipart/form-data
 
 const cleanRequest = (req, res, next) => {
   try {
@@ -50,6 +53,11 @@ const cleanRequest = (req, res, next) => {
     options.q = searchQuery;
     options.key = key;
     options.value = value;
+
+    if (req.headers['content-type']?.startsWith('multipart/form-data')) {
+      upload.none()(req, res, next);
+      return;
+    }
 
     next();
   } catch (e) {
