@@ -20,13 +20,13 @@ const httpStatusRoutes = require('./http');
 
 router.use('/', forceHTTPS, staticRoutes);
 router.use('/auth', authRoutes);
-router.use('/carts', cartRoutes);
-router.use('/comments', commentRoutes);
-router.use('/posts', postRoutes);
-router.use('/products', productRoutes);
-router.use('/quotes', quoteRoutes);
-router.use('/todos', todoRoutes);
-router.use('/users', userRoutes);
-router.use('/http', httpStatusRoutes);
+router.use(['/cart', '/carts'], cartRoutes);
+router.use(['/comment', '/comments'], commentRoutes);
+router.use(['/post', '/posts'], postRoutes);
+router.use(['/product', '/products'], productRoutes);
+router.use(['/quote', '/quotes'], quoteRoutes);
+router.use(['/todo', '/todos'], todoRoutes);
+router.use(['/user', '/users'], userRoutes);
+router.use(['/http', '/https'], httpStatusRoutes);
 
 module.exports = router;
