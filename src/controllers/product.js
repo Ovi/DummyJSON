@@ -3,6 +3,7 @@ const {
   dataInMemory: frozenData,
   getMultiObjectSubset,
   getObjectSubset,
+  limitArray,
 } = require('../utils/util');
 
 const controller = {};
@@ -16,9 +17,7 @@ controller.getAllProducts = ({ limit, skip, select }) => {
     products = products.slice(skip);
   }
 
-  if (products.length > limit) {
-    products.length = limit;
-  }
+  products = limitArray(products, limit);
 
   if (select) {
     products = getMultiObjectSubset(products, select);
@@ -43,9 +42,7 @@ controller.searchProducts = ({ limit, skip, select, q: searchQuery }) => {
     products = products.slice(skip);
   }
 
-  if (products.length > limit) {
-    products.length = limit;
-  }
+  products = limitArray(products, limit);
 
   if (select) {
     products = getMultiObjectSubset(products, select);
@@ -95,9 +92,7 @@ controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
     products = products.slice(skip);
   }
 
-  if (products.length > limit) {
-    products.length = limit;
-  }
+  products = limitArray(products, limit);
 
   if (select) {
     products = getMultiObjectSubset(products, select);

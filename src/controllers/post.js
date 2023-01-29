@@ -3,6 +3,7 @@ const {
   dataInMemory: frozenData,
   getMultiObjectSubset,
   getObjectSubset,
+  limitArray,
 } = require('../utils/util');
 
 const controller = {};
@@ -16,9 +17,7 @@ controller.getAllPosts = ({ limit, skip, select }) => {
     posts = posts.slice(skip);
   }
 
-  if (posts.length > limit) {
-    posts.length = limit;
-  }
+  posts = limitArray(posts, limit);
 
   if (select) {
     posts = getMultiObjectSubset(posts, select);
@@ -40,9 +39,7 @@ controller.searchPosts = ({ limit, skip, select, q: searchQuery }) => {
     posts = posts.slice(skip);
   }
 
-  if (posts.length > limit) {
-    posts.length = limit;
-  }
+  posts = limitArray(posts, limit);
 
   if (select) {
     posts = getMultiObjectSubset(posts, select);
@@ -75,9 +72,7 @@ controller.getPostsByUserId = ({ userId, limit, skip, select }) => {
     posts = posts.slice(skip);
   }
 
-  if (posts.length > limit) {
-    posts.length = limit;
-  }
+  posts = limitArray(posts, limit);
 
   if (select) {
     posts = getMultiObjectSubset(posts, select);

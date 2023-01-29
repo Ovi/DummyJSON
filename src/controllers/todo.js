@@ -3,6 +3,7 @@ const APIError = require('../utils/error');
 const {
   dataInMemory: frozenData,
   getMultiObjectSubset,
+  limitArray,
 } = require('../utils/util');
 
 const controller = {};
@@ -16,9 +17,7 @@ controller.getAllTodos = ({ limit, skip }) => {
     todos = todos.slice(skip);
   }
 
-  if (todos.length > limit) {
-    todos.length = limit;
-  }
+  todos = limitArray(todos, limit);
 
   const result = { todos, total, skip, limit: todos.length };
 
@@ -56,9 +55,7 @@ controller.getTodosByUserId = ({ userId, limit, skip, select }) => {
     todos = todos.slice(skip);
   }
 
-  if (todos.length > limit) {
-    todos.length = limit;
-  }
+  todos = limitArray(todos, limit);
 
   if (select) {
     todos = getMultiObjectSubset(todos, select);

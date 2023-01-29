@@ -1,6 +1,10 @@
 const { verifyPostHandler, verifyUserHandler } = require('../helpers');
 const APIError = require('../utils/error');
-const { dataInMemory: frozenData, trueTypeOf } = require('../utils/util');
+const {
+  dataInMemory: frozenData,
+  trueTypeOf,
+  limitArray,
+} = require('../utils/util');
 
 const controller = {};
 
@@ -13,9 +17,7 @@ controller.getAllComments = ({ limit, skip }) => {
     comments = comments.slice(skip);
   }
 
-  if (comments.length > limit) {
-    comments.length = limit;
-  }
+  comments = limitArray(comments, limit);
 
   const result = { comments, total, skip, limit: comments.length };
 
@@ -46,9 +48,7 @@ controller.getAllCommentsByPostId = ({ postId, limit, skip }) => {
     comments = comments.slice(skip);
   }
 
-  if (comments.length > limit) {
-    comments.length = limit;
-  }
+  comments = limitArray(comments, limit);
 
   const result = { comments, total, skip, limit: comments.length };
 

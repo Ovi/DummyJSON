@@ -211,4 +211,8 @@ utils.getNestedValue = (obj, keys) => {
   return keys.split('.').reduce((o, k) => (o || {})[k], obj);
 };
 
+utils.limitArray = (arr, limit) => {
+  return limit === 0 || limit > arr.length ? arr : arr.slice(0, limit);
+};
+
 module.exports = utils;

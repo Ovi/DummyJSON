@@ -1,5 +1,5 @@
 const APIError = require('../utils/error');
-const { dataInMemory: frozenData } = require('../utils/util');
+const { dataInMemory: frozenData, limitArray } = require('../utils/util');
 
 const controller = {};
 
@@ -12,9 +12,7 @@ controller.getAllQuotes = ({ limit, skip }) => {
     quotes = quotes.slice(skip);
   }
 
-  if (quotes.length > limit) {
-    quotes.length = limit;
-  }
+  quotes = limitArray(quotes, limit);
 
   const result = { quotes, total, skip, limit: quotes.length };
 

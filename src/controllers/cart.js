@@ -4,6 +4,7 @@ const {
   dataInMemory: frozenData,
   trueTypeOf,
   isNumber,
+  limitArray,
 } = require('../utils/util');
 
 const controller = {};
@@ -17,9 +18,7 @@ controller.getAllCarts = ({ limit, skip }) => {
     carts = carts.slice(skip);
   }
 
-  if (carts.length > limit) {
-    carts.length = limit;
-  }
+  carts = limitArray(carts, limit);
 
   const result = { carts, total, skip, limit: carts.length };
 
@@ -37,9 +36,7 @@ controller.getCartsByUserId = ({ userId, limit, skip }) => {
     carts = carts.slice(skip);
   }
 
-  if (carts.length > limit) {
-    carts.length = limit;
-  }
+  carts = limitArray(carts, limit);
 
   const result = { carts, total, skip, limit: carts.length };
 

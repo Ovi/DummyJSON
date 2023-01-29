@@ -4,6 +4,7 @@ const {
   getMultiObjectSubset,
   getObjectSubset,
   getNestedValue,
+  limitArray,
 } = require('../utils/util');
 
 const controller = {};
@@ -17,9 +18,7 @@ controller.getAllUsers = ({ limit, skip, select }) => {
     users = users.slice(skip);
   }
 
-  if (users.length > limit) {
-    users.length = limit;
-  }
+  users = limitArray(users, limit);
 
   if (select) {
     users = getMultiObjectSubset(users, select);
@@ -46,9 +45,7 @@ controller.searchUsers = ({ limit, skip, select, q: searchQuery }) => {
     users = users.slice(skip);
   }
 
-  if (users.length > limit) {
-    users.length = limit;
-  }
+  users = limitArray(users, limit);
 
   if (select) {
     users = getMultiObjectSubset(users, select);
@@ -72,9 +69,7 @@ controller.filterUsers = ({ limit, skip, select, key, value }) => {
     users = users.slice(skip);
   }
 
-  if (users.length > limit) {
-    users.length = limit;
-  }
+  users = limitArray(users, limit);
 
   if (select) {
     users = getMultiObjectSubset(users, select);
