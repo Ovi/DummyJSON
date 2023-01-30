@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { MONGODB_URI } = process.env;
+const { MONGODB_URI, MONGODB_DB_NAME } = process.env;
 
 mongoose
   .connect(MONGODB_URI, {
@@ -8,6 +8,7 @@ mongoose
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: MONGODB_DB_NAME || 'logs',
   })
   .then(() => {
     console.info('[Service:Database] Connected.');
