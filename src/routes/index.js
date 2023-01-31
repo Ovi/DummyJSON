@@ -14,6 +14,7 @@ const quoteRoutes = require('./quote');
 const todoRoutes = require('./todo');
 const userRoutes = require('./user');
 const httpStatusRoutes = require('./http');
+const testRoutes = require('./test');
 
 // dynamic resource routes
 // no-dynamic-routes
@@ -28,5 +29,6 @@ router.use(['/quote', '/quotes'], quoteRoutes);
 router.use(['/todo', '/todos'], todoRoutes);
 router.use(['/user', '/users'], userRoutes);
 router.use(['/http', '/https'], httpStatusRoutes);
+router.use('/test', testRoutes);
 
 module.exports = router;

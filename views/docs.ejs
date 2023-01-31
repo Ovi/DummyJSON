@@ -13,7 +13,7 @@
     <main>
       <div id="hero">
         <!-- ads -->
-        <%- include('./partials/ads', { adId: '9625277182' }) %>
+        <%- include('./partials/ads', { adId: '8113483378' }) %>
 
         <h1>How to use it</h1>
         <p>
@@ -33,6 +33,43 @@
           <i class="bx bx-paper-plane"></i>
           <a href="#intro" class="no-link">Intro</a>
         </h2>
+
+        <div class="sub-section">
+          <h3 id="test">
+            <a href="#test" class="no-link">Test Route</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              See if your internet is working 😉
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/test', {
+  method: 'GET', /* or POST/PUT/PATCH/DELETE */
+})
+.then(res => res.json())
+.then(data => console.log(data));
+/*
+{
+  status: 'ok',
+  method: 'GET', // or POST/PUT/PATCH/DELETE
+}
+*/
+            </code>
+           </pre>
+          </blockquote>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+              </code>
+            </pre>
+          </blockquote>
+        </div>
 
         <div class="sub-section">
           <h3 id="intro-limit">
@@ -79,6 +116,9 @@ fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1&select=key2&s
             </pre>
           </blockquote>
         </div>
+
+        <!-- ads -->
+        <%- include('./partials/ads', { adId: '8113483378' }) %>
 
         <div class="sub-section">
           <h3 id="intro-auth">
@@ -136,6 +176,9 @@ fetch('https://dummyjson.com/auth/RESOURCE', {
           <i class="bx bx-right-arrow"></i>
         </a>
       </div>
+
+      <!-- ads -->
+      <%- include('./partials/ads', { adId: '8113483378' }) %>
 
       <!-- side-nav -->
       <%- include('./partials/footer') %>

@@ -35,3 +35,12 @@ function scrollToElement(element, parent = window) {
 
   parent.scrollTo(position.left, position.top + window.scrollY - 80);
 }
+
+console.log(
+  "%cYou're Awesome!",
+  'color: teal; font-size:14px; font-weight: bold',
+);
+console.log(
+  "%cDon't forget to STAR the repo :)",
+  'color: teal; font-size:14px;',
+);
