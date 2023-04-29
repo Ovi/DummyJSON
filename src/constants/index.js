@@ -1,7 +1,14 @@
 const constants = {};
 
-constants.REQUIRED_ENV_VARIABLES = ['FRONTEND_URL', 'JWT_SECRET'];
-constants.OPTIONAL_ENV_VARIABLES = ['MONGODB_URI', 'MONGODB_DB_NAME'];
+constants.REQUIRED_ENV_VARIABLES = ['JWT_SECRET'];
+constants.OPTIONAL_ENV_VARIABLES = [
+  'FRONTEND_URL',
+  'MONGODB_URI',
+  'MONGODB_DB_NAME',
+  'GOOGLE_TAG_ID',
+  'GOOGLE_PUBLISHER_ID',
+  'GOOGLE_ADS_TXT_CONTENT',
+];
 
 constants.requestWhitelist = ['/favicon.ico', '/static', '/image/i/'];
 

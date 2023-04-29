@@ -4,9 +4,13 @@ const errorMiddleware = (err, req, res, next) => {
     return;
   }
 
-  console.log('*-*-* [start] error *-*-*');
-  console.log(err);
-  console.log('*-*-* [end] error *-*-*');
+  if (err.status === 404) {
+    console.log('*** 404 Error ***', err.message || err);
+  } else {
+    console.log('*-*-* [start] error *-*-*');
+    console.log(err.message || err);
+    console.log('*-*-* [end] error *-*-*');
+  }
 
   if (err.message === 'jwt expired') {
     return res.status(401).send({ ...err, message: 'Token Expired!' });

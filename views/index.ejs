@@ -29,10 +29,11 @@
     <script defer src="/static/js/common.js"></script>
     <script defer src="/static/js/main.js"></script>
 
+    <% if (typeof(googleTagId) !== "undefined") { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-31N299BXMJ"
+      src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -41,8 +42,9 @@
       }
       gtag('js', new Date());
 
-      gtag('config', 'G-31N299BXMJ');
+      gtag('config', '<%= googleTagId %>');
     </script>
+    <% } %>
 
     <title>
       DummyJSON - Fake REST API of JSON data for development
@@ -155,10 +157,10 @@
         <div class="why-us">
           <h2>Got tired of Lorem ipsum data?</h2>
           <p>
-            With DummyJSON, what you get is different types of REST Endpoints
-            filled with JSON data which you can use in developing the frontend
-            with your favorite framework and library without worrying about
-            writing a backend.
+            With FakeProductsAPI, what you get is different types of REST
+            Endpoints filled with JSON data which you can use in developing the
+            frontend with your favorite framework and library without worrying
+            about writing a backend.
           </p>
         </div>
 

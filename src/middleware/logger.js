@@ -10,7 +10,17 @@ if (MONGODB_URI) {
   require('../db/mongoose');
 }
 
+let count = 0;
+startCountLogger();
+
 function logger(req, res, next) {
+  if (isRequestInWhitelist(req)) {
+    next();
+    return;
+  }
+
+  count += 1;
+
   // request data
   req._startAt = undefined;
   req._startTime = undefined;
@@ -23,39 +33,38 @@ function logger(req, res, next) {
   recordStartTime.call(req);
 
   function logRequest() {
-    // handle log
-    if (isRequestInWhitelist(req)) return;
+    const requestURL = req.originalUrl || req.url;
+    const requestMetaData = {
+      requestIP: getIP(req),
+      requestMethod: req.method,
+      requestTimeISO: new Date().toISOString(),
+      requestUA: req.headers['user-agent'],
+      requestURL,
+    };
+
+    const responseMetaData = {
+      responseCode: getResponseStatus(req, res),
+      responseTimeMS: getResponseTime(req, res),
+    };
+
+    const referrer = req.headers.referer || req.headers.referrer;
 
     const log = new Log({
-      requestMetaData: {
-        requestIP: getIP(req),
-        requestMethod: req.method,
-        requestTimeISO: new Date().toISOString(),
-        requestUA: req.headers['user-agent'],
-        requestURL: req.originalUrl || req.url,
-      },
-
-      responseMetaData: {
-        responseCode: getResponseStatus(req, res),
-        responseTimeMS: getResponseTime(req, res),
-      },
-
-      referrer: req.headers.referer || req.headers.referrer,
+      requestMetaData,
+      responseMetaData,
+      referrer,
       totalTimeMS: getTotalTime(req, res),
     });
 
     if (MONGODB_URI) {
-      log.save((err, result) => {
+      log.save(err => {
         if (err) {
           console.log({ logError: err.message });
-          return;
         }
-
-        console.log(result);
       });
-    } else {
-      console.log(log);
     }
+
+    console.log(`Resource: ${requestURL}; Referrer: ${referrer || '-'}`);
   }
 
   // record response start
@@ -128,4 +137,49 @@ function isHeadersSent(res) {
   return typeof res.headersSent !== 'boolean'
     ? Boolean(res._header)
     : res.headersSent;
+}
+
+function startCountLogger() {
+  const countTime = new Date().getTime();
+
+  setInterval(() => {
+    const diff = timeDifference(countTime, new Date().getTime());
+    console.info(`[Count] "${count}" requests in ${diff}`);
+  }, 30 * 1000 /* 30 Seconds */);
+}
+
+// Calculate the time difference between two dates
+function timeDifference(startDateMS, endDateMS) {
+  // Calculate the difference in milliseconds
+  const difference = endDateMS - startDateMS;
+
+  // Calculate the difference in minutes
+  const minutes = Math.floor(difference / 1000 / 60);
+
+  // Calculate the difference in hours
+  const hours = Math.floor(difference / 1000 / 60 / 60);
+
+  // Calculate the difference in days
+  const days = Math.floor(difference / 1000 / 60 / 60 / 24);
+
+  // Calculate the number of remaining hours
+  const remainingHours = hours % 24;
+
+  // Calculate the number of remaining minutes
+  const remainingMinutes = minutes % 60;
+
+  // Build the result string
+  let result = '';
+  if (days > 0) {
+    result += `${days} days, `;
+  }
+  if (remainingHours > 0) {
+    result += `${remainingHours} hours, `;
+  }
+  if (remainingMinutes >= 0) {
+    result += `${remainingMinutes} minutes`;
+  }
+
+  // Return the result string
+  return result;
 }

@@ -29,9 +29,11 @@
   <link href="/static/css/docs.css" rel="stylesheet" />
 
   <script src="/static/highlight.js/highlight.min.js"></script>
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
-    src="https://www.googletagmanager.com/gtag/js?id=G-31N299BXMJ"
+    src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"
   ></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,13 +42,15 @@
     }
     gtag('js', new Date());
 
-    gtag('config', 'G-31N299BXMJ');
+    gtag('config', '<%= googleTagId %>');
   </script>
+  <% } %>
 
   <script defer src="/static/js/docs.js"></script>
   <script defer src="/static/js/common.js"></script>
 
   <title>
-    <%= page ? page.toUpperCase() + ` - Dummy REST API of JSON data for development` : 'Docs - Fake REST API of JSON data | DummyJSON' %>
+    <%= page ? page.toUpperCase() + ` - Dummy REST API of JSON data for
+    development` : 'Docs - Fake REST API of JSON data | FakeProductsAPI' %>
   </title>
 </head>

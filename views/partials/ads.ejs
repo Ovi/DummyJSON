@@ -1,13 +1,14 @@
+<% if (typeof(googlePublisherId) !== "undefined") { %>
 <script
   async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874186634672982"
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<%= googlePublisherId %>"
   crossorigin="anonymous"
 ></script>
 
 <ins
   class="adsbygoogle"
   style="display:block"
-  data-ad-client="ca-pub-1874186634672982"
+  data-ad-client="<%= googlePublisherId %>"
   data-ad-slot="<%= adId %>"
   data-ad-format="auto"
   data-full-width-responsive="true"
@@ -16,3 +17,4 @@
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<% } %>
