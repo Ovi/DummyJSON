@@ -48,17 +48,12 @@
           <blockquote>
             <pre>
               <code class="language-js">
-fetch('https://dummyjson.com/test', {
-  method: 'GET', /* or POST/PUT/PATCH/DELETE */
-})
+// Could be GET or POST/PUT/PATCH/DELETE
+fetch('//dummyjson.com/test')
 .then(res => res.json())
-.then(data => console.log(data));
-/*
-{
-  status: 'ok',
-  method: 'GET', // or POST/PUT/PATCH/DELETE
-}
-*/
+.then(console.log);
+
+/* { status: 'ok', method: 'GET' } */
             </code>
            </pre>
           </blockquote>
