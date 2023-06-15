@@ -17,6 +17,7 @@ const availableResources = [
   'users',
   'posts',
   'comments',
+  'image',
   'todos',
   'quotes',
   'auth',

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <!-- ads -->
+        <%- include('./partials/ads', { adId: '8113483378' }) %>
+
+        <h1>Docs</h1>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="image" class="section-intro">
+          <i class="bx bxs-image"></i>
+          <a href="#image" class="no-link">Image</a>
+        </h2>
+
+        <br />
+        <p>
+          The base URL is:
+          <strong>
+            <a href="//image.dummyjson.com" target="_blank">
+              image.dummyjson.com
+            </a>
+          </strong>
+        </p>
+
+        <div class="sub-section">
+          <h3 id="square">
+            <a href="#square" class="no-link">Generate square image</a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE
+fetch('https://image.dummyjson.com/150')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img src="https://image.dummyjson.com/150" alt="150x150" />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-width-height">
+            <a href="#custom-width-height" class="no-link">
+              Generate image with custom width / height
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/WIDTHxHEIGHT
+fetch('https://image.dummyjson.com/200x100')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img src="https://image.dummyjson.com/200x100" alt="200x100" />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-text">
+            <a href="#custom-text" class="no-link">
+              Generate image with custom text
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/?text=TEXT
+fetch('https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter"
+              alt="size 400x200, background #008080, color #ffffff, text Hello Peter"
+            />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-background-color">
+            <a href="#custom-background-color" class="no-link">
+              Generate image with custom background color
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/BACKGROUND
+fetch('https://image.dummyjson.com/400x200/282828')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/400x200/282828"
+              alt="size 400x200, background #282828"
+            />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-text-color">
+            <a href="#custom-text-color" class="no-link">
+              Generate image with custom background and text color
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/BACKGROUND/COLOR
+fetch('https://image.dummyjson.com/400x200/008080/ffffff')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/400x200/008080/ffffff"
+              alt="size 400x200, background #008080, color #ffffff"
+            />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="different-formats">
+            <a href="#different-formats" class="no-link">
+              Generate image with different image formats
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+
+            <br />
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              Supported Formats: [png, jpg, svg, webp]
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/BACKGROUND/COLOR
+fetch('https://image.dummyjson.com/100?type=svg')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/svg+xml'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/100?type=svg"
+              alt="size 100x100, type svg"
+            />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-font-family">
+            <a href="#custom-font-family" class="no-link">
+              Generate image with custom font family
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+
+            <br />
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              Supported Formats: [<a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=bitter"
+                target="_blank"
+              >
+                bitter
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=cairo"
+                target="_blank"
+              >
+                cairo
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=comfortaa"
+                target="_blank"
+              >
+                comfortaa
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=cookie"
+                target="_blank"
+              >
+                cookie
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=dosis"
+                target="_blank"
+              >
+                dosis
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=gotham"
+                target="_blank"
+              >
+                gotham
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=lobster"
+                target="_blank"
+              >
+                lobster
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=marhey"
+                target="_blank"
+              >
+                marhey
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=pacifico"
+                target="_blank"
+              >
+                pacifico
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=poppins"
+                target="_blank"
+              >
+                poppins
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=quicksand"
+                target="_blank"
+              >
+                quicksand
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=qwigley"
+                target="_blank"
+              >
+                qwigley
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=satisfy"
+                target="_blank"
+              >
+                satisfy
+              </a>
+              ,
+              <a
+                href="https://i.dummyjson.com/250?text=Hello+Peter!&fontFamily=ubuntu"
+                target="_blank"
+              >
+                ubuntu </a
+              >]
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/?text=TEXT
+fetch('https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter!&fontFamily=cookie')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/svg+xml'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter!&fontFamily=cookie"
+              alt="size 400x200, background #008080, color #ffffff, text Hello Peter, fontFamily cookie"
+            />
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="custom-font-size">
+            <a href="#custom-font-size" class="no-link">
+              Generate image with custom font size
+            </a>
+          </h3>
+
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              The URL is: <strong>image.dummyjson.com</strong>
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+// https://image.dummyjson.com/SIZE/?text=TEXT&fontSize=FONT_SIZE
+fetch('https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter!&fontSize=16')
+.then(response => response.blob()) // Convert response to blob
+.then(blob => {
+  console.log('Fetched image blob:', blob);
+})
+// Blob {size: SIZE, type: 'image/png'}
+            </code>
+           </pre>
+          </blockquote>
+
+          <div class="img-output">
+            <span>Response:</span>
+            <img
+              src="https://image.dummyjson.com/400x200/008080/ffffff?text=Hello+Peter!&fontSize=16"
+              alt="size 400x200, background #008080, color #ffffff, text Hello Peter, fontSize 16"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/comments/" class="button ghost">
+          <i class="bx bx-left-arrow"></i>
+          Comments
+        </a>
+        <a href="/docs/todos/" class="button">
+          Todos
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- ads -->
+      <%- include('./partials/ads', { adId: '8113483378' }) %>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>

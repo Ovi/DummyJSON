@@ -223,6 +223,17 @@ main {
         margin-bottom: 15px;
         user-select: none;
       }
+
+      .img-output {
+        span {
+          display: block;
+        }
+
+        img {
+          margin-top: 10px;
+          box-shadow: 0px 0px 5px 0px rgba(#2b2b2b, 0.25);
+        }
+      }
     }
 
     #happy-coding {
