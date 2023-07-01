@@ -157,10 +157,10 @@
         <div class="why-us">
           <h2>Got tired of Lorem ipsum data?</h2>
           <p>
-            With FakeProductsAPI, what you get is different types of REST
-            Endpoints filled with JSON data which you can use in developing the
-            frontend with your favorite framework and library without worrying
-            about writing a backend.
+            With DummyJSON, what you get is different types of REST Endpoints
+            filled with JSON data which you can use in developing the frontend
+            with your favorite framework and library without worrying about
+            writing a backend.
           </p>
         </div>
 
@@ -175,6 +175,10 @@ fetch('https://dummyjson.com/products/1')
           </blockquote>
           <button id="request">Try it now 😍</button>
           <button id="copy-code" class="ghost">Copy Code</button>
+
+          <!-- ads -->
+          <%- include('./partials/ads', { adId: '6501093777' }) %>
+
           <blockquote class="try-it-response">
             <pre><code  id="response" class="language-json">
 {
@@ -183,9 +187,6 @@ fetch('https://dummyjson.com/products/1')
           </code></pre>
           </blockquote>
           <p class="on-success-text hidden">Yay! 😍</p>
-
-          <!-- ads -->
-          <%- include('./partials/ads', { adId: '8113483378' }) %>
         </div>
       </section>
 
@@ -351,8 +352,6 @@ fetch('https://dummyjson.com/products/1')
           </p>
         </div>
       </section>
-      <!-- ads -->
-      <%- include('./partials/ads', { adId: '8113483378' }) %>
 
       <!-- side-nav -->
       <%- include('./partials/footer') %>
