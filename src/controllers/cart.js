@@ -115,6 +115,7 @@ controller.addNewCart = ({ userId, products = [] }) => {
       total: priceWithQty,
       discountPercentage: p.discountPercentage,
       discountedPrice,
+      thumbnail: p.thumbnail,
     };
   });
 
@@ -203,6 +204,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
       total: priceWithQty,
       discountPercentage: p.discountPercentage,
       discountedPrice,
+      thumbnail: p.thumbnail,
     });
   });
 
