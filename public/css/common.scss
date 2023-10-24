@@ -170,23 +170,23 @@ pre code.hljs {
 }
 
 .ads-placeholder {
-  position: relative;
+  // position: relative;
   margin: 20px auto;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
-  -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
-  -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
+  // box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
+  // -webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
+  // -moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75) inset;
 
-  &:has(ins[data-ad-status='filled']) {
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-  }
+  // &:has(ins[data-ad-status='filled']) {
+  //   box-shadow: none;
+  //   -webkit-box-shadow: none;
+  //   -moz-box-shadow: none;
+  // }
 
-  &::before {
-    content: 'Advertisements';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  // &::before {
+  //   content: 'Advertisements';
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  // }
 }
