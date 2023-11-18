@@ -21,7 +21,7 @@
   {
     "id": 2,
     "title": "iPhone X",
-    "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+    "description": "An apple mobile with a 6.5-inch Super Retina HD display, A12 Bionic chip, dual-camera system, Face ID, iOS 14, water and dust resistance, 5G capable.",
     "price": 899,
     "discountPercentage": 17.94,
     "rating": 4.44,
@@ -522,13 +522,12 @@
     "stock": 7,
     "brand": "luxury palace",
     "category": "home-decoration",
-    "thumbnail": "https://i.dummyjson.com/data/products/29/thumbnail.webp",
+    "thumbnail": "https://i.dummyjson.com/data/products/29/2.jpg",
     "images": [
       "https://i.dummyjson.com/data/products/29/1.jpg",
       "https://i.dummyjson.com/data/products/29/2.jpg",
       "https://i.dummyjson.com/data/products/29/3.webp",
-      "https://i.dummyjson.com/data/products/29/4.webp",
-      "https://i.dummyjson.com/data/products/29/thumbnail.webp"
+      "https://i.dummyjson.com/data/products/29/4.webp"
     ]
   },
   {
