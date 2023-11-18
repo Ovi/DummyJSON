@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 // search product
 router.get('/search', (req, res) => {
-  res.send(searchProducts({ ...req._options }));
+  res.send(searchProducts({ ...req._options, ...req.query }));
 });
 
 // get product categories
