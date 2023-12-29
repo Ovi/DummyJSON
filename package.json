@@ -1,6 +1,6 @@
 {
   "name": "dummy-json-backend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "env-cmd -f config/dev.env nodemon index.js"
   },
   "engines": {
-    "node": ">=14.0"
+    "node": ">=16.0"
   },
   "license": "MIT",
   "dependencies": {
