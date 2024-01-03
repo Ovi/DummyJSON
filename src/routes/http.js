@@ -5,7 +5,7 @@ router.use('/:httpCode/:message?', (req, res) => {
   const data = getHttpStatus(req.params);
 
   res.setHeader('Content-Type', getHttpCodeContentType(data.status));
-  res.status(data.status).send(data);
+  res.status(data.status).send(data.message ? data : undefined);
 });
 
 module.exports = router;

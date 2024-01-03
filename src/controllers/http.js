@@ -22,7 +22,9 @@ controller.getHttpStatus = ({ httpCode: status, message }) => {
     response.title = title;
     response.type = 'about:blank';
     response.detail = title || '';
-  } else {
+  }
+
+  if (parseInt(status, 10) !== 204) {
     // For 2xx and 3xx success
     response.message = title;
   }
