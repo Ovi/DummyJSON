@@ -29,13 +29,24 @@ controller.getAllProducts = ({ limit, skip, select }) => {
 };
 
 // search products
-controller.searchProducts = ({ limit, skip, select, q: searchQuery }) => {
-  let [...products] = frozenData.products.filter(p => {
+controller.searchProducts = ({
+  limit,
+  skip,
+  select,
+  q: searchQuery,
+  r = 0, // filter by rating
+  p = 0, // filter by price
+  b = true, // filter price by bigger than
+}) => {
+  let [...products] = frozenData.products.filter(v => {
     return (
-      p.title.toLowerCase().includes(searchQuery) ||
-      p.description.toLowerCase().includes(searchQuery)
+      (v.title.toLowerCase().includes(searchQuery) ||
+        v.description.toLowerCase().includes(searchQuery)) &&
+      v.rating >= +r &&
+      (JSON.parse(b) ? v.price >= +p : v.price <= +p)
     );
   });
+
   const total = products.length;
 
   if (skip > 0) {
