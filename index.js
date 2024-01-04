@@ -1,5 +1,3 @@
-// require node version>=14.0 to run the app,
-// because we use optional chaining etc...
 const express = require('express');
 const injectMiddleWares = require('./src/middleware');
 const errorMiddleware = require('./src/middleware/error');
@@ -7,6 +5,9 @@ const authUser = require('./src/middleware/auth');
 const routes = require('./src/routes');
 const { validateEnvVar, loadDataInMemory } = require('./src/utils/util');
 const { version } = require('./package.json');
+
+// use database to store logs and custom responses
+require('./src/db/mongoose');
 
 const { PORT = 3000, NODE_ENV } = process.env;
 
@@ -47,5 +48,7 @@ app.use(errorMiddleware);
 
 // start listening
 app.listen(PORT, () => {
-  console.info(`[Node][${NODE_ENV}] App v${version} running on PORT ${PORT}`);
+  console.info(
+    `[Node][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`,
+  );
 });

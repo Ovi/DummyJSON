@@ -2,13 +2,7 @@ const onFinished = require('on-finished');
 const onHeaders = require('on-headers');
 const Log = require('../models/log');
 const { isRequestInWhitelist } = require('../helpers');
-
-// use database to store logs
-const { MONGODB_URI } = process.env;
-
-if (MONGODB_URI) {
-  require('../db/mongoose');
-}
+const { isDbConnected } = require('../utils/db');
 
 let count = 0;
 startCountLogger();
@@ -56,7 +50,7 @@ function logger(req, res, next) {
       totalTimeMS: getTotalTime(req, res),
     });
 
-    if (MONGODB_URI) {
+    if (isDbConnected()) {
       log.save(err => {
         if (err) {
           console.log({ logError: err.message });

@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 
 const { JWT_SECRET } = process.env;
 
-const controller = {};
+const util = {};
 
-controller.generateToken = (payload, expiresInMins) => {
+util.generateToken = (payload, expiresInMins) => {
   return new Promise((resolve, reject) => {
     let expiresIn = '60m';
 
@@ -21,7 +21,7 @@ controller.generateToken = (payload, expiresInMins) => {
   });
 };
 
-controller.verifyToken = Authorization => {
+util.verifyToken = Authorization => {
   return new Promise((resolve, reject) => {
     const token = Authorization.replace('Bearer ', '');
     jwt.verify(token, JWT_SECRET, (err, decoded) => {
@@ -35,4 +35,4 @@ controller.verifyToken = Authorization => {
   });
 };
 
-module.exports = controller;
+module.exports = util;

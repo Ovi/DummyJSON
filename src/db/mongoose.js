@@ -1,26 +1,34 @@
 const mongoose = require('mongoose');
+const { isDbConnected, updatedDbConnectionStatus } = require('../utils/db');
 
 const { MONGODB_URI, MONGODB_DB_NAME } = process.env;
 
-mongoose
-  .connect(MONGODB_URI, {
+connectDB();
+
+async function connectDB() {
+  if (!MONGODB_URI || isDbConnected()) return;
+  const dbOptions = {
     useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: MONGODB_DB_NAME || 'logs',
-  })
-  .then(() => {
-    console.info('[Service:Database] Connected.');
-  })
-  .catch(err => {
-    console.error('[Service:Database] Err: Failed to Connect.', err);
+  };
 
+  try {
+    await mongoose.connect(MONGODB_URI, dbOptions);
+    updatedDbConnectionStatus(true);
+    console.info('[Service:Database] Connected.');
+  } catch (err) {
+    updatedDbConnectionStatus(false);
+    console.error('[Service:Database] Err: Failed to Connect.', err);
     process.exit(1);
-  });
+  }
+}
 
 // If mongoose gets disconnected, show this message
 mongoose.connection.on('disconnected', () => {
+  updatedDbConnectionStatus(false);
   console.info('[Service:Database] Disconnected.');
 
   // [optional] exit app when database is disconnected
