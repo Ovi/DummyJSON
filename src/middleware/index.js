@@ -6,6 +6,7 @@ const cors = require('cors');
 const applyRateLimit = require('../utils/applyRateLimit');
 const logger = require('./logger');
 const cleanRequest = require('./cleanRequest');
+const delayResponse = require('./delayResponse');
 
 function injectMiddleWares(app) {
   // enable compression.
@@ -25,6 +26,8 @@ function injectMiddleWares(app) {
   app.use(logger);
 
   app.use(cleanRequest);
+
+  app.use(delayResponse);
 }
 
 module.exports = injectMiddleWares;

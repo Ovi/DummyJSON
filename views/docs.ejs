@@ -84,13 +84,6 @@ fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1,key2,key3');
            </pre>
           </blockquote>
 
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-              </code>
-            </pre>
-          </blockquote>
-
           <h3>OR</h3>
 
           <blockquote>
@@ -100,12 +93,26 @@ fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1&select=key2&s
             </code>
            </pre>
           </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="intro-delay">
+            <a href="#intro-delay" class="no-link">Delay Responses</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              You can simulate a delay in responses using the delay param,
+              delay can be any number between 0 and 5000 milliseconds
+            </small>
+          </p>
 
           <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-              </code>
-            </pre>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/RESOURCE/?delay=1000');
+            </code>
+           </pre>
           </blockquote>
         </div>
 
