@@ -63,8 +63,8 @@ fetch('https://dummyjson.com/users')
       "username": "atuny0",
       "password": "9uQFF1Lh",
       "birthDate": "2000-12-25",
-      "image": "https://robohash.org/hicveldicta.png?size=50x50&set=set1",
-      "bloodGroup": "A−",
+      "image": ""https://robohash.org/Terry.png?set=set4",
+      "bloodGroup": "A-",
       "height": 189,
       "weight": 75.4,
       "eyeColor": "Green",
@@ -126,6 +126,49 @@ fetch('https://dummyjson.com/users')
         </div>
 
         <div class="sub-section">
+          <h3 id="me">
+            <a href="#me" class="no-link">Get current auth user</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+/* providing token in bearer */
+fetch('https://dummyjson.com/user/me', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+  }, 
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 15,
+  "username": "kminchelle",
+  "email": "kminchelle@qq.com",
+  "firstName": "Jeanne",
+  "lastName": "Halvorson",
+  "gender": "female",
+  "image": "https://robohash.org/Jeanne.png?set=set4",
+  ... // other user fields
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
           <h3 id="single">
             <a href="#single" class="no-link">Get a single user</a>
           </h3>
@@ -159,8 +202,8 @@ fetch('https://dummyjson.com/users/1')
   "username": "atuny0",
   "password": "9uQFF1Lh",
   "birthDate": "2000-12-25",
-  "image": "https://robohash.org/hicveldicta.png?size=50x50&set=set1",
-  "bloodGroup": "A−",
+  "image": ""https://robohash.org/Terry.png?set=set4",
+  "bloodGroup": "A-",
   "height": 189,
   "weight": 75.4,
   "eyeColor": "Green",

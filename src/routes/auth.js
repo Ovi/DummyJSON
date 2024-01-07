@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { loginByUsernamePassword } = require('../controllers/auth');
+const authUser = require('../middleware/auth');
 const APIError = require('../utils/error');
 const { isNumber } = require('../utils/util');
 
@@ -30,6 +31,10 @@ router.post('/login', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+router.get('/me', authUser, (req, res) => {
+  res.send(req.user);
 });
 
 module.exports = router;
