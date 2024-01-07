@@ -11,11 +11,16 @@ const {
   deleteUserById,
   filterUsers,
 } = require('../controllers/user');
+const authUser = require('../middleware/auth');
 const { verifyUserHandler } = require('../helpers');
 
 // get all users
 router.get('/', (req, res) => {
   res.send(getAllUsers({ ...req._options }));
+});
+
+router.get('/me', authUser, (req, res) => {
+  res.send(req.user);
 });
 
 // search users
