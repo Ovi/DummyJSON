@@ -17,7 +17,7 @@ const cleanRequest = (req, res, next) => {
     const options = {};
     req._options = options;
 
-    const { limit = 30, skip = 0, q, key, value } = req.query;
+    const { limit = 30, skip = 0, q, key, value, delay } = req.query;
     let { select } = req.query;
 
     if (!isNumber(limit)) {
@@ -26,6 +26,20 @@ const cleanRequest = (req, res, next) => {
 
     if (!isNumber(skip)) {
       throw new APIError('Invalid skip limit', 400);
+    }
+
+    if (delay) {
+      if (!isNumber(delay)) {
+        throw new APIError('Delay must be a number in milliseconds', 400);
+      }
+
+      if (delay > 5000) {
+        throw new APIError('Delay cannot be greater than 5 seconds', 400);
+      }
+
+      if (delay < 0) {
+        throw new APIError('Delay cannot be less than 0', 400);
+      }
     }
 
     if (select) {
@@ -49,6 +63,7 @@ const cleanRequest = (req, res, next) => {
 
     options.limit = parseInt(limit, 10);
     options.skip = parseInt(skip, 10);
+    options.delay = parseInt(delay, 10);
     options.select = select;
     options.q = searchQuery;
     options.key = key;
