@@ -36,6 +36,7 @@ utils.loadDataInMemory = async () => {
   const todosPath = path.join(baseDir, 'todos.json');
   const postsPath = path.join(baseDir, 'posts.json');
   const commentsPath = path.join(baseDir, 'comments.json');
+  const recipesPath = path.join(baseDir, 'recipes.json');
 
   const paths = [
     fs.readFile(productsPath, 'utf-8'),
@@ -45,6 +46,7 @@ utils.loadDataInMemory = async () => {
     fs.readFile(todosPath, 'utf-8'),
     fs.readFile(postsPath, 'utf-8'),
     fs.readFile(commentsPath, 'utf-8'),
+    fs.readFile(recipesPath, 'utf-8'),
   ];
 
   const [
@@ -55,12 +57,14 @@ utils.loadDataInMemory = async () => {
     todosStr,
     postsStr,
     commentsStr,
+    recipesStr,
   ] = await Promise.all(paths);
 
   const productsArr = JSON.parse(productsStr);
   const cartsArr = JSON.parse(cartsStr);
   const usersArr = JSON.parse(usersStr);
   const quotesArr = JSON.parse(quotesStr);
+  const recipesArr = JSON.parse(recipesStr);
   const todosArr = JSON.parse(todosStr);
   const postsArr = JSON.parse(postsStr);
   const commentsArr = JSON.parse(commentsStr);
@@ -69,6 +73,7 @@ utils.loadDataInMemory = async () => {
   data.carts = cartsArr;
   data.users = usersArr;
   data.quotes = quotesArr;
+  data.recipes = recipesArr;
   data.todos = todosArr;
   data.posts = postsArr;
   data.comments = commentsArr;
