@@ -20,6 +20,7 @@ const availableResources = [
   'image',
   'todos',
   'quotes',
+  'recipes',
   'auth',
   'http',
 ];

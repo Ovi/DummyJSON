@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header -->
+  <%- include('./partials/docs-head') %>
+
+  <body>
+    <!-- header -->
+    <%- include('./partials/header') %>
+
+    <!-- side-nav -->
+    <%- include('./partials/docs-side-nav') %>
+
+    <main>
+      <div id="hero">
+        <!-- ads -->
+        <%- include('./partials/ads', { adId: '8113483378' }) %>
+
+        <h1>Docs</h1>
+        <p>
+          You can use examples below to check how DummyJSON works.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="recipes" class="section-intro">
+          <i class="bx bx-food-menu"></i>
+          <a href="#recipes" class="no-link">Recipes</a>
+        </h2>
+
+        <div class="sub-section">
+          <h3 id="all">
+            <a href="#all" class="no-link">Get all recipes</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Classic Margherita Pizza",
+      "ingredients": [
+        "Pizza dough",
+        "Tomato sauce",
+        "Fresh mozzarella cheese",
+        "Fresh basil leaves",
+        "Olive oil",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Preheat the oven to 475°F (245°C).",
+        "Roll out the pizza dough and spread tomato sauce evenly.",
+        "Top with slices of fresh mozzarella and fresh basil leaves.",
+        "Drizzle with olive oil and season with salt and pepper.",
+        "Bake in the preheated oven for 12-15 minutes or until the crust is golden brown.",
+        "Slice and serve hot."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "caloriesPerServing": 300,
+      "tags": [
+        "Pizza",
+        "Italian"
+      ],
+      "userId": 45,
+      "image": "https://cdn.dummyjson.com/recipe-images/1.webp",
+      "rating": 4.6,
+      "reviewCount": 3,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {...},
+    {...},
+    {...}
+    // 30 items
+  ],
+
+  "total": 100,
+  "skip": 0,
+  "limit": 30
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="single">
+            <a href="#single" class="no-link">Get a single recipe</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes/1')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 1,
+  "name": "Classic Margherita Pizza",
+  "ingredients": [
+    "Pizza dough",
+    "Tomato sauce",
+    "Fresh mozzarella cheese",
+    "Fresh basil leaves",
+    "Olive oil",
+    "Salt and pepper to taste"
+  ],
+  "instructions": [
+    "Preheat the oven to 475°F (245°C).",
+    "Roll out the pizza dough and spread tomato sauce evenly.",
+    "Top with slices of fresh mozzarella and fresh basil leaves.",
+    "Drizzle with olive oil and season with salt and pepper.",
+    "Bake in the preheated oven for 12-15 minutes or until the crust is golden brown.",
+    "Slice and serve hot."
+  ],
+  "prepTimeMinutes": 20,
+  "cookTimeMinutes": 15,
+  "servings": 4,
+  "difficulty": "Easy",
+  "cuisine": "Italian",
+  "caloriesPerServing": 300,
+  "tags": [
+    "Pizza",
+    "Italian"
+  ],
+  "userId": 45,
+  "image": "https://cdn.dummyjson.com/recipe-images/1.webp",
+  "rating": 4.6,
+  "reviewCount": 3,
+  "mealType": [
+    "Dinner"
+  ]
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="search">
+            <a href="#search" class="no-link">Search recipes</a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes/search?q=Margherita')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+                <!-- // ! TODO -->
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Classic Margherita Pizza",
+      "ingredients": [
+        "Pizza dough",
+        "Tomato sauce",
+        "Fresh mozzarella cheese",
+        "Fresh basil leaves",
+        "Olive oil",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Preheat the oven to 475°F (245°C).",
+        "Roll out the pizza dough and spread tomato sauce evenly.",
+        "Top with slices of fresh mozzarella and fresh basil leaves.",
+        "Drizzle with olive oil and season with salt and pepper.",
+        "Bake in the preheated oven for 12-15 minutes or until the crust is golden brown.",
+        "Slice and serve hot."
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "caloriesPerServing": 300,
+      "tags": [
+        "Pizza",
+        "Italian"
+      ],
+      "userId": 45,
+      "image": "https://cdn.dummyjson.com/recipe-images/1.webp",
+      "rating": 4.6,
+      "reviewCount": 3,
+      "mealType": [
+        "Dinner"
+      ]
+    },
+    {...},
+    {...},
+    {...}
+    // 1 result
+  ],
+  "total": 1,
+  "skip": 0,
+  "limit": 1
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <!-- ads -->
+        <%- include('./partials/ads', { adId: '8113483378' }) %>
+
+        <div class="sub-section">
+          <h3 id="limit_skip">
+            <a href="#limit_skip" class="no-link">Limit and skip recipes</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-right-arrow bx-xs"></i>
+              You can pass "limit" and "skip" params to limit and skip the
+              results for pagination, and use limit=0 to get all items.
+            </small>
+
+            <br />
+
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              You can pass "select" as query params with comma-separated values
+              to select specific data.
+            </small>
+          </p>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes?limit=10&skip=10&select=name,image')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "recipes": [
+    {
+      "id": 11, // first 10 items are skipped
+      "name": "Chicken Biryani",
+      "image": "https://cdn.dummyjson.com/recipe-images/11.webp",
+    },
+    {...},
+    {...},
+    {...}
+    // 10 items
+  ],
+
+  "total": 50,
+  "skip": 10,
+  "limit": 10
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="tags">
+            <a href="#tags" class="no-link">
+              Get all recipes tags
+            </a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes/tags')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+[
+  "Pizza",
+  "Italian",
+  "Vegetarian",
+  "Stir-fry",
+  "Asian",
+  "Cookies",
+  "Dessert",
+  "Baking",
+  "Pasta",
+  "Chicken",
+  "Salsa",
+  "Salad",
+  "Quinoa",
+  "Bruschetta",
+  "Beef",
+  "Caprese",
+  "Shrimp",
+  "Biryani",
+  "Main course",
+  "Indian",
+  "Pakistani",
+  "Karahi",
+  "Keema",
+  ...
+  ...
+  ...
+]
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="tag">
+            <a href="#tag" class="no-link">
+              Get recipes by a tag
+            </a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes/tag/Pakistani')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "recipes": [
+    {
+      "id": 11,
+      "name": "Chicken Biryani",
+      "tags": [
+        "Biryani",
+        "Chicken",
+        "Main course",
+        "Indian",
+        "Pakistani",
+        "Asian"
+      ],
+      ...
+      ...
+    }
+  ],
+  "total": 7,
+  "skip": 0,
+  "limit": 7
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+
+        <div class="sub-section">
+          <h3 id="meal-type">
+            <a href="#meal-type" class="no-link">
+              Get recipes by meal type
+            </a>
+          </h3>
+
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/recipes/meal-type/snack')
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "recipes": [
+    {
+      "id": 3,
+      "name": "Chocolate Chip Cookies",
+      "mealType": [
+      "Snack",
+      "Dessert"
+      ]
+      ...
+      ...
+    },
+    {...},
+    {...},
+  ],
+  "total": 3,
+  "skip": 0,
+  "limit": 3
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+      </div>
+
+      <div id="next-prev-resource">
+        <a href="/docs/carts" class="button ghost">
+          <i class="bx bx-left-arrow"></i>
+          Carts
+        </a>
+        <a href="/docs/users/" class="button">
+          Users
+          <i class="bx bx-right-arrow"></i>
+        </a>
+      </div>
+
+      <!-- side-nav -->
+      <%- include('./partials/footer') %>
+    </main>
+  </body>
+</html>

@@ -27,6 +27,7 @@ I hope you will find it useful.
 - Resources relationships
 - Filters and nested resources
 - Supports GET, POST, PUT, PATCH, and DELETE http methods
+- Supports Delaying Responses
 - HTTP and HTTPS both works just fine
 - Compatible with React, Angular, Vue, Ember, and vanilla JavaScript
 
@@ -39,13 +40,14 @@ There are 8 resources available for you:
 - 100 users https://dummyjson.com/users/
 - 150 posts https://dummyjson.com/posts/
 - 340 comments https://dummyjson.com/comments/
-- 100 quotes https://dummyjson.com/quotes/
+- 1400+ quotes https://dummyjson.com/quotes/
+- 50 recipes https://dummyjson.com/recipes/
 - 150 todos https://dummyjson.com/todos/
 - auth https://dummyjson.com/auth/
 
 ## How to
 
-you can fetch data with any kind of methods you know(fetch API, Axios, jquery ajax,...)
+you can fetch data with any kind of methods you know (fetch API, Axios, jquery ajax,...)
 
 ### Get all products
 
