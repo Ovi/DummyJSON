@@ -1,13 +1,12 @@
 const rateLimit = require('express-rate-limit');
-const { isRequestInWhitelist } = require('../helpers');
 
 const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minutes
-  max: 120, // limit each IP to 120 requests per windowMs
+  windowMs: 10 * 1000, // 10 Seconds
+  max: 100, // limit each IP to 100 requests per windowMs
   message: {
-    message: `request limit exceeded, please try again in 1 mint`,
+    message: `request limit exceeded, please wait a few seconds`,
   },
-  skip: isRequestInWhitelist,
+  skip: () => false,
 });
 
 const applyRateLimit = app => {
