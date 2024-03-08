@@ -108,6 +108,7 @@ controller.addNewProduct = ({ ...data }) => {
   const {
     title,
     price,
+    discountPercentage,
     stock,
     rating,
     images,
@@ -121,6 +122,7 @@ controller.addNewProduct = ({ ...data }) => {
     id: frozenData.products.length + 1,
     title,
     price,
+    discountPercentage,
     stock,
     rating,
     images,
@@ -138,6 +140,7 @@ controller.updateProductById = ({ id, ...data }) => {
   const {
     title,
     price,
+    discountPercentage,
     stock,
     rating,
     images,
@@ -157,6 +160,7 @@ controller.updateProductById = ({ id, ...data }) => {
     id: +id, // converting id to number
     title: title || productFrozen.title,
     price: price || productFrozen.price,
+    discountPercentage: discountPercentage || productFrozen.discountPercentage,
     stock: stock || productFrozen.stock,
     rating: rating || productFrozen.rating,
     images: images || productFrozen.images,
