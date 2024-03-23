@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { loginByUsernamePassword } = require('../controllers/auth');
+const { generateToken, formatUserForToken } = require('../utils/jwt');
 const authUser = require('../middleware/auth');
 const APIError = require('../utils/error');
 const { isNumber } = require('../utils/util');
@@ -35,6 +36,23 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/me', authUser, (req, res) => {
   res.send(req.user);
+});
+
+// refresh user with new expire time
+router.post('/refresh', authUser, async (req, res) => {
+  let { expiresInMins = 60 } = req.body;
+  if (!isNumber(expiresInMins)) expiresInMins = 60;
+
+  const payload = formatUserForToken(req.user);
+
+  try {
+    const token = await generateToken(payload, expiresInMins);
+    req.user = payload;
+    req.user.token = token;
+    res.send(req.user)
+  } catch (err) {
+    throw new APIError(err.message, 400);
+  }
 });
 
 module.exports = router;
