@@ -49,7 +49,7 @@ fetch('https://dummyjson.com/auth/login', {
     <!-- any username/password from users module  -->
     username: 'kminchelle',
     password: '0lelplR',
-    // expiresInMins: 60, // optional
+    // expiresInMins: 30, optional, defaults to 60
   })
 })
 .then(res => res.json())
@@ -73,7 +73,7 @@ fetch('https://dummyjson.com/auth/login', {
   "lastName": "Halvorson",
   "gender": "female",
   "image": "https://robohash.org/Jeanne.png?set=set4",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvSmVhbm5lLnBuZz9zZXQ9c2V0NCIsImlhdCI6MTcxMTIwOTAwMSwiZXhwIjoxNzExMjEyNjAxfQ.F_ZCpi2qdv97grmWiT3h7HcT1prRJasQXjUR4Nk1yo8"
 }
               </code>
             </pre>
@@ -122,7 +122,57 @@ fetch('https://dummyjson.com/auth/me', {
             </pre>
           </blockquote>
         </div>
+        <div class="sub-section">
+          <h3 id="refresh">
+            <a href="#refresh" class="no-link">Refresh auth session</a>
+          </h3>
+          <p>
+            <small>
+              <i class="bx bx-bulb bx-xs"></i>
+              Extend the session and create a new token without username and password
+            </small>
+          </p>
 
+          <blockquote>
+            <pre>
+              <code class="language-js">
+fetch('https://dummyjson.com/auth/refresh', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+  },
+  body: JSON.stringify({
+    expiresInMins: 30, // optional, defaults to 60
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            </code>
+           </pre>
+          </blockquote>
+
+          <a class="button" onclick="toggleOutput(event)">
+            Show output
+          </a>
+
+          <blockquote>
+            <pre class="result hidden">
+              <code class="language-json">
+{
+  "id": 15,
+  "username": "kminchelle",
+  "email": "kminchelle@qq.com",
+  "firstName": "Jeanne",
+  "lastName": "Halvorson",
+  "gender": "female",
+  "image": "https://robohash.org/Jeanne.png?set=set4",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
+}
+              </code>
+            </pre>
+          </blockquote>
+        </div>
         <div class="sub-section">
           <h3 id="happy-coding">
             <a class="no-link no-underline">Happy Coding &#128521;</a>
