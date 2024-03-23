@@ -1,5 +1,5 @@
 const APIError = require('../utils/error');
-const { generateToken } = require('../utils/jwt');
+const { generateToken, formatUserForToken } = require('../utils/jwt');
 const { dataInMemory: frozenData } = require('../utils/util');
 
 const controller = {};
@@ -18,19 +18,7 @@ controller.loginByUsernamePassword = async data => {
   if (!user) {
     throw new APIError(`Invalid credentials`, 400);
   }
-
-  const payload = {
-    id: user.id,
-    username: user.username,
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    gender: user.gender,
-    image: user.image,
-    country: user.country,
-    city: user.city,
-  };
-
+  const payload = formatUserForToken(user);
   try {
     const token = await generateToken(payload, expiresInMins);
 
@@ -42,5 +30,4 @@ controller.loginByUsernamePassword = async data => {
     throw new APIError(err.message, 400);
   }
 };
-
 module.exports = controller;
