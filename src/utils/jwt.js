@@ -35,19 +35,14 @@ util.verifyToken = Authorization => {
   });
 };
 
-util.formatUserForToken = user => {
-  const formattedUser = {
-    id: user.id,
-    username: user.username,
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    gender: user.gender,
-    image: user.image,
-    country: user.country,
-    city: user.city,
-  };
-  return formattedUser;
-};
+util.getUserDataForToken = user => ({
+  id: user.id,
+  username: user.username,
+  email: user.email,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  gender: user.gender,
+  image: user.image,
+});
 
 module.exports = util;

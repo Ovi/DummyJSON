@@ -49,7 +49,7 @@ fetch('https://dummyjson.com/auth/login', {
     <!-- any username/password from users module  -->
     username: 'kminchelle',
     password: '0lelplR',
-    // expiresInMins: 30, optional, defaults to 60
+    expiresInMins: 30, // optional, defaults to 60
   })
 })
 .then(res => res.json())
@@ -138,7 +138,7 @@ fetch('https://dummyjson.com/auth/me', {
               <code class="language-js">
 fetch('https://dummyjson.com/auth/refresh', {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json' },headers: {
+  headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
   },
