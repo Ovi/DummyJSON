@@ -53,6 +53,29 @@ controller.searchProducts = ({ limit, skip, select, q: searchQuery }) => {
   return result;
 };
 
+//getsorted data
+controller.sortProducts = ({ limit, skip, select }) => {
+  let [...products] = frozenData.products.sort((a, b) => {
+    return a.price - b.price;
+});
+  const total = products.length;
+
+  if (skip > 0) {
+    products = products.slice(skip);
+  }
+
+  products = limitArray(products, limit);
+
+  if (select) {
+    products = getMultiObjectSubset(products, select);
+  }
+
+  const result = { products, total, skip, limit: products.length };
+
+  return result;
+};
+
+
 // get product categories
 controller.getProductCategories = () => {
   const categories = frozenData.products.map(p => p.category);
