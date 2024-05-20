@@ -1,473 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/cart.svg" class="icon" alt="svg icon" /> Carts - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>carts</strong> endpoint offers a dataset of sample shopping cart data, including details like cart items, quantities, prices, and user IDs, useful for testing and prototyping e-commerce functionalities such as cart management and checkout processes.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
+      <div class="resource" id="carts-all">
+        <a href="#carts-all" class="res-title">Get all carts</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/carts')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "carts": [
+              {
+                "id": 1,
+                "products": [
+                  {
+                    "id": 59,
+                    "title": "Spring and summershoes",
+                    "price": 20,
+                    "quantity": 3,
+                    "total": 60,
+                    "discountPercentage": 8.71,
+                    "discountedPrice": 55,
+                    "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
+                  },
+                  {...}
+                  // more products
+                ],
+                "total": 2328,
+                "discountedTotal": 1941,
+                "userId": 97,
+                "totalProducts": 5,
+                "totalQuantity": 10
+              },
+              {...},
+              {...},
+              {...}
+              // 20 items
+            ],
+            "total": 20,
+            "skip": 0,
+            "limit": 20
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="carts-single">
+        <a href="#carts-single" class="res-title">Get a single cart</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/carts/1')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "products": [
+              {
+                "id": 59,
+                "title": "Spring and summershoes",
+                "price": 20,
+                "quantity": 3,
+                "total": 60,
+                "discountPercentage": 8.71,
+                "discountedPrice": 55,
+                "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
+              },
+              {...},
+              // more products
+            ],
+            "total": 2328,
+            "discountedTotal": 1941,
+            "userId": 97,
+            "totalProducts": 5,
+            "totalQuantity": 10
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="carts-user">
+        <a href="#carts-user" class="res-title">Get carts by a user</a>
+        <pre><code class="language-js">
+          // getting carts of user with id 5
+          fetch('https://dummyjson.com/carts/user/5')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "carts": [
+              {
+                "id": 19,
+                "products": [
+                  {
+                    "id": 43,
+                    "title": "frock gold printed",
+                    "price": 600,
+                    "quantity": 3,
+                    "total": 1800,
+                    "discountPercentage": 15.55,
+                    "discountedPrice": 1520,
+                    "thumbnail": "https://cdn.dummyjson.com/product-images/43/thumbnail.jpg"
+                  },
+                  {...}
+                  // more products
+                ],
+                "total": 2492,
+                "discountedTotal": 2140,
+                "userId": 5, // user id is 5
+                "totalProducts": 5,
+                "totalQuantity": 14
+              }
+            ],
+            "total": 1,
+            "skip": 0,
+            "limit": 1
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="carts-add">
+        <a href="#carts-add" class="res-title">Add a new cart</a>
+        <p class="res-tip">
+          Adding a new cart will not add it into the server.
+          <br />
+          It will simulate a POST request and will return the new created cart with a new id
         </p>
+        <p class="res-tip">
+          You can provide a `userId` and array of products as objects, containing `productId` & `quantity`
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/carts/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: 1,
+              products: [
+                {
+                  id: 1,
+                  quantity: 1,
+                },
+                {
+                  id: 50,
+                  quantity: 2,
+                },
+              ]
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 21,
+            "products": [ // products were added by id
+              {
+                "id": 1,
+                "title": "iPhone 9",
+                "price": 549,
+                "quantity": 1,
+                "total": 549,
+                "discountPercentage": 12.96,
+                "discountedPrice": 478,
+                "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+              },
+              {
+                "id": 50,
+                "title": "Women Shoes",
+                "price": 36,
+                "quantity": 2,
+                "total": 72,
+                "discountPercentage": 16.87,
+                "discountedPrice": 60,
+                "thumbnail": "https://cdn.dummyjson.com/product-images/50/thumbnail.jpg"
+              }
+            ],
+            "total": 621, // total was calculated with quantity
+            "discountedTotal": 538,
+            "userId": 1, // user id is 1
+            "totalProducts": 2,
+            "totalQuantity": 3 // total quantity of items
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="carts" class="section-intro">
-          <i class="bx bx-cart-alt"></i>
-          <a href="#carts" class="no-link">Carts</a>
-        </h2>
+      <div class="resource" id="carts-update">
+        <a href="#carts-update" class="res-title">Update a cart</a>
+        <p class="res-tip">
+          Updating a cart will not update it into the server.
+          <br />
+          It will simulate a PUT/PATCH request and will return updated cart with modified data
+        </p>
+        <p class="res-tip">
+          Pass `"merge: true"` to include old products when updating
+        </p>
+        <p class="res-tip">
+          You can provide a `userId` and array of products as objects, containing `productId` & `quantity`
+        </p>
+        <pre><code class="language-js">
+          /* adding products in cart with id 1 */
+          fetch('https://dummyjson.com/carts/1', {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              merge: true, // this will include existing products in the cart
+              products: [
+                {
+                  id: 1,
+                  quantity: 1,
+                },
+              ]
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="all">
-            <a href="#all" class="no-link">Get all carts</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/carts')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-
-{
-  "carts": [
-    {
-      "id": 1,
-      "products": [
-        {
-          "id": 59,
-          "title": "Spring and summershoes",
-          "price": 20,
-          "quantity": 3,
-          "total": 60,
-          "discountPercentage": 8.71,
-          "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
-        },
-        {...}
-        // more products
-      ],
-      "total": 2328,
-      "discountedTotal": 1941,
-      "userId": 97,
-      "totalProducts": 5,
-      "totalQuantity": 10
-    },
-    {...},
-    {...},
-    {...}
-    // 20 items
-  ],
-  "total": 20,
-  "skip": 0,
-  "limit": 20
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="single">
-            <a href="#single" class="no-link">Get a single cart</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/carts/1')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "products": [
-    {
-      "id": 59,
-      "title": "Spring and summershoes",
-      "price": 20,
-      "quantity": 3,
-      "total": 60,
-      "discountPercentage": 8.71,
-      "discountedPrice": 55,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
-    },
-    {...},
-    // more products
-  ],
-  "total": 2328,
-  "discountedTotal": 1941,
-  "userId": 97,
-  "totalProducts": 5,
-  "totalQuantity": 10
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="user">
-            <a href="#user" class="no-link">Get carts of a user</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-// getting carts of user with id 5
-fetch('https://dummyjson.com/carts/user/5')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "carts": [
-    {
-      "id": 19,
-      "products": [
-        {
-          "id": 43,
-          "title": "frock gold printed",
-          "price": 600,
-          "quantity": 3,
-          "total": 1800,
-          "discountPercentage": 15.55,
-          "discountedPrice": 1520,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/43/thumbnail.jpg"
-        },
-        {...}
-        // more products
-      ],
-      "total": 2492,
-      "discountedTotal": 2140,
-      "userId": 5, // user id is 5
-      "totalProducts": 5,
-      "totalQuantity": 14
-    }
-  ],
-  "total": 1,
-  "skip": 0,
-  "limit": 1
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="add">
-            <a href="#add" class="no-link">
-              Add a new cart
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Adding a new cart will not add it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a POST request and will return the new created
-              cart with a new id
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can provide a userId and array of products as objects,
-              containing productId & quantity
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/carts/add', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    userId: 1,
-    products: [
-      {
-        id: 1,
-        quantity: 1,
-      },
-      {
-        id: 50,
-        quantity: 2,
-      },
-    ]
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 21,
-  "products": [ // products were added by id
-    {
-      "id": 1,
-      "title": "iPhone 9",
-      "price": 549,
-      "quantity": 1,
-      "total": 549,
-      "discountPercentage": 12.96,
-      "discountedPrice": 478,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-    },
-    {
-      "id": 50,
-      "title": "Women Shoes",
-      "price": 36,
-      "quantity": 2,
-      "total": 72,
-      "discountPercentage": 16.87,
-      "discountedPrice": 60,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/50/thumbnail.jpg"
-    }
-  ],
-  "total": 621, // total was calculated with quantity
-  "discountedTotal": 538,
-  "userId": 1, // user id is 1
-  "totalProducts": 2,
-  "totalQuantity": 3 // total quantity of items
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="update">
-            <a href="#update" class="no-link">
-              Update a cart
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Updating a cart will not update it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Pass "merge: true" to include old products when updating
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a PUT/PATCH request and will return updated cart
-              with modified data
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can provide a userId and array of products as objects,
-              containing productId & quantity
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* adding products in cart with id 1 */
-fetch('https://dummyjson.com/carts/1', {
-  method: 'PUT', /* or PATCH */
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    merge: true, // this will include existing products in the cart
-    products: [
-      {
-        id: 1,
-        quantity: 1,
-      },
-    ]
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": "1",
-  "products": [
-      {
-          "id": 1, // newly added product
-          "title": "iPhone 9",
-          "price": 549,
-          "quantity": 1, // with quantity
-          "total": 549,
-          "discountPercentage": 12.96,
-          "discountedPrice": 478,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-      },
-      {...}
-      // other old products
-  ],
-  "total": 3798, // total was updated
-  "discountedTotal": 3172,  // discounted total was updated
-  "userId": 97,
-  "totalProducts": 6,  // total products were updated
-  "totalQuantity": 11  // total quantity was updated
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="delete">
-            <a href="#delete" class="no-link">Delete a cart</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Deleting a cart will not delete it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a DELETE request and will return deleted cart
-              with "isDeleted" & "deletedOn" keys
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/carts/1', {
-  method: 'DELETE',
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "products": [
-    {
-      "id": 59,
-      "title": "Spring and summershoes",
-      "price": 20,
-      "quantity": 3,
-      "total": 60,
-      "discountPercentage": 8.71,
-      "discountedPrice": 55,
-      "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
-    },
-    {...},
-    // more products
-  ],
-  "total": 2328,
-  "discountedTotal": 1941,
-  "userId": 97,
-  "totalProducts": 5,
-  "totalQuantity": 10,
-  "isDeleted": true,
-  "deletedOn": /* ISOTime */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": "1",
+            "products": [
+                {
+                    "id": 1, // newly added product
+                    "title": "iPhone 9",
+                    "price": 549,
+                    "quantity": 1, // with quantity
+                    "total": 549,
+                    "discountPercentage": 12.96,
+                    "discountedPrice": 478,
+                    "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+                },
+                {...}
+                // other old products
+            ],
+            "total": 3798, // total was updated
+            "discountedTotal": 3172,  // discounted total was updated
+            "userId": 97,
+            "totalProducts": 6,  // total products were updated
+            "totalQuantity": 11  // total quantity was updated
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/products/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Products
-        </a>
-        <a href="/docs/recipes/" class="button">
-          Recipes
-          <i class="bx bx-right-arrow"></i>
-        </a>
-      </div>
+      <div class="resource" id="carts-delete">
+        <a href="#carts-delete" class="res-title">Delete a cart</a>
+        <p class="res-tip">
+          Deleting a cart will not delete it into the server.
+          <br />
+          It will simulate a DELETE request and will return deleted cart with `isDeleted` & `deletedOn` keys
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/carts/1', {
+            method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "products": [
+              {
+                "id": 59,
+                "title": "Spring and summershoes",
+                "price": 20,
+                "quantity": 3,
+                "total": 60,
+                "discountPercentage": 8.71,
+                "discountedPrice": 55,
+                "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
+              },
+              {...},
+              // more products
+            ],
+            "total": 2328,
+            "discountedTotal": 1941,
+            "userId": 97,
+            "totalProducts": 5,
+            "totalQuantity": 10,
+            "isDeleted": true,
+            "deletedOn": /* ISOTime */
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#carts-all');
+  </script>
+</body>
+
 </html>

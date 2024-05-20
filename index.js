@@ -26,7 +26,7 @@ injectMiddleWares(app);
 app.set('view engine', 'ejs');
 
 // serving static files
-app.use('/static', express.static('./public'));
+app.use('/public', express.static('./public'));
 
 // routes
 app.use('/', routes);

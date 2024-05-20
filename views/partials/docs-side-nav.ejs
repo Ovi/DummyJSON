@@ -1,575 +1,536 @@
-<i id="nav-opener" class="bx bx-menu-alt-right"></i>
-<aside>
-  <ul>
-    <li id="nav_image" class="heading">
-      <a href="/image" target="_blank" class="no-underline">
-        Placeholder Image
-        <i class="bx bx-link-external bx-xs"></i>
-      </a>
-    </li>
+<nav class="docs-nav">
+  <ul class="docs-menu">
+    <li>
+      <a href="/docs/image" class="parent-menu-item">DummyJSON Image</a>
 
-    <!-- Intro -->
-    <li id="nav_intro" class="heading">
-      <a href="/docs/" class="no-underline">
-        <i class="bx bx-paper-plane bx-xs"></i>
-        Intro
-      </a>
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/image/#image-square">
+            Generate square image
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-custom-size">
+            Custom width / height
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-custom-text">
+            Custom text
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-custom-color">
+            Custom Custom Background and Text Color
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-format">
+            Different file formats
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-font-family">
+            Custom font family
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/image/#image-font-size">
+            Custom font size
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/#test">
-        Test
-      </a>
+      <a href="/docs" class="parent-menu-item">Intro</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/#intro-test">
+            Test
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/#intro-limit">
+            Limiting Resources
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/#intro-delay">
+            Delay Responses
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/#intro-auth">
+            Resources as Auth User
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/#intro-limit">
-        Limiting Resources
-      </a>
+      <a href="/docs/auth" class="parent-menu-item">Auth</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/auth/#auth-login">
+            Login and get token
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/auth/#auth-me">
+            Get auth user
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/auth/#auth-refresh">
+            Refresh token
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/#intro-delay">
-        Delay Responses
-      </a>
+      <a href="/docs/products" class="parent-menu-item">Products</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/products/#products-all">
+            Get all products
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-single">
+            Get a single product
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-search">
+            Search products
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-limit_skip">
+            Limit & Skip products
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-categories">
+            Get all products categories
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-category">
+            Get products of category
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/products/#products-add">
+            Add a product
+          </a>
+        </li>
+
+        <li class="put">
+          <a href="/docs/products/#products-update">
+            Update a product
+          </a>
+        </li>
+
+        <li class="delete">
+          <a href="/docs/products/#products-delete">
+            Delete a product
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/#intro-auth">
-        Resources as Auth User
-      </a>
-    </li>
+      <a href="/docs/carts" class="parent-menu-item">Carts</a>
 
-    <!-- AUTH -->
-    <li id="nav_auth" class="heading">
-      <a href="/docs/auth/" class="no-underline">
-        <i class="bx bx-fingerprint bx-xs"></i>
-        Auth
-      </a>
-    </li>
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/carts/#carts-all">
+            Get all carts
+          </a>
+        </li>
 
-    <li class="post">
-      <a href="/docs/auth/#login">
-        Login and get token
-      </a>
-    </li>
+        <li>
+          <a href="/docs/carts/#carts-single">
+            Get a single cart
+          </a>
+        </li>
 
-    <li>
-      <a href="/docs/auth/#me">
-        Get auth user
-      </a>
-    </li>
+        <li>
+          <a href="/docs/carts/#carts-user">
+            Get carts of user
+          </a>
+        </li>
 
-    <li>
-      <a href="/docs/auth/#refresh">
-        Refresh token
-      </a>
-    </li>
+        <li>
+          <a href="/docs/carts/#carts-add">
+            Add a cart
+          </a>
+        </li>
 
-    <!-- PRODUCTS -->
-    <li id="nav_products" class="heading">
-      <a href="/docs/products/" class="no-underline">
-        <i class="bx bx-headphone bx-xs"></i>
-        Products
-      </a>
-    </li>
+        <li class="put">
+          <a href="/docs/carts/#carts-update">
+            Update a cart
+          </a>
+        </li>
 
-    <li>
-      <a href="/docs/products/#all">
-        Get all products
-      </a>
+        <li class="delete">
+          <a href="/docs/carts/#carts-delete">
+            Delete a cart
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/products/#single">
-        Get a single product
-      </a>
+      <a href="/docs/recipes" class="parent-menu-item">Recipes</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/recipes/#recipes-all">
+            Get all recipes
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-single">
+            Get a single recipe
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-search">
+            Search recipes
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-limit_skip">
+            Limit & Skip recipes
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-tags">
+            Get all recipes tags
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-tag">
+            Get recipes by tag
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/recipes/#recipes-meal">
+            Get recipes by meal
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/products/#search">
-        Search products
-      </a>
+      <a href="/docs/users" class="parent-menu-item">Users</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/users/#users-all">
+            Get all users
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-me">
+            Get auth user
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-single">
+            Get a single user
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-search">
+            Search users
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-filter">
+            Filter users
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-limit_skip">
+            Limit & Skip users
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-carts">
+            Get user's carts
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-posts">
+            Get user's posts
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-todos">
+            Get user's todos
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/users/#users-add">
+            Add a user
+          </a>
+        </li>
+
+        <li class="put">
+          <a href="/docs/users/#users-update">
+            Update a user
+          </a>
+        </li>
+
+        <li class="delete">
+          <a href="/docs/users/#users-delete">
+            Delete a user
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/products/#limit_skip">
-        Limit & Skip products
-      </a>
+      <a href="/docs/posts" class="parent-menu-item">Posts</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/posts/#posts-all">
+            Get all posts
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-single">
+            Get a single post
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-search">
+            Search posts
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-limit_skip">
+            Limit & Skip posts
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-user">
+            Get post by user id
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-comments">
+            Get post's comments
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/posts/#posts-add">
+            Add a post
+          </a>
+        </li>
+
+        <li class="put">
+          <a href="/docs/posts/#posts-update">
+            Update a post
+          </a>
+        </li>
+
+        <li class="delete">
+          <a href="/docs/posts/#posts-delete">
+            Delete a post
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/products/#categories">
-        Get all products categories
-      </a>
+      <a href="/docs/comments" class="parent-menu-item">Comments</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/comments/#comments-all">
+            Get all comments
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/comments/#comments-single">
+            Get a single comment
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/comments/#comments-limit_skip">
+            Limit & Skip comments
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/comments/#comments-post">
+            Get comment by post id
+          </a>
+        </li>
+
+        <li class="comment">
+          <a href="/docs/comments/#comments-add">
+            Add a comment
+          </a>
+        </li>
+
+        <li class="put">
+          <a href="/docs/comments/#comments-update">
+            Update a comment
+          </a>
+        </li>
+
+        <li class="delete">
+          <a href="/docs/comments/#comments-delete">
+            Delete a comment
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/products/#category">
-        Get products of category
-      </a>
-    </li>
+      <a href="/docs/todos" class="parent-menu-item">Todos</a>
 
-    <li class="post">
-      <a href="/docs/products/#add">
-        Add a product
-      </a>
-    </li>
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/todos/#todos-all">
+            Get all todos
+          </a>
+        </li>
 
-    <li class="put">
-      <a href="/docs/products/#update">
-        Update a product
-      </a>
-    </li>
+        <li>
+          <a href="/docs/todos/#todos-single">
+            Get a single todo
+          </a>
+        </li>
 
-    <li class="delete">
-      <a href="/docs/products/#delete">
-        Delete a product
-      </a>
-    </li>
+        <li>
+          <a href="/docs/todos/#todos-random">
+            Get a random todo
+          </a>
+        </li>
 
-    <!-- ads -->
-    <%- include('./ads', { adId: '9625277182' }) %>
+        <li>
+          <a href="/docs/todos/#todos-limit_skip">
+            Limit & Skip todos
+          </a>
+        </li>
 
-    <!-- CARTS -->
-    <li id="nav_carts" class="heading">
-      <a href="/docs/carts/" class="no-underline">
-        <i class="bx bx-cart-alt bx-xs"></i>
-        Carts
-      </a>
-    </li>
+        <li class="todo">
+          <a href="/docs/todos/#todos-add">
+            Add a todo
+          </a>
+        </li>
 
-    <li>
-      <a href="/docs/carts/#all">
-        Get all carts
-      </a>
-    </li>
+        <li class="put">
+          <a href="/docs/todos/#todos-update">
+            Update a todo
+          </a>
+        </li>
 
-    <li>
-      <a href="/docs/carts/#single">
-        Get a single cart
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/carts/#user">
-        Get carts of user
-      </a>
-    </li>
-
-    <li class="post">
-      <a href="/docs/carts/#add">
-        Add a cart
-      </a>
-    </li>
-
-    <li class="put">
-      <a href="/docs/carts/#update">
-        Update a cart
-      </a>
-    </li>
-
-    <li class="delete">
-      <a href="/docs/carts/#delete">
-        Delete a cart
-      </a>
-    </li>
-
-    <!-- RECIPES -->
-    <li id="nav_recipes" class="heading">
-      <a href="/docs/recipes/" class="no-underline">
-        <i class="bx bx-food-menu bx-xs"></i>
-        Recipes
-      </a>
+        <li class="delete">
+          <a href="/docs/todos/#todos-delete">
+            Delete a todo
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/recipes/#all">
-        Get all recipes
-      </a>
+      <a href="/docs/quotes" class="parent-menu-item">Quotes</a>
+
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/quotes/#quotes-all">
+            Get all quotes
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/quotes/#quotes-single">
+            Get a single quote
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/quotes/#quotes-random">
+            Get a random quote
+          </a>
+        </li>
+
+        <li>
+          <a href="/docs/quotes/#quotes-limit_skip">
+            Limit & Skip quotes
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
-      <a href="/docs/recipes/#single">
-        Get a single recipe
-      </a>
-    </li>
+      <a href="/docs/http" class="parent-menu-item">Mock HTTP</a>
 
-    <li>
-      <a href="/docs/recipes/#search">
-        Search recipes
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/recipes/#limit_skip">
-        Limit & Skip recipes
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/recipes/#tags">
-        Get all recipes tags
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/recipes/#tag">
-        Get recipes by tag
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/recipes/#meal-type">
-        Get recipes by meal type
-      </a>
-    </li>
-
-    <!-- USERS -->
-    <li id="nav_users" class="heading">
-      <a href="/docs/users/" class="no-underline">
-        <i class="bx bx-user bx-xs"></i>
-        Users
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#all">
-        Get all users
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#me">
-        Get auth user
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#single">
-        Get a single user
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#search">
-        Search users
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#filter">
-        Filter users
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#limit_skip">
-        Limit & Skip users
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#carts">
-        Get user's carts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#posts">
-        Get user's posts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/users/#todos">
-        Get user's todos
-      </a>
-    </li>
-
-    <li class="post">
-      <a href="/docs/users/#add">
-        Add a user
-      </a>
-    </li>
-
-    <li class="put">
-      <a href="/docs/users/#update">
-        Update a user
-      </a>
-    </li>
-
-    <li class="delete">
-      <a href="/docs/users/#delete">
-        Delete a user
-      </a>
-    </li>
-
-    <!-- POSTS -->
-    <li id="nav_posts" class="heading">
-      <a href="/docs/posts/" class="no-underline">
-        <i class="bx bx-pen bx-xs"></i>
-        Posts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#all">
-        Get all posts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#single">
-        Get a single post
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#search">
-        Search posts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#limit_skip">
-        Limit & Skip posts
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#user">
-        Get post by user id
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/posts/#comment">
-        Get post's comments
-      </a>
-    </li>
-
-    <li class="post">
-      <a href="/docs/posts/#add">
-        Add a post
-      </a>
-    </li>
-
-    <li class="put">
-      <a href="/docs/posts/#update">
-        Update a post
-      </a>
-    </li>
-
-    <li class="delete">
-      <a href="/docs/posts/#delete">
-        Delete a post
-      </a>
-    </li>
-
-    <!-- ads -->
-    <%- include('./ads', { adId: '9625277182' }) %>
-
-    <!-- COMMENTS -->
-    <li id="nav_comments" class="heading">
-      <a href="/docs/comments/" class="no-underline">
-        <i class="bx bx-comment-dots bx-xs"></i>
-        Comments
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/comments/#all">
-        Get all comments
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/comments/#single">
-        Get a single comment
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/comments/#limit_skip">
-        Limit & Skip comments
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/comments/#post">
-        Get comment by post id
-      </a>
-    </li>
-
-    <li class="comment">
-      <a href="/docs/comments/#add">
-        Add a comment
-      </a>
-    </li>
-
-    <li class="put">
-      <a href="/docs/comments/#update">
-        Update a comment
-      </a>
-    </li>
-
-    <li class="delete">
-      <a href="/docs/comments/#delete">
-        Delete a comment
-      </a>
-    </li>
-
-    <!-- _IMAGE -->
-    <li id="nav_image" class="heading">
-      <a href="/image" target="_blank" class="no-underline">
-        <i class="bx bx-image bx-xs"></i>
-        Image
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#square">
-        Generate square image
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-width-height">
-        Custom width / height
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-text">
-        Custom text
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-background-color">
-        Custom background color
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-text-color">
-        Custom text color
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#different-formats">
-        Different formats
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-font-family">
-        Custom font family
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/image/#custom-font-size">
-        Custom font size
-      </a>
-    </li>
-
-    <!-- _TODOS -->
-    <li id="nav_todos" class="heading">
-      <a href="/docs/todos/" class="no-underline">
-        <i class="bx bx-task bx-xs"></i>
-        Todos
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/todos/#all">
-        Get all todos
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/todos/#single">
-        Get a single todo
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/todos/#random">
-        Get a random todo
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/todos/#limit_skip">
-        Limit & Skip todos
-      </a>
-    </li>
-
-    <li class="todo">
-      <a href="/docs/todos/#add">
-        Add a todo
-      </a>
-    </li>
-
-    <li class="put">
-      <a href="/docs/todos/#update">
-        Update a todo
-      </a>
-    </li>
-
-    <li class="delete">
-      <a href="/docs/todos/#delete">
-        Delete a todo
-      </a>
-    </li>
-
-    <!-- QUOTES -->
-    <li id="nav_quotes" class="heading">
-      <a href="/docs/quotes/" class="no-underline">
-        <i class="bx bxs-quote-left bx-xs"></i>
-        Quotes
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/quotes/#all">
-        Get all quotes
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/quotes/#single">
-        Get a single quote
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/quotes/#random">
-        Get a random quote
-      </a>
-    </li>
-
-    <li>
-      <a href="/docs/quotes/#limit_skip">
-        Limit & Skip quotes
-      </a>
-    </li>
-
-    <!-- HTTP -->
-    <li id="nav_http" class="heading">
-      <a href="/docs/http/" class="no-underline">
-        <i class="bx bxs-quote-left bx-xs"></i>
-        Mock HTTP
-      </a>
-    </li>
-
-    <li class="post">
-      <a href="/docs/http/#httpCode">
-        Mock HTTP Response
-      </a>
+      <ul class="child-menu">
+        <li>
+          <a href="/docs/http/#http-mock">
+            Mock HTTP Response
+          </a>
+        </li>
+        <li>
+          <a href="/docs/http/#http-custom">
+            Custom HTTP Response
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
-</aside>
+</nav>

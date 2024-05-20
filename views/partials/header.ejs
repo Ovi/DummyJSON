@@ -1,22 +1,15 @@
-<div class="not-supported">
-  screen size not supported
-</div>
-
 <header>
-  <nav>
-    <div class="logo">
-      <a class="no-underline" href="/">dummy<b>JSON</b></a>
+  <nav class="app-navbar">
+    <div class="nav-items-container">
+      <a href="/" class="logo-title">DummyJSON</a>
+      <ul class="nav-items">
+        <li><a href="/">Home</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li class="btn-container">
+          <a href="https://github.com/Ovi/DummyJSON" target="_blank" class="btn">GitHub</a>
+        </li>
+      </ul>
+      <span class="nav-burger-menu"><img src="/public/img/icons/bar.svg" alt="Nav Menu" /></span>
     </div>
-    <ul id="navItems" class="items">
-      <li class="<%= path === 'home' ? 'active' : '' %>">
-        <a href="/">Home</a>
-      </li>
-      <li class="<%= path === 'docs' ? 'active' : '' %>">
-        <a href="/docs">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/Ovi/DummyJSON" target="_blank">GitHub</a>
-      </li>
-    </ul>
   </nav>
 </header>

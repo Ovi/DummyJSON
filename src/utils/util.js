@@ -148,4 +148,8 @@ utils.limitArray = (arr, limit) => {
   return limit === 0 || limit > arr.length ? arr : arr.slice(0, limit);
 };
 
+utils.capitalize = str => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 module.exports = utils;

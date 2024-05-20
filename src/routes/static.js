@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
+const { capitalize } = require('../utils/util');
 
 const {
   GOOGLE_TAG_ID,
@@ -26,20 +27,19 @@ const availableResources = [
 ];
 
 router.get('/', (req, res) => {
-  res.render('index', { ...commonVariables, path: 'home' });
-});
-
-router.get(['/image', '/i', '/images'], (req, res) => {
-  res.render('image', { ...commonVariables, path: 'image' });
+  res.render('index', { ...commonVariables });
 });
 
 router.get('/docs', (req, res) => {
   res.render('docs', {
     ...commonVariables,
-    path: 'docs',
     page: '',
-    description: `Different types of REST Endpoints filled with JSON data to use in developing the frontend without worrying about writing a backend.`,
+    description: `DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects.`,
   });
+});
+
+router.get('/image', (req, res) => {
+  res.status(301).redirect('/docs/image');
 });
 
 router.get('/docs/:resource', (req, res, next) => {
@@ -50,11 +50,12 @@ router.get('/docs/:resource', (req, res, next) => {
     return;
   }
 
+  const capitalizedResource = capitalize(resource);
+
   res.render(`docs-${resource}`, {
     ...commonVariables,
-    path: 'docs',
-    page: resource,
-    description: `REST Endpoints filled with ${resource.toUpperCase()} JSON data to use in developing the frontend without worrying about writing a backend.`,
+    page: capitalizedResource,
+    description: `REST Endpoints filled with ${capitalizedResource} JSON data, DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects.`,
   });
 });
 

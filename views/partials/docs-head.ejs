@@ -2,41 +2,78 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/public/fav.png" />
+
+  <title><%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development</title>
   <meta name="description" content="<%= description %>" />
-  <link rel="icon" type="image/png" href="/static/fav.png" />
-  <link
-    rel="preload"
-    href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <link
-    rel="preload"
-    href="/static/highlight.js/railscasts.min.css"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
 
-  <noscript>
-    <link
-      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/static/highlight.js/railscasts.min.css" />
-  </noscript>
+  <meta name="author" content="Muhammad Ovi, Full Stack Developer" />
+  <meta name="author:bio" content="Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js" />
+  <meta name="author:linkedin" content="https://www.linkedin.com/in/muhammadovi" />
+  <meta name="author:twitter" content="https://twitter.com/imuhammadovi" />
 
-  <link href="/static/css/common.css" rel="stylesheet" />
-  <link href="/static/css/docs.css" rel="stylesheet" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
 
-  <script src="/static/highlight.js/highlight.min.js"></script>
+  <meta property="og:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development" />
+  <meta property="og:description" content="<%= description %>" />
+  <meta property="og:image" content="https://dummyjson.com/public/img/options.svg" />
+  <meta property="og:url" content="https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development" />
+  <meta name="twitter:description" content="<%= description %>" />
+  <meta name="twitter:image" content="https://dummyjson.com/public/img/options.svg" />
+  <meta name="twitter:site" content="@dummyjson" />
+  <meta name="twitter:creator" content="@imuhammadovi" />
+
+  <link rel="canonical" href="https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>" />
+
+  <link rel="stylesheet" href="/public/css/docs.css" />
+  <link rel="stylesheet" href="/public/css/prism.css" />
+
+  <!-- JSON-LD structured data for rich snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development",
+      "description": "<%= description %>",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Ovi",
+        "description": "Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js",
+        "url": "https://www.linkedin.com/in/muhammadovi",
+        "sameAs": [
+          "https://twitter.com/imuhammadovi",
+          "https://www.linkedin.com/in/muhammadovi"
+        ]
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DummyJSON",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dummyjson.com/public/img/options.svg"
+        }
+      }
+    }
+  </script>
+
   <% if (typeof(googleTagId) !== "undefined") { %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"
-  ></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
+
     function gtag() {
       dataLayer.push(arguments);
     }
@@ -45,12 +82,4 @@
     gtag('config', '<%= googleTagId %>');
   </script>
   <% } %>
-
-  <script defer src="/static/js/docs.js"></script>
-  <script defer src="/static/js/common.js"></script>
-
-  <title>
-    <%= page ? page.toUpperCase() + ` - Dummy REST API of JSON data for
-    development` : 'Docs - Fake REST API of JSON data | DummyJSON' %>
-  </title>
 </head>

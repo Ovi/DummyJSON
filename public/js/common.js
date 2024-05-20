@@ -1,37 +1,24 @@
-/* eslint-disable no-inner-declarations */
-/* eslint-disable no-undef */
+handleNavMenuClickOnMobile();
 
-try {
-  hljs.highlightAll();
+function handleNavMenuClickOnMobile() {
+  const navBurgerMenu = document.querySelector('.nav-burger-menu img');
+  const navItems = document.querySelector('.nav-items');
+  const mainMenu = document.querySelector('.app-navbar');
+  const docsMenu = document.querySelector('.docs-nav');
 
-  [...document.querySelectorAll('a[href*="#"]')].forEach(el => {
-    el.addEventListener('click', smoothScroll);
+  // to show and hide menus using burger menu (for mobile)
+  navBurgerMenu.addEventListener('click', () => {
+    navItems?.classList.toggle('active');
+    mainMenu?.classList.toggle('active');
+    docsMenu?.classList.toggle('active');
   });
 
-  function smoothScroll(e) {
-    if (e.shiftKey || e.ctrlKey) return;
-
-    e.preventDefault();
-
-    const target = this.getAttribute('href');
-
-    const [finalUri, finalHash] = target.split('#');
-
-    if (finalUri && finalUri !== window.location.pathname) {
-      window.location.href = target;
-      return;
+  // to hide menus when clicked outside (for mobile)
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.app-navbar') && !e.target.closest('.docs-nav')) {
+      navItems?.classList.remove('active');
+      mainMenu?.classList.remove('active');
+      docsMenu?.classList.remove('active');
     }
-
-    const el = document.getElementById(finalHash);
-
-    scrollToElement(el);
-  }
-} catch (error) {
-  console.log(error);
-}
-
-function scrollToElement(element, parent = window) {
-  const position = element.getBoundingClientRect();
-
-  parent.scrollTo(position.left, position.top + window.scrollY - 80);
+  });
 }

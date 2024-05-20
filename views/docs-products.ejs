@@ -1,526 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/headphones.svg" class="icon" alt="svg icon" /> Products - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>products</strong> endpoint provides a comprehensive dataset of sample product information, including details like names, prices, descriptions, images, and categories, ideal for testing and prototyping e-commerce applications.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="products-all">
+        <a href="#products-all" class="res-title">Get all products</a>
+        <p class="res-desc">
+          By default you will get 30 items, use <a href="#products-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 1,
+                "title": "iPhone 9",
+                "description": "An apple mobile which is nothing like apple",
+                "price": 549,
+                "discountPercentage": 12.96,
+                "rating": 4.69,
+                "stock": 94,
+                "brand": "Apple",
+                "category": "smartphones",
+                "thumbnail": "...",
+                "images": ["...", "...", "..."]
+              },
+              {...},
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 100,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="products" class="section-intro">
-          <i class="bx bx-headphone"></i>
-          <a href="#products" class="no-link">Products</a>
-        </h2>
+      <div class="resource" id="products-single">
+        <a href="#products-single" class="res-title">Get a single product</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/1')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="all">
-            <a href="#all" class="no-link">Get all products</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "products": [
-    {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "...",
-      "images": ["...", "...", "..."]
-    },
-    {...},
-    {...},
-    {...}
-    // 30 items
-  ],
-
-  "total": 100,
-  "skip": 0,
-  "limit": 30
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="single">
-            <a href="#single" class="no-link">Get a single product</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/1')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "iPhone 9",
-  "description": "An apple mobile which is nothing like apple",
-  "price": 549,
-  "discountPercentage": 12.96,
-  "rating": 4.69,
-  "stock": 94,
-  "brand": "Apple",
-  "category": "smartphones",
-  "thumbnail": "...",
-  "images": ["...", "...", "..."]
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="search">
-            <a href="#search" class="no-link">Search products</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/search?q=phone')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "products": [
-    {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "...",
-      "images": ["...", "...", "..."]
-    },
-    {...},
-    {...},
-    {...}
-    // 4 results
-  ],
-  "total": 4,
-  "skip": 0,
-  "limit": 4
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="limit_skip">
-            <a href="#limit_skip" class="no-link">Limit and skip products</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              You can pass "limit" and "skip" params to limit and skip the
-              results for pagination, and use limit=0 to get all items.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can pass "select" as query params with comma-separated values
-              to select specific data.
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "products": [
-    {
-      "id": 11, // first 10 items are skipped
-      "title": "perfume Oil",
-      "price": 13
-    },
-    {...},
-    {...},
-    {...}
-    // 10 items
-  ],
-
-  "total": 100,
-  "skip": 10,
-  "limit": 10
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="categories">
-            <a href="#categories" class="no-link">
-              Get all products categories
-            </a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/categories')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-[
-  "smartphones",
-  "laptops",
-  "fragrances",
-  "skincare",
-  "groceries",
-  "home-decoration",
-  "furniture",
-  "tops",
-  "womens-dresses",
-  "womens-shoes",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "womens-watches",
-  "womens-bags",
-  "womens-jewellery",
-  "sunglasses",
-  "automotive",
-  "motorcycle",
-  "lighting"
-]
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="category">
-            <a href="#category" class="no-link">
-              Get products of a category
-            </a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/category/smartphones')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "products": [
-    {
-      "id": 1,
-      "title": "iPhone 9",
-      "category": "smartphones",
-      ...
-    },
-    {...}
-    // 5 items
-  ],
-
-  "total": 5,
-  "skip": 0,
-  "limit": 5
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="add">
-            <a href="#add" class="no-link">
-              Add a new product
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Adding a new product will not add it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a POST request and will return the new created
-              product with a new id
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/add', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title: 'BMW Pencil',
-    /* other product data */
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 101,
-  "title": "BMW Pencil",
-  /* other product data */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="update">
-            <a href="#update" class="no-link">
-              Update a product
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Updating a product will not update it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a PUT/PATCH request and will return the product
-              with modified data
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* updating title of product with id 1 */
-fetch('https://dummyjson.com/products/1', {
-  method: 'PUT', /* or PATCH */
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title: 'iPhone Galaxy +1'
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "iPhone Galaxy +1", // only title was updated
-  "description": "An apple mobile which is nothing like apple",
-  "price": 549,
-  "discountPercentage": 12.96,
-  "rating": 4.69,
-  "stock": 94,
-  "brand": "Apple",
-  "category": "smartphones",
-  "thumbnail": "...",
-  "images": ["...", "...", "..."]
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="delete">
-            <a href="#delete" class="no-link">Delete a product</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Deleting a product will not delete it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a DELETE request and will return deleted product
-              with "isDeleted" & "deletedOn" keys
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/products/1', {
-  method: 'DELETE',
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "iPhone 9",
-  "description": "An apple mobile which is nothing like apple",
-  "price": 549,
-  "discountPercentage": 12.96,
-  "rating": 4.69,
-  "stock": 94,
-  "brand": "Apple",
-  "category": "smartphones",
-  "thumbnail": "...",
-  "images": ["...", "...", "..."],
-  "isDeleted": true,
-  "deletedOn": /* ISOTime */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "iPhone 9",
+            "description": "An apple mobile which is nothing like apple",
+            "price": 549,
+            "discountPercentage": 12.96,
+            "rating": 4.69,
+            "stock": 94,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "...",
+            "images": ["...", "...", "..."]
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/auth" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Auth
-        </a>
-        <a href="/docs/carts/" class="button">
-          Carts
-          <i class="bx bx-right-arrow"></i>
-        </a>
+      <div class="resource" id="products-search">
+        <a href="#products-search" class="res-title">Search products</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/search?q=phone')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 1,
+                "title": "iPhone 9",
+                "description": "An apple mobile which is nothing like apple",
+                "price": 549,
+                "discountPercentage": 12.96,
+                "rating": 4.69,
+                "stock": 94,
+                "brand": "Apple",
+                "category": "smartphones",
+                "thumbnail": "...",
+                "images": ["...", "...", "..."]
+              },
+              {...},
+              {...},
+              {...}
+              // 4 results
+            ],
+            "total": 4,
+            "skip": 0,
+            "limit": 4
+          }
+        </code></pre>
       </div>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+      <div class="resource" id="products-limit_skip">
+        <a href="#products-limit_skip" class="res-title">Limit and skip products</a>
+        <p class="res-tip">
+          You can pass `limit` and `skip` params to limit and skip the
+          results for pagination, and use `limit=0` to get all items.
+        </p>
+        <p class="res-tip">
+          You can pass `select` as query params with comma-separated values
+          to select specific data
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 11, // first 10 items are skipped
+                "title": "perfume Oil",
+                "price": 13
+              },
+              {...},
+              {...},
+              {...}
+              // 10 items
+            ],
+          
+            "total": 100,
+            "skip": 10,
+            "limit": 10
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="products-categories">
+        <a href="#products-categories" class="res-title">Get all products categories</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/categories')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          [
+            "smartphones",
+            "laptops",
+            "fragrances",
+            "skincare",
+            "groceries",
+            "home-decoration",
+            "furniture",
+            "tops",
+            "womens-dresses",
+            "womens-shoes",
+            "mens-shirts",
+            "mens-shoes",
+            "mens-watches",
+            "womens-watches",
+            "womens-bags",
+            "womens-jewellery",
+            "sunglasses",
+            "automotive",
+            "motorcycle",
+            "lighting"
+          ]
+        </code></pre>
+      </div>
+
+      <div class="resource" id="products-category">
+        <a href="#products-category" class="res-title">Get products by a category</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/category/smartphones')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 1,
+                "title": "iPhone 9",
+                "category": "smartphones",
+                ...
+              },
+              {...}
+              // 5 items
+            ],
+            "total": 5,
+            "skip": 0,
+            "limit": 5
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="products-add">
+        <a href="#products-add" class="res-title">Add a new product</a>
+        <p class="res-tip">
+          Adding a new product will not add it into the server.
+          <br />
+          It will simulate a POST request and will return the new created product with a new id
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: 'BMW Pencil',
+              /* other product data */
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 101,
+            "title": "BMW Pencil",
+            /* other product data */
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="products-update">
+        <a href="#products-update" class="res-title">Update a product</a>
+        <p class="res-tip">
+          Updating a product will not update it into the server.
+          <br />
+          It will simulate a PUT/PATCH request and will return updated product with modified data
+        </p>
+        <pre><code class="language-js">
+          /* updating title of product with id 1 */
+          fetch('https://dummyjson.com/products/1', {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: 'iPhone Galaxy +1'
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "iPhone Galaxy +1", // only title was updated
+            "description": "An apple mobile which is nothing like apple",
+            "price": 549,
+            "discountPercentage": 12.96,
+            "rating": 4.69,
+            "stock": 94,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "...",
+            "images": ["...", "...", "..."]
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="products-delete">
+        <a href="#products-delete" class="res-title">Delete a product</a>
+        <p class="res-tip">
+          Deleting a product will not delete it into the server.
+          <br />
+          It will simulate a DELETE request and will return deleted product with `isDeleted` & `deletedOn` keys
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products/1', {
+            method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "iPhone 9",
+            "description": "An apple mobile which is nothing like apple",
+            "price": 549,
+            "discountPercentage": 12.96,
+            "rating": 4.69,
+            "stock": 94,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "...",
+            "images": ["...", "...", "..."],
+            "isDeleted": true,
+            "deletedOn": /* ISOTime */
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#products-all');
+  </script>
+</body>
+
 </html>

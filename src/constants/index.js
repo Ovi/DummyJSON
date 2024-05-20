@@ -16,7 +16,7 @@ constants.OPTIONAL_ENV_VARIABLES = [
   'AWS_BUCKET_REGION',
 ];
 
-constants.requestWhitelist = ['/favicon.ico', '/static', '/public'];
+constants.requestWhitelist = ['/favicon.ico', '/static', '/public', '/fav.png'];
 
 constants.httpCodes = httpCodes;
 

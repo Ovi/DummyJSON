@@ -1,138 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/globe.svg" class="icon" alt="svg icon" /> Mock HTTP Responses - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>http</strong> endpoints allows you to mock and test any HTTP responses, facilitating the development and testing of web applications.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="http-mock">
+        <a href="#http-mock" class="res-title">Mock HTTP Response</a>
+        <p class="res-tip">
+          You can mock and test any HTTP responses. You may test each individual HTTP code by visiting:
+          <br />
+          <a href="https://dummyjson.com/http/200/Hello%20Peter">dummyjson.com/{code}/{optional-message}</a>
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/http/200')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "status": "200",
+            "message": "OK"
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="http" class="section-intro">
-          <i class="bx bx-world"></i>
-          <a href="#http" class="no-link">Mock HTTP</a>
-        </h2>
+      <div class="resource" id="http-custom">
+        <a href="#http-custom" class="res-title">Custom HTTP Response</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/http/404/Hello_Peter')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="httpCode">
-            <a href="#httpCode" class="no-link">Mock HTTP Response</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <p>
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can mock and test any HTTP responses. You may test each
-              individual HTTP code by visiting:
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              <a
-                href="https://dummyjson.com/http/200/Hello%20Peter"
-                class="link-secondary"
-                target="_blank"
-              >
-                dummyjson.com/{code}/{optional-message}
-              </a>
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/http/200')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "status": "200",
-  "message": "OK"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="httpCode">
-            <a href="#httpCodeCustom" class="no-link">Custom HTTP Response</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/http/404/Hello_Peter')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "status": "404",
-  "message": "Hello_Peter"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="happy-coding">
-            <a class="no-link no-underline">Happy Coding &#128521;</a>
-          </h3>
-        </div>
-
-        <br /><br /><br />
-        <br /><br /><br />
+        <pre class="output"><code class="language-json">
+          {
+            "status": "404",
+            "message": "Hello_Peter"
+          }
+        </code></pre>
       </div>
+    </div>
+  </section>
 
-      <div id="next-prev-resource">
-        <a href="/docs/quotes/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Quotes
-        </a>
-        <!-- <a href="/docs" class="button">
-          Docs
-          <i class="bx bx-right-arrow"></i>
-        </a> -->
-      </div>
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+  <script>
+    selectNavItem(window.location.hash || '#http-mock');
+  </script>
+</body>
+
 </html>

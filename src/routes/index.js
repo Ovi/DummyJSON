@@ -33,6 +33,6 @@ router.use(['/todo', '/todos'], todoRoutes);
 router.use(['/user', '/users'], userRoutes);
 router.use(['/http', '/https'], httpStatusRoutes);
 router.use('/test', testRoutes);
-router.use(['/image', '/i', '/images'], imageRoutes);
+router.use(['/image', '/i'], imageRoutes);
 
 module.exports = router;

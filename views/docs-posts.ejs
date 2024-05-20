@@ -1,524 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/pen.svg" class="icon" alt="svg icon" /> Posts - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>posts</strong> endpoint offers a dataset of sample blog post data, including details like titles, body content, user IDs, and tags, useful for testing and prototyping content management and social media features in web applications.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="posts-all">
+        <a href="#posts-all" class="res-title">Get all posts</a>
+        <p class="res-desc">
+          By default you will get 30 items, use <a href="#posts-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "posts": [
+              {
+                "id": 1,
+                "title": "His mother had always taught him",
+                "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+                "userId": 9,
+                "tags": [
+                    "history",
+                    "american",
+                    "crime"
+                ],
+                "reactions": 2
+              },
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 150,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="posts" class="section-intro">
-          <i class="bx bx-pen"></i>
-          <a href="#posts" class="no-link">Posts</a>
-        </h2>
+      <div class="resource" id="posts-single">
+        <a href="#posts-single" class="res-title">Get a single post</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/1')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="all">
-            <a href="#all" class="no-link">Get all posts</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "posts": [
-    {
-      "id": 1,
-      "title": "His mother had always taught him",
-      "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-      "userId": 9,
-      "tags": [
-          "history",
-          "american",
-          "crime"
-      ],
-      "reactions": 2
-    },
-    {...},
-    {...}
-    // 30 items
-  ],
-  "total": 150,
-  "skip": 0,
-  "limit": 30
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="single">
-            <a href="#single" class="no-link">Get a single post</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts/1')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "His mother had always taught him",
-  "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-  "userId": 9,
-  "tags": [
-    "history",
-    "american",
-    "crime"
-  ],
-  "reactions": 2
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="search">
-            <a href="#search" class="no-link">Search posts</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts/search?q=love')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "posts": [
-    {
-      "id": 7,
-      "title": "This is important to remember.",
-      "body": "This is important to remember. Love isn't like pie. You don't need to divide it among all your friends and loved ones. No matter how much love you give, you can always give more. It doesn't run out, so don't try to hold back giving it as if it may one day run out. Give it freely and as much as you want.",
-      // body contains "love"
-      "userId": 12,
-      "tags": [
-        "magical",
-        "crime"
-      ],
-      "reactions": 0
-    },
-    {...},
-    {...},
-    {...}
-    // 11 results
-  ],
-  "total": 11,
-  "skip": 0,
-  "limit": 11
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="limit_skip">
-            <a href="#limit_skip" class="no-link">Limit and skip posts</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              You can pass "limit" and "skip" params to limit and skip the
-              results for pagination, and use limit=0 to get all items.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can pass "select" as query params with comma-separated values
-              to select specific data.
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts?limit=10&skip=10&select=title,reactions,userId')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "posts": [
-    {
-      "id": 11, // first 10 items are skipped
-      "title": "It wasn't quite yet time to panic.",
-      "reactions": 5,
-      "userId": 25
-    },
-    {
-      "id": 12,
-      "title": "She was aware that things could go wrong.",
-      "reactions": 7,
-      "userId": 26
-    },
-    {...},
-    {...},
-    {...}
-    // 10 items
-  ],
-  "total": 150,
-  "skip": 10,
-  "limit": 10
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="user">
-            <a href="#user" class="no-link">Get all posts by user id</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* getting posts of user with id 5 */
-fetch('https://dummyjson.com/posts/user/5')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "posts": [
-    {
-      "id": 17,
-      "title": "She was in a hurry.",
-      "body": "She was in a hurry. /*... more data */  ",
-      "userId": 5, // user id is 5
-      "tags": [
-        "french",
-        "magical",
-        "english"
-      ],
-      "reactions": 0
-    },
-    {...},
-    {...}
-  ],
-  "total": 3,
-  "skip": 0,
-  "limit": 3
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="comment">
-            <a href="#comment" class="no-link">Get post's comments</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* getting comments of posts id 1 */
-fetch('https://dummyjson.com/posts/1/comments')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "comments": [
-    {
-      "id": 131,
-      "body": "You are my safest place.",
-      "postId": 1,
-      "user": {
-        "id": 7,
-        "username": "dpettegre6"
-      }
-    }
-  ],
-  "total": 1,
-  "skip": 0,
-  "limit": 1
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="add">
-            <a href="#add" class="no-link">
-              Add a new post
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Adding a new post will not add it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a POST request and will return the new created
-              post with a new id
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts/add', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title: 'I am in love with someone.',
-    userId: 5,
-    /* other post data */
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "I am in love with someone.",
-  "userId": 5,
-  /* other post data */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="update">
-            <a href="#update" class="no-link">
-              Update a post
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Updating a post will not update it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a PUT/PATCH request and will return the post with
-              modified data
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* updating title of post with id 1 */
-fetch('https://dummyjson.com/posts/1', {
-  method: 'PUT', /* or PATCH */
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title: 'I think I should shift to the moon',
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": "1",
-  "title": "I think I should shift to the moon", // only title was updated
-  "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-  "userId": 9,
-  "tags": [
-    "history",
-    "american",
-    "crime"
-  ],
-  "reactions": 2
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="delete">
-            <a href="#delete" class="no-link">Delete a post</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Deleting a post will not delete it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a DELETE request and will return deleted post
-              with "isDeleted" & "deletedOn" keys
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/posts/1', {
-  method: 'DELETE',
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "title": "His mother had always taught him",
-  "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-  "userId": 9,
-  "tags": [
-      "history",
-      "american",
-      "crime"
-  ],
-  "reactions": 2,
-  "isDeleted": true,
-  "deletedOn": /* ISOTime */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "His mother had always taught him",
+            "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+            "userId": 9,
+            "tags": [
+              "history",
+              "american",
+              "crime"
+            ],
+            "reactions": 2
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/users/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Users
-        </a>
-        <a href="/docs/comments/" class="button">
-          Comments
-          <i class="bx bx-right-arrow"></i>
-        </a>
+      <div class="resource" id="posts-search">
+        <a href="#posts-search" class="res-title">Search posts</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/search?q=love')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "posts": [
+              {
+                "id": 7,
+                "title": "This is important to remember.",
+                "body": "This is important to remember. Love isn't like pie. You don't need to divide it among all your friends and loved ones. No matter how much love you give, you can always give more. It doesn't run out, so don't try to hold back giving it as if it may one day run out. Give it freely and as much as you want.",
+                // body contains "love"
+                "userId": 12,
+                "tags": [
+                  "magical",
+                  "crime"
+                ],
+                "reactions": 0
+              },
+              {...},
+              {...},
+              {...}
+              // 11 results
+            ],
+            "total": 11,
+            "skip": 0,
+            "limit": 11
+          }
+        </code></pre>
       </div>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+      <div class="resource" id="posts-limit_skip">
+        <a href="#posts-limit_skip" class="res-title">Limit and skip posts</a>
+        <p class="res-tip">
+          You can pass `limit` and `skip` params to limit and skip the
+          results for pagination, and use `limit=0` to get all items.
+        </p>
+        <p class="res-tip">
+          You can pass `select` as query params with comma-separated values
+          to select specific data
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts?limit=10&skip=10&select=title,reactions,userId')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "posts": [
+              {
+                "id": 11, // first 10 items are skipped
+                "title": "It wasn't quite yet time to panic.",
+                "reactions": 5,
+                "userId": 25
+              },
+              {
+                "id": 12,
+                "title": "She was aware that things could go wrong.",
+                "reactions": 7,
+                "userId": 26
+              },
+              {...},
+              {...},
+              {...}
+              // 10 items
+            ],
+            "total": 150,
+            "skip": 10,
+            "limit": 10
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-user">
+        <a href="#posts-user" class="res-title">Get all posts by user id</a>
+        <pre><code class="language-js">
+          /* getting posts of user with id 5 */
+          fetch('https://dummyjson.com/posts/user/5')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "posts": [
+              {
+                "id": 17,
+                "title": "She was in a hurry.",
+                "body": "She was in a hurry. /*... more data */  ",
+                "userId": 5, // user id is 5
+                "tags": [
+                  "french",
+                  "magical",
+                  "english"
+                ],
+                "reactions": 0
+              },
+              {...},
+              {...}
+            ],
+            "total": 3,
+            "skip": 0,
+            "limit": 3
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-comments">
+        <a href="#posts-comments" class="res-title">Get post's comments</a>
+        <pre><code class="language-js">
+          /* getting posts of comments with id 5 */
+          fetch('https://dummyjson.com/posts/1/comments')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "comments": [
+              {
+                "id": 131,
+                "body": "You are my safest place.",
+                "postId": 1,
+                "user": {
+                  "id": 7,
+                  "username": "dpettegre6"
+                }
+              }
+            ],
+            "total": 1,
+            "skip": 0,
+            "limit": 1
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-add">
+        <a href="#posts-add" class="res-title">Add a new post</a>
+        <p class="res-tip">
+          Adding a new post will not add it into the server.
+          <br />
+          It will simulate a POST request and will return the new created post with a new id
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: 'I am in love with someone.',
+              userId: 5,
+              /* other post data */
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "I am in love with someone.",
+            "userId": 5,
+            /* other post data */
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-update">
+        <a href="#posts-update" class="res-title">Update a post</a>
+        <p class="res-tip">
+          Updating a post will not update it into the server.
+          <br />
+          It will simulate a PUT/PATCH request and will return updated post with modified data
+        </p>
+        <pre><code class="language-js">
+          /* updating title of post with id 1 */
+          fetch('https://dummyjson.com/posts/1', {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: 'I think I should shift to the moon',
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": "1",
+            "title": "I think I should shift to the moon", // only title was updated
+            "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+            "userId": 9,
+            "tags": [
+              "history",
+              "american",
+              "crime"
+            ],
+            "reactions": 2
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-delete">
+        <a href="#posts-delete" class="res-title">Delete a post</a>
+        <p class="res-tip">
+          Deleting a post will not delete it into the server.
+          <br />
+          It will simulate a DELETE request and will return deleted post with `isDeleted` & `deletedOn` keys
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/1', {
+            method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "title": "His mother had always taught him",
+            "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+            "userId": 9,
+            "tags": [
+                "history",
+                "american",
+                "crime"
+            ],
+            "reactions": 2,
+            "isDeleted": true,
+            "deletedOn": /* ISOTime */
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#posts-all');
+  </script>
+</body>
+
 </html>

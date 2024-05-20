@@ -15,4 +15,5 @@ module.exports = {
     'no-plusplus': 0,
     'global-require': 0,
   },
+  ignorePatterns: ['public/js'],
 };

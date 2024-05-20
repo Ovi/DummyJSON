@@ -1,5 +1,7 @@
+## Using Docker to setup custom fonts for image generation
+
 # Use the official Node.js image as the base image
-FROM node:17.9.1-alpine
+FROM node:20.13.1-alpine3.18
 
 # Create and set the working directory inside the container
 RUN mkdir -p /usr/src/app

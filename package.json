@@ -5,7 +5,8 @@
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
     "start": "node index.js",
-    "dev": "env-cmd -f config/dev.env nodemon index.js"
+    "dev": "env-cmd -f config/dev.env nodemon index.js",
+    "watch:minify-public-js": "node scripts/minify-public-js.js"
   },
   "engines": {
     "node": ">=16.0"
@@ -29,6 +30,7 @@
     "sharp": "0.31.1"
   },
   "devDependencies": {
+    "chokidar": "^3.6.0",
     "env-cmd": "^10.1.0",
     "eslint": "7.5",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -36,6 +38,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^2.0.15",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "uglify-js": "^3.17.4"
   }
 }

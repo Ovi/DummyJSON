@@ -1,0 +1,148 @@
+@import './_base.scss';
+
+.app-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $nav_height;
+  padding: 0 1rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.33);
+  box-shadow: 0 4px 10px rgba(148, 148, 148, 0.1);
+  backdrop-filter: blur(6.3px);
+  transition: all 0.3s ease-in-out;
+
+  &.active {
+    background: #fff;
+    backdrop-filter: unset;
+  }
+
+  @include breakpoint(xs) {
+    padding: 0 1.125rem;
+  }
+
+  @include breakpoint(sm) {
+    padding: 0 3.125rem;
+  }
+
+  @include breakpoint(md) {
+    &.active {
+      background: rgba(255, 255, 255, 0.33);
+      backdrop-filter: blur(6.3px);
+    }
+
+    height: $nav_height + 20px;
+  }
+
+  .nav-items-container {
+    display: flex;
+    flex: 1;
+    // justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 130rem;
+
+    // @include breakpoint(sm) {
+    //   justify-content: space-between;
+    // }
+
+    .logo-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: inherit;
+
+      &:active,
+      &:hover,
+      &:visited {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    .nav-burger-menu {
+      display: block;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include breakpoint(md) {
+        display: none;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+    }
+
+    .nav-items {
+      justify-content: flex-end;
+      align-items: center;
+      list-style: none;
+      display: flex;
+
+      position: absolute;
+      top: $nav_height;
+      right: 0;
+      padding: 0 1rem;
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      z-index: 5;
+      background-color: white;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      &.active {
+        height: $nav_height + 20px;
+        opacity: 1;
+      }
+
+      @include breakpoint(xs) {
+        padding: 0 1.125rem;
+      }
+
+      @include breakpoint(sm) {
+        padding: 0 3.125rem;
+      }
+
+      @include breakpoint(md) {
+        padding: 0 0;
+
+        position: unset;
+        height: auto;
+        opacity: 1;
+        box-shadow: none;
+        overflow: unset;
+        background: transparent;
+
+        &.active {
+          height: auto;
+        }
+      }
+
+      li {
+        a {
+          padding: 10px 20px;
+          font-size: 1rem;
+          color: black;
+          cursor: pointer;
+          margin: 0px 5px;
+        }
+
+        &.btn-container {
+          display: block;
+        }
+      }
+    }
+  }
+}

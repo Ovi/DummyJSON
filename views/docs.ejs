@@ -1,183 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/home.svg" class="icon" alt="svg icon" /> DummyJSON - Docs
+      </h1>
+      <p class="display-para">
+        DummyJSON can be used with any type of front end project that needs products, carts, users, todos or any dummy
+        data in JSON format.
+        <br />
+        You can use examples below to check how DummyJSON works.
+        <br />
+        <br />
+        Feel free to enjoy it in your awesome projects!
+      </p>
 
-    <main>
-      <div id="hero">
-        <h1>How to use it</h1>
-        <p>
-          DummyJSON can be used with any type of front end project that needs
-          products, carts, users, todos or any dummy data in JSON format.
-        </p>
-        <p>
-          You can use examples below to check how DummyJSON works.
-        </p>
-        <p>
-          Feel free to enjoy it in your awesome projects!
-        </p>
+      <div class="resource" id="intro-test">
+        <a href="#intro-test" class="res-title">Test Route</a>
+        <p class="res-desc">See if your internet is working &#128521;</p>
+        <pre><code class="language-js">
+          // Could be GET or POST/PUT/PATCH/DELETE
+          fetch('//dummyjson.com/test')
+          .then(res => res.json())
+          .then(console.log);
+
+          /* { status: 'ok', method: 'GET' } */
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="intro" class="section-intro">
-          <i class="bx bx-paper-plane"></i>
-          <a href="#intro" class="no-link">Intro</a>
-        </h2>
-
-        <div class="sub-section">
-          <h3 id="test">
-            <a href="#test" class="no-link">Test Route</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              See if your internet is working 😉
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-// Could be GET or POST/PUT/PATCH/DELETE
-fetch('//dummyjson.com/test')
-.then(res => res.json())
-.then(console.log);
-
-/* { status: 'ok', method: 'GET' } */
-            </code>
-           </pre>
-          </blockquote>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="intro-limit">
-            <a href="#intro-limit" class="no-link">Limiting Resources</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              All the resources can be used with query params to achieve
-              pagination and get limited data. limit=0 clears the limit and you
-              get all items
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1,key2,key3');
-            </code>
-           </pre>
-          </blockquote>
-
-          <h3>OR</h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1&select=key2&select=key3');
-            </code>
-           </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="intro-delay">
-            <a href="#intro-delay" class="no-link">Delay Responses</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can simulate a delay in responses using the delay param,
-              delay can be any number between 0 and 5000 milliseconds
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/RESOURCE/?delay=1000');
-            </code>
-           </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="intro-auth">
-            <a href="#intro-auth" class="no-link">Authorizing Resources</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-lock bx-xs"></i>
-              All resources can be accessed via an authentication token to test
-              as a logged-in user.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              Go to <a href="/docs/auth">auth module</a> and generate an auth
-              token to get data as an authorized user
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* providing token in bearer */
-fetch('https://dummyjson.com/auth/RESOURCE', {
-  method: 'GET', /* or POST/PUT/PATCH/DELETE */
-  headers: {
-    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
-    'Content-Type': 'application/json'
-  }, 
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+      <div class="resource" id="intro-limit">
+        <a href="#intro-limit" class="res-title">Limiting Resources</a>
+        <p class="res-tip">
+          All the resources can be used with query params to achieve pagination and get limited data. `limit=0` clears
+          the limit and you get all items
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1,key2,key3');
+        </code></pre>
+        <p class="res-desc">
+          It can be comma separated, OR, you can use multiple select query params to get multiple keys.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1&select=key2&select=key3');
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/auth/" class="button">
-          Auth
-          <i class="bx bx-right-arrow"></i>
-        </a>
-        <a href="/docs/products/" class="button">
-          Products
-          <i class="bx bx-right-arrow"></i>
-        </a>
+      <div class="resource" id="intro-delay">
+        <a href="#intro-delay" class="res-title">Delay Responses</a>
+        <p class="res-tip">
+          You can simulate a delay in responses using the delay param, delay can be any number between 0 and 5000
+          milliseconds
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/RESOURCE/?delay=1000');
+        </code></pre>
       </div>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+      <div class="resource" id="intro-auth">
+        <a href="#intro-auth" class="res-title">Authorizing Resources</a>
+        <p class="res-desc">All resources can be accessed via an authentication token to test as a logged-in user.</p>
+        <p class="res-tip">Go to auth module and generate an auth token to get data as an authorized user</p>
+        <pre><code class="language-js">
+          /* providing token in bearer */
+          fetch('https://dummyjson.com/auth/RESOURCE', {
+            method: 'GET', /* or POST/PUT/PATCH/DELETE */
+            headers: {
+              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+              'Content-Type': 'application/json'
+            }, 
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <script src="/public/js/prism.min.js" async defer></script>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+    <script>
+    selectNavItem(window.location.hash || '#intro-test');
+  </script>
+</body>
+
 </html>

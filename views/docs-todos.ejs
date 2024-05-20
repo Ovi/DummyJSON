@@ -1,425 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/todo.svg" class="icon" alt="svg icon" /> Todos - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>todos</strong> endpoint provides a dataset of sample to-do items, including details like task descriptions, statuses, and user IDs, ideal for testing and prototyping task management and productivity applications.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="todos-all">
+        <a href="#todos-all" class="res-title">Get all todos</a>
+        <p class="res-desc">
+          By default you will get 30 items, use <a href="#todos-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "todos": [
+              {
+                "id": 1,
+                "todo": "Do something nice for someone I care about",
+                "completed": true,
+                "userId": 26
+              },
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 150,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="todos" class="section-intro">
-          <i class="bx bx-task"></i>
-          <a href="#todos" class="no-link">Todos</a>
-        </h2>
+      <div class="resource" id="todos-single">
+        <a href="#todos-single" class="res-title">Get a single todo</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos/1')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="all">
-            <a href="#all" class="no-link">Get all todos</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "todos": [
-    {
-      "id": 1,
-      "todo": "Do something nice for someone I care about",
-      "completed": true,
-      "userId": 26
-    },
-    {...},
-    {...}
-    // 30 items
-  ],
-  "total": 150,
-  "skip": 0,
-  "limit": 30
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="single">
-            <a href="#single" class="no-link">Get a single todo</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos/1')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "todo": "Do something nice for someone I care about",
-  "completed": true,
-  "userId": 26
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="random">
-            <a href="#random" class="no-link">Get a random todo</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos/random')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  // random result, will be changed on every call to /random
-  "id": 127,
-  "todo": "Prepare a dish from a foreign culture",
-  "completed": false,
-  "userId": 7
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="limit_skip">
-            <a href="#limit_skip" class="no-link">Limit and skip todos</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              You can pass "limit" and "skip" params to limit and skip the
-              results for pagination, and use limit=0 to get all items.
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos?limit=3&skip=10')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "todos": [
-    {
-      "id": 11, // first 10 items were skipped
-      "todo": "Text a friend I haven't talked to in a long time",
-      "completed": false,
-      "userId": 39
-    },
-    {
-      "id": 12,
-      "todo": "Organize pantry",
-      "completed": true,
-      "userId": 39
-    },
-    {
-      "id": 13,
-      "todo": "Buy a new house decoration",
-      "completed": false,
-      "userId": 16
-    }
-  ],
-  "total": 150,
-  "skip": "10",
-  "limit": 3
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="user">
-            <a href="#user" class="no-link">Get all todos by user id</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* getting todos of user with id 5 */
-fetch('https://dummyjson.com/todos/user/5')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "todos": [
-    {
-      "id": 19,
-      "todo": "Create a compost pile",
-      "completed": true,
-      "userId": 5 // user id is 5
-    },
-    {...},
-    {...}
-  ],
-  "total": 3,
-  "skip": 0,
-  "limit": 3
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="add">
-            <a href="#add" class="no-link">
-              Add a new todo
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Adding a new todo will not add it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a POST request and will return the new created
-              todo with a new id
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos/add', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    todo: 'Use DummyJSON in the project',
-    completed: false,
-    userId: 5,
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 151,
-  "todo": "Use DummyJSON in the project",
-  "completed": false,
-  "userId": 5
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="update">
-            <a href="#update" class="no-link">
-              Update a todo
-            </a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Updating a todo will not update it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a PUT/PATCH request and will return the todo with
-              modified data
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* updating completed status of todo with id 1 */
-fetch('https://dummyjson.com/todos/1', {
-  method: 'PUT', /* or PATCH */
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    completed: false,
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": "1",
-  "todo": "Do something nice for someone I care about",
-  "completed": false, // complete status was changed
-  "userId": 26
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="delete">
-            <a href="#delete" class="no-link">Delete a todo</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              Deleting a todo will not delete it into the server.
-            </small>
-
-            <br />
-
-            <small>
-              <i class="bx bx-error-alt bx-xs"></i>
-              It will simulate a DELETE request and will return deleted todo
-              with "isDeleted" & "deletedOn" keys
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/todos/1', {
-  method: 'DELETE',
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "todo": "Do something nice for someone I care about",
-  "completed": true,
-  "userId": 26,
-  "isDeleted": true,
-  "deletedOn": /* ISOTime */
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "todo": "Do something nice for someone I care about",
+            "completed": true,
+            "userId": 26
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/image/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Image
-        </a>
-        <a href="/docs/quotes/" class="button">
-          Quotes
-          <i class="bx bx-right-arrow"></i>
-        </a>
+      <div class="resource" id="todos-random">
+        <a href="#todos-random" class="res-title">Get a random todo</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos/random')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            // random result, will be changed on every call to /random
+            "id": 127,
+            "todo": "Prepare a dish from a foreign culture",
+            "completed": false,
+            "userId": 7
+          }
+        </code></pre>
       </div>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+      <div class="resource" id="todos-limit_skip">
+        <a href="#todos-limit_skip" class="res-title">Limit and skip todos</a>
+        <p class="res-tip">
+          You can pass `limit` and `skip` params to limit and skip the
+          results for pagination, and use `limit=0` to get all items.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos?limit=3&skip=10')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "todos": [
+              {
+                "id": 11, // first 10 items were skipped
+                "todo": "Text a friend I haven't talked to in a long time",
+                "completed": false,
+                "userId": 39
+              },
+              {
+                "id": 12,
+                "todo": "Organize pantry",
+                "completed": true,
+                "userId": 39
+              },
+              {
+                "id": 13,
+                "todo": "Buy a new house decoration",
+                "completed": false,
+                "userId": 16
+              }
+            ],
+            "total": 150,
+            "skip": "10",
+            "limit": 3
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="todos-user">
+        <a href="#todos-user" class="res-title">Get all todos by user id</a>
+        <pre><code class="language-js">
+          /* getting todos of user with id 5 */
+          fetch('https://dummyjson.com/todos/user/5')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "todos": [
+              {
+                "id": 19,
+                "todo": "Create a compost pile",
+                "completed": true,
+                "userId": 5 // user id is 5
+              },
+              {...},
+              {...}
+            ],
+            "total": 3,
+            "skip": 0,
+            "limit": 3
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="todos-add">
+        <a href="#todos-add" class="res-title">Add a new todo</a>
+        <p class="res-tip">
+          Adding a new todo will not add it into the server.
+          <br />
+          It will simulate a POST request and will return the new created todo with a new id
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              todo: 'Use DummyJSON in the project',
+              completed: false,
+              userId: 5,
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 151,
+            "todo": "Use DummyJSON in the project",
+            "completed": false,
+            "userId": 5
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="todos-update">
+        <a href="#todos-update" class="res-title">Update a todo</a>
+        <p class="res-tip">
+          Updating a todo will not update it into the server.
+          <br />
+          It will simulate a PUT/PATCH request and will return updated todo with modified data
+        </p>
+        <pre><code class="language-js">
+          /* updating completed status of todo with id 1 */
+          fetch('https://dummyjson.com/todos/1', {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              completed: false,
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": "1",
+            "todo": "Do something nice for someone I care about",
+            "completed": false, // complete status was changed
+            "userId": 26
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="todos-delete">
+        <a href="#todos-delete" class="res-title">Delete a todo</a>
+        <p class="res-tip">
+          Deleting a todo will not delete it into the server.
+          <br />
+          It will simulate a DELETE request and will return deleted todo with `isDeleted` & `deletedOn` keys
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/todos/1', {
+            method: 'DELETE',
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "todo": "Do something nice for someone I care about",
+            "completed": true,
+            "userId": 26,
+            "isDeleted": true,
+            "deletedOn": /* ISOTime */
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#todos-all');
+  </script>
+</body>
+
 </html>

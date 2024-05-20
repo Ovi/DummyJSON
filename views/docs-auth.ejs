@@ -1,198 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/lock.svg" class="icon" alt="svg icon" /> Auth - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>auth</strong> endpoint provides details about the user authentication and authorization and refresh tokens.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="auth-login">
+        <a href="#auth-login" class="res-title">Login user and get token</a>
+        <p class="res-tip">
+          You can use any user's credentials from <a href="/users">dummyjson.com/users</a>
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              <!-- any username/password from users module  -->
+              username: 'kminchelle',
+              password: '0lelplR',
+              expiresInMins: 30, // optional, defaults to 60
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 15,
+            "username": "kminchelle",
+            "email": "kminchelle@qq.com",
+            "firstName": "Jeanne",
+            "lastName": "Halvorson",
+            "gender": "female",
+            "image": "https://robohash.org/Jeanne.png?set=set4",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvSmVhbm5lLnBuZz9zZXQ9c2V0NCIsImlhdCI6MTcxMTIwOTAwMSwiZXhwIjoxNzExMjEyNjAxfQ.F_ZCpi2qdv97grmWiT3h7HcT1prRJasQXjUR4Nk1yo8"
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="auth" class="section-intro">
-          <i class="bx bx-fingerprint"></i>
-          <a href="#auth" class="no-link">Auth</a>
-        </h2>
+      <div class="resource" id="auth-me">
+        <a href="#auth-me" class="res-title">Get current auth user</a>
+        <pre><code class="language-js">
+          /* providing token in bearer */
+          fetch('https://dummyjson.com/auth/me', {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+            }, 
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="login">
-            <a href="#login" class="no-link">Login user and get token</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              You can use any user's credentials from
-              <a href="/users">dummyjson.com/users</a>
-            </small>
-          </p>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    <!-- any username/password from users module  -->
-    username: 'kminchelle',
-    password: '0lelplR',
-    expiresInMins: 30, // optional, defaults to 60
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 15,
-  "username": "kminchelle",
-  "email": "kminchelle@qq.com",
-  "firstName": "Jeanne",
-  "lastName": "Halvorson",
-  "gender": "female",
-  "image": "https://robohash.org/Jeanne.png?set=set4",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvSmVhbm5lLnBuZz9zZXQ9c2V0NCIsImlhdCI6MTcxMTIwOTAwMSwiZXhwIjoxNzExMjEyNjAxfQ.F_ZCpi2qdv97grmWiT3h7HcT1prRJasQXjUR4Nk1yo8"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="me">
-            <a href="#me" class="no-link">Get current auth user</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-/* providing token in bearer */
-fetch('https://dummyjson.com/auth/me', {
-  method: 'GET',
-  headers: {
-    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
-  }, 
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 15,
-  "username": "kminchelle",
-  "email": "kminchelle@qq.com",
-  "firstName": "Jeanne",
-  "lastName": "Halvorson",
-  "gender": "female",
-  "image": "https://robohash.org/Jeanne.png?set=set4",
-  ... // other user fields
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-        <div class="sub-section">
-          <h3 id="refresh">
-            <a href="#refresh" class="no-link">Refresh auth session</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-bulb bx-xs"></i>
-              Extend the session and create a new token without username and password
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/auth/refresh', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
-  },
-  body: JSON.stringify({
-    expiresInMins: 30, // optional, defaults to 60
-  })
-})
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 15,
-  "username": "kminchelle",
-  "email": "kminchelle@qq.com",
-  "firstName": "Jeanne",
-  "lastName": "Halvorson",
-  "gender": "female",
-  "image": "https://robohash.org/Jeanne.png?set=set4",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-        <div class="sub-section">
-          <h3 id="happy-coding">
-            <a class="no-link no-underline">Happy Coding &#128521;</a>
-          </h3>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": 15,
+            "username": "kminchelle",
+            "email": "kminchelle@qq.com",
+            "firstName": "Jeanne",
+            "lastName": "Halvorson",
+            "gender": "female",
+            "image": "https://robohash.org/Jeanne.png?set=set4",
+            ... // other user fields
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Intro
-        </a>
-        <a href="/docs/products/" class="button">
-          Products
-          <i class="bx bx-right-arrow"></i>
-        </a>
-      </div>
+      <div class="resource" id="auth-refresh">
+        <a href="#auth-refresh" class="res-title">Refresh auth session</a>
+        <p class="res-tip">Extend the session and create a new token without username and password</p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/auth/refresh', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+            },
+            body: JSON.stringify({
+              expiresInMins: 30, // optional, defaults to 60
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 15,
+            "username": "kminchelle",
+            "email": "kminchelle@qq.com",
+            "firstName": "Jeanne",
+            "lastName": "Halvorson",
+            "gender": "female",
+            "image": "https://robohash.org/Jeanne.png?set=set4",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#auth-login');
+  </script>
+</body>
+
 </html>

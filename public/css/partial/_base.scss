@@ -1,0 +1,151 @@
+@import './font-lato.scss';
+
+$breakpoints: (
+  xs: 360px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1536px,
+  xxxl: 1920px,
+);
+
+$primary-color-dark: #494cf3;
+$primary-color: #b6b7fd;
+$secondary-color-dark: #ff697c;
+$secondary-color: #ffc3be;
+
+$nav_height: 60px;
+
+@mixin breakpoint($point) {
+  @if map-has-key($breakpoints, $point) {
+    @media (min-width: map-get($breakpoints, $point)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$point}.";
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html {
+  scroll-snap-type: y proximity;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body *,
+input,
+button {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  text-decoration: underline 0.25em transparent;
+  text-decoration-thickness: 0.25em;
+  text-decoration-color: transparent;
+  -webkit-text-decoration-color: transparent; /* for older browsers */
+  transition: text-decoration-color 0.3s;
+  transition: text-decoration-color 300ms;
+
+  &:hover {
+    text-decoration-color: inherit;
+    -webkit-text-decoration-color: inherit; /* for older browsers */
+  }
+
+  &:not(.btn) {
+    &,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $primary-color-dark;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+._flex-center,
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:hover {
+    outline: 0;
+  }
+
+  &:active {
+    background-color: #ffffff;
+    outline: 0;
+  }
+
+  &:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: '';
+    display: block;
+    height: 48px;
+    left: -3px;
+    width: 100%;
+    position: absolute;
+    top: -7px;
+    transform: translate(8px, 8px);
+    transition: transform 0.2s ease-out;
+    z-index: -1;
+  }
+
+  &:hover:after {
+    transform: translate(1px, 5px);
+  }
+
+  &.primary {
+    background-color: $primary-color;
+  }
+
+  &.secondary {
+    background-color: $secondary-color;
+  }
+}

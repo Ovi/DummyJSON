@@ -1,379 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Different types of REST Endpoints filled with JSON data to use in developing the frontend without worrying about writing a backend."
-    />
-    <link rel="icon" type="image/png" href="/static/fav.png" />
 
-    <link
-      rel="preload"
-      href="/static/highlight.js/railscasts.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/public/fav.png" />
 
-    <noscript>
-      <link rel="stylesheet" href="/static/highlight.js/railscasts.min.css" />
-    </noscript>
+  <title>DummyJSON - Fake REST API of JSON data for development</title>
+  <meta name="description" content="DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects." />
 
-    <link href="/static/css/common.css" rel="stylesheet" />
-    <link href="/static/css/home.css" rel="stylesheet" />
+  <meta name="author" content="Muhammad Ovi, Full Stack Developer" />
+  <meta name="author:bio" content="Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js" />
+  <meta name="author:linkedin" content="https://www.linkedin.com/in/muhammadovi" />
+  <meta name="author:twitter" content="https://twitter.com/imuhammadovi" />
 
-    <script src="/static/highlight.js/highlight.min.js"></script>
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
 
-    <script defer src="/static/js/common.js"></script>
-    <script defer src="/static/js/main.js"></script>
+  <meta property="og:title" content="DummyJSON - Fake REST API of JSON data for development" />
+  <meta property="og:description" content="DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects." />
+  <meta property="og:image" content="https://dummyjson.com/public/img/options.svg" />
+  <meta property="og:url" content="https://dummyjson.com" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
 
-    <% if (typeof(googleTagId) !== "undefined") { %>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DummyJSON - Fake REST API of JSON data for development" />
+  <meta name="twitter:description" content="DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects." />
+  <meta name="twitter:image" content="https://dummyjson.com/public/img/options.svg" />
+  <meta name="twitter:site" content="@dummyjson" />
+  <meta name="twitter:creator" content="@imuhammadovi" />
 
-      gtag('config', '<%= googleTagId %>');
-    </script>
-    <% } %>
+  <link rel="canonical" href="https://dummyjson.com" />
 
-    <title>
-      DummyJSON - Fake REST API of JSON data for development
-    </title>
+  <link rel="stylesheet" href="/public/css/styles.css" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "GET Products",
-            "item": "https://dummyjson.com/products"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "POST/PUT Products",
-            "item": "https://dummyjson.com/products"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "GET Users",
-            "item": "https://dummyjson.com/users"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "POST/PUT Users",
-            "item": "https://dummyjson.com/users"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "name": "GET Posts",
-            "item": "https://dummyjson.com/posts"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
-            "name": "POST/PUT Posts",
-            "item": "https://dummyjson.com/posts"
-          },
-          {
-            "@type": "ListItem",
-            "position": 7,
-            "name": "GET Todos",
-            "item": "https://dummyjson.com/todos"
-          },
-          {
-            "@type": "ListItem",
-            "position": 8,
-            "name": "POST/PUT Todos",
-            "item": "https://dummyjson.com/todos"
-          }
+  <!-- JSON-LD structured data for rich snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "DummyJSON - Fake REST API of JSON data for development",
+      "description": "DummyJSON provides a fake REST API of JSON data for development, testing, and prototyping. Quickly get realistic data for your front-end projects.",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Ovi",
+        "description": "Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js",
+        "url": "https://www.linkedin.com/in/muhammadovi",
+        "sameAs": [
+          "https://twitter.com/imuhammadovi",
+          "https://www.linkedin.com/in/muhammadovi"
         ]
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dummyjson.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DummyJSON",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dummyjson.com/public/img/options.svg"
+        }
       }
-    </script>
-  </head>
+    }
+  </script>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <main>
-      <section id="hero">
-        <div class="intro">
-          <h1>Dummy<b>JSON</b></h1>
-          <p>
-            Get dummy/fake JSON data to use as placeholder in development or in
-            prototype testing.
-          </p>
-          <span>
-            <a
-              href="https://github.com/Ovi/DummyJSON"
-              target="_blank"
-              class="button"
-            >
-              View on GitHub
-            </a>
-            <a href="/docs/products/" class="button ghost">Read Docs</a>
-          </span>
-        </div>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        <div class="carousel products">
-          <div id="products-list" class="product-details hidden">
-            <blockquote>
-              <pre><code id="product-data" class="json"></code></pre>
-            </blockquote>
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+</head>
 
-            <h3 class="product-title" id="product-title"></h3>
-            &#8212;
-            <small class="product-category" id="product-category"></small>
+<body>
+  <!-- header -->
+  <%- include('./partials/header') %>
 
-            <br />
-
-            <h4 class="product-price" id="product-price"></h4>
-            &#8212;
-            <div class="product-rating-container">
-              <span>&#9733;</span> <small id="product-rating"></small>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="sample">
-        <div class="why-us">
-          <h2>Got tired of Lorem ipsum data?</h2>
-          <p>
-            With DummyJSON, what you get is different types of REST Endpoints
-            filled with JSON data which you can use in developing the frontend
-            with your favorite framework and library without worrying about
-            writing a backend.
-          </p>
-        </div>
-
-        <div class="example">
-          <h2>Example Code</h2>
-          <blockquote id="example">
-            <pre><code class="language-js">
-fetch('https://dummyjson.com/products/1')
-.then(res => res.json())
-.then(json => console.log(json))
-            </code></pre>
-          </blockquote>
-          <button id="request">Try it now 😍</button>
-          <button id="copy-code" class="ghost">Copy Code</button>
-
-          <!-- ads -->
-          <%- include('./partials/ads', { adId: '6501093777' }) %>
-
-          <blockquote class="try-it-response">
-            <pre><code  id="response" class="language-json">
-{
-  💬: 🤔,
-}
-          </code></pre>
-          </blockquote>
-          <p class="on-success-text hidden">Yay! 😍</p>
-        </div>
-      </section>
-
-      <section id="resources">
-        <div class="resources">
-          <h2>Resources</h2>
-          <p>DummyJSON comes with different sets of common resources:</p>
-        </div>
-
-        <div class="resources-container">
-          <h2>Resources</h2>
-          <p>
-            Following resources are available which you can access via our REST
-            API.
-          </p>
-
-          <table>
-            <tr>
-              <td><a href="/products">/products</a></td>
-              <td>100 products</td>
-            </tr>
-
-            <tr>
-              <td><a href="/carts">/carts</a></td>
-              <td>20 carts</td>
-            </tr>
-
-            <tr>
-              <td><a href="/users">/users</a></td>
-              <td>100 users</td>
-            </tr>
-
-            <tr>
-              <td><a href="/posts">/posts</a></td>
-              <td>150 posts</td>
-            </tr>
-
-            <tr>
-              <td><a href="/comments">/comments</a></td>
-              <td>340 comments</td>
-            </tr>
-
-            <tr>
-              <td><a href="/docs/image">/image</a></td>
-              <td>Generate images on the fly</td>
-            </tr>
-
-            <tr>
-              <td><a href="/quotes">/quotes</a></td>
-              <td>1400+ quotes</td>
-            </tr>
-
-            <tr>
-              <td><a href="/recipes">/recipes</a></td>
-              <td>50 recipes</td>
-            </tr>
-
-            <tr>
-              <td><a href="/todos">/todos</a></td>
-              <td>150 todos</td>
-            </tr>
-
-            <tr>
-              <td><a href="/docs/http">/http</a></td>
-              <td>Mock HTTP Code Response</td>
-            </tr>
-
-            <tr>
-              <td><a>/auth</a></td>
-              <td>to get auth token</td>
-            </tr>
-          </table>
-
-          <p class="resources-note">
-            <b>Note: </b>by default you will get 30 results and the total count,
-            you can pass "skip" & "limit" query string to get more results.
-            <br />
-            For example:
-            <a href="/posts?skip=5&limit=10">/posts?skip=5&limit=10</a>
-          </p>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '6501093777' }) %>
-
-        <div class="routes-container">
-          <h2>Routes</h2>
-          <p>
-            All HTTP methods are supported. You can use http or https for your
-            requests.
-          </p>
-
-          <table>
-            <tr>
-              <td>GET</td>
-              <td>
-                <a href="/products">/products</a>
-              </td>
-              <td class="comment">// get all products</td>
-            </tr>
-
-            <tr>
-              <td>GET</td>
-              <td>
-                <a href="/products/1">/products/1</a>
-              </td>
-              <td class="comment">// get single product</td>
-            </tr>
-
-            <tr>
-              <td>GET</td>
-              <td>
-                <a href="/products/search?q=Laptop">
-                  /products/search?q=Laptop
-                </a>
-              </td>
-              <td class="comment">// search products</td>
-            </tr>
-
-            <tr>
-              <td>GET</td>
-              <td><a href="/products/categories">/products/categories</a></td>
-              <td class="comment">// get product categories</td>
-            </tr>
-
-            <tr>
-              <td>GET</td>
-              <td>
-                <a href="/products/category/smartphones">
-                  /products/category/smartphones
-                </a>
-              </td>
-              <td class="comment">// get products of a category</td>
-            </tr>
-
-            <tr>
-              <td>POST</td>
-              <td><a>/products/add</a></td>
-              <td class="comment">// add a product</td>
-            </tr>
-
-            <tr>
-              <td>PUT</td>
-              <td><a>/products/1</a></td>
-              <td class="comment">// update a product</td>
-            </tr>
-
-            <tr>
-              <td>PATCH</td>
-              <td><a>/products/1</a></td>
-              <td class="comment">// update a product</td>
-            </tr>
-
-            <tr>
-              <td>DELETE</td>
-              <td><a>/products/1</a></td>
-              <td class="comment">// delete a product</td>
-            </tr>
-
-            <tr>
-              <td>GET (auth)</td>
-              <td>
-                <a href="/auth/products">/auth/products</a>
-              </td>
-              <td class="comment">// get products with auth token</td>
-            </tr>
-          </table>
-
-          <p class="routes-note">
-            <b>Note: </b>see <a href="/docs">DOCS</a> for usage examples.
-          </p>
-        </div>
-      </section>
-
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-
-      <p class="footer-extra">
-        Inspired by
-        <a
-          class="no-underline"
-          href="https://jsonplaceholder.typicode.com/"
-          target="_blank"
-        >
-          JSONPlaceholder
-        </a>
+  <section>
+    <div class="content">
+      <h1>
+        Work Faster!!
+        <span class="heading-star"></span>
+      </h1>
+      <h1>Develop, Build, Test.</h1>
+      <p>
+        Need dummy JSON data for your frontend? Look no further! DummyJSON Server serves up JSON data in a snap,
+        eliminating backend setup headaches for rapid prototyping and testing.
       </p>
-    </main>
-  </body>
+      <div class="btns-container">
+        <a href="https://github.com/Ovi/DummyJSON" target="_blank" class="btn primary">View on GitHub</a>
+        <a href="/docs" class="btn">Read Docs</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/public/img/hero.svg" alt="Image" />
+    </div>
+  </section>
+
+  <section>
+    <div class="content">
+      <h1>
+        <span class="heading-star"></span>
+        Say Goodbye to Boring Placeholder Text!
+      </h1>
+      <p>
+        Say goodbye to Lorem Ipsum! With DummyJSON, spice up your frontend development with real JSON data. Focus on
+        your frontend magic while our open-source backend handles the data serving.
+      </p>
+      <div class="btns-container">
+        <a href="/docs" class="btn primary">Try it Now?</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/public/img/lorem.svg" alt="Image" />
+    </div>
+  </section>
+
+  <section>
+    <div class="content">
+      <h1>
+        Dive into Ready-to-Use Resources
+        <span class="heading-star"></span>
+      </h1>
+      <p>
+        Explore diverse pre-generated datasets with over 10 resources at your fingertips. DummyJSON.com accelerates
+        frontend development by instantly populating prototypes and crafting dynamic experiences without backend
+        hassles.
+      </p>
+      <div class="btns-container">
+        <a href="/docs" class="btn primary">View More</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/public/img/options.svg" alt="Image" />
+    </div>
+  </section>
+
+  <section>
+    <div class="content">
+      <h1>
+        <span class="heading-star"></span>
+        Instant Placeholder Images, Courtesy of DummyJSON
+      </h1>
+      <p>
+        Need placeholder images on the fly? DummyJSON Server generates dynamic images instantly, eliminating the need
+        for image hunting or complex server setups. Just plug in and enjoy hassle-free image generation for all your
+        development needs!
+      </p>
+      <div class="btns-container">
+        <a href="/docs/image" class="btn primary">Generate Now</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/public/img/images.svg" alt="Image" />
+    </div>
+  </section>
+
+  <section class="try-yourself">
+    <div class="content centered">
+      <h1>
+        <span class="heading-star"></span>
+        Try it yourself!
+      </h1>
+      <p>Use the dropdown to get results for different resources.</p>
+      <div class="code-container">
+        <span class="changer">
+          fetch('https://dummyjson.com/
+          <span class="selector">
+            <span class="selector-placeholder"></span>
+            <span class="selector-el">
+              <input type="radio" name="tryType" value="" checked="checked" id="none" />
+              <label for="none">RESOURCE</label>
+
+              <input type="radio" name="tryType" value="products" id="products" />
+              <label for="products">products</label>
+
+              <input type="radio" name="tryType" value="carts" id="carts" />
+              <label for="carts">carts</label>
+
+              <input type="radio" name="tryType" value="users" id="users" />
+              <label for="users">users</label>
+
+              <input type="radio" name="tryType" value="posts" id="posts" />
+              <label for="posts">posts</label>
+
+              <input type="radio" name="tryType" value="comments" id="comments" />
+              <label for="comments">comments</label>
+
+              <input type="radio" name="tryType" value="quotes" id="quotes" />
+              <label for="quotes">quotes</label>
+
+              <input type="radio" name="tryType" value="recipes" id="recipes" />
+              <label for="recipes">recipes</label>
+
+              <input type="radio" name="tryType" value="todos" id="todos" />
+              <label for="todos">todos</label>
+            </span>
+          </span>
+          ')
+        </span>
+
+        <div class="json-code"></div>
+      </div>
+      <div class="btns-container">
+        <a href="/docs" class="btn primary">View Docs</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="last-section">
+    <div class="content centered">
+      <h1>
+        <span class="heading-star"></span>
+        Thank you!
+      </h1>
+      <p>
+        Thank you for being a part of the DummyJSON community. If you have not already,
+        <br />
+        <br />
+        <a href="https://github.com/Ovi/DummyJSON" target="_blank">Give DummyJSON star on GitHub!</a>
+        <br />
+        <span class="social-links">
+          <a href="https://github.com/Ovi/DummyJSON" target="_blank">
+            <img src="/public/img/icons/github.svg" alt="Github">
+          </a>
+          <a href="https://x.com/DummyJSON" target="_blank">
+            <img src="/public/img/icons/twitter_x.svg" alt="Github">
+          </a>
+          <a href="https://linkedin.com/company/DummyJSON" target="_blank">
+            <img src="/public/img/icons/linkedin.svg" alt="Github">
+          </a>
+        </span>
+      </p>
+    </div>
+  </section>
+</body>
+
+<script src="/public/js/custom-json-highlight.min.js" defer></script>
+<script src="/public/js/script.min.js" defer></script>
+<script src="/public/js/common.min.js" defer></script>
+
 </html>

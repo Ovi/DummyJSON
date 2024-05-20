@@ -1,222 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
   <!-- header -->
-  <%- include('./partials/docs-head') %>
+  <%- include('./partials/header') %>
 
-  <body>
-    <!-- header -->
-    <%- include('./partials/header') %>
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
 
-    <!-- side-nav -->
-    <%- include('./partials/docs-side-nav') %>
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/quotes.svg" class="icon" alt="svg icon" /> Quotes - Docs
+      </h1>
+      <p class="display-para">
+        The <strong>quotes</strong> endpoint provides a dataset of sample quotes, including details like the quote text and author information, ideal for testing and prototyping features in applications that require motivational or inspirational content.
+      </p>
 
-    <main>
-      <div id="hero">
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <h1>Docs</h1>
-        <p>
-          You can use examples below to check how DummyJSON works.
+      <div class="resource" id="quotes-all">
+        <a href="#quotes-all" class="res-title">Get all quotes</a>
+        <p class="res-desc">
+          By default you will get 30 items, use <a href="#quotes-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/quotes')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "quotes": [
+              {
+                  "id": 1,
+                  "quote": "Life isn't about getting and having, it's about giving and being.",
+                  "author": "Kevin Kruse"
+              },
+              {
+                  "id": 2,
+                  "quote": "Whatever the mind of man can conceive and believe, it can achieve.",
+                  "author": "Napoleon Hill"
+              },
+              {
+                  "id": 3,
+                  "quote": "Strive not to be a success, but rather to be of value.",
+                  "author": "Albert Einstein"
+              },
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 100,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
       </div>
 
-      <div class="section">
-        <h2 id="quotes" class="section-intro">
-          <i class="bx bxs-quote-left"></i>
-          <a href="#quotes" class="no-link">Quotes</a>
-        </h2>
+      <div class="resource" id="quotes-single">
+        <a href="#quotes-single" class="res-title">Get a single quote</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/quotes/1')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
 
-        <div class="sub-section">
-          <h3 id="all">
-            <a href="#all" class="no-link">Get all quotes</a>
-          </h3>
+        <button class="show-output btn">Show Output</button>
 
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/quotes')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "quotes": [
-    {
-        "id": 1,
-        "quote": "Life isn’t about getting and having, it’s about giving and being.",
-        "author": "Kevin Kruse"
-    },
-    {
-        "id": 2,
-        "quote": "Whatever the mind of man can conceive and believe, it can achieve.",
-        "author": "Napoleon Hill"
-    },
-    {
-        "id": 3,
-        "quote": "Strive not to be a success, but rather to be of value.",
-        "author": "Albert Einstein"
-    },
-    {...},
-    {...}
-    // 30 items
-  ],
-  "total": 100,
-  "skip": 0,
-  "limit": 30
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="single">
-            <a href="#single" class="no-link">Get a single quote</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/quotes/1')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "id": 1,
-  "quote": "Life isn’t about getting and having, it’s about giving and being.",
-  "author": "Kevin Kruse"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <!-- ads -->
-        <%- include('./partials/ads', { adId: '8113483378' }) %>
-
-        <div class="sub-section">
-          <h3 id="random">
-            <a href="#random" class="no-link">Get a random quote</a>
-          </h3>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/quotes/random')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  // random result, will be changed on every call to /random
-  "id": 62,
-  "quote": "If you want to lift yourself up, lift up someone else.",
-  "author": "Booker T. Washington"
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
-
-        <div class="sub-section">
-          <h3 id="limit_skip">
-            <a href="#limit_skip" class="no-link">Limit and skip quotes</a>
-          </h3>
-          <p>
-            <small>
-              <i class="bx bx-right-arrow bx-xs"></i>
-              You can pass "limit" and "skip" params to limit and skip the
-              results for pagination, and use limit=0 to get all items.
-            </small>
-          </p>
-
-          <blockquote>
-            <pre>
-              <code class="language-js">
-fetch('https://dummyjson.com/quotes?limit=3&skip=10')
-.then(res => res.json())
-.then(console.log);
-            </code>
-           </pre>
-          </blockquote>
-
-          <a class="button" onclick="toggleOutput(event)">
-            Show output
-          </a>
-
-          <blockquote>
-            <pre class="result hidden">
-              <code class="language-json">
-{
-  "quotes": [
-    {
-      "id": 11, // first 10 items were skipped
-      "quote": "We must balance conspicuous consumption with conscious capitalism.",
-      "author": "Kevin Kruse"
-    },
-    {
-      "id": 12,
-      "quote": "Life is what happens to you while you’re busy making other plans.",
-      "author": "John Lennon"
-    },
-    {
-      "id": 13,
-      "quote": "We become what we think about.",
-      "author": "Earl Nightingale"
-    }
-  ],
-  "total": 100,
-  "skip": "10",
-  "limit": 3
-}
-              </code>
-            </pre>
-          </blockquote>
-        </div>
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "quote": "Life isn't about getting and having, it's about giving and being.",
+            "author": "Kevin Kruse"
+          }
+        </code></pre>
       </div>
 
-      <div id="next-prev-resource">
-        <a href="/docs/todos/" class="button ghost">
-          <i class="bx bx-left-arrow"></i>
-          Todos
-        </a>
-        <a href="/docs/http/" class="button">
-          HTTP
-          <i class="bx bx-right-arrow"></i>
-        </a>
+      <div class="resource" id="quotes-random">
+        <a href="#quotes-random" class="res-title">Get a random quote</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/quotes/random')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            // random result, will change on every call to /random
+            "id": 62,
+            "quote": "If you want to lift yourself up, lift up someone else.",
+            "author": "Booker T. Washington"
+          }
+        </code></pre>
       </div>
 
-      <!-- side-nav -->
-      <%- include('./partials/footer') %>
-    </main>
-  </body>
+      <div class="resource" id="quotes-limit_skip">
+        <a href="#quotes-limit_skip" class="res-title">Limit and skip quotes</a>
+        <p class="res-tip">
+          You can pass `limit` and `skip` params to limit and skip the
+          results for pagination, and use `limit=0` to get all items.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/quotes?limit=3&skip=10')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "quotes": [
+              {
+                "id": 11, // first 10 items were skipped
+                "quote": "We must balance conspicuous consumption with conscious capitalism.",
+                "author": "Kevin Kruse"
+              },
+              {
+                "id": 12,
+                "quote": "Life is what happens to you while you're busy making other plans.",
+                "author": "John Lennon"
+              },
+              {
+                "id": 13,
+                "quote": "We become what we think about.",
+                "author": "Earl Nightingale"
+              }
+            ],
+            "total": 100,
+            "skip": 10,
+            "limit": 3
+          }
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#quotes-all');
+  </script>
+</body>
+
 </html>
