@@ -17,6 +17,7 @@ const userRoutes = require('./user');
 const httpStatusRoutes = require('./http');
 const testRoutes = require('./test');
 const imageRoutes = require('./image');
+const iconRoutes = require('./icon');
 
 // dynamic resource routes
 // no-dynamic-routes
@@ -34,5 +35,6 @@ router.use(['/user', '/users'], userRoutes);
 router.use(['/http', '/https'], httpStatusRoutes);
 router.use('/test', testRoutes);
 router.use(['/image', '/i'], imageRoutes);
+router.use('/icon', iconRoutes);
 
 module.exports = router;

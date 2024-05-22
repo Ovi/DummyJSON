@@ -177,6 +177,24 @@
           <img loading="lazy" src="https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter!&fontSize=16" alt="400x200" />
         </div>
       </div>
+
+      <div class="resource" id="image-identicon">
+        <a href="#image-identicon" class="res-title">Generate identicon</a>
+        <pre><code class="language-js">
+          // https://dummyjson.com/icon/HASH/SIZE/?type=png (or svg)
+          fetch('https://dummyjson.com/icon/abc123/150') // png is default
+          .then(response => response.blob()) // Convert response to blob
+          .then(blob => {
+            console.log('Fetched image blob:', blob);
+          })
+          // Blob {size: SIZE, type: 'image/png'}
+        </code></pre>
+
+        <div class="output-image">
+          <h3>Output: </h3>
+          <img loading="lazy" src="https://dummyjson.com/icon/abc123/150" alt="identicon" />
+        </div>
+      </div>
     </div>
   </section>
 
