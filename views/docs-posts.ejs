@@ -39,19 +39,23 @@
                 "id": 1,
                 "title": "His mother had always taught him",
                 "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-                "userId": 9,
                 "tags": [
-                    "history",
-                    "american",
-                    "crime"
+                  "history",
+                  "american",
+                  "crime"
                 ],
-                "reactions": 2
+                "reactions": {
+                  "likes": 192,
+                  "dislikes": 25
+                },
+                "views": 305,
+                "userId": 121
               },
               {...},
               {...}
               // 30 items
             ],
-            "total": 150,
+            "total": 251,
             "skip": 0,
             "limit": 30
           }
@@ -73,13 +77,17 @@
             "id": 1,
             "title": "His mother had always taught him",
             "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-            "userId": 9,
             "tags": [
               "history",
               "american",
               "crime"
             ],
-            "reactions": 2
+            "reactions": {
+              "likes": 192,
+              "dislikes": 25
+            },
+            "views": 305,
+            "userId": 121
           }
         </code></pre>
       </div>
@@ -101,22 +109,25 @@
                 "id": 7,
                 "title": "This is important to remember.",
                 "body": "This is important to remember. Love isn't like pie. You don't need to divide it among all your friends and loved ones. No matter how much love you give, you can always give more. It doesn't run out, so don't try to hold back giving it as if it may one day run out. Give it freely and as much as you want.",
-                // body contains "love"
-                "userId": 12,
                 "tags": [
                   "magical",
                   "crime"
                 ],
-                "reactions": 0
+                "reactions": {
+                  "likes": 127,
+                  "dislikes": 26
+                },
+                "views": 168,
+                "userId": 70
               },
               {...},
               {...},
               {...}
-              // 11 results
+              // 17 results
             ],
-            "total": 11,
+            "total": 17,
             "skip": 0,
-            "limit": 11
+            "limit": 17
           }
         </code></pre>
       </div>
@@ -145,21 +156,18 @@
               {
                 "id": 11, // first 10 items are skipped
                 "title": "It wasn't quite yet time to panic.",
-                "reactions": 5,
-                "userId": 25
-              },
-              {
-                "id": 12,
-                "title": "She was aware that things could go wrong.",
-                "reactions": 7,
-                "userId": 26
+                "reactions": {
+                  "likes": 453,
+                  "dislikes": 8
+                },
+                "userId": 43
               },
               {...},
               {...},
               {...}
               // 10 items
             ],
-            "total": 150,
+            "total": 251,
             "skip": 10,
             "limit": 10
           }
@@ -181,23 +189,26 @@
           {
             "posts": [
               {
-                "id": 17,
-                "title": "She was in a hurry.",
-                "body": "She was in a hurry. /*... more data */  ",
-                "userId": 5, // user id is 5
+                "id": 61,
+                "title": "I'm going to hire professional help tomorrow.",
+                "body": "I'm going to hire professional help tomorrow. I can't handle this anymore. She fell over the coffee table and now there is blood in her catheter. This is much more than I ever signed up to do.",
                 "tags": [
-                  "french",
-                  "magical",
-                  "english"
+                  "fiction",
+                  "classic",
+                  "american"
                 ],
-                "reactions": 0
+                "reactions": {
+                  "likes": 1127,
+                  "dislikes": 40
+                },
+                "views": 4419,
+                "userId": 5 // user id is 5
               },
-              {...},
               {...}
             ],
-            "total": 3,
+            "total": 2,
             "skip": 0,
-            "limit": 3
+            "limit": 2
           }
         </code></pre>
       </div>
@@ -205,7 +216,7 @@
       <div class="resource" id="posts-comments">
         <a href="#posts-comments" class="res-title">Get post's comments</a>
         <pre><code class="language-js">
-          /* getting posts of comments with id 5 */
+          /* getting posts of comments with id 1 */
           fetch('https://dummyjson.com/posts/1/comments')
           .then(res => res.json())
           .then(console.log);
@@ -217,18 +228,22 @@
           {
             "comments": [
               {
-                "id": 131,
-                "body": "You are my safest place.",
-                "postId": 1,
+                "id": 93,
+                "body": "These are fabulous ideas!",
+                "postId": 1, // post id is 1
+                "likes": 7,
                 "user": {
-                  "id": 7,
-                  "username": "dpettegre6"
+                  "id": 190,
+                  "username": "leahw",
+                  "fullName": "Leah Gutierrez"
                 }
-              }
+              },
+              {...},
+              {...}
             ],
-            "total": 1,
+            "total": 3,
             "skip": 0,
-            "limit": 1
+            "limit": 3
           }
         </code></pre>
       </div>
@@ -258,9 +273,9 @@
 
         <pre class="output"><code class="language-json">
           {
-            "id": 1,
+            "id": 252,
             "title": "I am in love with someone.",
-            "userId": 5,
+            "userId": 5
             /* other post data */
           }
         </code></pre>
@@ -290,16 +305,19 @@
 
         <pre class="output"><code class="language-json">
           {
-            "id": "1",
+            "id": 1,
             "title": "I think I should shift to the moon", // only title was updated
             "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-            "userId": 9,
+            "userId": 121,
             "tags": [
               "history",
               "american",
               "crime"
             ],
-            "reactions": 2
+            "reactions": {
+              "likes": 192,
+              "dislikes": 25
+            }
           }
         </code></pre>
       </div>
@@ -326,13 +344,17 @@
             "id": 1,
             "title": "His mother had always taught him",
             "body": "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
-            "userId": 9,
             "tags": [
-                "history",
-                "american",
-                "crime"
+              "history",
+              "american",
+              "crime"
             ],
-            "reactions": 2,
+            "reactions": {
+              "likes": 192,
+              "dislikes": 25
+            },
+            "views": 305,
+            "userId": 121,
             "isDeleted": true,
             "deletedOn": /* ISOTime */
           }

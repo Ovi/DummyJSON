@@ -24,7 +24,7 @@
           By default you will get 30 items, use <a href="#users-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users')
+          fetch('http://dummyjson.com/users')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -36,70 +36,78 @@
             "users": [
               {
                 "id": 1,
-                "firstName": "Terry",
-                "lastName": "Medhurst",
-                "maidenName": "Smitham",
-                "age": 50,
-                "gender": "male",
-                "email": "atuny0@sohu.com",
-                "phone": "+63 791 675 8914",
-                "username": "atuny0",
-                "password": "9uQFF1Lh",
-                "birthDate": "2000-12-25",
-                "image": "https://robohash.org/Terry.png?set=set4",
-                "bloodGroup": "A-",
-                "height": 189,
-                "weight": 75.4,
+                "firstName": "Emily",
+                "lastName": "Johnson",
+                "maidenName": "Smith",
+                "age": 28,
+                "gender": "female",
+                "email": "emily.johnson@x.dummyjson.com",
+                "phone": "+81 965-431-3024",
+                "username": "emilys",
+                "password": "emilyspass",
+                "birthDate": "1996-5-30",
+                "image": "...",
+                "bloodGroup": "O-",
+                "height": 193.24,
+                "weight": 63.16,
                 "eyeColor": "Green",
                 "hair": {
-                  "color": "Black",
-                  "type": "Strands"
+                  "color": "Brown",
+                  "type": "Curly"
                 },
-                "domain": "slashdot.org",
-                "ip": "117.29.86.254",
+                "ip": "42.48.100.32",
                 "address": {
-                  "address": "1745 T Street Southeast",
-                  "city": "Washington",
+                  "address": "626 Main Street",
+                  "city": "Phoenix",
+                  "state": "Mississippi",
+                  "stateCode": "MS",
+                  "postalCode": "29112",
                   "coordinates": {
-                    "lat": 38.867033,
-                    "lng": -76.979235
+                    "lat": -77.16213,
+                    "lng": -92.084824
                   },
-                  "postalCode": "20020",
-                  "state": "DC"
+                  "country": "United States"
                 },
-                "macAddress": "13:69:BA:56:A3:74",
-                "university": "Capitol University",
+                "macAddress": "47:fa:41:18:ec:eb",
+                "university": "University of Wisconsin--Madison",
                 "bank": {
-                  "cardExpire": "06/22",
-                  "cardNumber": "50380955204220685",
-                  "cardType": "maestro",
-                  "currency": "Peso",
-                  "iban": "NO17 0695 2754 967"
+                  "cardExpire": "03/26",
+                  "cardNumber": "9289760655481815",
+                  "cardType": "Elo",
+                  "currency": "CNY",
+                  "iban": "YPUXISOBI7TTHPK2BR3HAIXL"
                 },
                 "company": {
+                  "department": "Engineering",
+                  "name": "Dooley, Kozey and Cronin",
+                  "title": "Sales Manager",
                   "address": {
-                    "address": "629 Debbie Drive",
-                    "city": "Nashville",
+                    "address": "263 Tenth Street",
+                    "city": "San Francisco",
+                    "state": "Wisconsin",
+                    "stateCode": "WI",
+                    "postalCode": "37657",
                     "coordinates": {
-                      "lat": 36.208114,
-                      "lng": -86.58621199999999
+                      "lat": 71.814525,
+                      "lng": -161.150263
                     },
-                    "postalCode": "37076",
-                    "state": "TN"
-                  },
-                  "department": "Marketing",
-                  "name": "Blanda-O'Keefe",
-                  "title": "Help Desk Operator"
+                    "country": "United States"
+                  }
                 },
-                "ein": "20-9487066",
-                "ssn": "661-64-2976",
-                "userAgent": "Mozilla/5.0 ..."
+                "ein": "977-175",
+                "ssn": "900-590-289",
+                "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+                "crypto": {
+                  "coin": "Bitcoin",
+                  "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
+                  "network": "Ethereum (ERC20)"
+                }
               },
               {...},
               {...}
               // 30 items
             ],
-            "total": 100,
+            "total": 208,
             "skip": 0,
             "limit": 30
           }
@@ -110,7 +118,7 @@
         <a href="#users-me" class="res-title">Get current authenticated user</a>
         <pre><code class="language-js">
           /* providing token in bearer */
-          fetch('https://dummyjson.com/user/me', {
+          fetch('http://dummyjson.com/user/me', {
             method: 'GET',
             headers: {
               'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
@@ -124,14 +132,15 @@
 
         <pre class="output"><code class="language-json">
           {
-            "id": 15,
-            "username": "kminchelle",
-            "email": "kminchelle@qq.com",
-            "firstName": "Jeanne",
-            "lastName": "Halvorson",
+            "id": 1,
+            "firstName": "Emily",
+            "lastName": "Johnson",
+            "maidenName": "Smith",
+            "age": 28,
             "gender": "female",
-            "image": "https://robohash.org/Jeanne.png?set=set4",
-            ... // other user fields
+            "email": "emily.johnson@x.dummyjson.com",
+            "image": "...",
+            /* rest user data */
           }
         </code></pre>
       </div>
@@ -139,7 +148,7 @@
       <div class="resource" id="users-single">
         <a href="#users-single" class="res-title">Get a single user</a>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users/1')
+          fetch('http://dummyjson.com/users/1')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -149,64 +158,72 @@
         <pre class="output"><code class="language-json">
           {
             "id": 1,
-            "firstName": "Terry",
-            "lastName": "Medhurst",
-            "maidenName": "Smitham",
-            "age": 50,
-            "gender": "male",
-            "email": "atuny0@sohu.com",
-            "phone": "+63 791 675 8914",
-            "username": "atuny0",
-            "password": "9uQFF1Lh",
-            "birthDate": "2000-12-25",
-            "image": ""https://robohash.org/Terry.png?set=set4",
-            "bloodGroup": "A-",
-            "height": 189,
-            "weight": 75.4,
+            "firstName": "Emily",
+            "lastName": "Johnson",
+            "maidenName": "Smith",
+            "age": 28,
+            "gender": "female",
+            "email": "emily.johnson@x.dummyjson.com",
+            "phone": "+81 965-431-3024",
+            "username": "emilys",
+            "password": "emilyspass",
+            "birthDate": "1996-5-30",
+            "image": "...",
+            "bloodGroup": "O-",
+            "height": 193.24,
+            "weight": 63.16,
             "eyeColor": "Green",
             "hair": {
-              "color": "Black",
-              "type": "Strands"
+              "color": "Brown",
+              "type": "Curly"
             },
-            "domain": "slashdot.org",
-            "ip": "117.29.86.254",
+            "ip": "42.48.100.32",
             "address": {
-              "address": "1745 T Street Southeast",
-              "city": "Washington",
+              "address": "626 Main Street",
+              "city": "Phoenix",
+              "state": "Mississippi",
+              "stateCode": "MS",
+              "postalCode": "29112",
               "coordinates": {
-                "lat": 38.867033,
-                "lng": -76.979235
+                "lat": -77.16213,
+                "lng": -92.084824
               },
-              "postalCode": "20020",
-              "state": "DC"
+              "country": "United States"
             },
-            "macAddress": "13:69:BA:56:A3:74",
-            "university": "Capitol University",
+            "macAddress": "47:fa:41:18:ec:eb",
+            "university": "University of Wisconsin--Madison",
             "bank": {
-              "cardExpire": "06/22",
-              "cardNumber": "50380955204220685",
-              "cardType": "maestro",
-              "currency": "Peso",
-              "iban": "NO17 0695 2754 967"
+              "cardExpire": "03/26",
+              "cardNumber": "9289760655481815",
+              "cardType": "Elo",
+              "currency": "CNY",
+              "iban": "YPUXISOBI7TTHPK2BR3HAIXL"
             },
             "company": {
+              "department": "Engineering",
+              "name": "Dooley, Kozey and Cronin",
+              "title": "Sales Manager",
               "address": {
-                "address": "629 Debbie Drive",
-                "city": "Nashville",
+                "address": "263 Tenth Street",
+                "city": "San Francisco",
+                "state": "Wisconsin",
+                "stateCode": "WI",
+                "postalCode": "37657",
                 "coordinates": {
-                  "lat": 36.208114,
-                  "lng": -86.58621199999999
+                  "lat": 71.814525,
+                  "lng": -161.150263
                 },
-                "postalCode": "37076",
-                "state": "TN"
-              },
-              "department": "Marketing",
-              "name": "Blanda-O'Keefe",
-              "title": "Help Desk Operator"
+                "country": "United States"
+              }
             },
-            "ein": "20-9487066",
-            "ssn": "661-64-2976",
-            "userAgent": "Mozilla/5.0 ..."
+            "ein": "977-175",
+            "ssn": "900-590-289",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+            "crypto": {
+              "coin": "Bitcoin",
+              "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
+              "network": "Ethereum (ERC20)"
+            }
           }
         </code></pre>
       </div>
@@ -214,7 +231,7 @@
       <div class="resource" id="users-search">
         <a href="#users-search" class="res-title">Search users</a>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users/search?q=John')
+          fetch('http://dummyjson.com/users/search?q=John')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -226,14 +243,17 @@
             "users": [
               {
                 "id": 50,
-                "firstName": "Johnathon", // name matched the search query
-                "lastName": "Predovic",
-                // rest user data
-              }
+                "firstName": "Emily",
+                "lastName": "Johnson", // name matched the search query
+                /* rest user data */
+              },
+              {...},
+              {...}
+              // 3 items
             ],
-            "total": 1,
+            "total": 3,
             "skip": 0,
-            "limit": 1
+            "limit": 3
           }
         </code></pre>
       </div>
@@ -247,7 +267,7 @@
           `limit`, `skip` and `select` works too.
         </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users/filter?key=hair.color&value=Brown')
+          fetch('http://dummyjson.com/users/filter?key=hair.color&value=Brown')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -258,18 +278,22 @@
           {
             "users": [
               {
-                "firstName": "Demetrius",
+                "firstName": "Emily",
                 "hair": {
                   "color": "Brown", // filter matched hair color
+                  type: "Curly"
                 },
-                "id": 9,
-                "lastName": "Corkery"
-                // rest user data
-              }
+                "id": 1,
+                "lastName": "Johnson"
+                /* rest user data */
+              },
+              {...},
+              {...}
+              // 23 items
             ],
-            "total": 26,
+            "total": 23,
             "skip": 0,
-            "limit": 26
+            "limit": 23
           }
         </code></pre>
       </div>
@@ -285,7 +309,7 @@
           to select specific data
         </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
+          fetch('http://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -297,31 +321,31 @@
             "users": [
               {
                 "id": 11, // 10 items were skipped
-                "firstName": "Marcel",
-                "age": 39
+                "firstName": "Liam",
+                "age": 29
               },
               {
                 "id": 12,
-                "firstName": "Assunta",
-                "age": 42
+                "firstName": "Mia",
+                "age": 24
               },
               {
                 "id": 13,
-                "firstName": "Trace",
-                "age": 26
+                "firstName": "Noah",
+                "age": 40
               },
               {
                 "id": 14,
-                "firstName": "Enoch",
-                "age": 21
+                "firstName": "Charlotte",
+                "age": 36
               },
               {
                 "id": 15,
-                "firstName": "Jeanne",
-                "age": 26
+                "firstName": "William",
+                "age": 32
               }
             ],
-            "total": 100,
+            "total": 208,
             "skip": 10, // 10 items were skipped
             "limit": 5 // limit was applied
           }
@@ -331,8 +355,8 @@
       <div class="resource" id="users-carts">
         <a href="#users-carts" class="res-title">Get user's carts by user id</a>
         <pre><code class="language-js">
-          /* getting carts of user with id 5 */
-          fetch('https://dummyjson.com/users/5/carts')
+          /* getting carts of user with id 6 */
+          fetch('http://dummyjson.com/users/6/carts')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -343,26 +367,26 @@
           {
             "carts": [
               {
-                "id": 19,
+                "id": 24,
                 "products": [
                   {
-                    "id": 43,
-                    "title": "frock gold printed",
-                    "price": 600,
-                    "quantity": 3,
-                    "total": 1800,
-                    "discountPercentage": 15.55,
-                    "discountedPrice": 1520
+                    "id": 108,
+                    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+                    "price": 29.99,
+                    "quantity": 5,
+                    "total": 149.95,
+                    "discountPercentage": 14.68,
+                    "discountedTotal": 127.94,
+                    "thumbnail": "..."
                   },
                   {...},
                   {...}
-                  // more products
                 ],
-                "total": 2492,
-                "discountedTotal": 2140,
-                "userId": 5, // user id is 5
-                "totalProducts": 5,
-                "totalQuantity": 14
+                "total": 1749.9,
+                "discountedTotal": 1594.33,
+                "userId": 6, // user id is 6
+                "totalProducts": 3,
+                "totalQuantity": 10
               }
             ],
             "total": 1,
@@ -376,7 +400,7 @@
         <a href="#users-posts" class="res-title">Get user's posts by user id</a>
         <pre><code class="language-js">
           /* getting posts of user with id 5 */
-          fetch('https://dummyjson.com/users/5/posts')
+          fetch('http://dummyjson.com/users/5/posts')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -387,23 +411,25 @@
           {
             "posts": [
               {
-                "id": 17,
-                "title": "She was in a hurry.",
-                "body": "She was in a hurry. /*... more data */  ",
+                "id": 61,
+                "title": "I'm going to hire professional help tomorrow.",
+                "body": "I'm going to hire professional help tomorrow. /*... more data */  ",
                 "userId": 5, // user id is 5
                 "tags": [
-                  "french",
-                  "magical",
-                  "english"
+                "fiction"
+                  "classic"
+                  "american"
                 ],
-                "reactions": 0
+                "reactions": {
+                  "likes": 1127,
+                  "dislikes": 40
+                }
               },
-              {...},
               {...}
             ],
-            "total": 3,
+            "total": 2,
             "skip": 0,
-            "limit": 3
+            "limit": 2
           }
         </code></pre>
       </div>
@@ -412,7 +438,7 @@
         <a href="#users-todos" class="res-title">Get user's todos by user id</a>
         <pre><code class="language-js">
           /* getting todos of user with id 5 */
-          fetch('https://dummyjson.com/users/5/todos')
+          fetch('http://dummyjson.com/users/5/todos')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -456,7 +482,7 @@
           It will simulate a POST request and will return the new created user with a new id
         </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users/add', {
+          fetch('http://dummyjson.com/users/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -474,11 +500,11 @@
 
         <pre class="output"><code class="language-json">
           {
-            "id": 101,
+            "id": 209,
             "firstName": "Muhammad",
             "lastName": "Ovi",
             "age": 250,
-            /* other user data */
+            /* rest user data */
           }
         </code></pre>
       </div>
@@ -491,8 +517,8 @@
           It will simulate a PUT/PATCH request and will return updated user with modified data
         </p>
         <pre><code class="language-js">
-          /* updating lastName of user with id 1 */
-          fetch('https://dummyjson.com/users/1', {
+          /* updating lastName of user with id 2 */
+          fetch('http://dummyjson.com/users/2', {
             method: 'PUT', /* or PATCH */
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -507,11 +533,9 @@
 
         <pre class="output"><code class="language-json">
           {
-            "id": "1",
-            "firstName": "Terry",
-            "lastName": "Owais",
-            "email": "atuny0@sohu.com",
-            "phone": "+63 791 675 8914",
+            "id": "2",
+            "firstName": "Michael",
+            "lastName": "Owais", // only lastName is updated
             "gender": "male",
             /* other user data */
           }
@@ -526,7 +550,7 @@
           It will simulate a DELETE request and will return deleted user with `isDeleted` & `deletedOn` keys
         </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/users/1', {
+          fetch('http://dummyjson.com/users/1', {
             method: 'DELETE',
           })
           .then(res => res.json())
@@ -538,11 +562,11 @@
         <pre class="output"><code class="language-json">
           {
             "id": 1,
-            "firstName": "Terry",
-            "lastName": "Medhurst",
-            "maidenName": "Smitham",
-            "age": 50,
-            "gender": "male",
+            "firstName": "Emily",
+            "lastName": "Johnson",
+            "maidenName": "Smith",
+            "age": 28,
+            "gender": "female",
           
             /* other user data */
           

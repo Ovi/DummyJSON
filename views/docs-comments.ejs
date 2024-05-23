@@ -38,19 +38,23 @@
               {
                 "id": 1,
                 "body": "This is some awesome thinking!",
-                "postId": 100,
+                "postId": 242,
+                "likes": 3,
                 "user": {
-                  "id": 63,
-                  "username": "eburras1q"
+                  "id": 105,
+                  "username": "emmac",
+                  "fullName": "Emma Wilson"
                 }
               },
               {
                 "id": 2,
                 "body": "What terrific math skills you're showing!",
-                "postId": 27,
+                "postId": 46,
+                "likes": 4,
                 "user": {
-                  "id": 71,
-                  "username": "omarsland1y"
+                  "id": 183,
+                  "username": "cameronp",
+                  "fullName": "Cameron Perez"
                 }
               },
               {...},
@@ -78,10 +82,12 @@
           {
             "id": 1,
             "body": "This is some awesome thinking!",
-            "postId": 100,
+            "postId": 242,
+            "likes": 3,
             "user": {
-              "id": 63,
-              "username": "eburras1q"
+              "id": 105,
+              "username": "emmac",
+              "fullName": "Emma Wilson"
             }
           }
         </code></pre>
@@ -111,10 +117,12 @@
               {
                 "id": 11,
                 "body": "It was a pleasure to grade this!",
-                "postId": 2,
+                "postId": 156,
+                "likes": 8,
                 "user": {
-                  "id": 68,
-                  "username": "rstrettle1v"
+                  "id": 162,
+                  "username": "mateob",
+                  "fullName": "Mateo Bennett"
                 }
               },
               {...},
@@ -132,7 +140,7 @@
       <div class="resource" id="comments-post">
         <a href="#comments-post" class="res-title">Get all comments by post id</a>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/comments/post/5')
+          fetch('https://dummyjson.com/comments/post/6')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -143,20 +151,20 @@
           {
             "comments": [
               {
-                "id": 64,
-                "body": "You amaze me!",
-                "postId": 5, // post id is 5
+                "id": 15,
+                "body": "You've shown so much growth!",
+                "postId": 6, // post id is 6
+                "likes": 2,
                 "user": {
-                  "id": 39,
-                  "username": "lgherardi12"
+                  "id": 17,
+                  "username": "evelyns",
+                  "fullName": "Evelyn Sanchez"
                 }
-              },
-              {...},
-              {...}
+              }
             ],
-            "total": 3,
+            "total": 1,
             "skip": 0,
-            "limit": 3
+            "limit": 1
           }
         </code></pre>
       </div>
@@ -191,7 +199,8 @@
             "postId": 3,
             "user": {
               "id": 5,
-              "username": "kmeus4"
+              "username": "emmaj",
+              fullName: "Emma Miller"
             }
           }
         </code></pre>
@@ -223,10 +232,12 @@
           {
             "id": 1,
             "body": "I think I should shift to the moon", // only body was updated
-            "postId": 100,
+            "postId": 242,
+            "likes": 3,
             "user": {
-              "id": 63,
-              "username": "eburras1q"
+              "id": 105,
+              "username": "emmac",
+              "fullName": "Emma Wilson"
             }
           }
         </code></pre>
@@ -253,10 +264,12 @@
           {
             "id": 1,
             "body": "This is some awesome thinking!",
-            "postId": 100,
+            "postId": 242,
+            "likes": 3,
             "user": {
-                "id": 63,
-                "username": "eburras1q"
+              "id": 105,
+              "username": "emmac",
+              "fullName": "Emma Wilson"
             },
             "isDeleted": true,
             "deletedOn": /* ISOTime */
