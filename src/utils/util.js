@@ -144,12 +144,38 @@ utils.deepFreeze = function(obj) {
   return obj;
 };
 
+utils.deepCopy = obj => {
+  if (typeof obj !== 'object' || obj === null) {
+    return obj;
+  }
+
+  const copy = Array.isArray(obj) ? [] : {};
+  Object.keys(obj).forEach(key => {
+    copy[key] = utils.deepCopy(obj[key]);
+  });
+  return copy;
+};
+
 utils.getNestedValue = (obj, keys) => {
   return keys.split('.').reduce((o, k) => (o || {})[k], obj);
 };
 
 utils.limitArray = (arr, limit) => {
   return limit === 0 || limit > arr.length ? arr : arr.slice(0, limit);
+};
+
+utils.sortArray = (arr, sortBy, order) => {
+  const arrCopy = utils.deepCopy(arr);
+
+  const sortedArray = arrCopy.sort((a, b) => {
+    if (a[sortBy] === b[sortBy]) return 0;
+    if (order === 'asc') {
+      return a[sortBy] > b[sortBy] ? 1 : -1;
+    }
+    return a[sortBy] < b[sortBy] ? 1 : -1;
+  });
+
+  return sortedArray;
 };
 
 utils.capitalize = str => {

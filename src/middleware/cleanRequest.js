@@ -17,8 +17,8 @@ const cleanRequest = (req, res, next) => {
     const options = {};
     req._options = options;
 
-    const { limit = 30, skip = 0, q, key, value, delay } = req.query;
-    let { select } = req.query;
+    const { limit = 30, skip = 0, q, key, value, delay, sortBy } = req.query;
+    let { select, order } = req.query;
 
     if (!isNumber(limit)) {
       throw new APIError('Invalid limit', 400);
@@ -52,13 +52,25 @@ const cleanRequest = (req, res, next) => {
       }
     }
 
-    let searchQuery = q;
+    let searchQuery = (q || '').trim().toLowerCase();
 
     if (searchQuery) {
       searchQuery = searchQuery
         .toLowerCase()
         .split('-')
         .join(' ');
+    }
+
+    if (order && sortBy) {
+      order = order.toLowerCase();
+
+      if (order !== 'asc' && order !== 'desc') {
+        throw new APIError('order can be: "asc" or "desc"', 400);
+      }
+    }
+
+    if (sortBy && !order) {
+      order = 'asc';
     }
 
     options.limit = parseInt(limit, 10);
@@ -68,6 +80,8 @@ const cleanRequest = (req, res, next) => {
     options.q = searchQuery;
     options.key = key;
     options.value = value;
+    options.sortBy = sortBy;
+    options.order = order;
 
     if (req.headers['content-type']?.startsWith('multipart/form-data')) {
       upload.none()(req, res, next);

@@ -4,14 +4,17 @@ const {
   getMultiObjectSubset,
   getObjectSubset,
   limitArray,
+  sortArray,
 } = require('../utils/util');
 
 const controller = {};
 
 // get all products
-controller.getAllProducts = ({ limit, skip, select }) => {
-  let [...products] = frozenData.products;
+controller.getAllProducts = ({ limit, skip, select, sortBy, order }) => {
+  let products = [...frozenData.products];
   const total = products.length;
+
+  products = sortArray(products, sortBy, order);
 
   if (skip > 0) {
     products = products.slice(skip);
@@ -29,14 +32,18 @@ controller.getAllProducts = ({ limit, skip, select }) => {
 };
 
 // search products
-controller.searchProducts = ({ limit, skip, select, q: searchQuery }) => {
-  let [...products] = frozenData.products.filter(p => {
+controller.searchProducts = _options => {
+  const { limit, skip, select, q: searchQuery, sortBy, order } = _options;
+
+  let products = frozenData.products.filter(p => {
     return (
       p.title.toLowerCase().includes(searchQuery) ||
       p.description.toLowerCase().includes(searchQuery)
     );
   });
   const total = products.length;
+
+  products = sortArray(products, sortBy, order);
 
   if (skip > 0) {
     products = products.slice(skip);
@@ -82,12 +89,14 @@ controller.getProductById = ({ id, select }) => {
 
 // get products by categoryName
 controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
-  const { limit, skip, select } = _options;
+  const { limit, skip, select, sortBy, order } = _options;
 
-  let [...products] = frozenData.products.filter(
+  let products = frozenData.products.filter(
     p => p.category.toLowerCase() === categoryName.toLowerCase(),
   );
   const total = products.length;
+
+  products = sortArray(products, sortBy, order);
 
   if (skip > 0) {
     products = products.slice(skip);

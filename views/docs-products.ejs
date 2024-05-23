@@ -246,6 +246,45 @@
         </code></pre>
       </div>
 
+      <div class="resource" id="products-sort">
+        <a href="#products-sort" class="res-title">Sort products</a>
+        <p class="res-tip">
+          You can pass `sortBy` and `order` params to sort the results,
+          `sortBy` should be field name and `order` should be "asc" or "desc"
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products?sortBy=title&order=asc')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 167,
+                "title": "300 Touring", // sorted by title in ascending order
+                "price": 28999.99
+                /* rest product data */
+              },
+              {
+                "id": 99,
+                "title": "Amazon Echo Plus", // sorted by title in ascending order
+                "price": 99.99
+                /* rest product data */
+              },
+              {...}
+              // 30 items
+            ],
+            "total": 194,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
+      </div>
+
       <div class="resource" id="products-categories">
         <a href="#products-categories" class="res-title">Get all products categories</a>
         <pre><code class="language-js">
@@ -281,8 +320,8 @@
         </code></pre>
       </div>
 
-      <div class="resource" id="products-category-list">
-        <a href="#products-category-list" class="res-title">Get products category list</a>
+      <div class="resource" id="products-category_list">
+        <a href="#products-category_list" class="res-title">Get products category list</a>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/category-list')
           .then(res => res.json())

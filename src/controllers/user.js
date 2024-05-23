@@ -5,14 +5,19 @@ const {
   getObjectSubset,
   getNestedValue,
   limitArray,
+  sortArray,
 } = require('../utils/util');
 
 const controller = {};
 
 // get all users
-controller.getAllUsers = ({ limit, skip, select }) => {
-  let [...users] = frozenData.users;
+controller.getAllUsers = _options => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let users = [...frozenData.users];
   const total = users.length;
+
+  users = sortArray(users, sortBy, order);
 
   if (skip > 0) {
     users = users.slice(skip);
@@ -30,8 +35,10 @@ controller.getAllUsers = ({ limit, skip, select }) => {
 };
 
 // search users
-controller.searchUsers = ({ limit, skip, select, q: searchQuery }) => {
-  let [...users] = frozenData.users.filter(u => {
+controller.searchUsers = ({ q: searchQuery, ..._options }) => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let users = frozenData.users.filter(u => {
     return (
       u.firstName.toLowerCase().includes(searchQuery) ||
       u.lastName.toLowerCase().includes(searchQuery) ||
@@ -40,6 +47,8 @@ controller.searchUsers = ({ limit, skip, select, q: searchQuery }) => {
     );
   });
   const total = users.length;
+
+  users = sortArray(users, sortBy, order);
 
   if (skip > 0) {
     users = users.slice(skip);
@@ -57,13 +66,16 @@ controller.searchUsers = ({ limit, skip, select, q: searchQuery }) => {
 };
 
 // filter users
-controller.filterUsers = ({ limit, skip, select, key, value }) => {
-  let [...users] = frozenData.users.filter(u => {
+controller.filterUsers = ({ key, value, ..._options }) => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let users = frozenData.users.filter(u => {
     const val = getNestedValue(u, key);
     return val && val.toString() === value;
   });
-
   const total = users.length;
+
+  users = sortArray(users, sortBy, order);
 
   if (skip > 0) {
     users = users.slice(skip);

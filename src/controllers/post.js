@@ -4,14 +4,19 @@ const {
   getMultiObjectSubset,
   getObjectSubset,
   limitArray,
+  sortArray,
 } = require('../utils/util');
 
 const controller = {};
 
 // get all posts
-controller.getAllPosts = ({ limit, skip, select }) => {
-  let [...posts] = frozenData.posts;
+controller.getAllPosts = _options => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let { posts } = frozenData;
   const total = posts.length;
+
+  posts = sortArray(posts, sortBy, order);
 
   if (skip > 0) {
     posts = posts.slice(skip);
@@ -29,11 +34,15 @@ controller.getAllPosts = ({ limit, skip, select }) => {
 };
 
 // search posts
-controller.searchPosts = ({ limit, skip, select, q: searchQuery }) => {
-  let [...posts] = frozenData.posts.filter(p => {
+controller.searchPosts = ({ q: searchQuery, ..._options }) => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let posts = frozenData.posts.filter(p => {
     return p.body.toLowerCase().includes(searchQuery);
   });
   const total = posts.length;
+
+  posts = sortArray(posts, sortBy, order);
 
   if (skip > 0) {
     posts = posts.slice(skip);
@@ -62,11 +71,15 @@ controller.getPostById = ({ id, select }) => {
 };
 
 // get posts by userId
-controller.getPostsByUserId = ({ userId, limit, skip, select }) => {
+controller.getPostsByUserId = ({ userId, ..._options }) => {
+  const { limit, skip, select, sortBy, order } = _options;
+
   verifyUserHandler(userId);
 
-  let [...posts] = frozenData.posts.filter(p => p.userId.toString() === userId);
+  let posts = frozenData.posts.filter(p => p.userId.toString() === userId);
   const total = posts.length;
+
+  posts = sortArray(posts, sortBy, order);
 
   if (skip > 0) {
     posts = posts.slice(skip);

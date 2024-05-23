@@ -31,9 +31,8 @@ router.get('/:id', (req, res) => {
 // get posts by userId
 router.get('/user/:userId', (req, res) => {
   const { userId } = req.params;
-  const { limit, skip, select } = req._options;
 
-  res.send(getPostsByUserId({ userId, limit, skip, select }));
+  res.send(getPostsByUserId({ userId, ...req._options }));
 });
 
 // get comments by postId
