@@ -66,7 +66,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "admin"
   },
   {
     "id": 2,
@@ -135,7 +136,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "admin"
   },
   {
     "id": 3,
@@ -204,7 +206,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "admin"
   },
   {
     "id": 4,
@@ -273,7 +276,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "admin"
   },
   {
     "id": 5,
@@ -342,7 +346,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "admin"
   },
   {
     "id": 6,
@@ -411,7 +416,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 7,
@@ -480,7 +486,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 8,
@@ -549,7 +556,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 9,
@@ -618,7 +626,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 10,
@@ -687,7 +696,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 11,
@@ -756,7 +766,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 12,
@@ -825,7 +836,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 13,
@@ -894,7 +906,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 14,
@@ -963,7 +976,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 15,
@@ -1032,7 +1046,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "moderator"
   },
   {
     "id": 16,
@@ -1101,7 +1116,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 17,
@@ -1170,7 +1186,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 18,
@@ -1239,7 +1256,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 19,
@@ -1308,7 +1326,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 20,
@@ -1377,7 +1396,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 21,
@@ -1446,7 +1466,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 22,
@@ -1515,7 +1536,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 23,
@@ -1584,7 +1606,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 24,
@@ -1653,7 +1676,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 25,
@@ -1722,7 +1746,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 26,
@@ -1791,7 +1816,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 27,
@@ -1860,7 +1886,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 28,
@@ -1929,7 +1956,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 29,
@@ -1998,7 +2026,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 30,
@@ -2067,7 +2096,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 31,
@@ -2136,7 +2166,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 32,
@@ -2205,7 +2236,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 33,
@@ -2274,7 +2306,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 34,
@@ -2343,7 +2376,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 35,
@@ -2412,7 +2446,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 36,
@@ -2481,7 +2516,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 37,
@@ -2550,7 +2586,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 38,
@@ -2619,7 +2656,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 39,
@@ -2688,7 +2726,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 40,
@@ -2757,7 +2796,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 41,
@@ -2826,7 +2866,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 42,
@@ -2895,7 +2936,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 43,
@@ -2964,7 +3006,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 44,
@@ -3033,7 +3076,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 45,
@@ -3102,7 +3146,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 46,
@@ -3171,7 +3216,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 47,
@@ -3240,7 +3286,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 48,
@@ -3309,7 +3356,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 49,
@@ -3378,7 +3426,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 50,
@@ -3447,7 +3496,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 51,
@@ -3516,7 +3566,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 52,
@@ -3585,7 +3636,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 53,
@@ -3654,7 +3706,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 54,
@@ -3723,7 +3776,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 55,
@@ -3792,7 +3846,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 56,
@@ -3861,7 +3916,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 57,
@@ -3930,7 +3986,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 58,
@@ -3999,7 +4056,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 59,
@@ -4068,7 +4126,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 60,
@@ -4137,7 +4196,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 61,
@@ -4206,7 +4266,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 62,
@@ -4275,7 +4336,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 63,
@@ -4344,7 +4406,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 64,
@@ -4413,7 +4476,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 65,
@@ -4482,7 +4546,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 66,
@@ -4551,7 +4616,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 67,
@@ -4620,7 +4686,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 68,
@@ -4689,7 +4756,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 69,
@@ -4758,7 +4826,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 70,
@@ -4827,7 +4896,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 71,
@@ -4896,7 +4966,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 72,
@@ -4965,7 +5036,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 73,
@@ -5034,7 +5106,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 74,
@@ -5103,7 +5176,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 75,
@@ -5172,7 +5246,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 76,
@@ -5241,7 +5316,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 77,
@@ -5310,7 +5386,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 78,
@@ -5379,7 +5456,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 79,
@@ -5448,7 +5526,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 80,
@@ -5517,7 +5596,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 81,
@@ -5586,7 +5666,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 82,
@@ -5655,7 +5736,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 83,
@@ -5724,7 +5806,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 84,
@@ -5793,7 +5876,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 85,
@@ -5862,7 +5946,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 86,
@@ -5931,7 +6016,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 87,
@@ -6000,7 +6086,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 88,
@@ -6069,7 +6156,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 89,
@@ -6138,7 +6226,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 90,
@@ -6207,7 +6296,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 91,
@@ -6276,7 +6366,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 92,
@@ -6345,7 +6436,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 93,
@@ -6414,7 +6506,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 94,
@@ -6483,7 +6576,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 95,
@@ -6552,7 +6646,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 96,
@@ -6621,7 +6716,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 97,
@@ -6690,7 +6786,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 98,
@@ -6759,7 +6856,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 99,
@@ -6828,7 +6926,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 100,
@@ -6897,7 +6996,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 101,
@@ -6966,7 +7066,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 102,
@@ -7035,7 +7136,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 103,
@@ -7104,7 +7206,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 104,
@@ -7173,7 +7276,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 105,
@@ -7242,7 +7346,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 106,
@@ -7311,7 +7416,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 107,
@@ -7380,7 +7486,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 108,
@@ -7449,7 +7556,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 109,
@@ -7518,7 +7626,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 110,
@@ -7587,7 +7696,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 111,
@@ -7656,7 +7766,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 112,
@@ -7725,7 +7836,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 113,
@@ -7794,7 +7906,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 114,
@@ -7863,7 +7976,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 115,
@@ -7932,7 +8046,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 116,
@@ -8001,7 +8116,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 117,
@@ -8070,7 +8186,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 118,
@@ -8139,7 +8256,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 119,
@@ -8208,7 +8326,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 120,
@@ -8277,7 +8396,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 121,
@@ -8346,7 +8466,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 122,
@@ -8415,7 +8536,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 123,
@@ -8484,7 +8606,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 124,
@@ -8553,7 +8676,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 125,
@@ -8622,7 +8746,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 126,
@@ -8691,7 +8816,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 127,
@@ -8760,7 +8886,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 128,
@@ -8829,7 +8956,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 129,
@@ -8898,7 +9026,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 130,
@@ -8967,7 +9096,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 131,
@@ -9036,7 +9166,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 132,
@@ -9105,7 +9236,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 133,
@@ -9174,7 +9306,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 134,
@@ -9243,7 +9376,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 135,
@@ -9312,7 +9446,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 136,
@@ -9381,7 +9516,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 137,
@@ -9450,7 +9586,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 138,
@@ -9519,7 +9656,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 139,
@@ -9588,7 +9726,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 140,
@@ -9657,7 +9796,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 141,
@@ -9726,7 +9866,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 142,
@@ -9795,7 +9936,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 143,
@@ -9864,7 +10006,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 144,
@@ -9933,7 +10076,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 145,
@@ -10002,7 +10146,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 146,
@@ -10071,7 +10216,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 147,
@@ -10140,7 +10286,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 148,
@@ -10209,7 +10356,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 149,
@@ -10278,7 +10426,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 150,
@@ -10347,7 +10496,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 151,
@@ -10416,7 +10566,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 152,
@@ -10485,7 +10636,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 153,
@@ -10554,7 +10706,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 154,
@@ -10623,7 +10776,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 155,
@@ -10692,7 +10846,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 156,
@@ -10761,7 +10916,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 157,
@@ -10830,7 +10986,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 158,
@@ -10899,7 +11056,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 159,
@@ -10968,7 +11126,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 160,
@@ -11037,7 +11196,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 161,
@@ -11106,7 +11266,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 162,
@@ -11175,7 +11336,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 163,
@@ -11244,7 +11406,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 164,
@@ -11313,7 +11476,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 165,
@@ -11382,7 +11546,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 166,
@@ -11451,7 +11616,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 167,
@@ -11520,7 +11686,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 168,
@@ -11589,7 +11756,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 169,
@@ -11658,7 +11826,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 170,
@@ -11727,7 +11896,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 171,
@@ -11796,7 +11966,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 172,
@@ -11865,7 +12036,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 173,
@@ -11934,7 +12106,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 174,
@@ -12003,7 +12176,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 175,
@@ -12072,7 +12246,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 176,
@@ -12141,7 +12316,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 177,
@@ -12210,7 +12386,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 178,
@@ -12279,7 +12456,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 179,
@@ -12348,7 +12526,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 180,
@@ -12417,7 +12596,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 181,
@@ -12486,7 +12666,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 182,
@@ -12555,7 +12736,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 183,
@@ -12624,7 +12806,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 184,
@@ -12693,7 +12876,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 185,
@@ -12762,7 +12946,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 186,
@@ -12831,7 +13016,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 187,
@@ -12900,7 +13086,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 188,
@@ -12969,7 +13156,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 189,
@@ -13038,7 +13226,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 190,
@@ -13107,7 +13296,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 191,
@@ -13176,7 +13366,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 192,
@@ -13245,7 +13436,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 193,
@@ -13314,7 +13506,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 194,
@@ -13383,7 +13576,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 195,
@@ -13452,7 +13646,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 196,
@@ -13521,7 +13716,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 197,
@@ -13590,7 +13786,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 198,
@@ -13659,7 +13856,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 199,
@@ -13728,7 +13926,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 200,
@@ -13797,7 +13996,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 201,
@@ -13866,7 +14066,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 202,
@@ -13935,7 +14136,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 203,
@@ -14004,7 +14206,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 204,
@@ -14073,7 +14276,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 205,
@@ -14142,7 +14346,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 206,
@@ -14211,7 +14416,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 207,
@@ -14280,7 +14486,8 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   },
   {
     "id": 208,
@@ -14349,6 +14556,7 @@
       "coin": "Bitcoin",
       "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
       "network": "Ethereum (ERC20)"
-    }
+    },
+    "role": "user"
   }
 ]

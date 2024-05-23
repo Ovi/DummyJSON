@@ -19,6 +19,11 @@ const {
   userAgents,
 } = require('./constants');
 
+const roles = {
+  admin: 5,
+  moderator: 10,
+};
+
 function generateData() {
   const _usernames = [];
 
@@ -79,6 +84,7 @@ function generateData() {
           wallet: '0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a',
           network: 'Ethereum (ERC20)',
         },
+        role: getRole(),
       };
     });
 
@@ -193,4 +199,18 @@ function generateRandomEIN() {
       .padStart(2, '0'),
   ).join('-');
   return ein;
+}
+
+function getRole() {
+  if (roles.admin > 0) {
+    roles.admin -= 1;
+    return 'admin';
+  }
+
+  if (roles.moderator > 0) {
+    roles.moderator -= 1;
+    return 'moderator';
+  }
+
+  return 'user';
 }
