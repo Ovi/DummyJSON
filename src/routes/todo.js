@@ -14,9 +14,9 @@ router.get('/', (req, res) => {
   res.send(getAllTodos({ ...req._options }));
 });
 
-// get random todo
-router.get('/random', (req, res) => {
-  res.send(getRandomTodo());
+// get random todo(s)
+router.get('/random/:length?', (req, res) => {
+  res.send(getRandomTodo({ ...req.params }));
 });
 
 // get todo by id

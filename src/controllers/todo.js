@@ -4,6 +4,8 @@ const {
   dataInMemory: frozenData,
   getMultiObjectSubset,
   limitArray,
+  getRandomFromArray,
+  isValidNumberInRange,
 } = require('../utils/util');
 
 const controller = {};
@@ -24,13 +26,30 @@ controller.getAllTodos = ({ limit, skip }) => {
   return result;
 };
 
-// get random todo
-controller.getRandomTodo = () => {
+// get random todo(s)
+controller.getRandomTodo = ({ length }) => {
   const { todos } = frozenData;
 
-  const randomIdx = Math.floor(Math.random() * todos.length);
+  if (!length) {
+    return getRandomFromArray(todos);
+  }
 
-  return todos[randomIdx];
+  if (!isValidNumberInRange(length, 1, 10)) {
+    return [];
+  }
+
+  const uniqueRandomTodos = [];
+  const todosIds = [];
+
+  while (uniqueRandomTodos.length < length) {
+    const randomQuote = getRandomFromArray(todos);
+    if (!todosIds.includes(randomQuote.id)) {
+      uniqueRandomTodos.push(randomQuote);
+      todosIds.push(randomQuote.id);
+    }
+  }
+
+  return uniqueRandomTodos;
 };
 
 // get todo by id

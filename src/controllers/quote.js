@@ -1,5 +1,10 @@
 const APIError = require('../utils/error');
-const { dataInMemory: frozenData, limitArray } = require('../utils/util');
+const {
+  dataInMemory: frozenData,
+  limitArray,
+  isValidNumberInRange,
+  getRandomFromArray,
+} = require('../utils/util');
 
 const controller = {};
 
@@ -19,13 +24,30 @@ controller.getAllQuotes = ({ limit, skip }) => {
   return result;
 };
 
-// get random quote
-controller.getRandomQuote = () => {
+// get random quote(s)
+controller.getRandomQuote = ({ length }) => {
   const { quotes } = frozenData;
 
-  const randomIdx = Math.floor(Math.random() * quotes.length);
+  if (!length) {
+    return getRandomFromArray(quotes);
+  }
 
-  return quotes[randomIdx];
+  if (!isValidNumberInRange(length, 1, 10)) {
+    return [];
+  }
+
+  const uniqueRandomQuotes = [];
+  const quoteIds = [];
+
+  while (uniqueRandomQuotes.length < length) {
+    const randomQuote = getRandomFromArray(quotes);
+    if (!quoteIds.includes(randomQuote.id)) {
+      uniqueRandomQuotes.push(randomQuote);
+      quoteIds.push(randomQuote.id);
+    }
+  }
+
+  return uniqueRandomQuotes;
 };
 
 // get quote by id

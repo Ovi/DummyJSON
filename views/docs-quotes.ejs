@@ -82,6 +82,11 @@
 
       <div class="resource" id="quotes-random">
         <a href="#quotes-random" class="res-title">Get a random quote</a>
+        <p class="res-tip">
+          The random data will change on every call to `/random`.
+          <br />
+          You can optionally pass a length of max 10 as `/random/10`.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/quotes/random')
           .then(res => res.json())

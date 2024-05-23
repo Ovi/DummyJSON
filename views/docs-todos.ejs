@@ -74,6 +74,11 @@
 
       <div class="resource" id="todos-random">
         <a href="#todos-random" class="res-title">Get a random todo</a>
+        <p class="res-tip">
+          The random data will change on every call to `/random`.
+          <br />
+          You can optionally pass a length of max 10 as `/random/10`.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/todos/random')
           .then(res => res.json())

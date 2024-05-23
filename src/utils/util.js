@@ -152,4 +152,13 @@ utils.capitalize = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+utils.isValidNumberInRange = (num, start, end) => {
+  const parsedNum = Number(num);
+  return !Number.isNaN(parsedNum) && parsedNum >= start && parsedNum <= end;
+};
+
+utils.getRandomFromArray = array => {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
 module.exports = utils;

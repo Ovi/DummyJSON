@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
   res.send(getAllQuotes({ ...req._options }));
 });
 
-// get random quote
-router.get('/random', (req, res) => {
-  res.send(getRandomQuote());
+// get random quote(s)
+router.get('/random/:length?', (req, res) => {
+  res.send(getRandomQuote({ ...req.params }));
 });
 
 // get quote by id

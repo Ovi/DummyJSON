@@ -1,5 +1,6 @@
 const crypto = require('node:crypto');
 const jdenticon = require('jdenticon');
+const { isValidNumberInRange } = require('../utils/util');
 
 const controller = {};
 
@@ -12,7 +13,7 @@ controller.generateIcon = ({ hash, size, type }) => {
 
   let s = size;
 
-  if (!isValidNumberInRange(size)) {
+  if (!isValidNumberInRange(size, 1, 1000)) {
     s = '100';
   }
 
@@ -22,8 +23,3 @@ controller.generateIcon = ({ hash, size, type }) => {
 };
 
 module.exports = controller;
-
-function isValidNumberInRange(num) {
-  const parsedNum = Number(num);
-  return !Number.isNaN(parsedNum) && parsedNum >= 1 && parsedNum <= 1000;
-}
