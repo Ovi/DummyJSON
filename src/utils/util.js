@@ -27,7 +27,7 @@ utils.dataInMemory = data;
 utils.isDev = process.env.NODE_ENV !== 'production';
 
 utils.loadDataInMemory = async () => {
-  const baseDir = path.join(__dirname, '../', 'data');
+  const baseDir = './database';
 
   const productsPath = path.join(baseDir, 'products.json');
   const cartsPath = path.join(baseDir, 'carts.json');

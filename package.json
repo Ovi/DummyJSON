@@ -1,6 +1,6 @@
 {
   "name": "dummyjson",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
@@ -9,7 +9,7 @@
     "watch:minify-public-js": "node scripts/minify-public-js.js"
   },
   "engines": {
-    "node": ">=16.0"
+    "node": ">=18.0"
   },
   "license": "MIT",
   "dependencies": {
