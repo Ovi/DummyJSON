@@ -93,6 +93,27 @@ html {
         &.active {
           color: $primary-color-dark;
         }
+
+        &.parent-menu-item {
+          display: flex;
+          align-items: center;
+
+          svg {
+            color: inherit;
+            height: 1.5rem;
+            width: 1.5rem;
+            margin-right: 0.5rem;
+            opacity: 0.5;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover,
+          &.active {
+            svg {
+              opacity: 0.75;
+            }
+          }
+        }
       }
 
       // standalone menu items
