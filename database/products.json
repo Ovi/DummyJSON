@@ -5888,7 +5888,7 @@
     "id": 99,
     "title": "Amazon Echo Plus",
     "description": "The Amazon Echo Plus is a smart speaker with built-in Alexa voice control. It features premium sound quality and serves as a hub for controlling smart home devices.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 99.99,
     "discountPercentage": 16.3,
     "rating": 3.52,
@@ -5940,16 +5940,16 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Amazon%20Echo%20Plus/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Amazon%20Echo%20Plus/2.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Amazon%20Echo%20Plus/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Amazon%20Echo%20Plus/2.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Amazon%20Echo%20Plus/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Amazon%20Echo%20Plus/thumbnail.png"
   },
   {
     "id": 100,
     "title": "Apple Airpods",
     "description": "The Apple Airpods offer a seamless wireless audio experience. With easy pairing, high-quality sound, and Siri integration, they are perfect for on-the-go listening.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 129.99,
     "discountPercentage": 4.82,
     "rating": 4.38,
@@ -6001,17 +6001,17 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpods/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpods/2.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpods/3.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/2.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/3.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpods/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/thumbnail.png"
   },
   {
     "id": 101,
     "title": "Apple AirPods Max Silver",
     "description": "The Apple AirPods Max in Silver are premium over-ear headphones with high-fidelity audio, adaptive EQ, and active noise cancellation. Experience immersive sound in style.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 549.99,
     "discountPercentage": 11.7,
     "rating": 3.11,
@@ -6063,15 +6063,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20AirPods%20Max%20Silver/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20AirPods%20Max%20Silver/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20AirPods%20Max%20Silver/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20AirPods%20Max%20Silver/thumbnail.png"
   },
   {
     "id": 102,
     "title": "Apple Airpower Wireless Charger",
     "description": "The Apple AirPower Wireless Charger provides a convenient way to charge your compatible Apple devices wirelessly. Simply place your devices on the charging mat for effortless charging.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 79.99,
     "discountPercentage": 6.54,
     "rating": 4.51,
@@ -6123,15 +6123,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpower%20Wireless%20Charger/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpower%20Wireless%20Charger/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Airpower%20Wireless%20Charger/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpower%20Wireless%20Charger/thumbnail.png"
   },
   {
     "id": 103,
     "title": "Apple HomePod Mini Cosmic Grey",
     "description": "The Apple HomePod Mini in Cosmic Grey is a compact smart speaker that delivers impressive audio and integrates seamlessly with the Apple ecosystem for a smart home experience.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 99.99,
     "discountPercentage": 3.7,
     "rating": 4.51,
@@ -6183,15 +6183,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20HomePod%20Mini%20Cosmic%20Grey/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20HomePod%20Mini%20Cosmic%20Grey/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20HomePod%20Mini%20Cosmic%20Grey/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20HomePod%20Mini%20Cosmic%20Grey/thumbnail.png"
   },
   {
     "id": 104,
     "title": "Apple iPhone Charger",
     "description": "The Apple iPhone Charger is a high-quality charger designed for fast and efficient charging of your iPhone. Ensure your device stays powered up and ready to go.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 19.99,
     "discountPercentage": 1.01,
     "rating": 3.03,
@@ -6243,16 +6243,16 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20iPhone%20Charger/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20iPhone%20Charger/2.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20iPhone%20Charger/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20iPhone%20Charger/2.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20iPhone%20Charger/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20iPhone%20Charger/thumbnail.png"
   },
   {
     "id": 105,
     "title": "Apple MagSafe Battery Pack",
     "description": "The Apple MagSafe Battery Pack is a portable and convenient way to add extra battery life to your MagSafe-compatible iPhone. Attach it magnetically for a secure connection.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 99.99,
     "discountPercentage": 10.27,
     "rating": 2.61,
@@ -6304,16 +6304,16 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20MagSafe%20Battery%20Pack/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20MagSafe%20Battery%20Pack/2.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20MagSafe%20Battery%20Pack/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20MagSafe%20Battery%20Pack/2.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20MagSafe%20Battery%20Pack/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20MagSafe%20Battery%20Pack/thumbnail.png"
   },
   {
     "id": 106,
     "title": "Apple Watch Series 4 Gold",
     "description": "The Apple Watch Series 4 in Gold is a stylish and advanced smartwatch with features like heart rate monitoring, fitness tracking, and a beautiful Retina display.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 349.99,
     "discountPercentage": 5.14,
     "rating": 4.42,
@@ -6365,17 +6365,17 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Watch%20Series%204%20Gold/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Watch%20Series%204%20Gold/2.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Watch%20Series%204%20Gold/3.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Watch%20Series%204%20Gold/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Watch%20Series%204%20Gold/2.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Watch%20Series%204%20Gold/3.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Apple%20Watch%20Series%204%20Gold/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Watch%20Series%204%20Gold/thumbnail.png"
   },
   {
     "id": 107,
     "title": "Beats Flex Wireless Earphones",
     "description": "The Beats Flex Wireless Earphones offer a comfortable and versatile audio experience. With magnetic earbuds and up to 12 hours of battery life, they are ideal for everyday use.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 49.99,
     "discountPercentage": 8.27,
     "rating": 4.17,
@@ -6427,15 +6427,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Beats%20Flex%20Wireless%20Earphones/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Beats%20Flex%20Wireless%20Earphones/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Beats%20Flex%20Wireless%20Earphones/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Beats%20Flex%20Wireless%20Earphones/thumbnail.png"
   },
   {
     "id": 108,
     "title": "iPhone 12 Silicone Case with MagSafe Plum",
     "description": "The iPhone 12 Silicone Case with MagSafe in Plum is a stylish and protective case designed for the iPhone 12. It features MagSafe technology for easy attachment of accessories.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 29.99,
     "discountPercentage": 14.35,
     "rating": 4.41,
@@ -6487,18 +6487,18 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/2.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/3.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/4.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/2.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/3.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/4.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/thumbnail.png"
   },
   {
     "id": 109,
     "title": "Monopod",
     "description": "The Monopod is a versatile camera accessory for stable and adjustable shooting. Perfect for capturing selfies, group photos, and videos with ease.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 19.99,
     "discountPercentage": 11.62,
     "rating": 2.99,
@@ -6550,16 +6550,16 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Monopod/1.png",
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Monopod/2.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Monopod/1.png",
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Monopod/2.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Monopod/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Monopod/thumbnail.png"
   },
   {
     "id": 110,
     "title": "Selfie Lamp with iPhone",
     "description": "The Selfie Lamp with iPhone is a portable and adjustable LED light designed to enhance your selfies and video calls. Attach it to your iPhone for well-lit photos.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 14.99,
     "discountPercentage": 13.86,
     "rating": 2.84,
@@ -6611,15 +6611,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Selfie%20Lamp%20with%20iPhone/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Lamp%20with%20iPhone/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Selfie%20Lamp%20with%20iPhone/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Lamp%20with%20iPhone/thumbnail.png"
   },
   {
     "id": 111,
     "title": "Selfie Stick Monopod",
     "description": "The Selfie Stick Monopod is a extendable and foldable device for capturing the perfect selfie or group photo. Compatible with smartphones and cameras.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 12.99,
     "discountPercentage": 15.29,
     "rating": 2.93,
@@ -6671,15 +6671,15 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/Selfie%20Stick%20Monopod/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Stick%20Monopod/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/Selfie%20Stick%20Monopod/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Stick%20Monopod/thumbnail.png"
   },
   {
     "id": 112,
     "title": "TV Studio Camera Pedestal",
     "description": "The TV Studio Camera Pedestal is a professional-grade camera support system for smooth and precise camera movements in a studio setting. Ideal for broadcast and production.",
-    "category": "mobile-assesories",
+    "category": "mobile-accessories",
     "price": 499.99,
     "discountPercentage": 10.28,
     "rating": 4.05,
@@ -6731,9 +6731,9 @@
       "qrCode": "https://dummyjson.com/public/qr-code.png"
     },
     "images": [
-      "https://cdn.dummyjson.com/products/images/mobile-assesories/TV%20Studio%20Camera%20Pedestal/1.png"
+      "https://cdn.dummyjson.com/products/images/mobile-accessories/TV%20Studio%20Camera%20Pedestal/1.png"
     ],
-    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-assesories/TV%20Studio%20Camera%20Pedestal/thumbnail.png"
+    "thumbnail": "https://cdn.dummyjson.com/products/images/mobile-accessories/TV%20Studio%20Camera%20Pedestal/thumbnail.png"
   },
   {
     "id": 113,

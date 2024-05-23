@@ -73,6 +73,7 @@ controller.addNewComment = ({ body, postId, userId }) => {
     user: {
       id: user.id,
       username: user.username,
+      fullName: `${user.firstName} ${user.lastName}`,
     },
   };
 
@@ -106,6 +107,7 @@ controller.updateCommentById = ({ id, ...data }) => {
     updatedComment.user = {
       id: user.id,
       username: user.username,
+      fullName: `${user.firstName} ${user.lastName}`,
     };
   }
 

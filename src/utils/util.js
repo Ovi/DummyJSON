@@ -68,6 +68,8 @@ utils.loadDataInMemory = async () => {
   const todosArr = JSON.parse(todosStr);
   const postsArr = JSON.parse(postsStr);
   const commentsArr = JSON.parse(commentsStr);
+  const categoryList = [...new Set(productsArr.map(p => p.category))];
+  const categories = utils.getCategoriesData(categoryList);
 
   data.products = productsArr;
   data.carts = cartsArr;
@@ -77,6 +79,8 @@ utils.loadDataInMemory = async () => {
   data.todos = todosArr;
   data.posts = postsArr;
   data.comments = commentsArr;
+  data.categoryList = categoryList;
+  data.categories = categories;
 
   utils.deepFreeze(data);
 };
@@ -159,6 +163,23 @@ utils.isValidNumberInRange = (num, start, end) => {
 
 utils.getRandomFromArray = array => {
   return array[Math.floor(Math.random() * array.length)];
+};
+
+utils.getCategoriesData = categoriesList => {
+  const categories = categoriesList.map(category => ({
+    slug: category,
+    name: utils.capitalizeWords(category),
+    url: `https://dummyjson.com/products/category/${category}`,
+  }));
+
+  return categories;
+};
+
+utils.capitalizeWords = str => {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 };
 
 module.exports = utils;

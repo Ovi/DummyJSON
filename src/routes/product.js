@@ -3,6 +3,7 @@ const {
   getAllProducts,
   getProductById,
   searchProducts,
+  getProductCategoryList,
   getProductCategories,
   getProductsByCategoryName,
   addNewProduct,
@@ -18,6 +19,11 @@ router.get('/', (req, res) => {
 // search product
 router.get('/search', (req, res) => {
   res.send(searchProducts({ ...req._options }));
+});
+
+// get product category list
+router.get('/category-list', (req, res) => {
+  res.send(getProductCategoryList());
 });
 
 // get product categories

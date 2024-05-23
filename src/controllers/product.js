@@ -53,13 +53,14 @@ controller.searchProducts = ({ limit, skip, select, q: searchQuery }) => {
   return result;
 };
 
+// get product category list
+controller.getProductCategoryList = () => {
+  return frozenData.categoryList;
+};
+
 // get product categories
 controller.getProductCategories = () => {
-  const categories = frozenData.products.map(p => p.category);
-
-  const uniqueCategories = [...new Set(categories)];
-
-  return uniqueCategories;
+  return frozenData.categories;
 };
 
 // get product by id
