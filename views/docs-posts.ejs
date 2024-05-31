@@ -213,10 +213,147 @@
         </code></pre>
       </div>
 
+      <div class="resource" id="posts-tags">
+        <a href="#posts-tags" class="res-title">Get all posts tags</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/tags')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          [
+            {
+              "slug": "history",
+              "name": "History",
+              "url": "https://dummyjson.com/posts/tag/history"
+            },
+            {
+              "slug": "american",
+              "name": "American",
+              "url": "https://dummyjson.com/posts/tag/american"
+            },
+            {
+              "slug": "crime",
+              "name": "Crime",
+              "url": "https://dummyjson.com/posts/tag/crime"
+            },
+            {
+              "slug": "french",
+              "name": "French",
+              "url": "https://dummyjson.com/posts/tag/french"
+            },
+            {
+              "slug": "fiction",
+              "name": "Fiction",
+              "url": "https://dummyjson.com/posts/tag/fiction"
+            },
+            {
+              "slug": "english",
+              "name": "English",
+              "url": "https://dummyjson.com/posts/tag/english"
+            },
+            {...},
+            {...},
+            {...}
+            // more items
+          ]
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-tag_list">
+        <a href="#posts-tag_list" class="res-title">Get posts tag list</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/tag-list')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          [
+            "history",
+            "american",
+            "crime",
+            "french",
+            "fiction",
+            "english",
+            "magical",
+            "mystery",
+            "love",
+            "classic",
+            "memory",
+            "nostalgia",
+            "nature",
+            "tranquility",
+            "life",
+            "books",
+            // ... more items
+          ]
+        </code></pre>
+      </div>
+
+      <div class="resource" id="posts-tag">
+        <a href="#posts-tag" class="res-title">Get posts by a tag</a>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/posts/tag/life')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "posts": [
+              {
+                "id": 153,
+                "title": "The forest was alive with the sounds of nature",
+                "body": "Birds sang, leaves rustled, and a gentle stream trickled nearby. It was a symphony of life, a reminder of the world's beauty. The dense canopy overhead filtered the sunlight, creating a mosaic of light and shadow on the forest floor, a tranquil haven far from the chaos of modern life.",
+                "tags": [
+                  "nature",
+                  "tranquility",
+                  "life"
+                ],
+                "reactions": {
+                  "likes": 366,
+                  "dislikes": 28
+                },
+                "views": 1868,
+                "userId": 24
+              },
+              {
+                "id": 167,
+                "title": "The market was a bustling maze of sights and sounds",
+                "body": "Stalls filled with colorful produce, the air rich with the scent of spices and fresh flowers. Vendors called out their wares, and the crowd moved in a vibrant dance. It was a place of energy and life, where every visit promised something new.",
+                "tags": [
+                  "market",
+                  "vibrant",
+                  "life"
+                ],
+                "reactions": {
+                  "likes": 1165,
+                  "dislikes": 5
+                },
+                "views": 3654,
+                "userId": 118
+              },
+              {...}
+            ],
+            "total": 3,
+            "skip": 0,
+            "limit": 3
+          }
+        </code></pre>
+      </div>
+
       <div class="resource" id="posts-user">
         <a href="#posts-user" class="res-title">Get all posts by user id</a>
         <pre><code class="language-js">
-          /* getting posts of user with id 5 */
+          /* getting posts by user with id 5 */
           fetch('https://dummyjson.com/posts/user/5')
           .then(res => res.json())
           .then(console.log);

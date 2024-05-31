@@ -61,26 +61,30 @@ utils.loadDataInMemory = async () => {
   ] = await Promise.all(paths);
 
   const productsArr = JSON.parse(productsStr);
+  const categoryList = [...new Set(productsArr.map(p => p.category))];
+  const categories = utils.getSluggedData(categoryList, 'products', 'category');
   const cartsArr = JSON.parse(cartsStr);
   const usersArr = JSON.parse(usersStr);
   const quotesArr = JSON.parse(quotesStr);
   const recipesArr = JSON.parse(recipesStr);
   const todosArr = JSON.parse(todosStr);
   const postsArr = JSON.parse(postsStr);
+  const tagList = [...new Set(postsArr.flatMap(p => p.tags))];
+  const tags = utils.getSluggedData(tagList, 'posts', 'tag');
   const commentsArr = JSON.parse(commentsStr);
-  const categoryList = [...new Set(productsArr.map(p => p.category))];
-  const categories = utils.getCategoriesData(categoryList);
 
   data.products = productsArr;
+  data.categoryList = categoryList;
+  data.categories = categories;
   data.carts = cartsArr;
   data.users = usersArr;
   data.quotes = quotesArr;
   data.recipes = recipesArr;
   data.todos = todosArr;
   data.posts = postsArr;
+  data.tagList = tagList;
+  data.tags = tags;
   data.comments = commentsArr;
-  data.categoryList = categoryList;
-  data.categories = categories;
 
   utils.deepFreeze(data);
 };
@@ -191,14 +195,12 @@ utils.getRandomFromArray = array => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-utils.getCategoriesData = categoriesList => {
-  const categories = categoriesList.map(category => ({
-    slug: category,
-    name: utils.capitalizeWords(category),
-    url: `https://dummyjson.com/products/category/${category}`,
+utils.getSluggedData = (arr, resource, type) => {
+  return arr.map(item => ({
+    slug: item,
+    name: utils.capitalizeWords(item),
+    url: `https://dummyjson.com/${resource}/${type}/${item}`,
   }));
-
-  return categories;
 };
 
 utils.capitalizeWords = str => {

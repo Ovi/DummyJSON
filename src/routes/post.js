@@ -8,6 +8,9 @@ const {
   addNewPost,
   updatePost,
   deletePostById,
+  getPostTagList,
+  getPostTags,
+  getPostsByTag,
 } = require('../controllers/post');
 
 // get all posts
@@ -20,12 +23,29 @@ router.get('/search', (req, res) => {
   res.send(searchPosts({ ...req._options }));
 });
 
+// get post tag list
+router.get('/tag-list', (req, res) => {
+  res.send(getPostTagList());
+});
+
+// get post tags
+router.get('/tags', (req, res) => {
+  res.send(getPostTags());
+});
+
 // get post by id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   const { select } = req._options;
 
   res.send(getPostById({ id, select }));
+});
+
+// get posts by tag
+router.get('/tag/:tag', (req, res) => {
+  const { tag } = req.params;
+
+  res.send(getPostsByTag({ tag, ...req._options }));
 });
 
 // get posts by userId

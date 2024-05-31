@@ -59,6 +59,42 @@ controller.searchPosts = ({ q: searchQuery, ..._options }) => {
   return result;
 };
 
+// get post tag list
+controller.getPostTagList = () => {
+  return frozenData.tagList;
+};
+
+// get post tags
+controller.getPostTags = () => {
+  return frozenData.tags;
+};
+
+// get posts by tag
+controller.getPostsByTag = ({ tag = '', ..._options }) => {
+  const { limit, skip, select, sortBy, order } = _options;
+
+  let posts = frozenData.posts.filter(
+    p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()),
+  );
+  const total = posts.length;
+
+  posts = sortArray(posts, sortBy, order);
+
+  if (skip > 0) {
+    posts = posts.slice(skip);
+  }
+
+  posts = limitArray(posts, limit);
+
+  if (select) {
+    posts = getMultiObjectSubset(posts, select);
+  }
+
+  const result = { posts, total, skip, limit: posts.length };
+
+  return result;
+};
+
 // get post by id
 controller.getPostById = ({ id, select }) => {
   let { ...post } = verifyPostHandler(id);
