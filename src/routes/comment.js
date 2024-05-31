@@ -29,7 +29,7 @@ router.get('/post/:postId', (req, res) => {
 
 // add new comment
 router.post('/add', (req, res) => {
-  res.send(addNewComment({ ...req.body }));
+  res.status(201).send(addNewComment({ ...req.body }));
 });
 
 // update comment by id (PUT)

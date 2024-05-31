@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
 
 // add new cart
 router.post('/add', (req, res) => {
-  res.send(addNewCart({ ...req.body }));
+  res.status(201).send(addNewCart({ ...req.body }));
 });
 
 // update cart by id (PUT)

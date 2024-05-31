@@ -76,7 +76,7 @@ router.get('/:userId/todos', (req, res) => {
 
 // add new user
 router.post('/add', (req, res) => {
-  res.send(addNewUser({ ...req.body }));
+  res.status(201).send(addNewUser({ ...req.body }));
 });
 
 // update user by id (PUT)

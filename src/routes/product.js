@@ -48,7 +48,7 @@ router.get('/category/:categoryName', (req, res) => {
 
 // add new product
 router.post('/add', (req, res) => {
-  res.send(addNewProduct({ ...req.body }));
+  res.status(201).send(addNewProduct({ ...req.body }));
 });
 
 // update product by id (PUT)

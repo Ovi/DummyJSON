@@ -34,7 +34,7 @@ router.get('/user/:userId', (req, res) => {
 
 // add new todo
 router.post('/add', (req, res) => {
-  res.send(addNewTodo(req.body));
+  res.status(201).send(addNewTodo(req.body));
 });
 
 // update todo by id (PUT)

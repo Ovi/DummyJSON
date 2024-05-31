@@ -44,7 +44,7 @@ router.get('/:postId/comments', (req, res) => {
 
 // add new post
 router.post('/add', (req, res) => {
-  res.send(addNewPost({ ...req.body }));
+  res.status(201).send(addNewPost({ ...req.body }));
 });
 
 // update post by id (PUT)
