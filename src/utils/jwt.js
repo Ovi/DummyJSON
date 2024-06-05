@@ -4,7 +4,20 @@ const { JWT_SECRET } = process.env;
 
 const util = {};
 
-util.generateToken = (payload, expiresInMins) => {
+util.generateAccessToken = generateToken;
+
+util.verifyAccessToken = Authorization => {
+  const token = Authorization.replace('Bearer ', '');
+  return verifyToken(token);
+};
+
+util.generateRefreshToken = generateToken;
+
+util.verifyRefreshToken = verifyToken;
+
+module.exports = util;
+
+function generateToken(payload, expiresInMins) {
   return new Promise((resolve, reject) => {
     let expiresIn = '60m';
 
@@ -19,11 +32,10 @@ util.generateToken = (payload, expiresInMins) => {
       resolve(token);
     });
   });
-};
+}
 
-util.verifyToken = Authorization => {
+function verifyToken(token) {
   return new Promise((resolve, reject) => {
-    const token = Authorization.replace('Bearer ', '');
     jwt.verify(token, JWT_SECRET, (err, decoded) => {
       if (err) {
         reject(err);
@@ -33,16 +45,4 @@ util.verifyToken = Authorization => {
       resolve(decoded);
     });
   });
-};
-
-util.getUserDataForToken = user => ({
-  id: user.id,
-  username: user.username,
-  email: user.email,
-  firstName: user.firstName,
-  lastName: user.lastName,
-  gender: user.gender,
-  image: user.image,
-});
-
-module.exports = util;
+}

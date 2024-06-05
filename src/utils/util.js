@@ -210,4 +210,25 @@ utils.capitalizeWords = str => {
     .join(' ');
 };
 
+utils.findUserWithUsernameAndId = ({ username, id }) => {
+  const user = utils.dataInMemory.users.find(u => {
+    const validUsername = u.username.toLowerCase() === username.toLowerCase();
+    const validId = id.toString() === u.id.toString();
+
+    return validUsername && validId;
+  });
+
+  return user;
+};
+
+utils.getUserPayload = user => ({
+  id: user.id,
+  username: user.username,
+  email: user.email,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  gender: user.gender,
+  image: user.image,
+});
+
 module.exports = utils;
