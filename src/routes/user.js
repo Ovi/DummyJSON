@@ -13,12 +13,25 @@ const {
 } = require('../controllers/user');
 const authUser = require('../middleware/auth');
 const { verifyUserHandler } = require('../helpers');
+const { loginByUsernamePassword } = require('../controllers/auth');
 
 // get all users
 router.get('/', (req, res) => {
   res.send(getAllUsers({ ...req._options }));
 });
 
+// login user
+router.post('/login', async (req, res, next) => {
+  try {
+    const payload = await loginByUsernamePassword(req.body);
+
+    res.send(payload);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// get current authenticated user
 router.get('/me', authUser, (req, res) => {
   res.send(req.user);
 });
