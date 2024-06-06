@@ -1,0 +1,31 @@
+name: Deploy Public folder to S3 Bucket
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'public/**' # Trigger only when changes occur in the public directory
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Deploy to S3
+        # Only deploy if the previous steps were successful
+        if: success()
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+        run: |
+          aws s3 sync ./public s3://${{ secrets.S3_BUCKET_NAME }}/public --delete --region us-east-2
