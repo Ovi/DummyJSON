@@ -24,21 +24,24 @@ Give it a spin at [DummyJSON](https://dummyjson.com) and make your development p
 - **HTTP Methods Support**: We've got all your HTTP methods covered - GET, POST, PUT, PATCH, and DELETE.
 - **Delay Responses**: Simulate real-world conditions with adjustable response delays.
 - **Cross-framework Compatibility**: Seamlessly integrate with React, Angular, Vue, Ember, or vanilla JavaScript.
+- **Dynamic Image Generation**: Generate placeholder images with customizable options.
 
 ## Available Resources
 
 Over **10** resources ready for use:
 
-- [100 Products](https://dummyjson.com/products/)
-- [20 Carts](https://dummyjson.com/carts/)
-- [100 Users](https://dummyjson.com/users/)
-- [150 Posts](https://dummyjson.com/posts/)
-- [340 Comments](https://dummyjson.com/comments/)
-- [1400+ Quotes](https://dummyjson.com/quotes/)
-- [50 Recipes](https://dummyjson.com/recipes/)
-- [150 Todos](https://dummyjson.com/todos/)
-- [Authentication/Authorization](https://dummyjson.com/auth/)
-- [Dynamic/Placeholder Images](https://dummyjson.com/image/)
+- [190+ Products](https://dummyjson.com/products)
+- [50 Carts](https://dummyjson.com/carts)
+- [200+ Users](https://dummyjson.com/users)
+- [250+ Posts](https://dummyjson.com/posts)
+- [340 Comments](https://dummyjson.com/comments)
+- [1400+ Quotes](https://dummyjson.com/quotes)
+- [50 Recipes](https://dummyjson.com/recipes)
+- [250+ Todos](https://dummyjson.com/todos)
+- [Authentication/Authorization](https://dummyjson.com/auth)
+- [Custom HTTP Response](https://dummyjson.com/docs/http)
+- [Dynamic/Placeholder Images](https://dummyjson.com/image)
+- [Identicon](https://dummyjson.com/docs/image#image-identicon)
 
 ## How to Fetch Data
 
@@ -148,6 +151,16 @@ https://dummyjson.com/image
 - Qwigley
 - Satisfy
 - Ubuntu
+
+---
+
+# Generate identicon
+
+https://dummyjson.com/icon/HASH/SIZE
+
+https://dummyjson.com/icon/abc123/150
+
+![Example](https://dummyjson.com/icon/abc123/150)
 
 ## License
 
