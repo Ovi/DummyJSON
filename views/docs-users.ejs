@@ -24,7 +24,7 @@
           By default you will get 30 items, use <a href="#users-limit_skip">Limit and skip</a> to paginate through all items.
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users')
+          fetch('https://dummyjson.com/users')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -156,7 +156,7 @@
         <a href="#users-me" class="res-title">Get current authenticated user</a>
         <pre><code class="language-js">
           /* providing token in bearer */
-          fetch('http://dummyjson.com/user/me', {
+          fetch('https://dummyjson.com/user/me', {
             method: 'GET',
             headers: {
               'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
@@ -186,7 +186,7 @@
       <div class="resource" id="users-single">
         <a href="#users-single" class="res-title">Get a single user</a>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users/1')
+          fetch('https://dummyjson.com/users/1')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -270,7 +270,7 @@
       <div class="resource" id="users-search">
         <a href="#users-search" class="res-title">Search users</a>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users/search?q=John')
+          fetch('https://dummyjson.com/users/search?q=John')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -306,7 +306,7 @@
           `limit`, `skip` and `select` works too.
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users/filter?key=hair.color&value=Brown')
+          fetch('https://dummyjson.com/users/filter?key=hair.color&value=Brown')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -348,7 +348,7 @@
           to select specific data
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
+          fetch('https://dummyjson.com/users?limit=5&skip=10&select=firstName,age')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -398,7 +398,7 @@
           `sortBy` should be field name and `order` should be "asc" or "desc"
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users?sortBy=firstName&order=asc')
+          fetch('https://dummyjson.com/users?sortBy=firstName&order=asc')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -436,7 +436,7 @@
         <a href="#users-carts" class="res-title">Get user's carts by user id</a>
         <pre><code class="language-js">
           /* getting carts of user with id 6 */
-          fetch('http://dummyjson.com/users/6/carts')
+          fetch('https://dummyjson.com/users/6/carts')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -480,7 +480,7 @@
         <a href="#users-posts" class="res-title">Get user's posts by user id</a>
         <pre><code class="language-js">
           /* getting posts of user with id 5 */
-          fetch('http://dummyjson.com/users/5/posts')
+          fetch('https://dummyjson.com/users/5/posts')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -518,7 +518,7 @@
         <a href="#users-todos" class="res-title">Get user's todos by user id</a>
         <pre><code class="language-js">
           /* getting todos of user with id 5 */
-          fetch('http://dummyjson.com/users/5/todos')
+          fetch('https://dummyjson.com/users/5/todos')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -562,7 +562,7 @@
           It will simulate a POST request and will return the new created user with a new id
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users/add', {
+          fetch('https://dummyjson.com/users/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -598,7 +598,7 @@
         </p>
         <pre><code class="language-js">
           /* updating lastName of user with id 2 */
-          fetch('http://dummyjson.com/users/2', {
+          fetch('https://dummyjson.com/users/2', {
             method: 'PUT', /* or PATCH */
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -630,7 +630,7 @@
           It will simulate a DELETE request and will return deleted user with `isDeleted` & `deletedOn` keys
         </p>
         <pre><code class="language-js">
-          fetch('http://dummyjson.com/users/1', {
+          fetch('https://dummyjson.com/users/1', {
             method: 'DELETE',
           })
           .then(res => res.json())
