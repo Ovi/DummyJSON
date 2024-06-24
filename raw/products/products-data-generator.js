@@ -68,7 +68,7 @@ function generateData() {
           createdAt: new Date(),
           updatedAt: new Date(),
           barcode: generateRandomBarcode(),
-          qrCode: 'https://dummyjson.com/public/qr-code.png',
+          qrCode: 'https://cdn.dummyjson.com/public/qr-code.png',
         },
         images,
         thumbnail: encodeURLSpaces(

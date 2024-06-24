@@ -26,7 +26,11 @@ injectMiddleWares(app);
 app.set('view engine', 'ejs');
 
 // serving static files
-app.use('/public', express.static('./public'));
+// redirect to domain: https://cdn.dummyjson.com/public/WHATEVER
+app.use('/public', (req, res) => {
+  console.log('[CDN] [Redirect]', req.url);
+  res.redirect(`https://cdn.dummyjson.com/public${req.url}`);
+});
 
 // routes
 app.use('/', routes);
