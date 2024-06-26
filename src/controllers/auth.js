@@ -14,6 +14,10 @@ const controller = {};
 controller.loginByUsernamePassword = async data => {
   const { username, password, expiresInMins = 60 } = data;
 
+  if (!username || !password) {
+    throw new APIError(`Username and password required`, 400);
+  }
+
   if (!isValidNumberInRange(expiresInMins, 1, maxTokenExpireTime)) {
     throw new APIError(`maximum token expire time can be ${maxTokenExpireTime} minutes`);
   }

@@ -3,7 +3,7 @@ const injectMiddleWares = require('./src/middleware');
 const errorMiddleware = require('./src/middleware/error');
 const authUser = require('./src/middleware/auth');
 const routes = require('./src/routes');
-const { validateEnvVar, loadDataInMemory } = require('./src/utils/util');
+const { validateEnvVar, loadDataInMemory, isDev, redirectFn } = require('./src/utils/util');
 const { version } = require('./package.json');
 
 // use database to store logs and custom responses
@@ -26,11 +26,7 @@ injectMiddleWares(app);
 app.set('view engine', 'ejs');
 
 // serving static files
-// redirect to domain: https://assets.dummyjson.com/public/WHATEVER
-app.use('/public', (req, res) => {
-  console.log('[CDN] [Redirect]', req.url);
-  res.redirect(`https://assets.dummyjson.com/public${req.url}`);
-});
+app.use('/public', isDev ? express.static('public') : redirectFn);
 
 // routes
 app.use('/', routes);
@@ -39,7 +35,7 @@ app.use('/', routes);
 app.use('/auth/', authUser, routes);
 
 app.get('*', (req, res) => {
-  res.status(404).send('not found!');
+  res.status(404).send();
 });
 
 // use custom middleware for errors

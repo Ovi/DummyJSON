@@ -84,19 +84,18 @@ section {
         display: inline-block;
         width: 2rem;
         height: 2rem;
-        background: url('https://assets.dummyjson.com/public/img/icons/star.svg') no-repeat center center /
-          contain;
+        background: url('https://assets.dummyjson.com/public/img/icons/star.svg') no-repeat center center / contain;
       }
     }
 
     p {
       font-size: 0.75rem;
-      font-weight: 500;
       margin-top: 1rem;
       margin-bottom: 1rem;
 
       @include breakpoint(xs) {
         font-size: 1rem;
+        font-weight: 300;
       }
 
       @include breakpoint(sm) {
@@ -184,8 +183,8 @@ section {
     .content {
       h1 {
         .heading-star {
-          background: url('https://assets.dummyjson.com/public/img/icons/star-alt.svg') no-repeat center
-            center / contain;
+          background: url('https://assets.dummyjson.com/public/img/icons/star-alt.svg') no-repeat center center /
+            contain;
         }
       }
 
@@ -203,6 +202,20 @@ section {
 
   &.try-yourself {
     padding-top: 60px;
+    display: none;
+
+    @include breakpoint(sm) {
+      display: flex;
+    }
+
+    // if screen height is less than 600, hide the section
+    @media screen and (max-height: 600px) {
+      display: none;
+
+      @include breakpoint(sm) {
+        display: none;
+      }
+    }
 
     .content {
       width: 100%;
@@ -221,7 +234,7 @@ section {
       p {
         display: none;
 
-        @include breakpoint(md) {
+        @include breakpoint(sm) {
           display: block;
           margin: 0;
           margin-bottom: 1rem;
@@ -231,15 +244,19 @@ section {
       .code-container {
         display: none;
 
-        @include breakpoint(md) {
+        @include breakpoint(sm) {
           display: block;
         }
 
         .changer {
           display: block;
           margin-bottom: 1rem;
-          font-size: 1.5rem;
+          font-size: 1rem;
           font-family: 'Courier New', Courier, monospace;
+
+          @include breakpoint(md) {
+            font-size: 1.5rem;
+          }
 
           .selector {
             position: relative;
@@ -249,12 +266,12 @@ section {
               width: 9rem;
             }
 
-            .selector-el {
+            .resource-selector-el {
               min-width: fit-content;
               position: absolute;
               display: inline-block;
-              min-height: 2rem;
-              max-height: 2rem;
+              min-height: 1.5rem;
+              max-height: 1.5rem;
               width: 10rem;
               overflow: hidden;
               top: 0;
@@ -263,13 +280,19 @@ section {
               text-align: left;
               white-space: nowrap;
               color: #444;
-              font-size: 1.25rem;
+              font-size: 1rem;
               z-index: 5;
               outline: none;
               border: 0.06em solid transparent;
               border-radius: 1em;
               background-color: mix($primary-color, #fff, 25%);
               transition: 0.3s all ease-in-out;
+
+              @include breakpoint(md) {
+                min-height: 2rem;
+                max-height: 2rem;
+                font-size: 1.25rem;
+              }
 
               input:focus + label {
                 background: #def;
@@ -285,8 +308,8 @@ section {
                 font-family: 'Courier New', Courier, monospace;
                 border-top: 0.06rem solid #d9d9d9;
                 display: block;
-                height: 2rem;
-                line-height: 2rem;
+                height: 1.5rem;
+                line-height: 1.5rem;
                 padding-left: 1rem;
                 padding-right: 3rem;
                 cursor: pointer;
@@ -295,6 +318,11 @@ section {
                 &:nth-child(2) {
                   margin-top: 2rem;
                   border-top: 0.06rem solid #d9d9d9;
+                }
+
+                @include breakpoint(md) {
+                  height: 2rem;
+                  line-height: 2rem;
                 }
               }
               input:checked + label {
@@ -314,11 +342,14 @@ section {
                 content: '';
                 position: absolute;
                 right: 0.8rem;
-                top: 0.75rem;
+                top: 0.65rem;
                 border: 0.3em solid $primary-color-dark;
-                border-color: $primary-color-dark transparent transparent
-                  transparent;
+                border-color: $primary-color-dark transparent transparent transparent;
                 transition: 0.4s all ease-in-out;
+
+                @include breakpoint(md) {
+                  top: 0.75rem;
+                }
               }
               &.expanded {
                 border: 0.06em solid #d9d9d9;
@@ -343,6 +374,337 @@ section {
                   top: 0.5rem;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.custom-response {
+    padding-top: 60px;
+    display: none;
+
+    &.standalone {
+      display: flex;
+    }
+
+    @include breakpoint(sm) {
+      display: flex;
+    }
+
+    // if screen height is less than 600, hide the section
+    @media screen and (max-height: 600px) {
+      display: none;
+
+      @include breakpoint(sm) {
+        display: none;
+      }
+    }
+
+    .content {
+      width: 100%;
+
+      @include breakpoint(lg) {
+        align-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        @include breakpoint(lg) {
+          margin-bottom: 0;
+        }
+      }
+
+      p {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 300;
+        line-height: 1.5rem;
+
+        @include breakpoint(md) {
+          margin: 0;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .changer {
+        display: block;
+        margin-top: 1rem;
+        font-size: 1rem;
+
+        .selector {
+          position: relative;
+
+          .selector-placeholder {
+            display: inline-block;
+            width: 7rem;
+          }
+
+          .method-selector-el {
+            min-width: fit-content;
+            position: absolute;
+            display: inline-block;
+            min-height: 1.5rem;
+            max-height: 1.5rem;
+            width: 5rem;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            text-align: left;
+            white-space: nowrap;
+            color: #444;
+            font-size: 1rem;
+            z-index: 5;
+            outline: none;
+            border: 0.06em solid transparent;
+            border-radius: 1em;
+            background-color: mix($secondary-color, #fff, 25%);
+            transition: 0.3s all ease-in-out;
+
+            input:focus + label {
+              background: #def;
+            }
+            input {
+              width: 1px;
+              height: 1px;
+              display: inline-block;
+              position: absolute;
+              opacity: 0.01;
+            }
+            label {
+              font-family: 'Courier New', Courier, monospace;
+              border-top: 0.06rem solid #d9d9d9;
+              display: block;
+              height: 1.5rem;
+              line-height: 1.5rem;
+              padding-left: 1rem;
+              padding-right: 3rem;
+              cursor: pointer;
+              position: relative;
+              transition: 0.3s color ease-in-out;
+              &:nth-child(2) {
+                margin-top: 2rem;
+                border-top: 0.06rem solid #d9d9d9;
+              }
+            }
+            input:checked + label {
+              display: block;
+              border-top: none;
+              position: absolute;
+              top: 0;
+              width: 100%;
+
+              &:nth-child(2) {
+                margin-top: 0;
+                position: relative;
+              }
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              right: 0.8rem;
+              top: 0.6rem;
+              border: 0.3em solid $secondary-color-dark;
+              border-color: $secondary-color-dark transparent transparent transparent;
+              transition: 0.4s all ease-in-out;
+            }
+            &.expanded {
+              border: 0.06em solid #d9d9d9;
+              background: #fff;
+              border-radius: 0.25em;
+              padding: 0;
+              box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+              max-height: 15em;
+
+              label {
+                border-top: 0.06em solid #d9d9d9;
+                &:hover {
+                  color: $secondary-color-dark;
+                }
+              }
+              input:checked + label {
+                color: $secondary-color-dark;
+              }
+
+              &::after {
+                transform: rotate(-180deg);
+                top: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      .code-container {
+        position: relative;
+
+        .req-body-helper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2rem;
+          z-index: 5;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-shadow: 0 0.25rem 0.5rem rgba(#fff, 0.03);
+          background: #263238;
+          padding: 0 0.5rem;
+
+          & * {
+            font-family: 'Courier New', Courier, monospace !important;
+          }
+
+          span {
+            color: #999999;
+            margin-top: 0.125rem;
+            font-size: 0.75rem;
+          }
+
+          .prettify-btn {
+            padding: 0.25rem;
+            font-size: 0.75rem;
+            background: rgba(#fff, 0.5);
+            border: 1px solid black;
+            border-radius: 0.625em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              width: 1.15em;
+              height: 1.15em;
+              margin-left: 0.25rem;
+            }
+          }
+        }
+
+        pre,
+        code {
+          max-height: 300px;
+          height: 300px;
+
+          // if screen height is less than 800, set height to 200px
+          @media screen and (max-height: 800px) {
+            height: 150px;
+          }
+        }
+
+        code {
+          white-space: pre-wrap; /* Preserve white spaces and wrap text */
+          overflow-wrap: break-word; /* Break words when needed */
+          outline: none; /* Remove default focus outline */
+          cursor: text; /* Show text cursor */
+          padding-top: 2rem;
+        }
+      }
+
+      .input-container {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 1rem;
+          top: calc(50% - 0.75rem);
+          width: 1.5rem;
+          height: 1.5rem;
+          z-index: 1;
+          background: url('data:image/svg+xml;utf8,<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23ffc3be" viewBox="0 0 24 24"><path stroke="%23ff697c" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>')
+            no-repeat center center / contain;
+          opacity: 0;
+          transition: 0.3s all ease-out;
+          cursor: pointer;
+        }
+
+        &:hover {
+          &::after {
+            opacity: 0.3;
+          }
+        }
+
+        input {
+          background: #f3f3f3;
+          font-size: 1rem;
+          padding: 1rem;
+          border: 2px solid transparent;
+          border-radius: 1rem;
+          font-weight: bold;
+          width: 100%;
+          position: relative;
+
+          &::placeholder {
+            font-weight: 300;
+          }
+
+          &:focus,
+          &:active {
+            outline: none;
+          }
+        }
+
+        &.copied {
+          &::after {
+            opacity: 1;
+          }
+
+          input {
+            border: 2px solid $secondary-color;
+            animation: input-copy-border-animation-alt 0.5s ease-in-out;
+          }
+        }
+      }
+
+      .btns-container {
+        .btn {
+          min-width: 200px;
+        }
+      }
+    }
+
+    &.standalone {
+      .content {
+        .changer {
+          .selector {
+            .method-selector-el {
+              background-color: mix($primary-color, #fff, 25%);
+
+              &::after {
+                border: 0.3em solid $primary-color-dark;
+                border-color: $primary-color-dark transparent transparent transparent;
+              }
+              &.expanded {
+                label {
+                  &:hover {
+                    color: $primary-color-dark;
+                  }
+                }
+                input:checked + label {
+                  color: $primary-color-dark;
+                }
+              }
+            }
+          }
+        }
+
+        .input-container {
+          &::after {
+            background: url('data:image/svg+xml;utf8,<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23b6b7fd" viewBox="0 0 24 24"><path stroke="%23494cf3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>');
+          }
+
+          &.copied {
+            input {
+              border: 2px solid $primary-color;
+              animation: input-copy-border-animation 0.5s ease-in-out;
             }
           }
         }
@@ -408,10 +770,20 @@ section {
   }
 
   pre {
-    max-height: 500px;
-    min-width: 600px;
     margin: 0 auto;
-    max-width: 600px;
+    max-height: 500px;
+    min-width: 300px;
+    max-width: 300px;
+
+    @include breakpoint(sm) {
+      min-width: 500px;
+      max-width: 500px;
+    }
+
+    @include breakpoint(md) {
+      min-width: 600px;
+      max-width: 600px;
+    }
   }
 
   code {
@@ -428,10 +800,42 @@ section {
     overflow: auto;
     height: calc(100vh - 20rem);
     max-height: 500px;
-    min-width: 600px;
+    min-width: 300px;
+
+    @include breakpoint(sm) {
+      min-width: 500px;
+    }
+
+    @include breakpoint(md) {
+      min-width: 600px;
+    }
 
     & * {
       font-family: 'Courier New', Courier, monospace;
     }
+  }
+}
+
+@keyframes input-copy-border-animation {
+  0% {
+    border-color: $primary-color;
+  }
+  50% {
+    border-color: $primary-color-dark;
+  }
+  100% {
+    border-color: $primary-color;
+  }
+}
+
+@keyframes input-copy-border-animation-alt {
+  0% {
+    border-color: $secondary-color;
+  }
+  50% {
+    border-color: $secondary-color-dark;
+  }
+  100% {
+    border-color: $secondary-color;
   }
 }

@@ -148,4 +148,22 @@ ul {
   &.secondary {
     background-color: $secondary-color;
   }
+
+  &.disabled,
+  &:disabled {
+    background-color: #f5f5f5 !important;
+    border-color: #f5f5f5 !important;
+    color: #b3b3b3 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+
+    img {
+      filter: grayscale(100%) !important ;
+      opacity: 0.5 !important;
+    }
+  }
+
+  img {
+    margin-right: 0.5rem;
+  }
 }

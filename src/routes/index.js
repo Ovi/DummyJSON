@@ -2,39 +2,27 @@ const router = require('express').Router();
 const forceHTTPS = require('../middleware/forceHTTPS');
 
 // static page routes
-const staticRoutes = require('./static');
+router.use('/', forceHTTPS, require('./static'));
 
 // static resource routes
-const authRoutes = require('./auth');
-const cartRoutes = require('./cart');
-const commentRoutes = require('./comment');
-const postRoutes = require('./post');
-const productRoutes = require('./product');
-const quoteRoutes = require('./quote');
-const recipeRoutes = require('./recipe');
-const todoRoutes = require('./todo');
-const userRoutes = require('./user');
-const httpStatusRoutes = require('./http');
-const testRoutes = require('./test');
-const imageRoutes = require('./image');
-const iconRoutes = require('./icon');
+router.use('/auth', require('./auth'));
+router.use(['/cart', '/carts'], require('./cart'));
+router.use(['/comment', '/comments'], require('./comment'));
+router.use(['/post', '/posts'], require('./post'));
+router.use(['/product', '/products'], require('./product'));
+router.use(['/quote', '/quotes'], require('./quote'));
+router.use(['/recipe', '/recipes'], require('./recipe'));
+router.use(['/todo', '/todos'], require('./todo'));
+router.use(['/user', '/users'], require('./user'));
+router.use(['/http', '/https'], require('./http'));
+router.use(['/test', '/ping', '/health'], require('./test'));
+router.use(['/image', '/i'], require('./image'));
+router.use('/icon', require('./icon'));
 
 // dynamic resource routes
-// no-dynamic-routes
+router.use('/c', require('./custom-response'));
 
-router.use('/', forceHTTPS, staticRoutes);
-router.use('/auth', authRoutes);
-router.use(['/cart', '/carts'], cartRoutes);
-router.use(['/comment', '/comments'], commentRoutes);
-router.use(['/post', '/posts'], postRoutes);
-router.use(['/product', '/products'], productRoutes);
-router.use(['/quote', '/quotes'], quoteRoutes);
-router.use(['/recipe', '/recipes'], recipeRoutes);
-router.use(['/todo', '/todos'], todoRoutes);
-router.use(['/user', '/users'], userRoutes);
-router.use(['/http', '/https'], httpStatusRoutes);
-router.use('/test', testRoutes);
-router.use(['/image', '/i'], imageRoutes);
-router.use('/icon', iconRoutes);
+// redrector
+router.use('/', require('./redirect'));
 
 module.exports = router;

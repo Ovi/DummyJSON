@@ -18,7 +18,7 @@ function injectMiddleWares(app) {
   // use helmet JS.
   app.use(helmet());
 
-  app.use(express.json()); // for parsing application/json
+  app.use(express.json({ limit: '300kb' })); // for parsing application/json
   app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
   applyRateLimit(app);

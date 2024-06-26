@@ -1,10 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
-const {
-  REQUIRED_ENV_VARIABLES,
-  OPTIONAL_ENV_VARIABLES,
-  httpCodes,
-} = require('../constants');
+const { v4 } = require('uuid');
+const { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } = require('../constants');
 
 const utils = {};
 
@@ -49,16 +46,9 @@ utils.loadDataInMemory = async () => {
     fs.readFile(recipesPath, 'utf-8'),
   ];
 
-  const [
-    productsStr,
-    cartsStr,
-    usersStr,
-    quotesStr,
-    todosStr,
-    postsStr,
-    commentsStr,
-    recipesStr,
-  ] = await Promise.all(paths);
+  const [productsStr, cartsStr, usersStr, quotesStr, todosStr, postsStr, commentsStr, recipesStr] = await Promise.all(
+    paths,
+  );
 
   const productsArr = JSON.parse(productsStr);
   const categoryList = [...new Set(productsArr.map(p => p.category))];
@@ -100,24 +90,16 @@ utils.getMultiObjectSubset = function(arr, keys) {
 utils.isNumber = num => !Number.isNaN(Number(num));
 
 utils.validateEnvVar = () => {
-  const requiredUnsetEnv = REQUIRED_ENV_VARIABLES.filter(
-    env => !(typeof process.env[env] !== 'undefined'),
-  );
+  const requiredUnsetEnv = REQUIRED_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
 
   if (requiredUnsetEnv.length) {
-    throw new Error(
-      `Required ENV variables are not set: [${requiredUnsetEnv.join(', ')}]`,
-    );
+    throw new Error(`Required ENV variables are not set: [${requiredUnsetEnv.join(', ')}]`);
   }
 
-  const optionalUnsetEnv = OPTIONAL_ENV_VARIABLES.filter(
-    env => !(typeof process.env[env] !== 'undefined'),
-  );
+  const optionalUnsetEnv = OPTIONAL_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
 
   if (optionalUnsetEnv.length) {
-    console.warn(
-      `Optional ENV variables are not set: [${optionalUnsetEnv.join(', ')}]`,
-    );
+    console.warn(`Optional ENV variables are not set: [${optionalUnsetEnv.join(', ')}]`);
   }
 };
 
@@ -230,5 +212,17 @@ utils.getUserPayload = user => ({
   gender: user.gender,
   image: user.image,
 });
+
+// redirect to domain: https://assets.dummyjson.com/public/WHATEVER
+utils.redirectFn = (req, res) => {
+  console.log('[CDN] [Redirect]', req.url);
+  res.redirect(`https://assets.dummyjson.com/public${req.url}`);
+};
+
+utils.generateRandomId = () => {
+  const uuid = v4();
+  const parts = uuid.split('-');
+  return `${parts[0].slice(0, 4)}-${parts[1]}-${parts[2].slice(0, 4)}-${parts[3]}`;
+};
 
 module.exports = utils;

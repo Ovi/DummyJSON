@@ -1,14 +1,20 @@
-highlightJSONCodeBlock();
-handleHomePageResourcesSelector('.selector-el');
+highlightTryItJSONCodeBlock();
+handleHomePageResourcesSelector('.resource-selector-el');
 handleSectionScroll();
 
-function highlightJSONCodeBlock() {
+function highlightTryItJSONCodeBlock() {
+  const el = document.querySelector('.try-yourself .json-code');
+  if (!el) return;
+
   const htmlMarkup = highlightJSON({ '💬': '🤔' });
-  document.querySelector('.json-code').innerHTML = htmlMarkup;
+  el.innerHTML = htmlMarkup;
 }
 
 function handleSectionScroll() {
-  document.querySelectorAll('section').forEach(section => {
+  const sections = document.querySelectorAll('section');
+  if (!sections || sections.length < 2) return;
+
+  sections.forEach(section => {
     section.addEventListener('wheel', e => {
       if (section.classList.contains('last-section') && e.deltaY > 0) {
         return;
@@ -18,11 +24,24 @@ function handleSectionScroll() {
 
       e.preventDefault();
 
+      let nextSection = section.nextElementSibling;
+      let prevSection = section.previousElementSibling;
+
+      if (window.innerWidth < 576 || window.innerHeight < 600) {
+        while (nextSection && nextSection.offsetHeight === 0) {
+          nextSection = nextSection.nextElementSibling;
+        }
+
+        while (prevSection && prevSection.offsetHeight === 0) {
+          prevSection = prevSection.previousElementSibling;
+        }
+      }
+
+      const canScroll = e.deltaY > 0 ? nextSection : prevSection;
+      if (!canScroll) return;
+
       window.scrollTo({
-        top:
-          section[
-            e.deltaY > 0 ? 'nextElementSibling' : 'previousElementSibling'
-          ].offsetTop,
+        top: e.deltaY > 0 ? nextSection.offsetTop : prevSection.offsetTop,
         behavior: 'smooth',
       });
     });
@@ -30,9 +49,12 @@ function handleSectionScroll() {
 }
 
 function handleHomePageResourcesSelector(selector) {
+  const selectorEl = document.querySelector(selector);
+  if (!selectorEl) return;
+
   const resourcesData = {};
 
-  document.querySelector(selector).addEventListener('click', async function(e) {
+  selectorEl.addEventListener('click', async function(e) {
     e.preventDefault();
     e.stopPropagation();
     this.classList.toggle('expanded');
@@ -43,9 +65,7 @@ function handleHomePageResourcesSelector(selector) {
 
       if (resource !== 'none' && !this.classList.contains('expanded')) {
         if (!resourcesData[resource]) {
-          const response = await fetch(
-            `https://dummyjson.com/${resource}?limit=3`,
-          );
+          const response = await fetch(`https://dummyjson.com/${resource}?limit=3`);
           const data = await response.json();
           resourcesData[resource] = data;
         }
@@ -57,6 +77,7 @@ function handleHomePageResourcesSelector(selector) {
   });
 
   document.addEventListener('click', function() {
-    document.querySelector(selector).classList.remove('expanded');
+    const expandedEl = document.querySelector(selector);
+    if (expandedEl) expandedEl.classList.remove('expanded');
   });
 }

@@ -6,6 +6,8 @@
 
 Explore the detailed documentation at [DummyJSON/Docs](https://dummyjson.com/docs/) for quick samples.
 
+**New**: Now you can generate your own [custom responses](https://dummyjson.com/custom-response) from DummyJSON, [try it now!](https://dummyjson.com/custom-response)
+
 ## Why DummyJSON?
 
 Ever felt bogged down by the complexities of setting up a backend just to fetch dummy data for your front-end project? Or perhaps you dreamt of a learning app where obtaining realistic data didn't involve navigating through convoluted public APIs and cumbersome registration processes. Well, say hello to DummyJSON!
@@ -19,12 +21,14 @@ Give it a spin at [DummyJSON](https://dummyjson.com) and make your development p
 - **No Sign-up/Registration**: Dive in and start using it hassle-free.
 - **Zero-configuration**: Enjoy a seamless experience without the need for setup.
 - **Basic and Advanced API**: Covering everything from simple to sophisticated data.
+- **Custom Responses**: Create your own custom responses using DummyJSON custom response generator.
 - **Resource Relationships**: Effortlessly understand and model data relationships.
 - **Filters and Nested Resources**: Tailor your data to fit your needs perfectly.
 - **HTTP Methods Support**: We've got all your HTTP methods covered - GET, POST, PUT, PATCH, and DELETE.
 - **Delay Responses**: Simulate real-world conditions with adjustable response delays.
 - **Cross-framework Compatibility**: Seamlessly integrate with React, Angular, Vue, Ember, or vanilla JavaScript.
 - **Dynamic Image Generation**: Generate placeholder images with customizable options.
+- **Identicon**: Generate customizable identicon on the go.
 
 ## Available Resources
 

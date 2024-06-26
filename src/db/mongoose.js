@@ -8,11 +8,7 @@ connectDB();
 async function connectDB() {
   if (!MONGODB_URI || isDbConnected()) return;
   const dbOptions = {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: MONGODB_DB_NAME || 'logs',
+    dbName: MONGODB_DB_NAME || 'DummyJSON-Test-DB',
   };
 
   try {

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
+
+  <title>Create Custom JSON Response REST API for Development & Testing | DummyJSON</title>
+  <meta name="description" content="Easily create a custom JSON Response REST API with DummyJSON. Perfect for development, testing, and prototyping, this tool allows you to generate APIs with data tailored to your needs." />
+
+  <meta name="author" content="Muhammad Ovi, Full Stack Developer" />
+  <meta name="author:bio" content="Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js" />
+  <meta name="author:linkedin" content="https://www.linkedin.com/in/muhammadovi" />
+  <meta name="author:twitter" content="https://twitter.com/imuhammadovi" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+
+  <meta property="og:title" content="Create Custom JSON Response REST API for Development & Testing | DummyJSON" />
+  <meta property="og:description" content="Easily create a custom JSON Response REST API with DummyJSON. Perfect for development, testing, and prototyping, this tool allows you to generate APIs with data tailored to your needs." />
+  <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
+  <meta property="og:url" content="https://dummyjson.com" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Create Custom JSON Response REST API for Development & Testing | DummyJSON" />
+  <meta name="twitter:description" content="Easily create a custom JSON Response REST API with DummyJSON. Perfect for development, testing, and prototyping, this tool allows you to generate APIs with data tailored to your needs." />
+  <meta name="twitter:image" content="https://dummyjson.com/public/img/meta.png" />
+  <meta name="twitter:site" content="@dummyjson" />
+  <meta name="twitter:creator" content="@imuhammadovi" />
+
+  <link rel="canonical" href="https://dummyjson.com" />
+
+  <link rel="stylesheet" href="https://assets.dummyjson.com/public/css/styles.css" />
+
+  <!-- JSON-LD structured data for rich snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Create Custom JSON Response REST API for Development & Testing | DummyJSON",
+      "description": "Easily create a custom JSON Response REST API with DummyJSON. Perfect for development, testing, and prototyping, this tool allows you to generate APIs with data tailored to your needs.",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Ovi",
+        "description": "Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js",
+        "url": "https://www.linkedin.com/in/muhammadovi",
+        "sameAs": [
+          "https://twitter.com/imuhammadovi",
+          "https://www.linkedin.com/in/muhammadovi"
+        ]
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dummyjson.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DummyJSON",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dummyjson.com/public/img/meta.png"
+        }
+      }
+    }
+  </script>
+
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('./partials/header') %>
+
+  <section class="custom-response standalone">
+    <div class="content centered">
+      <h1>
+        <span class="heading-star"></span>
+        Custom Response
+      </h1>
+      <p>
+        Need a REST API for custom JSON data?
+        <br />
+        Enter a response body below and click <b>"Generate Now"</b> to get your custom API URL.
+      </p>
+
+      <div class="code-container">
+        <div class="req-body-helper">
+          <span>// "response" body, what you expect from your custom API</span>
+
+          <button class="prettify-btn">Prettify <img src="data:image/svg+xml;utf8,<svg class='w-6 h-6 text-gray-800 dark:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23000000' viewBox='0 0 24 24'>
+            <path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z' clip-rule='evenodd'/>
+          </svg>" alt=""></button>
+        </div>
+
+        <div class="json-code">
+          <pre><code contenteditable></code></pre>
+        </div>
+      </div>
+
+      <div class="input-container x-copy">
+        <input type="url" readonly value="" placeholder="https://dummyjson.com/c/abcd-1234" />
+      </div>
+
+      <span class="changer">
+        Request method type:
+        <span class="selector">
+          <span class="selector-placeholder"></span>
+          <span class="method-selector-el">
+            <input type="radio" name="requestMethod" value="GET" id="GET" checked />
+            <label for="GET">GET</label>
+
+            <input type="radio" name="requestMethod" value="POST" id="POST" />
+            <label for="POST">POST</label>
+
+            <input type="radio" name="requestMethod" value="PUT" id="PUT" />
+            <label for="PUT">PUT</label>
+
+            <input type="radio" name="requestMethod" value="PATCH" id="PATCH" />
+            <label for="PATCH">PATCH</label>
+
+            <input type="radio" name="requestMethod" value="DELETE" id="DELETE" />
+            <label for="DELETE">DELETE</label>
+          </span>
+        </span>
+      </span>
+
+      <div class="btns-container">
+        <button class="btn primary" onclick="generateCustomAPI()">
+          <img src="https://assets.dummyjson.com/public/img/icons/magic-wand.svg" alt="Icon">
+          Generate Now
+        </button>
+      </div>
+    </div>
+  </section>
+</body>
+
+<script src="https://assets.dummyjson.com/public/js/custom-json-highlight.min.js" defer></script>
+<script src="https://assets.dummyjson.com/public/js/common.min.js" defer></script>
+<script src="https://assets.dummyjson.com/public/js/custom-response.min.js" defer></script>
+
+</html>

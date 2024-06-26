@@ -4,6 +4,8 @@ const Log = require('../models/log');
 const { isRequestInWhitelist } = require('../helpers');
 const { isDbConnected } = require('../utils/db');
 
+const { LOG_ENABLED, DB_LOG_ENABLED } = process.env;
+
 let count = 0;
 startCountLogger();
 
@@ -14,6 +16,11 @@ function logger(req, res, next) {
   }
 
   count += 1;
+
+  if (!LOG_ENABLED) {
+    next();
+    return;
+  }
 
   // request data
   req._startAt = undefined;
@@ -50,7 +57,7 @@ function logger(req, res, next) {
       totalTimeMS: getTotalTime(req, res),
     });
 
-    if (isDbConnected()) {
+    if (isDbConnected() && DB_LOG_ENABLED) {
       log.save(err => {
         if (err) {
           console.log({ logError: err.message });
@@ -78,12 +85,7 @@ function recordStartTime() {
 }
 
 function getIP(req) {
-  return (
-    req.ip ||
-    (req.connection && req.connection.remoteAddress) ||
-    req.ips ||
-    undefined
-  );
+  return req.ip || (req.connection && req.connection.remoteAddress) || req.ips || undefined;
 }
 
 function getResponseStatus(req, res) {
@@ -105,9 +107,7 @@ function getResponseTime(req, res) {
   }
 
   // calculate diff
-  const ms =
-    (res._startAt[0] - req._startAt[0]) * 1e3 +
-    (res._startAt[1] - req._startAt[1]) * 1e-6;
+  const ms = (res._startAt[0] - req._startAt[0]) * 1e3 + (res._startAt[1] - req._startAt[1]) * 1e-6;
 
   return ms;
 }
@@ -128,9 +128,7 @@ function getTotalTime(req, res) {
 }
 
 function isHeadersSent(res) {
-  return typeof res.headersSent !== 'boolean'
-    ? Boolean(res._header)
-    : res.headersSent;
+  return typeof res.headersSent !== 'boolean' ? Boolean(res._header) : res.headersSent;
 }
 
 function startCountLogger() {

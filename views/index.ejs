@@ -102,7 +102,10 @@
         eliminating backend setup headaches for rapid prototyping and testing.
       </p>
       <div class="btns-container">
-        <a href="https://github.com/Ovi/DummyJSON" target="_blank" class="btn primary">View on GitHub</a>
+        <a href="https://github.com/Ovi/DummyJSON" target="_blank" class="btn primary">
+          <img src="https://assets.dummyjson.com/public/img/icons/github.svg" alt="Icon">
+          View on GitHub
+        </a>
         <a href="/docs" class="btn">Read Docs</a>
       </div>
     </div>
@@ -182,7 +185,7 @@
           fetch('https://dummyjson.com/
           <span class="selector">
             <span class="selector-placeholder"></span>
-            <span class="selector-el">
+            <span class="resource-selector-el">
               <input type="radio" name="tryType" value="" checked="checked" id="none" />
               <label for="none">RESOURCE</label>
 
@@ -222,6 +225,68 @@
     </div>
   </section>
 
+  <section class="custom-response">
+    <div class="content centered">
+      <h1>
+        <span class="heading-star"></span>
+        Custom Response
+      </h1>
+      <p>
+        Need a REST API for custom JSON data?
+        <br />
+        Enter a response body below and click <b>"Generate Now"</b> to get your custom API URL.
+      </p>
+
+      <div class="code-container">
+        <div class="req-body-helper">
+          <span>// "response" body, what you expect from your custom API</span>
+
+          <button class="prettify-btn">Prettify <img src="data:image/svg+xml;utf8,<svg class='w-6 h-6 text-gray-800 dark:text-white' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23000000' viewBox='0 0 24 24'>
+            <path fill-rule='evenodd' d='M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z' clip-rule='evenodd'/>
+          </svg>" alt=""></button>
+        </div>
+
+        <div class="json-code">
+          <pre><code contenteditable></code></pre>
+        </div>
+      </div>
+
+      <div class="input-container x-copy">
+        <input type="url" readonly value="" placeholder="https://dummyjson.com/c/abcd-1234" />
+      </div>
+
+      <span class="changer">
+        Request method type:
+        <span class="selector">
+          <span class="selector-placeholder"></span>
+          <span class="method-selector-el">
+            <input type="radio" name="requestMethod" value="GET" id="GET" checked />
+            <label for="GET">GET</label>
+
+            <input type="radio" name="requestMethod" value="POST" id="POST" />
+            <label for="POST">POST</label>
+
+            <input type="radio" name="requestMethod" value="PUT" id="PUT" />
+            <label for="PUT">PUT</label>
+
+            <input type="radio" name="requestMethod" value="PATCH" id="PATCH" />
+            <label for="PATCH">PATCH</label>
+
+            <input type="radio" name="requestMethod" value="DELETE" id="DELETE" />
+            <label for="DELETE">DELETE</label>
+          </span>
+        </span>
+      </span>
+
+      <div class="btns-container">
+        <button class="btn primary" onclick="generateCustomAPI()">
+          <img src="https://assets.dummyjson.com/public/img/icons/magic-wand.svg" alt="Icon">
+          Generate Now
+        </button>
+      </div>
+    </div>
+  </section>
+
   <section class="last-section">
     <div class="content centered">
       <h1>
@@ -251,7 +316,8 @@
 </body>
 
 <script src="https://assets.dummyjson.com/public/js/custom-json-highlight.min.js" defer></script>
-<script src="https://assets.dummyjson.com/public/js/script.min.js" defer></script>
 <script src="https://assets.dummyjson.com/public/js/common.min.js" defer></script>
+<script src="https://assets.dummyjson.com/public/js/script.min.js" defer></script>
+<script src="https://assets.dummyjson.com/public/js/custom-response.min.js" defer></script>
 
 </html>

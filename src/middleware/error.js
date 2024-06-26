@@ -8,7 +8,7 @@ const errorMiddleware = (err, req, res, next) => {
     console.log('*** 404 Error ***', err.message || err);
   } else {
     console.log('*-*-* [start] error *-*-*');
-    console.log(err.message || err);
+    console.log(err);
     console.log('*-*-* [end] error *-*-*');
   }
 
