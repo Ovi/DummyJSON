@@ -26,10 +26,10 @@ injectMiddleWares(app);
 app.set('view engine', 'ejs');
 
 // serving static files
-// redirect to domain: https://cdn.dummyjson.com/public/WHATEVER
+// redirect to domain: https://assets.dummyjson.com/public/WHATEVER
 app.use('/public', (req, res) => {
   console.log('[CDN] [Redirect]', req.url);
-  res.redirect(`https://cdn.dummyjson.com/public${req.url}`);
+  res.redirect(`https://assets.dummyjson.com/public${req.url}`);
 });
 
 // routes
@@ -47,7 +47,5 @@ app.use(errorMiddleware);
 
 // start listening
 app.listen(PORT, () => {
-  console.info(
-    `[Node][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`,
-  );
+  console.info(`[Node][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
 });
