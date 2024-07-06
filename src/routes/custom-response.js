@@ -2,6 +2,7 @@ const router = require('express').Router();
 const CustomResponse = require('../models/custom-response');
 const { isDbConnected } = require('../utils/db');
 const { generateUniqueIdentifier, generateHash } = require('../utils/custom-response');
+const { customResponseExpiresInDays } = require('../constants');
 
 router.post('/generate', async (req, res, next) => {
   if (!isDbConnected()) {
@@ -55,10 +56,20 @@ router.use('/:identifier', async (req, res, next) => {
     const record = await CustomResponse.findOne({ identifier });
 
     if (record && record.method === req.method) {
-      // set header x-expires-on, should be 90 days from createdAt
-      const expiresOn = new Date(record.createdAt);
-      expiresOn.setDate(expiresOn.getDate() + 90);
-      res.set('x-expires-on', expiresOn.toISOString());
+      // set header x-expires-on, should be "customResponseExpiresInDays" days from now
+      const expiresOn = new Date();
+      expiresOn.setDate(expiresOn.getDate() + customResponseExpiresInDays);
+      expiresOn.setHours(0, 0, 0, 0);
+
+      res.set({
+        'x-expires-on': expiresOn.toISOString(),
+        'x-expires-in-days': customResponseExpiresInDays,
+        'Content-Type': 'application/json',
+        'Cache-Control': `public, max-age=${customResponseExpiresInDays * 24 * 60 * 60}`,
+      });
+
+      // update last accessed time (but don't wait for it to finish)
+      CustomResponse.updateOne({ identifier }, { $set: { lastAccessedAt: new Date() } }, { new: true }).exec();
 
       return res.json(record.json);
     }

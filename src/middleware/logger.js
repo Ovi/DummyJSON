@@ -17,6 +17,16 @@ function logger(req, res, next) {
 
   count += 1;
 
+  const requestURL = req.originalUrl || req.url;
+
+  if (requestURL.startsWith('/c/') || requestURL.startsWith('/custom-response')) {
+    console.log(`[CUSTOM RESPONSE] ${req.method} ${requestURL}. IP: ${getIP(req)}; UA: ${req.headers['user-agent']}`);
+
+    if (req.body && Object.keys(req.body).length > 0) {
+      console.log('Body:', req.body);
+    }
+  }
+
   if (!LOG_ENABLED) {
     next();
     return;
@@ -34,7 +44,6 @@ function logger(req, res, next) {
   recordStartTime.call(req);
 
   function logRequest() {
-    const requestURL = req.originalUrl || req.url;
     const requestMetaData = {
       requestIP: getIP(req),
       requestMethod: req.method,

@@ -9,7 +9,6 @@ const customResponseSchema = new Schema(
       required: true,
       unique: true,
     },
-
     hash: {
       type: String,
       required: true,
@@ -23,6 +22,10 @@ const customResponseSchema = new Schema(
       type: String,
       required: true,
       enum: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    },
+    lastAccessedAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   { timestamps: true },

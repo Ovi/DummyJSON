@@ -28,4 +28,6 @@ constants.allowedImageTypes = Object.keys(constants.imageMimeTypes);
 
 constants.thirtyDaysInMints = 30 * 24 * 60;
 
+constants.customResponseExpiresInDays = 90;
+
 module.exports = constants;

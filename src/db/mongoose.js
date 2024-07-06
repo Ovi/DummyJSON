@@ -3,8 +3,6 @@ const { isDbConnected, updatedDbConnectionStatus } = require('../utils/db');
 
 const { MONGODB_URI, MONGODB_DB_NAME } = process.env;
 
-connectDB();
-
 async function connectDB() {
   if (!MONGODB_URI || isDbConnected()) return;
   const dbOptions = {
@@ -21,6 +19,8 @@ async function connectDB() {
     process.exit(1);
   }
 }
+
+module.exports = connectDB;
 
 // If mongoose gets disconnected, show this message
 mongoose.connection.on('disconnected', () => {
