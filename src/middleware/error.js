@@ -1,3 +1,15 @@
+const commonErrorMessages = [
+  'jwt expired',
+  'jwt malformed',
+  'Invalid Token',
+  'Token Expired!',
+  'Authentication Problem',
+  'Username and password required',
+  'Invalid credentials',
+  'User id is required',
+  'Invalid user id ',
+];
+
 const errorMiddleware = (err, req, res, next) => {
   if (!err) {
     next();
@@ -6,6 +18,8 @@ const errorMiddleware = (err, req, res, next) => {
 
   if (err.status === 404) {
     console.log('*** 404 Error ***', err.message || err);
+  } else if (commonErrorMessages.includes(err.message)) {
+    console.log('*** Common Error ***', err.message);
   } else {
     console.log('*-*-* [start] error *-*-*');
     console.log(err);
