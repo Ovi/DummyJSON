@@ -18,6 +18,7 @@
     "@aws-sdk/client-s3": "^3.485.0",
     "color-convert": "^2.0.1",
     "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",

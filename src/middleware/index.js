@@ -2,6 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const applyRateLimit = require('../utils/applyRateLimit');
 const logger = require('./logger');
@@ -17,6 +18,9 @@ function injectMiddleWares(app) {
 
   // use helmet JS.
   app.use(helmet());
+
+  // apply cookie-parser middleware
+  app.use(cookieParser());
 
   app.use(express.json({ limit: '300kb' })); // for parsing application/json
   app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
