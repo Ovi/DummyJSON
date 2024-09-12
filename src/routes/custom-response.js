@@ -12,6 +12,10 @@ router.post('/generate', async (req, res, next) => {
 
   const { json, method } = req.body;
 
+  if (!json) {
+    return res.status(400).send('Missing JSON');
+  }
+
   const jsonSize = Buffer.byteLength(JSON.stringify(json));
   const maxSize = 300 * 1024; // 300kb
 
