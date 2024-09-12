@@ -23,6 +23,10 @@ const authUser = async (req, res, next) => {
 
     next();
   } catch (e) {
+    // If auth fails, clear the tokens from the cookies
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
+
     next(e);
   }
 };
