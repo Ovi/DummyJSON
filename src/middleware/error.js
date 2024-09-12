@@ -1,13 +1,15 @@
 const commonErrorMessages = [
   'jwt expired',
   'jwt malformed',
+  'invalid signature',
   'Invalid Token',
   'Token Expired!',
   'Authentication Problem',
   'Username and password required',
   'Invalid credentials',
   'User id is required',
-  'Invalid user id ',
+  'Invalid user id',
+  'Refresh token required',
 ];
 
 const errorMiddleware = (err, req, res, next) => {

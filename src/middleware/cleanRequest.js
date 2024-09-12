@@ -21,11 +21,11 @@ const cleanRequest = (req, res, next) => {
     let { select, order } = req.query;
 
     if (!isNumber(limit)) {
-      throw new APIError('Invalid limit', 400);
+      throw new APIError('Invalid "limit" - must be a number', 400);
     }
 
     if (!isNumber(skip)) {
-      throw new APIError('Invalid skip limit', 400);
+      throw new APIError('Invalid "skip" - must be a number', 400);
     }
 
     if (delay) {
