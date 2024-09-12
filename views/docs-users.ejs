@@ -118,7 +118,7 @@
       <div class="resource" id="users-login">
         <a href="#users-login" class="res-title">Login user and get token</a>
         <p class="res-tip">
-          You can use any user's credentials from <a href="/users">dummyjson.com/users</a>
+          You can use any user's credentials from <a href="/users">dummyjson.com/users</a>. Tokens are returned in the response and set as cookies.
         </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/user/login', {
@@ -129,7 +129,7 @@
               username: 'emilys',
               password: 'emilyspass',
               expiresInMins: 30, // optional, defaults to 60
-            })
+            }),
           })
           .then(res => res.json())
           .then(console.log);
@@ -146,21 +146,23 @@
             "lastName": "Johnson",
             "gender": "female",
             "image": "https://dummyjson.com/icon/emilys/128",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMTc0MCwiZXhwIjoxNzE3NjE1MzQwfQ.eQnhQSnS4o0sXZWARh2HsWrEr6XfDT4ngh0ejiykfH8",
-            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMTc0MCwiZXhwIjoxNzIwMjAzNzQwfQ.YsStJdmdUjKOUlbXdqze0nEScCM_RJw9rnuy0RdSn88"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // refreshToken in response and cookies
           }
         </code></pre>
       </div>
 
       <div class="resource" id="users-me">
         <a href="#users-me" class="res-title">Get current authenticated user</a>
+        <p class="res-tip">You can either pass the token via the Authorization header (JWT) or use cookies for automatic handling.</p>
         <pre><code class="language-js">
           /* providing token in bearer */
           fetch('https://dummyjson.com/user/me', {
             method: 'GET',
             headers: {
-              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
-            }, 
+              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', // Pass JWT via Authorization header
+            },
+            credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
           .then(res => res.json())
           .then(console.log);

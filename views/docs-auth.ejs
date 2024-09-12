@@ -22,7 +22,7 @@
       <div class="resource" id="auth-login">
         <a href="#auth-login" class="res-title">Login user and get token</a>
         <p class="res-tip">
-          You can use any user's credentials from <a href="/users">dummyjson.com/users</a>
+          You can use any user's credentials from <a href="/users">dummyjson.com/users</a>. Tokens are returned in the response and set as cookies.
         </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/auth/login', {
@@ -33,7 +33,8 @@
               username: 'emilys',
               password: 'emilyspass',
               expiresInMins: 30, // optional, defaults to 60
-            })
+            }),
+            credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
           .then(res => res.json())
           .then(console.log);
@@ -50,8 +51,8 @@
             "lastName": "Johnson",
             "gender": "female",
             "image": "https://dummyjson.com/icon/emilys/128",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMTc0MCwiZXhwIjoxNzE3NjE1MzQwfQ.eQnhQSnS4o0sXZWARh2HsWrEr6XfDT4ngh0ejiykfH8",
-            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMTc0MCwiZXhwIjoxNzIwMjAzNzQwfQ.YsStJdmdUjKOUlbXdqze0nEScCM_RJw9rnuy0RdSn88"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // refreshToken in response and cookies
           }
         </code></pre>
       </div>
@@ -63,8 +64,9 @@
           fetch('https://dummyjson.com/auth/me', {
             method: 'GET',
             headers: {
-              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', // Pass JWT via Authorization header
             }, 
+            credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
           .then(res => res.json())
           .then(console.log);
@@ -88,17 +90,16 @@
 
       <div class="resource" id="auth-refresh">
         <a href="#auth-refresh" class="res-title">Refresh auth session</a>
-        <p class="res-tip">Extend the session and create a new access token without username and password</p>
+        <p class="res-tip">Extend the session and create a new access token without username and password. Tokens can also be passed using cookies.</p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/auth/refresh', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              refreshToken: '/* YOUR_REFRESH_TOKEN_HERE */',
+              refreshToken: '/* YOUR_REFRESH_TOKEN_HERE */', // Optional, if not provided, the server will use the cookie
               expiresInMins: 30, // optional, defaults to 60
-            })
+            }),
+            credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
           .then(res => res.json())
           .then(console.log);
@@ -108,8 +109,8 @@
 
         <pre class="output"><code class="language-json">
           {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMzQ0OSwiZXhwIjoxNzE3NjE3MDQ5fQ.iI75FqR7VRSQ0uxZUryH_7ee-TghM_hrxSFuzwJO63I",
-            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJtaWNoYWVsdyIsImVtYWlsIjoibWljaGFlbC53aWxsaWFtc0B4LmR1bW15anNvbi5jb20iLCJmaXJzdE5hbWUiOiJNaWNoYWVsIiwibGFzdE5hbWUiOiJXaWxsaWFtcyIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL21pY2hhZWx3LzEyOCIsImlhdCI6MTcxNzYxMzQ0OSwiZXhwIjoxNzIwMjA1NDQ5fQ.G9zS9jdoWLjHwEr9sQM6nPaQPi0PJSCMt9oO8xTAdAY"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // new accessToken (returned in both response and cookies)
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // new refreshToken (returned in both response and cookies)
           }
         </code></pre>
       </div>
