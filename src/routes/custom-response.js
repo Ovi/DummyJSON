@@ -3,6 +3,7 @@ const CustomResponse = require('../models/custom-response');
 const { isDbConnected } = require('../utils/db');
 const { generateUniqueIdentifier, generateHash } = require('../utils/custom-response');
 const { customResponseExpiresInDays } = require('../constants');
+const cacheMiddleware = require('../middleware/cache');
 
 router.post('/generate', async (req, res, next) => {
   if (!isDbConnected()) {
@@ -48,7 +49,7 @@ router.post('/generate', async (req, res, next) => {
   }
 });
 
-router.use('/:identifier', async (req, res, next) => {
+router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
   if (!isDbConnected()) {
     next();
     return;
@@ -69,7 +70,7 @@ router.use('/:identifier', async (req, res, next) => {
         'x-expires-on': expiresOn.toISOString(),
         'x-expires-in-days': customResponseExpiresInDays,
         'Content-Type': 'application/json',
-        'Cache-Control': `public, max-age=${customResponseExpiresInDays * 24 * 60 * 60}`,
+        'Cache-Control': `public, max-age=${24 * 60 * 60}`, // 1 day
       });
 
       // update last accessed time (but don't wait for it to finish)
