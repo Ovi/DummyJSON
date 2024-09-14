@@ -143,6 +143,10 @@ utils.deepCopy = obj => {
 };
 
 utils.getNestedValue = (obj, keys) => {
+  if (!keys) {
+    return null;
+  }
+
   return keys.split('.').reduce((o, k) => (o || {})[k], obj);
 };
 
