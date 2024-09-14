@@ -1,3 +1,4 @@
+const cluster = require('node:cluster');
 const onFinished = require('on-finished');
 const onHeaders = require('on-headers');
 const Log = require('../models/log');
@@ -6,7 +7,8 @@ const { isDbConnected } = require('../utils/db');
 
 const { LOG_ENABLED, DB_LOG_ENABLED } = process.env;
 
-let count = 0;
+let requestCount = 0;
+let customRequestCount = 0;
 startCountLogger();
 
 function logger(req, res, next) {
@@ -15,12 +17,13 @@ function logger(req, res, next) {
     return;
   }
 
-  count += 1;
+  requestCount += 1;
 
   const requestURL = req.originalUrl || req.url;
 
   if (requestURL.startsWith('/c/') || requestURL.startsWith('/custom-response')) {
     console.log(`[CUSTOM RESPONSE] ${req.method} ${requestURL}. IP: ${getIP(req)}; UA: ${req.headers['user-agent']}`);
+    customRequestCount += 1;
 
     if (req.body && Object.keys(req.body).length > 0) {
       console.log('Body:', req.body);
@@ -141,46 +144,16 @@ function isHeadersSent(res) {
 }
 
 function startCountLogger() {
-  const countTime = new Date().getTime();
+  if (!cluster.isWorker) return;
 
   setInterval(() => {
-    const diff = timeDifference(countTime, new Date().getTime());
-    console.info(`[Count] "${count}" requests in ${diff}`);
+    process.send({
+      type: 'request_counts',
+      requestCount,
+      customRequestCount,
+    });
+
+    requestCount = 0;
+    customRequestCount = 0;
   }, 30 * 1000 /* 30 Seconds */);
-}
-
-// Calculate the time difference between two dates
-function timeDifference(startDateMS, endDateMS) {
-  // Calculate the difference in milliseconds
-  const difference = endDateMS - startDateMS;
-
-  // Calculate the difference in minutes
-  const minutes = Math.floor(difference / 1000 / 60);
-
-  // Calculate the difference in hours
-  const hours = Math.floor(difference / 1000 / 60 / 60);
-
-  // Calculate the difference in days
-  const days = Math.floor(difference / 1000 / 60 / 60 / 24);
-
-  // Calculate the number of remaining hours
-  const remainingHours = hours % 24;
-
-  // Calculate the number of remaining minutes
-  const remainingMinutes = minutes % 60;
-
-  // Build the result string
-  let result = '';
-  if (days > 0) {
-    result += `${days} days, `;
-  }
-  if (remainingHours > 0) {
-    result += `${remainingHours} hours, `;
-  }
-  if (remainingMinutes >= 0) {
-    result += `${remainingMinutes} minutes`;
-  }
-
-  // Return the result string
-  return result;
 }

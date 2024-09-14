@@ -18,7 +18,7 @@ async function connectDB() {
     updatedDbConnectionStatus(true);
   } catch (err) {
     updatedDbConnectionStatus(false);
-    console.error('[Service:Database] Err: Failed to Connect.', err);
+    _log('error', `Err: Failed to Connect. ${err}`);
     process.exit(1);
   }
 }
@@ -26,17 +26,17 @@ async function connectDB() {
 module.exports = connectDB;
 
 mongoose.connection.on('connected', () => {
-  console.info('[Service:Database] Mongoose connected to DB');
+  _log('info', 'Mongoose connected to DB');
 });
 
 mongoose.connection.on('error', err => {
   updatedDbConnectionStatus(true);
-  console.error('[Service:Database] Mongoose connection error:', err);
+  _log('error', `Mongoose connection error: ${err}`);
 });
 
 mongoose.connection.on('disconnected', () => {
   updatedDbConnectionStatus(false);
-  console.info('[Service:Database] Mongoose disconnected from DB');
+  _log('info', 'Mongoose disconnected from DB');
 
   // exit app when database is disconnected
   // process.exit(1);
@@ -46,10 +46,14 @@ mongoose.connection.on('disconnected', () => {
 process.on('SIGINT', async () => {
   try {
     await mongoose.connection.close();
-    console.info('INFO: Node is down. So is Mongoose.');
+    _log('info', 'Node is down. So is Mongoose.');
     process.exit(0);
   } catch (err) {
-    console.error('Error during Mongoose disconnection:', err);
+    _log('error', `Err: Mongoose disconnection. ${err}`);
     process.exit(1); // Exit with an error code if something goes wrong
   }
 });
+
+function _log(type, message) {
+  console[type](`[Service:Database][PID: ${process.pid}] ${message}`);
+}

@@ -229,4 +229,20 @@ utils.generateRandomId = () => {
   return `${parts[0].slice(0, 4)}-${parts[1]}-${parts[2].slice(0, 4)}-${parts[3]}`;
 };
 
+utils.timeDifference = (startDateMS, endDateMS) => {
+  const difference = endDateMS - startDateMS;
+  const minutes = Math.floor(difference / 1000 / 60);
+  const hours = Math.floor(difference / 1000 / 60 / 60);
+  const days = Math.floor(difference / 1000 / 60 / 60 / 24);
+  const remainingHours = hours % 24;
+  const remainingMinutes = minutes % 60;
+
+  let result = '';
+  if (days > 0) result += `${days} days, `;
+  if (remainingHours > 0) result += `${remainingHours} hours, `;
+  if (remainingMinutes >= 0) result += `${remainingMinutes} minutes`;
+
+  return result;
+};
+
 module.exports = utils;

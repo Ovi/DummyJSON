@@ -37,7 +37,7 @@ controller.imageComposer = async imageOptions => {
     return result;
   }
 
-  console.info('* CACHE MISS *', cacheKey);
+  // console.info('* CACHE MISS *', cacheKey);
 
   const buffer = await composeImage(imageOptions);
 

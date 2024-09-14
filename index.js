@@ -1,56 +1,52 @@
-const express = require('express');
-const connectDB = require('./src/db/mongoose');
-const injectMiddleWares = require('./src/middleware');
-const errorMiddleware = require('./src/middleware/error');
-const authUser = require('./src/middleware/auth');
-const routes = require('./src/routes');
+const os = require('node:os');
+const cluster = require('node:cluster');
+const { validateEnvVar } = require('./src/utils/util');
 const { setupCRONJobs } = require('./src/utils/cron-jobs');
-const { validateEnvVar, loadDataInMemory, isDev, redirectFn } = require('./src/utils/util');
+const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
 const { version } = require('./package.json');
 
 const { PORT = 8888, NODE_ENV } = process.env;
 
-// validate if we have all the env variables setup.
-validateEnvVar();
+const numCPUs = os.cpus().length;
 
-const app = express();
+async function setupMasterProcess() {
+  try {
+    validateEnvVar();
 
-setupApp();
+    setupCRONJobs();
 
-async function setupApp() {
-  // use database to store logs and custom responses
-  await connectDB();
+    logCounts();
 
-  // load all data in memory
-  loadDataInMemory();
+    console.info(`[Master] ${process.pid} running with 4/${numCPUs} workers`);
+    console.info(`[Master][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
 
-  // set up all middleware
-  injectMiddleWares(app);
+    forkWorkers(4);
+  } catch (error) {
+    console.error(`[Master] Critical error: ${error.message}`);
+    process.exit(1);
+  }
+}
 
-  // setup corn jobs
-  setupCRONJobs();
+function forkWorkers(numWorkers) {
+  for (let i = 0; i < numWorkers; i++) cluster.fork();
 
-  // set ejs as view engine
-  app.set('view engine', 'ejs');
+  cluster.on('exit', (worker, code, signal) => handleClusterExit(worker, code, signal));
+  cluster.on('message', (worker, message) => handleClusterMessage(worker, message));
+}
 
-  // serving static files
-  app.use('/public', isDev ? express.static('public') : redirectFn);
+// Main execution block
+if (cluster.isMaster) {
+  setupMasterProcess();
+} else {
+  require('./worker');
 
-  // routes
-  app.use('/', routes);
+  process.on('uncaughtException', err => {
+    console.error(`[Worker] Error in worker ${process.pid}:`, err);
 
-  // routes with authorization
-  app.use('/auth/', authUser, routes);
+    // Send the full stack trace to the master process
+    process.send({ type: 'error', error: err.stack });
 
-  app.get('*', (req, res) => {
-    res.status(404).send();
-  });
-
-  // use custom middleware for errors
-  app.use(errorMiddleware);
-
-  // start listening
-  app.listen(PORT, () => {
-    console.info(`[Node][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
+    // After handling the error, let it die naturally
+    process.exit(1);
   });
 }

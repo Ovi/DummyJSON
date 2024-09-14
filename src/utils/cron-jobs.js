@@ -1,10 +1,14 @@
 const cron = require('node-cron');
-const { CustomResponse } = require('../models/custom-response');
+const CustomResponse = require('../models/custom-response');
 const { customResponseExpiresInDays } = require('../constants');
 const { isDbConnected } = require('./db');
+const connectDB = require('../db/mongoose');
 
 const deleteOldCustomResponses = async () => {
+  await connectDB();
+
   if (!isDbConnected()) {
+    console.error('[CUSTOM RESPONSE] DB not connected. Exiting deleteOldCustomResponses');
     return;
   }
 
