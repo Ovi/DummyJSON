@@ -16,7 +16,7 @@ const authUser = async (req, res, next) => {
     const user = findUserWithUsernameAndId(decoded);
 
     if (!user) {
-      throw new APIError(`Invalid token`, 400);
+      throw new APIError(`invalid token`, 400);
     }
 
     req.user = user;

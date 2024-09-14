@@ -31,13 +31,13 @@ controller.imageComposer = async imageOptions => {
   const hasInCache = await verifyImageInCache(cacheKey);
 
   if (hasInCache) {
-    console.info('* CACHE HIT *');
+    console.info('* CACHE HIT *', cacheKey);
     result.cacheUrl = `https://cdn.dummyjson.com/${cacheKey}`;
 
     return result;
   }
 
-  console.info('* CACHE MISS *');
+  console.info('* CACHE MISS *', cacheKey);
 
   const buffer = await composeImage(imageOptions);
 
