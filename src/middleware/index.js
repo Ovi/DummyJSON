@@ -19,6 +19,20 @@ function injectMiddleWares(app) {
   // use helmet JS.
   app.use(helmet());
 
+  // remove unwanted headers
+  app.use((req, res, next) => {
+    const headersToRemove = ['Server', 'X-Powered-By'];
+    headersToRemove.forEach(header => res.removeHeader(header));
+
+    // set custom headers
+    res.set({
+      'X-Powered-By': 'Cats on Keyboards',
+      Server: 'BobTheBuilder',
+    });
+
+    next();
+  });
+
   // apply cookie-parser middleware
   app.use(cookieParser());
 
