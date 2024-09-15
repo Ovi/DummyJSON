@@ -5,7 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const applyRateLimit = require('../utils/applyRateLimit');
-const logger = require('./logger');
+const requestLogger = require('./request-logger');
 const cleanRequest = require('./cleanRequest');
 const delayResponse = require('./delayResponse');
 
@@ -41,7 +41,7 @@ function injectMiddleWares(app) {
 
   applyRateLimit(app);
 
-  app.use(logger);
+  app.use(requestLogger);
 
   app.use(cleanRequest);
 

@@ -1,17 +1,14 @@
 const cluster = require('node:cluster');
 const onFinished = require('on-finished');
 const onHeaders = require('on-headers');
-const Log = require('../models/log');
-const { isRequestInWhitelist } = require('../helpers');
-const { isDbConnected } = require('../utils/db');
+const { isRequestInWhitelist, logger } = require('../helpers');
 
-const { LOG_ENABLED, DB_LOG_ENABLED } = process.env;
+const { LOG_ENABLED } = process.env;
 
 let requestCount = 0;
 let customRequestCount = 0;
-startCountLogger();
 
-function logger(req, res, next) {
+function requestLogger(req, res, next) {
   if (isRequestInWhitelist(req)) {
     next();
     return;
@@ -20,14 +17,8 @@ function logger(req, res, next) {
   requestCount += 1;
 
   const requestURL = req.originalUrl || req.url;
-
   if (requestURL.startsWith('/c/') || requestURL.startsWith('/custom-response')) {
-    console.log(`[CUSTOM RESPONSE] ${req.method} ${requestURL}. IP: ${getIP(req)}; UA: ${req.headers['user-agent']}`);
     customRequestCount += 1;
-
-    if (req.body && Object.keys(req.body).length > 0) {
-      console.log('Body:', req.body);
-    }
   }
 
   if (!LOG_ENABLED) {
@@ -47,37 +38,25 @@ function logger(req, res, next) {
   recordStartTime.call(req);
 
   function logRequest() {
-    const requestMetaData = {
-      requestIP: getIP(req),
-      requestMethod: req.method,
-      requestTimeISO: new Date().toISOString(),
-      requestUA: req.headers['user-agent'],
-      requestURL,
-    };
-
-    const responseMetaData = {
-      responseCode: getResponseStatus(req, res),
-      responseTimeMS: getResponseTime(req, res),
-    };
-
     const referrer = req.headers.referer || req.headers.referrer;
 
-    const log = new Log({
-      requestMetaData,
-      responseMetaData,
-      referrer,
-      totalTimeMS: getTotalTime(req, res),
-    });
+    const logObject = {
+      timestamp: new Date().toISOString(),
+      level: 'info',
+      message: 'HTTP Request',
+      meta: {
+        method: req.method,
+        status_code: getResponseStatus(req, res),
+        total_time_ms: getTotalTime(req, res),
+        response_time_ms: getResponseTime(req, res),
+        ip: getIP(req),
+        url: requestURL,
+        referrer: referrer || '-',
+        user_agent: req.headers['user-agent'] || '-',
+      },
+    };
 
-    if (isDbConnected() && DB_LOG_ENABLED) {
-      log.save(err => {
-        if (err) {
-          console.log({ logError: err.message });
-        }
-      });
-    }
-
-    console.log(`Resource: ${requestURL}; Referrer: ${referrer || '-'}`);
+    logger.info(logObject);
   }
 
   // record response start
@@ -89,7 +68,7 @@ function logger(req, res, next) {
   next();
 }
 
-module.exports = logger;
+module.exports = requestLogger;
 
 function recordStartTime() {
   this._startAt = process.hrtime();
@@ -121,7 +100,7 @@ function getResponseTime(req, res) {
   // calculate diff
   const ms = (res._startAt[0] - req._startAt[0]) * 1e3 + (res._startAt[1] - req._startAt[1]) * 1e-6;
 
-  return ms;
+  return ms.toFixed(3);
 }
 
 function getTotalTime(req, res) {
@@ -136,7 +115,7 @@ function getTotalTime(req, res) {
   // cover to milliseconds
   const ms = elapsed[0] * 1e3 + elapsed[1] * 1e-6;
 
-  return ms;
+  return ms.toFixed(3);
 }
 
 function isHeadersSent(res) {
@@ -157,3 +136,5 @@ function startCountLogger() {
     customRequestCount = 0;
   }, 30 * 1000 /* 30 Seconds */);
 }
+
+startCountLogger();

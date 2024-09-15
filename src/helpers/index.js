@@ -1,6 +1,7 @@
 const { requestWhitelist } = require('../constants');
 const { isNumber, dataInMemory } = require('../utils/util');
 const APIError = require('../utils/error');
+const logger = require('./logger');
 
 const helpers = {};
 
@@ -51,5 +52,7 @@ helpers.isRequestInWhitelist = req => {
 
   return requestWhitelist.find(u => url.includes(u));
 };
+
+helpers.logger = logger;
 
 module.exports = helpers;
