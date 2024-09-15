@@ -3,12 +3,13 @@ const CustomResponse = require('../models/custom-response');
 const { customResponseExpiresInDays } = require('../constants');
 const { isDbConnected } = require('./db');
 const connectDB = require('../db/mongoose');
+const { logError, log } = require('../helpers/logger');
 
 const deleteOldCustomResponses = async () => {
   await connectDB();
 
   if (!isDbConnected()) {
-    console.error('[CUSTOM RESPONSE] DB not connected. Exiting deleteOldCustomResponses');
+    logError('[CUSTOM RESPONSE] DB not connected. Exiting deleteOldCustomResponses');
     return;
   }
 
@@ -19,9 +20,9 @@ const deleteOldCustomResponses = async () => {
   try {
     // delete and count deleted
     const { deletedCount } = await CustomResponse.deleteMany({ lastAccessedAt: { $lt: ninetyDaysAgo } });
-    console.info(`[CUSTOM RESPONSE] Deleted ${deletedCount} old CustomResponse entries.`);
+    log(`[CUSTOM RESPONSE] Deleted ${deletedCount} old CustomResponse entries.`);
   } catch (err) {
-    console.log('[CUSTOM RESPONSE] Error deleting old CustomResponse entries:', err);
+    logError('[CUSTOM RESPONSE] Error deleting old CustomResponse entries', { error: err });
   }
 };
 

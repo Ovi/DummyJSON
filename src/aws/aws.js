@@ -7,13 +7,9 @@ const {
   ListObjectsV2Command,
   DeleteObjectsCommand,
 } = require('@aws-sdk/client-s3');
+const { logError } = require('../helpers/logger');
 
-const {
-  AWS_ACCESS_KEY,
-  AWS_SECRET_KEY,
-  AWS_BUCKET_NAME,
-  AWS_BUCKET_REGION,
-} = process.env;
+const { AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_BUCKET_NAME, AWS_BUCKET_REGION } = process.env;
 
 const s3Client = new S3Client({
   credentials: {
@@ -120,9 +116,7 @@ async function recursiveDelete(location, token) {
 
     // log any errors deleting files
     if (deleted.Errors) {
-      deleted.Errors.map(error =>
-        console.log(`${error.Key} could not be deleted - ${error.Code}`),
-      );
+      deleted.Errors.map(error => logError(`${error.Key} could not be deleted - ${error.Code}`));
     }
   }
 

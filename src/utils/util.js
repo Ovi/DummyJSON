@@ -2,6 +2,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const { v4 } = require('uuid');
 const { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } = require('../constants');
+const { logWarn, log } = require('../helpers/logger');
 
 const utils = {};
 
@@ -99,7 +100,7 @@ utils.validateEnvVar = () => {
   const optionalUnsetEnv = OPTIONAL_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
 
   if (optionalUnsetEnv.length) {
-    console.warn(`Optional ENV variables are not set: [${optionalUnsetEnv.join(', ')}]`);
+    logWarn(`Optional ENV variables are not set: [${optionalUnsetEnv.join(', ')}]`);
   }
 };
 
@@ -219,7 +220,7 @@ utils.getUserPayload = user => ({
 
 // redirect to domain: https://assets.dummyjson.com/public/WHATEVER
 utils.redirectFn = (req, res) => {
-  console.log('[CDN] [Redirect]', req.url);
+  log(`CDN Redirect`, { url: req.url });
   res.redirect(`https://assets.dummyjson.com/public${req.url}`);
 };
 

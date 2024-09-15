@@ -1,3 +1,5 @@
+const { log, logError } = require('../helpers/logger');
+
 /* eslint-disable no-console */
 const commonErrorMessages = [
   'jwt expired',
@@ -41,19 +43,19 @@ const errorMiddleware = (err, req, res, next) => {
   // Log common errors
   const isCommonError = commonErrorMessages.find(msg => errorMessage.includes(msg));
   if (isCommonError) {
-    console.info('*** Common Error ***', errorMessage);
+    log('Common Error', { error: errorMessage });
     errorLogged = true;
   }
 
   // Log 404 errors specifically
   if (err.status === 404) {
-    console.info('*** 404 Error ***', err.message || err);
+    log('404 Error', { error: err.message || err });
     errorLogged = true;
   }
 
   // Log error details if not logged as a common or 404 error
   if (!errorLogged) {
-    console.error('*** Error Details ***', err);
+    logError('Error Details', { error: err });
   }
 
   // Check for mapped error responses

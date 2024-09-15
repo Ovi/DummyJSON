@@ -5,6 +5,7 @@ const errorMiddleware = require('./src/middleware/error');
 const authUser = require('./src/middleware/auth');
 const routes = require('./src/routes');
 const { loadDataInMemory, isDev, redirectFn } = require('./src/utils/util');
+const { log } = require('./src/helpers/logger');
 
 const { PORT = 8888 } = process.env;
 
@@ -41,5 +42,5 @@ async function setupApp() {
   // use custom middleware for errors
   app.use(errorMiddleware);
 
-  app.listen(PORT, () => console.info(`[Worker] ${process.pid} started`));
+  app.listen(PORT, () => log(`[Worker] ${process.pid} started`));
 }

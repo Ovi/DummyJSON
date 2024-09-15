@@ -4,6 +4,7 @@ const colorConvert = require('color-convert');
 const sharp = require('sharp');
 const { isNumber } = require('./util');
 const aws = require('../aws/aws');
+const { logError, log } = require('../helpers/logger');
 
 const { CACHE_ENABLED } = process.env;
 
@@ -81,16 +82,7 @@ utils.isInvalidSize = (height, width) => {
 };
 
 utils.getCacheKey = options => {
-  const {
-    width,
-    height,
-    background,
-    color,
-    fontFamily,
-    fontSize,
-    text,
-    type,
-  } = options;
+  const { width, height, background, color, fontFamily, fontSize, text, type } = options;
 
   const size = `${width}x${height}`;
   const font = `${fontFamily}-${fontSize}`;
@@ -118,17 +110,7 @@ utils.getCacheKey = options => {
  * @param options.hasSpecifiedFontSize {boolean} to check if font size if provided by user
  */
 utils.composeImage = async options => {
-  const {
-    width,
-    height,
-    text,
-    type,
-    fontFamily,
-    fontSize,
-    color,
-    background,
-    hasSpecifiedFontSize,
-  } = options;
+  const { width, height, text, type, fontFamily, fontSize, color, background, hasSpecifiedFontSize } = options;
 
   const image = sharp({
     create: {
@@ -139,10 +121,7 @@ utils.composeImage = async options => {
     },
   });
 
-  const dynamicFontSize =
-    fontSize && hasSpecifiedFontSize
-      ? parseInt(fontSize, 10)
-      : width / text.length;
+  const dynamicFontSize = fontSize && hasSpecifiedFontSize ? parseInt(fontSize, 10) : width / text.length;
   const fontSizeValue = dynamicFontSize || 16;
 
   const verticalOffset = fontSizeValue / 3; // Adjust this value to fine-tune the vertical centering
@@ -194,9 +173,9 @@ utils.storeImgInCache = async (buffer, contentType, key) => {
 
   const metadata = await aws.uploadToStorage(buffer, contentType, key);
   if (metadata?.httpStatusCode === 200) {
-    console.log('* CACHED *');
+    log('Image cached', { key });
   } else {
-    console.log('* CACHING FAILED *');
+    logError('Image caching failed', { key, metadata });
   }
 
   return metadata;
@@ -206,8 +185,6 @@ utils.deleteAllCache = async () => {
   if (!CACHE_ENABLED) return null;
 
   const metadata = await aws.deleteFolderFromStorage('cache');
-  console.log(metadata);
-
   return metadata;
 };
 

@@ -1,7 +1,8 @@
 const cluster = require('node:cluster');
 const onFinished = require('on-finished');
 const onHeaders = require('on-headers');
-const { isRequestInWhitelist, logger } = require('../helpers');
+const { isRequestInWhitelist } = require('../helpers');
+const { logger } = require('../helpers/logger');
 
 const { LOG_ENABLED } = process.env;
 
@@ -46,7 +47,7 @@ function requestLogger(req, res, next) {
       message: 'HTTP Request',
       meta: {
         method: req.method,
-        status_code: getResponseStatus(req, res),
+        status: getResponseStatus(req, res),
         total_time_ms: getTotalTime(req, res),
         response_time_ms: getResponseTime(req, res),
         ip: getIP(req),

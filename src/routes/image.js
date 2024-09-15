@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { imageComposer } = require('../controllers/image');
+const { logError } = require('../helpers/logger');
 const APIError = require('../utils/error');
 const { generateProperData } = require('../utils/image');
 
@@ -35,8 +36,7 @@ router.get(endpoint, async (req, res, next) => {
 
     res.header(headers).send(imageBuffer);
   } catch (error) {
-    console.info('*** Image Processing Error! ***');
-    console.error(error);
+    logError('Image Processing Error', { error });
     next(error);
   }
 });

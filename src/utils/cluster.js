@@ -1,6 +1,7 @@
 const https = require('node:https');
 const cluster = require('node:cluster');
 const { timeDifference } = require('./util');
+const { log, logError } = require('../helpers/logger');
 
 const clusterUtils = {};
 
@@ -20,7 +21,7 @@ clusterUtils.handleClusterExit = (worker, code, signal) => {
     reason = 'Worker exited successfully';
   }
 
-  console.info(`[Master] ${worker.process.pid} died. ${reason}`);
+  log(`[Master] ${worker.process.pid} died. ${reason}`);
 
   cluster.fork();
 };
@@ -32,7 +33,7 @@ clusterUtils.handleClusterMessage = (worker, message) => {
   }
 
   if (message.type === 'error') {
-    console.info(`[Master] Received error from worker ${worker.process.pid}: ${message.error}`);
+    log(`[Master] Received error from worker ${worker.process.pid}: ${message.error}`);
     clusterUtils.sendWorkedDiedPushNotification(worker.process.pid, message.error || 'No error details');
   }
 };
@@ -43,8 +44,8 @@ clusterUtils.logCounts = () => {
   setInterval(() => {
     const diff = timeDifference(startTime, Date.now());
 
-    console.info(`[Count] ${counts.requestCount} requests in ${diff}`);
-    console.info(`[Count] ${counts.customRequestCount} custom requests in ${diff}`);
+    log(`[Count] ${counts.requestCount} requests in ${diff}`);
+    log(`[Count] ${counts.customRequestCount} custom requests in ${diff}`);
   }, 30 * 1000 /* 30 seconds */);
 };
 
@@ -73,12 +74,12 @@ clusterUtils.sendWorkedDiedPushNotification = (workerId, errorDetails) => {
   const req = https.request(options, res => {
     res.on('data', d => {
       process.stdout.write(d);
-      console.info('\nNotification sent!');
+      log('Notification sent!');
     });
   });
 
   req.on('error', e => {
-    console.error(`Error sending notification: ${e.message}`);
+    logError('Error sending notification', { error: e });
   });
 
   req.write(postData);

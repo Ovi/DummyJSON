@@ -1,12 +1,7 @@
 const APIError = require('../utils/error');
-const {
-  verifyImageInCache,
-  storeImgInCache,
-  getCacheKey,
-  composeImage,
-  isInvalidSize,
-} = require('../utils/image');
+const { verifyImageInCache, storeImgInCache, getCacheKey, composeImage, isInvalidSize } = require('../utils/image');
 const { imageMimeTypes, allowedImageTypes } = require('../constants');
+const { log } = require('../helpers/logger');
 
 const allowedTypesString = allowedImageTypes.join('", "');
 
@@ -31,13 +26,13 @@ controller.imageComposer = async imageOptions => {
   const hasInCache = await verifyImageInCache(cacheKey);
 
   if (hasInCache) {
-    console.info('* CACHE HIT *', cacheKey);
+    log('Image cache hit', { cacheKey });
     result.cacheUrl = `https://cdn.dummyjson.com/${cacheKey}`;
 
     return result;
   }
 
-  // console.info('* CACHE MISS *', cacheKey);
+  // log('Image cache miss', { cacheKey });
 
   const buffer = await composeImage(imageOptions);
 

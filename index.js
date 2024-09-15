@@ -4,6 +4,7 @@ const { validateEnvVar } = require('./src/utils/util');
 const { setupCRONJobs } = require('./src/utils/cron-jobs');
 const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
 const { version } = require('./package.json');
+const { log, logError } = require('./src/helpers/logger');
 
 const { PORT = 8888, NODE_ENV } = process.env;
 
@@ -17,12 +18,12 @@ async function setupMasterProcess() {
 
     logCounts();
 
-    console.info(`[Master] ${process.pid} running with 4/${numCPUs} workers`);
-    console.info(`[Master][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
+    log(`[Master] ${process.pid} running with 4/${numCPUs} workers`);
+    log(`[Master][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
 
     forkWorkers(4);
   } catch (error) {
-    console.error(`[Master] Critical error: ${error.message}`);
+    logError(`[Master] Critical error: ${error.message}`, { error: error.stack });
     process.exit(1);
   }
 }
@@ -41,7 +42,7 @@ if (cluster.isMaster) {
   require('./worker');
 
   process.on('uncaughtException', err => {
-    console.error(`[Worker] Error in worker ${process.pid}:`, err);
+    logError(`[Worker] Error in worker ${process.pid}: ${err.message}`, { error: err.stack });
 
     // Send the full stack trace to the master process
     process.send({ type: 'error', error: err.stack });
