@@ -4,19 +4,19 @@ const { findUserWithUsernameAndId } = require('../utils/util');
 
 const authUser = async (req, res, next) => {
   try {
-    const tokenFromHeader = req.header('Authorization');
-    const tokenFromCookie = req.cookies.accessToken;
+    const accessTokenFromHeader = req.header('Authorization');
+    const accessTokenFromCookie = req.cookies.accessToken;
 
-    // Prefer token from Authorization header if both are present
-    const token = tokenFromHeader || tokenFromCookie;
+    // Prefer access token from Authorization header if both are present
+    const accessToken = accessTokenFromHeader || accessTokenFromCookie;
 
-    if (!token) throw new APIError('Authentication Problem', 403);
+    if (!accessToken) throw new APIError('Access Token is required', 401);
 
-    const decoded = await verifyAccessToken(token);
+    const decoded = await verifyAccessToken(accessToken);
     const user = findUserWithUsernameAndId(decoded);
 
     if (!user) {
-      throw new APIError(`invalid token`, 400);
+      throw new APIError('Invalid access token', 400);
     }
 
     req.user = user;

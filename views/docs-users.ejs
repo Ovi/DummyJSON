@@ -116,7 +116,7 @@
       </div>
 
       <div class="resource" id="users-login">
-        <a href="#users-login" class="res-title">Login user and get token</a>
+        <a href="#users-login" class="res-title">Login user and get tokens</a>
         <p class="res-tip">
           You can use any user's credentials from <a href="/users">dummyjson.com/users</a>. Tokens are returned in the response and set as cookies.
         </p>
@@ -146,7 +146,7 @@
             "lastName": "Johnson",
             "gender": "female",
             "image": "https://dummyjson.com/icon/emilys/128",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
+            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
             "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // refreshToken in response and cookies
           }
         </code></pre>
@@ -154,13 +154,13 @@
 
       <div class="resource" id="users-me">
         <a href="#users-me" class="res-title">Get current authenticated user</a>
-        <p class="res-tip">You can either pass the token via the Authorization header (JWT) or use cookies for automatic handling.</p>
+        <p class="res-tip">You can either pass the access token via the Authorization header (JWT) or use cookies for automatic handling.</p>
         <pre><code class="language-js">
-          /* providing token in bearer */
+          /* providing access token in bearer */
           fetch('https://dummyjson.com/user/me', {
             method: 'GET',
             headers: {
-              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', // Pass JWT via Authorization header
+              'Authorization': 'Bearer /* YOUR_ACCESS_TOKEN_HERE */', // Pass JWT via Authorization header
             },
             credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })

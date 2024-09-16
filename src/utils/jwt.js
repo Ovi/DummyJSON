@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { thirtyDaysInMints } = require('../constants');
 
 const { JWT_SECRET } = process.env;
 
@@ -6,9 +7,9 @@ const util = {};
 
 util.generateAccessToken = generateToken;
 
-util.verifyAccessToken = Authorization => {
-  const token = Authorization.replace('Bearer ', '');
-  return verifyToken(token);
+util.verifyAccessToken = authorization => {
+  const accessToken = authorization.replace('Bearer ', '');
+  return verifyToken(accessToken);
 };
 
 util.generateRefreshToken = generateToken;
@@ -19,7 +20,7 @@ module.exports = util;
 
 function generateToken(payload, expiresInMins) {
   return new Promise((resolve, reject) => {
-    let expiresIn = '60m';
+    let expiresIn = `${thirtyDaysInMints}m`;
 
     if (expiresInMins) expiresIn = `${expiresInMins}m`;
 
