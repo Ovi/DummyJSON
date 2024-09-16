@@ -5,6 +5,7 @@ const { setupCRONJobs } = require('./src/utils/cron-jobs');
 const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
 const { version } = require('./package.json');
 const { log, logError } = require('./src/helpers/logger');
+const connectDB = require('./src/db/mongoose');
 
 const { PORT = 8888, NODE_ENV } = process.env;
 
@@ -13,6 +14,8 @@ const numCPUs = os.cpus().length;
 async function setupMasterProcess() {
   try {
     validateEnvVar();
+
+    await connectDB();
 
     setupCRONJobs();
 
