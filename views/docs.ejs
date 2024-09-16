@@ -68,14 +68,14 @@
 
       <div class="resource" id="intro-auth">
         <a href="#intro-auth" class="res-title">Authorizing Resources</a>
-        <p class="res-desc">All resources can be accessed via an authentication token to test as a logged-in user.</p>
-        <p class="res-tip">Go to auth module and generate an auth token to get data as an authorized user</p>
+        <p class="res-desc">All resources can be accessed via an access token to test as a logged-in user.</p>
+        <p class="res-tip">Go to auth module and generate an auth access token to get data as an authorized user</p>
         <pre><code class="language-js">
-          /* providing token in bearer */
+          /* providing access token in bearer */
           fetch('https://dummyjson.com/auth/RESOURCE', {
             method: 'GET', /* or POST/PUT/PATCH/DELETE */
             headers: {
-              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', 
+              'Authorization': 'Bearer /* YOUR_ACCESS_TOKEN_HERE */', 
               'Content-Type': 'application/json'
             }, 
           })

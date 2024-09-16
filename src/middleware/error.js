@@ -5,12 +5,13 @@ const commonErrorMessages = [
   'jwt expired',
   'jwt malformed',
   'invalid signature',
-  'invalid Token',
+  'invalid Token', // need to verify
+  'Invalid access token',
   'Token Expired!',
   'Refresh token required',
   'Invalid refresh token',
   'Refresh token expired',
-  'Authentication Problem',
+  'Access Token is required',
   'Username and password required',
   'Invalid credentials',
   'User id is required',
@@ -22,6 +23,7 @@ const commonErrorMessages = [
   'Invalid "skip" - must be a number',
   'Invalid "limit" - must be a number',
   'Invalid comment body',
+  'Maximum access token expire time can be',
 ];
 
 // Mapping specific error messages to status codes and responses

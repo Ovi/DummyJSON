@@ -11,8 +11,7 @@ router.post('/login', async (req, res, next) => {
     res.cookie('accessToken', accessToken, cookieData);
     res.cookie('refreshToken', refreshToken, cookieData);
 
-    // sending accessToken as token for backward compatibility
-    res.send({ token: accessToken, refreshToken, ...payloadData });
+    res.send({ accessToken, refreshToken, ...payloadData });
   } catch (error) {
     next(error);
   }
@@ -58,8 +57,7 @@ router.post('/refresh', async (req, res, next) => {
     res.cookie('accessToken', accessToken, cookieData);
     res.cookie('refreshToken', newRefreshToken, cookieData);
 
-    // Sending accessToken as token for backward compatibility
-    res.send({ token: accessToken, refreshToken: newRefreshToken });
+    res.send({ accessToken, refreshToken: newRefreshToken });
   } catch (error) {
     next(error);
   }

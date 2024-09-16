@@ -20,7 +20,7 @@
       </p>
 
       <div class="resource" id="auth-login">
-        <a href="#auth-login" class="res-title">Login user and get token</a>
+        <a href="#auth-login" class="res-title">Login user and get tokens</a>
         <p class="res-tip">
           You can use any user's credentials from <a href="/users">dummyjson.com/users</a>. Tokens are returned in the response and set as cookies.
         </p>
@@ -51,7 +51,7 @@
             "lastName": "Johnson",
             "gender": "female",
             "image": "https://dummyjson.com/icon/emilys/128",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
+            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT accessToken (for backward compatibility) in response and cookies
             "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // refreshToken in response and cookies
           }
         </code></pre>
@@ -60,11 +60,11 @@
       <div class="resource" id="auth-me">
         <a href="#auth-me" class="res-title">Get current auth user</a>
         <pre><code class="language-js">
-          /* providing token in bearer */
+          /* providing accessToken in bearer */
           fetch('https://dummyjson.com/auth/me', {
             method: 'GET',
             headers: {
-              'Authorization': 'Bearer /* YOUR_TOKEN_HERE */', // Pass JWT via Authorization header
+              'Authorization': 'Bearer /* YOUR_ACCESS_TOKEN_HERE */', // Pass JWT via Authorization header
             }, 
             credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
@@ -97,7 +97,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               refreshToken: '/* YOUR_REFRESH_TOKEN_HERE */', // Optional, if not provided, the server will use the cookie
-              expiresInMins: 30, // optional, defaults to 60
+              expiresInMins: 30, // optional (FOR ACCESS TOKEN), defaults to 60 
             }),
             credentials: 'include' // Include cookies (e.g., accessToken) in the request
           })
@@ -109,7 +109,7 @@
 
         <pre class="output"><code class="language-json">
           {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // new accessToken (returned in both response and cookies)
+            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // new accessToken (returned in both response and cookies)
             "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." // new refreshToken (returned in both response and cookies)
           }
         </code></pre>
