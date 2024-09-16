@@ -91,3 +91,6 @@ typings/
 .firebaserc
 firebase.json
 *.cache
+
+# Mac files
+.DS_Store

@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="https://assets.dummyjson.com/public/fav.png" />
 
-  <title><%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development</title>
+  <title><%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data</title>
   <meta name="description" content="<%= description %>" />
 
   <meta name="author" content="Muhammad Ovi, Full Stack Developer" />
@@ -16,7 +16,7 @@
   <meta name="googlebot" content="index, follow" />
   <meta name="bingbot" content="index, follow" />
 
-  <meta property="og:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development" />
+  <meta property="og:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data" />
   <meta property="og:description" content="<%= description %>" />
   <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
   <meta property="og:url" content="https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>" />
@@ -25,7 +25,7 @@
   <meta property="og:locale" content="en_US" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development" />
+  <meta name="twitter:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data" />
   <meta name="twitter:description" content="<%= description %>" />
   <meta name="twitter:image" content="https://dummyjson.com/public/img/meta.png" />
   <meta name="twitter:site" content="@dummyjson" />
@@ -40,30 +40,28 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "TechArticle",
-      "headline": "<%= page ? page : 'Docs'%> - DummyJSON - Fake REST API of JSON data for development",
+      "@type": "WebSite",
+      "name": "DummyJSON",
+      "url": "https://dummyjson.com",
       "description": "<%= description %>",
-      "author": {
-        "@type": "Person",
-        "name": "Muhammad Ovi",
-        "description": "Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js",
-        "url": "https://www.linkedin.com/in/muhammadovi",
-        "sameAs": [
-          "https://twitter.com/imuhammadovi",
-          "https://www.linkedin.com/in/muhammadovi"
-        ]
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>"
-      },
       "publisher": {
         "@type": "Organization",
         "name": "DummyJSON",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://dummyjson.com/public/img/meta.png"
+          "url": "https://dummyjson.com/public/img/meta.png",
+          "width": 600,
+          "height": 60
         }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Ovi",
+        "url": "https://www.linkedin.com/in/muhammadovi",
+        "sameAs": [
+          "https://twitter.com/imuhammadovi",
+          "https://www.linkedin.com/in/muhammadovi"
+        ]
       }
     }
   </script>
