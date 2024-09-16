@@ -146,3 +146,53 @@
     }
   }
 }
+
+#banner {
+  display: none;
+
+  @include breakpoint(sm) {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary-color;
+    color: black;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    .banner-content {
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        &:visited,
+        &:active {
+          color: inherit;
+        }
+      }
+
+      code {
+        padding: 0.125rem 0.25rem;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}
+
+.app-navbar.has-banner {
+  @include breakpoint(sm) {
+    top: 2rem;
+  }
+}

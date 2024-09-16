@@ -1,5 +1,13 @@
 <header>
-  <nav class="app-navbar">
+  <% const hasBanner = typeof(bannerContent) !== "undefined"; %>
+
+  <% if (hasBanner) { %>
+  <div id="banner">
+    <div class="banner-content"><%- bannerContent %></div>
+  </div>
+  <% } %>
+
+  <nav class="app-navbar <%= hasBanner ? 'has-banner' : '' %>">
     <div class="nav-items-container">
       <a href="/" class="logo-title">DummyJSON</a>
       <ul class="nav-items">

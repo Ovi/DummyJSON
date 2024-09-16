@@ -11,6 +11,7 @@ constants.OPTIONAL_ENV_VARIABLES = [
   'AWS_SECRET_KEY',
   'AWS_BUCKET_NAME',
   'LOG_ENABLED',
+  'BANNER_CONTENT',
 ];
 
 constants.requestWhitelist = ['/favicon.ico', '/static', '/public', '/fav.png'];
