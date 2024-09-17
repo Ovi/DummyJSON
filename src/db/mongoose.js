@@ -20,11 +20,11 @@ async function connectDB() {
   } catch (error) {
     updatedDbConnectionStatus(false);
     logError('Failed to connect to MongoDB', { error });
-    process.exit(1);
+
+    // Instead of exiting, we'll just log the error
+    // process.exit(1);
   }
 }
-
-module.exports = connectDB;
 
 mongoose.connection.on('connected', () => {
   updatedDbConnectionStatus(true);
@@ -36,12 +36,12 @@ mongoose.connection.on('error', error => {
   logError('Mongoose connection error', { error });
 });
 
-mongoose.connection.on('disconnected', error => {
+mongoose.connection.on('disconnected', () => {
   updatedDbConnectionStatus(false);
-  logError('Mongoose disconnected from DB', { error });
 
-  // exit app when database is disconnected
-  process.exit(1);
+  // Instead of exiting, we'll attempt to reconnect
+  logError('Mongoose disconnected from DB - Attempting to reconnect...', { workerId: process.pid });
+  setTimeout(connectDB, 5000); // Try to reconnect after 5 seconds
 });
 
 // If node exits, terminate mongoose connection
@@ -49,13 +49,13 @@ process.on('SIGINT', async () => {
   try {
     await mongoose.connection.close();
     updatedDbConnectionStatus(false);
-    // _log('info', 'Node is down. So is Mongoose.');
-    log('Node is down. So is Mongoose.', { workerId: process.pid });
 
+    log('Node is down. So is Mongoose.', { workerId: process.pid });
     process.exit(0);
   } catch (error) {
     logError('Error while closing Mongoose connection', { error });
-
-    process.exit(1); // Exit with an error code if something goes wrong
+    process.exit(1);
   }
 });
+
+module.exports = connectDB;

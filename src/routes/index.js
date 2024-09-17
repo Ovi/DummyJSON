@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const checkDbConnection = require('../middleware/check-db-connection');
 const forceHTTPS = require('../middleware/forceHTTPS');
 
 // static page routes
@@ -20,9 +21,9 @@ router.use(['/image', '/i'], require('./image'));
 router.use('/icon', require('./icon'));
 
 // dynamic resource routes
-router.use('/c', require('./custom-response'));
+router.use('/c', checkDbConnection, require('./custom-response'));
 
-// redrector
+// redirect other routes
 router.use('/', require('./redirect'));
 
 module.exports = router;
