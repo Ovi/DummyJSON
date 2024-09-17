@@ -1,5 +1,7 @@
 const { createLogger, format, transports } = require('winston');
 
+const { NODE_ENV } = process.env;
+
 // Custom log format with JSON output
 const customJsonLogFormat = format.printf(({ timestamp, level, message, meta }) => {
   const { method, status, error, ...rest } = meta || {};
@@ -31,11 +33,9 @@ const logger = createLogger({
       info.meta = info.meta || {}; // Ensure meta is present
       return info;
     })(),
-    customJsonLogFormat, // Use only the JSON log format
+    NODE_ENV === 'development' ? format.prettyPrint() : customJsonLogFormat,
   ),
-  transports: [
-    new transports.Console(), // Log to console
-  ],
+  transports: [new transports.Console()],
 });
 
 const basicLog = (message, meta = {}, level = 'info') => {

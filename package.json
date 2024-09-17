@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.485.0",
+    "axios": "^1.7.7",
     "color-convert": "^2.0.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
@@ -23,6 +24,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-rate-limit": "^5.4.1",
+    "form-data": "^4.0.0",
     "helmet": "3.21.1",
     "jdenticon": "^3.3.0",
     "jsonwebtoken": "^8.5.1",

@@ -1,12 +1,10 @@
-const multer = require('multer');
 const APIError = require('../utils/error');
 const { isNumber, trueTypeOf } = require('../utils/util');
-
-const upload = multer(); // for parsing multipart/form-data
+const { multerInstance, deleteMulterTemporayFiles } = require('../helpers');
 
 const cleanRequest = (req, res, next) => {
   try {
-    // remove trailing slash
+    // Remove trailing slash
     if (req.path.substr(-1) === '/' && req.path.length > 1) {
       const query = req.url.slice(req.path.length);
       const safePath = req.path.slice(0, -1).replace(/\/+/g, '/');
@@ -65,7 +63,7 @@ const cleanRequest = (req, res, next) => {
       order = order.toLowerCase();
 
       if (order !== 'asc' && order !== 'desc') {
-        throw new APIError('order can be: "asc" or "desc"', 400);
+        throw new APIError('Order can be: "asc" or "desc"', 400);
       }
     }
 
@@ -83,8 +81,21 @@ const cleanRequest = (req, res, next) => {
     options.sortBy = sortBy;
     options.order = order;
 
+    // If request is multipart/form-data, allow handling of file uploads
     if (req.headers['content-type']?.startsWith('multipart/form-data')) {
-      upload.none()(req, res, next);
+      multerInstance.any()(req, res, err => {
+        if (err) {
+          next(new APIError(`Error processing multipart data: ${err.message}`, 400));
+          return;
+        }
+
+        // Delete each uploaded file immediately
+        deleteMulterTemporayFiles(req.files);
+
+        // Proceed with processing form data
+        next();
+      });
+
       return;
     }
 
