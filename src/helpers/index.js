@@ -44,7 +44,7 @@ helpers.verifyPostHandler = id => {
   // see if we can find the post
   const post = dataInMemory.posts.find(u => u.id.toString() === postId);
   if (!post) {
-    throw new APIError(`Post with id '${post}' not found`, 404);
+    throw new APIError(`Post with id '${postId}' not found`, 404);
   }
 
   return post;
