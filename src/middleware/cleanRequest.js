@@ -1,6 +1,7 @@
 const APIError = require('../utils/error');
 const { isNumber, trueTypeOf } = require('../utils/util');
 const { multerInstance, deleteMulterTemporayFiles } = require('../helpers');
+const { logError } = require('../helpers/logger');
 
 const cleanRequest = (req, res, next) => {
   try {
@@ -83,20 +84,33 @@ const cleanRequest = (req, res, next) => {
 
     // If request is multipart/form-data, allow handling of file uploads
     if (req.headers['content-type']?.startsWith('multipart/form-data')) {
-      multerInstance.any()(req, res, err => {
-        if (err) {
-          next(new APIError(`Error processing multipart data: ${err.message}`, 400));
-          return;
-        }
+      try {
+        multerInstance.any()(req, res, err => {
+          if (err) {
+            next(new APIError(`Error processing multipart data: ${err.message}`, 400));
+            return;
+          }
 
-        // Delete each uploaded file immediately
-        deleteMulterTemporayFiles(req.files);
+          // Delete each uploaded file immediately
+          deleteMulterTemporayFiles(req.files);
 
-        // Proceed with processing form data
-        next();
-      });
+          // Proceed with processing form data
+          next();
+        });
 
-      return;
+        return;
+      } catch (error) {
+        logError('multipart/form-data error', {
+          error,
+          headers: req.headers,
+          body: req.body,
+          files: req.files,
+          params: req.params,
+          query: req.query,
+        });
+        next(new APIError(`Could not process multipart data: ${error.message}`, 500));
+        return;
+      }
     }
 
     next();
