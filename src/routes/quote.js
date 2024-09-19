@@ -1,9 +1,5 @@
 const router = require('express').Router();
-const {
-  getAllQuotes,
-  getRandomQuote,
-  getQuoteById,
-} = require('../controllers/quote');
+const { getAllQuotes, getRandomQuote, getQuoteById } = require('../controllers/quote');
 
 // get all quotes
 router.get('/', (req, res) => {

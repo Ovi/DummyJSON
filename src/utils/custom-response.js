@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require('node:crypto');
 const CustomResponse = require('../models/custom-response');
 const { generateRandomId } = require('./util');
 

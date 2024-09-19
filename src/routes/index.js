@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const checkDbConnection = require('../middleware/check-db-connection');
-const forceHTTPS = require('../middleware/forceHTTPS');
+const forceHTTPS = require('../middleware/force-https');
 
 // static page routes
 router.use('/', forceHTTPS, require('./static'));

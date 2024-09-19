@@ -61,7 +61,7 @@ router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
     const record = await CustomResponse.findOne({ identifier });
 
     if (record && record.method === req.method) {
-      // set header x-expires-on, should be "customResponseExpiresInDays" days from now
+      // set header x-expires-on, should be 'customResponseExpiresInDays' days from now
       const expiresOn = new Date();
       expiresOn.setDate(expiresOn.getDate() + customResponseExpiresInDays);
       expiresOn.setHours(0, 0, 0, 0);

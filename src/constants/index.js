@@ -1,4 +1,4 @@
-const httpCodes = require('./httpCodes');
+const httpCodes = require('./http-codes');
 
 const constants = {};
 

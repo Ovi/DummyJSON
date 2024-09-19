@@ -1,10 +1,6 @@
 const { verifyPostHandler, verifyUserHandler } = require('../helpers');
 const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
-  trueTypeOf,
-  limitArray,
-} = require('../utils/util');
+const { dataInMemory: frozenData, trueTypeOf, limitArray } = require('../utils/util');
 
 const controller = {};
 
@@ -39,9 +35,7 @@ controller.getCommentById = ({ id }) => {
 controller.getAllCommentsByPostId = ({ postId, limit, skip }) => {
   verifyPostHandler(postId);
 
-  let [...comments] = frozenData.comments.filter(
-    c => c.postId.toString() === postId,
-  );
+  let [...comments] = frozenData.comments.filter(c => c.postId.toString() === postId);
   const total = comments.length;
 
   if (skip > 0) {

@@ -1,11 +1,6 @@
 const { verifyUserHandler } = require('../helpers');
 const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
-  trueTypeOf,
-  isNumber,
-  limitArray,
-} = require('../utils/util');
+const { dataInMemory: frozenData, trueTypeOf, isNumber, limitArray } = require('../utils/util');
 
 const controller = {};
 
@@ -59,10 +54,7 @@ controller.addNewCart = ({ userId, products = [] }) => {
   verifyUserHandler(userId);
 
   if (trueTypeOf(products) !== 'array') {
-    throw new APIError(
-      `products must be array of objects, containing product id and quantity`,
-      400,
-    );
+    throw new APIError(`products must be array of objects, containing product id and quantity`, 400);
   }
 
   if (!products.length) {
@@ -97,9 +89,7 @@ controller.addNewCart = ({ userId, products = [] }) => {
     const priceWithQty = p.price * quantity;
 
     // apply discount on the product if applicable
-    const discountedPrice = Math.round(
-      priceWithQty * ((100 - p.discountPercentage) / 100),
-    );
+    const discountedPrice = Math.round(priceWithQty * ((100 - p.discountPercentage) / 100));
 
     // update cart variables
     total += priceWithQty;
@@ -149,10 +139,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
   }
 
   if (trueTypeOf(userProducts) !== 'array') {
-    throw new APIError(
-      `products must be array of objects, containing product id and quantity`,
-      400,
-    );
+    throw new APIError(`products must be array of objects, containing product id and quantity`, 400);
   }
 
   // set variables to count the totals of cart by products
@@ -186,9 +173,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
     const priceWithQty = p.price * quantity;
 
     // apply discount on the product if applicable
-    const discountedPrice = Math.round(
-      priceWithQty * ((100 - p.discountPercentage) / 100),
-    );
+    const discountedPrice = Math.round(priceWithQty * ((100 - p.discountPercentage) / 100));
 
     // update cart variables
     total += priceWithQty;

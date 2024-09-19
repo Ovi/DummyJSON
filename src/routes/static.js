@@ -1,5 +1,5 @@
+const path = require('node:path');
 const router = require('express').Router();
-const path = require('path');
 const { capitalize } = require('../utils/util');
 
 const { GOOGLE_TAG_ID, GOOGLE_PUBLISHER_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT } = process.env;

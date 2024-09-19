@@ -6,11 +6,11 @@ const controller = {};
 // mock http code response
 controller.getHttpStatus = ({ httpCode: status, message }) => {
   if (!isNumber(status)) {
-    throw new APIError(`Status code "${status}" is invalid`, 500);
+    throw new APIError(`Status code '${status}' is invalid`, 500);
   }
 
   if (!frozenData.httpCodes.codes.includes(status)) {
-    throw new APIError(`Status code "${status}" is not supported`, 500);
+    throw new APIError(`Status code '${status}' is not supported`, 500);
   }
 
   const title = message || frozenData.httpCodes.messages[status];

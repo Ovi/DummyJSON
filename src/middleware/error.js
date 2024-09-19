@@ -19,8 +19,8 @@ const commonErrorMessages = [
   'Invalid user id',
   'Post id is required',
   'Invalid post id',
-  'Invalid "skip" - must be a number',
-  'Invalid "limit" - must be a number',
+  `Invalid 'skip' - must be a number`,
+  `Invalid 'limit' - must be a number`,
   'Invalid comment body',
 ];
 

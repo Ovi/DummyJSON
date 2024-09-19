@@ -4,10 +4,10 @@ const helmet = require('helmet');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-const applyRateLimit = require('../utils/applyRateLimit');
+const applyRateLimit = require('../utils/apply-rate-limit');
 const requestLogger = require('./request-logger');
-const cleanRequest = require('./cleanRequest');
-const delayResponse = require('./delayResponse');
+const cleanRequest = require('./clean-request');
+const delayResponse = require('./delay-response');
 
 function injectMiddleWares(app) {
   // enable compression.

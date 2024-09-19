@@ -1,10 +1,5 @@
 const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
-  limitArray,
-  isValidNumberInRange,
-  getRandomFromArray,
-} = require('../utils/util');
+const { dataInMemory: frozenData, limitArray, isValidNumberInRange, getRandomFromArray } = require('../utils/util');
 
 const controller = {};
 

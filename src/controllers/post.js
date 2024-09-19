@@ -73,9 +73,7 @@ controller.getPostTags = () => {
 controller.getPostsByTag = ({ tag = '', ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
-  let posts = frozenData.posts.filter(
-    p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()),
-  );
+  let posts = frozenData.posts.filter(p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()));
   const total = posts.length;
 
   posts = sortArray(posts, sortBy, order);

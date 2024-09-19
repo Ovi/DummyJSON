@@ -36,10 +36,7 @@ controller.searchProducts = _options => {
   const { limit, skip, select, q: searchQuery, sortBy, order } = _options;
 
   let products = frozenData.products.filter(p => {
-    return (
-      p.title.toLowerCase().includes(searchQuery) ||
-      p.description.toLowerCase().includes(searchQuery)
-    );
+    return p.title.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery);
   });
   const total = products.length;
 
@@ -91,9 +88,7 @@ controller.getProductById = ({ id, select }) => {
 controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
-  let products = frozenData.products.filter(
-    p => p.category.toLowerCase() === categoryName.toLowerCase(),
-  );
+  let products = frozenData.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
   const total = products.length;
 
   products = sortArray(products, sortBy, order);
@@ -115,18 +110,7 @@ controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
 
 // add new product
 controller.addNewProduct = ({ ...data }) => {
-  const {
-    title,
-    price,
-    discountPercentage,
-    stock,
-    rating,
-    images,
-    thumbnail,
-    description,
-    brand,
-    category,
-  } = data;
+  const { title, price, discountPercentage, stock, rating, images, thumbnail, description, brand, category } = data;
 
   const newProduct = {
     id: frozenData.products.length + 1,
@@ -147,18 +131,7 @@ controller.addNewProduct = ({ ...data }) => {
 
 // update product by id
 controller.updateProductById = ({ id, ...data }) => {
-  const {
-    title,
-    price,
-    discountPercentage,
-    stock,
-    rating,
-    images,
-    thumbnail,
-    description,
-    brand,
-    category,
-  } = data;
+  const { title, price, discountPercentage, stock, rating, images, thumbnail, description, brand, category } = data;
 
   const productFrozen = frozenData.products.find(p => p.id.toString() === id);
 

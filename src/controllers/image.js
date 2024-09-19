@@ -3,7 +3,7 @@ const { verifyImageInCache, storeImgInCache, getCacheKey, composeImage, isInvali
 const { imageMimeTypes, allowedImageTypes } = require('../constants');
 const { log } = require('../helpers/logger');
 
-const allowedTypesString = allowedImageTypes.join('", "');
+const allowedTypesString = allowedImageTypes.join("', '");
 
 const controller = {};
 
@@ -17,7 +17,7 @@ controller.imageComposer = async imageOptions => {
   }
 
   if (!allowedImageTypes.includes(imageOptions.type)) {
-    const err = `Unknown image type "${imageOptions.type}", expected one of "${allowedTypesString}"`;
+    const err = `Unknown image type '${imageOptions.type}', expected one of '${allowedTypesString}'`;
     throw new APIError(err);
   }
 

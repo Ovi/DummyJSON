@@ -1,11 +1,11 @@
 const os = require('node:os');
 const cluster = require('node:cluster');
+const connectDB = require('./src/db/mongoose');
+const { log, logError } = require('./src/helpers/logger');
+const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
 const { validateEnvVar } = require('./src/utils/util');
 const { setupCRONJobs } = require('./src/utils/cron-jobs');
-const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
 const { version } = require('./package.json');
-const { log, logError } = require('./src/helpers/logger');
-const connectDB = require('./src/db/mongoose');
 
 const { PORT = 8888, NODE_ENV } = process.env;
 
