@@ -7,11 +7,6 @@
   <title><%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data</title>
   <meta name="description" content="<%= description %>" />
 
-  <meta name="author" content="Muhammad Ovi, Full Stack Developer" />
-  <meta name="author:bio" content="Muhammad Ovi, also known as Owais, is a full-stack software engineer, with a strong focus on JavaScript and its related technologies. He is recognized for his expertise in JavaScript frameworks such as React, Vue, and Next.js, as well as Node.js" />
-  <meta name="author:linkedin" content="https://www.linkedin.com/in/muhammadovi" />
-  <meta name="author:twitter" content="https://twitter.com/imuhammadovi" />
-
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
   <meta name="bingbot" content="index, follow" />
@@ -19,31 +14,27 @@
   <meta property="og:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data" />
   <meta property="og:description" content="<%= description %>" />
   <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
-  <meta property="og:url" content="https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>" />
+  <meta property="og:url" content="<%= canonical %>" />
   <meta property="og:site_name" content="DummyJSON" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data" />
-  <meta name="twitter:description" content="<%= description %>" />
-  <meta name="twitter:image" content="https://dummyjson.com/public/img/meta.png" />
-  <meta name="twitter:site" content="@dummyjson" />
-  <meta name="twitter:creator" content="@imuhammadovi" />
-
-  <link rel="canonical" href="https://dummyjson.com/docs/<%= page ? page.toLowerCase() : ''%>" />
+  <link rel="canonical" href="<%= canonical %>" />
 
   <link rel="stylesheet" href="https://assets.dummyjson.com/public/css/docs.css" />
   <link rel="stylesheet" href="https://assets.dummyjson.com/public/css/prism.css" />
 
-  <!-- JSON-LD structured data for rich snippets -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "DummyJSON",
-      "url": "https://dummyjson.com",
+      "@type": "TechArticle",
+      "name": "Authentication API Documentation | DummyJSON",
+      "url": "<%= canonical %>",
       "description": "<%= description %>",
+      "mainEntityOfPage": {
+        "@type": "TechArticle",
+        "@id": "<%= canonical %>"
+      },
       "publisher": {
         "@type": "Organization",
         "name": "DummyJSON",
@@ -51,16 +42,38 @@
           "@type": "ImageObject",
           "url": "https://dummyjson.com/public/img/meta.png",
           "width": 600,
-          "height": 60
-        }
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Muhammad Ovi",
-        "url": "https://www.linkedin.com/in/muhammadovi",
+          "height": 60,
+          "caption": "DummyJSON Logo"
+        },
         "sameAs": [
-          "https://twitter.com/imuhammadovi",
-          "https://www.linkedin.com/in/muhammadovi"
+          "https://github.com/Ovi/DummyJSON",
+          "https://x.com/DummyJSON",
+          "https://linkedin.com/company/DummyJSON"
+        ]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "DummyJSON - Free Fake REST API for Placeholder JSON Data",
+            "item": "https://dummyjson.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data",
+            "item": "<%= canonical %>"
+          }
+          <% if (page) { %>,
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "<%= page ? page : 'Docs'%> - DummyJSON - Free Fake REST API for Placeholder JSON Data",
+              "item": "<%= canonical %>"
+          }
+          <% } %>
         ]
       }
     }

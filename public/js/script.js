@@ -14,36 +14,40 @@ function handleSectionScroll() {
   const sections = document.querySelectorAll('section');
   if (!sections || sections.length < 2) return;
 
+  let isScrolling = false;
+  const scrollCooldown = 1000;
+
   sections.forEach(section => {
     section.addEventListener('wheel', e => {
-      if (section.classList.contains('last-section') && e.deltaY > 0) {
-        return;
-      }
-
+      if (isScrolling) return;
+      if (section.classList.contains('last-section') && e.deltaY > 0) return;
       if (e.target.closest('.json-code')) return;
 
       e.preventDefault();
 
-      let nextSection = section.nextElementSibling;
-      let prevSection = section.previousElementSibling;
-
-      if (window.innerWidth < 576 || window.innerHeight < 600) {
-        while (nextSection && nextSection.offsetHeight === 0) {
-          nextSection = nextSection.nextElementSibling;
-        }
-
-        while (prevSection && prevSection.offsetHeight === 0) {
-          prevSection = prevSection.previousElementSibling;
-        }
+      let targetSection;
+      if (e.deltaY > 0) {
+        targetSection = section.nextElementSibling;
+      } else {
+        targetSection = section.previousElementSibling;
       }
 
-      const canScroll = e.deltaY > 0 ? nextSection : prevSection;
-      if (!canScroll) return;
+      if (!targetSection) return;
 
-      window.scrollTo({
-        top: e.deltaY > 0 ? nextSection.offsetTop : prevSection.offsetTop,
-        behavior: 'smooth',
-      });
+      // Check if target section is visible (for responsive layouts)
+      if (window.innerWidth < 576 || window.innerHeight < 600) {
+        while (targetSection && targetSection.offsetHeight === 0) {
+          targetSection = e.deltaY > 0 ? targetSection.nextElementSibling : targetSection.previousElementSibling;
+        }
+        if (!targetSection) return;
+      }
+
+      isScrolling = true;
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, scrollCooldown);
     });
   });
 }

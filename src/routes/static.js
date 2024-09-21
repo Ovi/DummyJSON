@@ -7,6 +7,7 @@ const commonVariables = {
   googleTagId: GOOGLE_TAG_ID,
   googlePublisherId: GOOGLE_PUBLISHER_ID,
   bannerContent: BANNER_CONTENT,
+  canonical: 'https://dummyjson.com',
 };
 
 const availableResources = [
@@ -31,6 +32,7 @@ router.get('/docs', (req, res) => {
   res.render('docs', {
     ...commonVariables,
     page: '',
+    canonical: `https://dummyjson.com/docs`,
     description: `DummyJSON provides a free fake REST API with placeholder JSON data for development, testing, and prototyping. Access realistic data quickly for your projects.`,
   });
 });
@@ -48,6 +50,7 @@ router.get('/docs/:resource', (req, res, next) => {
   res.render(`docs-${resource}`, {
     ...commonVariables,
     page: capitalizedResource,
+    canonical: `https://dummyjson.com/docs/${resource}`,
     description: `REST Endpoints filled with ${capitalizedResource} JSON data, DummyJSON provides a free fake REST API with placeholder JSON data for development, testing, and prototyping. Access realistic data quickly for your projects.`,
   });
 });
