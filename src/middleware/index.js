@@ -30,6 +30,13 @@ function injectMiddleWares(app) {
       Server: 'BobTheBuilder',
     });
 
+    // redirect www to non-www
+    if (req.headers.host.slice(0, 4) === 'www.') {
+      const newHost = req.headers.host.slice(4);
+      res.redirect(301, `${req.protocol}://${newHost}${req.originalUrl}`);
+      return;
+    }
+
     next();
   });
 
