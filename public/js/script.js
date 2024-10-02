@@ -1,6 +1,6 @@
 highlightTryItJSONCodeBlock();
 handleHomePageResourcesSelector('.resource-selector-el');
-handleSectionScroll();
+handleSectionScrollViaArrowIcons();
 
 function highlightTryItJSONCodeBlock() {
   const el = document.querySelector('.try-yourself .json-code');
@@ -8,48 +8,6 @@ function highlightTryItJSONCodeBlock() {
 
   const htmlMarkup = highlightJSON({ '💬': '🤔' });
   el.innerHTML = htmlMarkup;
-}
-
-function handleSectionScroll() {
-  const sections = document.querySelectorAll('section');
-  if (!sections || sections.length < 2) return;
-
-  let isScrolling = false;
-  const scrollCooldown = 1000;
-
-  sections.forEach(section => {
-    section.addEventListener('wheel', e => {
-      if (isScrolling) return;
-      if (section.classList.contains('last-section') && e.deltaY > 0) return;
-      if (e.target.closest('.json-code')) return;
-
-      e.preventDefault();
-
-      let targetSection;
-      if (e.deltaY > 0) {
-        targetSection = section.nextElementSibling;
-      } else {
-        targetSection = section.previousElementSibling;
-      }
-
-      if (!targetSection) return;
-
-      // Check if target section is visible (for responsive layouts)
-      if (window.innerWidth < 576 || window.innerHeight < 600) {
-        while (targetSection && targetSection.offsetHeight === 0) {
-          targetSection = e.deltaY > 0 ? targetSection.nextElementSibling : targetSection.previousElementSibling;
-        }
-        if (!targetSection) return;
-      }
-
-      isScrolling = true;
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-
-      setTimeout(() => {
-        isScrolling = false;
-      }, scrollCooldown);
-    });
-  });
 }
 
 function handleHomePageResourcesSelector(selector) {
@@ -83,5 +41,28 @@ function handleHomePageResourcesSelector(selector) {
   document.addEventListener('click', function() {
     const expandedEl = document.querySelector(selector);
     if (expandedEl) expandedEl.classList.remove('expanded');
+  });
+}
+
+function handleSectionScrollViaArrowIcons() {
+  const arrowIcons = document.querySelectorAll('.arrow-down');
+
+  arrowIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+      const section = this.closest('section');
+      if (!section) return;
+
+      let targetSection = section.nextElementSibling;
+
+      // Check if target section is visible (for responsive layouts)
+      if (window.innerWidth < 576 || window.innerHeight < 600) {
+        while (targetSection && targetSection.offsetHeight === 0) {
+          targetSection = targetSection.nextElementSibling;
+        }
+        if (!targetSection) return;
+      }
+
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
   });
 }

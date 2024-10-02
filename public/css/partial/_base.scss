@@ -1,4 +1,4 @@
-@import './font-lato.scss';
+@import './font-dm-sans.scss';
 
 $breakpoints: (
   xs: 360px,
@@ -14,6 +14,7 @@ $primary-color-dark: #494cf3;
 $primary-color: #b6b7fd;
 $secondary-color-dark: #ff697c;
 $secondary-color: #ffc3be;
+$accent-color: #46dbc9;
 
 $nav_height: 60px;
 
@@ -33,16 +34,6 @@ $nav_height: 60px;
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-html {
-  scroll-snap-type: y proximity;
-}
-
 html,
 body {
   margin: 0;
@@ -53,7 +44,7 @@ body {
 body *,
 input,
 button {
-  font-family: 'Lato', sans-serif;
+  font-family: 'DMSans', sans-serif;
 }
 
 a {
@@ -99,7 +90,7 @@ ul {
   color: #111;
   cursor: pointer;
   display: flex;
-  font-family: 'Lato', sans-serif;
+  font-family: 'DMSans', sans-serif;
   font-size: 16px;
   height: 48px;
   justify-content: center;

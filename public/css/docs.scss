@@ -198,7 +198,7 @@ section {
 
   @include breakpoint(xs) {
     padding-top: 4.5rem;
-    border: 10px solid rgba($color: $primary-color, $alpha: 0.5);
+    border-width: 10px;
   }
 
   @include breakpoint(sm) {
@@ -215,18 +215,6 @@ section {
     padding: 2rem;
     padding-top: 5rem;
   }
-
-  // &:nth-child(odd) {
-  //   border-color: $secondary-color;
-
-  //   &::before {
-  //     background-color: $secondary-color;
-  //     bottom: unset;
-  //     left: unset;
-  //     top: -100px;
-  //     right: -100px;
-  //   }
-  // }
 
   .content {
     max-width: 130rem;
@@ -437,17 +425,16 @@ section {
   }
 }
 
-.social-links {
+.social-links-container {
   display: block;
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 5px solid rgba($color: $primary-color, $alpha: 0.5);
+  justify-content: space-between;
   border-top: none;
 
   @include breakpoint(xs) {
-    border: 10px solid rgba($color: $primary-color, $alpha: 0.5);
+    border-width: 10px;
     border-top: none;
   }
 
@@ -459,27 +446,62 @@ section {
     border-width: 15px;
   }
 
-  a {
-    display: inline-block;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    height: 2rem;
-    width: 2rem;
+  .buy-me-coffee-btn {
+    text-align: center;
+    width: fit-content;
+    position: relative;
+    padding: 1rem;
+    padding-right: 3rem;
+    display: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-      text-decoration: none;
+    @include breakpoint(xs) {
+      display: flex;
+    }
+
+    img {
+      position: absolute;
+      right: -0.75rem;
+      max-height: 100%;
+    }
+
+    @include breakpoint(sm) {
+      min-width: 200px;
     }
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    transition: 0.3s all ease-in-out;
+  .social-links-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &:hover {
-      transform: scale(1.1);
+    a {
+      display: inline-block;
+      text-decoration: none;
+      margin: 0 0.25rem;
+      height: 1.5rem;
+      width: 1.5rem;
+
+      @include breakpoint(sm) {
+        margin: 0 0.5rem;
+        height: 2rem;
+        width: 2rem;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      transition: 0.3s all ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

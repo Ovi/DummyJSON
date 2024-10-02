@@ -41,15 +41,10 @@
   .nav-items-container {
     display: flex;
     flex: 1;
-    // justify-content: center;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     max-width: 130rem;
-
-    // @include breakpoint(sm) {
-    //   justify-content: space-between;
-    // }
 
     .logo-title {
       font-size: 2rem;

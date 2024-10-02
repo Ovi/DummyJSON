@@ -1,11 +1,8 @@
 @import './partial/_nav.scss';
 
 section {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   padding: 5px;
   padding-top: 2rem;
-  border: 5px solid rgba($color: $primary-color, $alpha: 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,27 +14,76 @@ section {
     flex-direction: row-reverse;
   }
 
-  &::before {
+  &::before,
+  &::after {
     content: '';
     width: 300px;
     height: 300px;
     border-radius: 50%;
     background-color: $primary-color;
     position: absolute;
+    filter: blur(150px);
+  }
+
+  &:not(.no-down-breeze)::before {
     bottom: -100px;
     left: -100px;
-    filter: blur(150px);
+  }
+
+  &.no-down-breeze {
+    &::before {
+      display: none;
+    }
+  }
+
+  &:not(.no-top-breeze, .top-breeze-alt)::after {
+    top: -100px;
+    right: -100px;
+  }
+
+  &.no-top-breeze {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.top-breeze-alt {
+    &::after {
+      top: -100px;
+      left: -100px;
+    }
+  }
+
+  .arrow-down {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    animation: arrow-down-animation 2s infinite;
+
+    @keyframes arrow-down-animation {
+      0% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(0.5rem);
+      }
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+    }
   }
 
   @include breakpoint(xs) {
     padding: 10px;
     padding-top: 1rem;
-    border: 10px solid rgba($color: $primary-color, $alpha: 0.5);
   }
 
   @include breakpoint(sm) {
     padding-top: 10px;
-    border-width: 15px;
   }
 
   .content {
@@ -90,28 +136,21 @@ section {
     }
 
     p {
-      font-size: 0.75rem;
+      font-size: 1rem;
       margin-top: 1rem;
       margin-bottom: 1rem;
+      max-width: 90%;
 
       @include breakpoint(xs) {
         font-size: 1rem;
-        font-weight: 300;
       }
 
       @include breakpoint(sm) {
         font-size: 1.25rem;
-        line-height: 1.25rem;
       }
 
       @include breakpoint(lg) {
-        margin: 3rem 0;
-        font-weight: 300;
-      }
-
-      @include breakpoint(xl) {
-        font-size: 1.75rem;
-        line-height: 1.75rem;
+        margin: 2rem 0;
       }
     }
 
@@ -171,18 +210,14 @@ section {
   }
 
   &:nth-child(odd) {
-    border-color: $secondary-color;
-
-    &::before {
+    &::before,
+    &::after {
       background-color: $secondary-color;
-      bottom: unset;
-      left: unset;
-      top: -100px;
-      right: -100px;
     }
 
     .content {
-      h1 {
+      h1,
+      h2 {
         .heading-star {
           background: url('https://assets.dummyjson.com/public/img/icons/star-alt.svg') no-repeat center center /
             contain;
@@ -199,6 +234,139 @@ section {
 
   a {
     color: $secondary-color-dark;
+  }
+
+  &.resources {
+    min-height: 100vh;
+    height: auto;
+    padding-top: 3rem;
+
+    .content {
+      width: 100%;
+      justify-content: start;
+      text-align: left;
+
+      h2 {
+        margin-top: 1rem;
+        font-weight: 900;
+
+        @include breakpoint(md) {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+
+        @include breakpoint(md) {
+          font-size: 1rem;
+        }
+      }
+
+      .resources-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 0;
+        width: 100%;
+        padding-bottom: 5rem;
+
+        @include breakpoint(lg) {
+          gap: 1rem 2rem;
+          padding-bottom: 3rem;
+        }
+
+        .resource {
+          border-radius: 1rem;
+          color: #fff;
+          width: 100%;
+
+          @include breakpoint(lg) {
+            flex: 0 0 calc(50% - 1rem);
+          }
+
+          &.bg-1 {
+            background-color: #f67e7f;
+          }
+
+          &.bg-2 {
+            background-color: #55b9b7;
+          }
+
+          &.bg-3 {
+            background-color: #757bf3;
+          }
+
+          &.bg-4 {
+            background-color: #f67cab;
+          }
+
+          a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &:visited {
+              text-decoration: none;
+            }
+
+            svg {
+              width: 3rem;
+              height: auto;
+
+              @include breakpoint(lg) {
+                width: 4rem;
+              }
+            }
+
+            svg.arrow {
+              width: 1.5rem;
+              transform: rotate(-135deg);
+
+              @include breakpoint(lg) {
+                width: 2rem;
+              }
+            }
+
+            .context {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              flex: 1;
+              padding: 0 1rem;
+
+              h3,
+              .url {
+                margin: 0;
+                padding: 0;
+              }
+
+              h3 {
+                font-size: 1.5rem;
+
+                @include breakpoint(lg) {
+                  font-size: 2rem;
+                }
+              }
+
+              .url {
+                font-size: 0.75rem;
+                color: #fff;
+                opacity: 0.75;
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   &.try-yourself {
@@ -226,12 +394,6 @@ section {
         text-align: center;
       }
 
-      h1 {
-        @include breakpoint(lg) {
-          margin-bottom: 0;
-        }
-      }
-
       p {
         display: none;
 
@@ -254,6 +416,9 @@ section {
           margin-bottom: 1rem;
           font-size: 1rem;
           font-family: 'Courier New', Courier, monospace;
+          background-color: #eeeeee;
+          padding: 0.25rem;
+          border-radius: 0.5rem;
 
           @include breakpoint(md) {
             font-size: 1.5rem;
@@ -286,7 +451,7 @@ section {
               outline: none;
               border: 0.06em solid transparent;
               border-radius: 1em;
-              background-color: mix($primary-color, #fff, 25%);
+              background-color: mix($secondary-color, #fff, 50%);
               transition: 0.3s all ease-in-out;
 
               @include breakpoint(md) {
@@ -344,8 +509,8 @@ section {
                 position: absolute;
                 right: 0.8rem;
                 top: 0.65rem;
-                border: 0.3em solid $primary-color-dark;
-                border-color: $primary-color-dark transparent transparent transparent;
+                border: 0.3em solid $secondary-color-dark;
+                border-color: $secondary-color-dark transparent transparent transparent;
                 transition: 0.4s all ease-in-out;
 
                 @include breakpoint(md) {
@@ -363,11 +528,11 @@ section {
                 label {
                   border-top: 0.06em solid #d9d9d9;
                   &:hover {
-                    color: $primary-color-dark;
+                    color: $secondary-color-dark;
                   }
                 }
                 input:checked + label {
-                  color: $primary-color-dark;
+                  color: $secondary-color-dark;
                 }
 
                 &::after {
@@ -411,7 +576,8 @@ section {
         text-align: center;
       }
 
-      h1 {
+      h1,
+      h2 {
         @include breakpoint(lg) {
           margin-bottom: 0;
         }
@@ -419,15 +585,6 @@ section {
 
       p {
         display: block;
-        font-size: 1.25rem;
-        font-weight: 300;
-        line-height: 1.5rem;
-
-        @include breakpoint(md) {
-          margin: 0;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-        }
       }
 
       .changer {
@@ -462,7 +619,7 @@ section {
             outline: none;
             border: 0.06em solid transparent;
             border-radius: 1em;
-            background-color: mix($secondary-color, #fff, 25%);
+            background-color: mix($primary-color, #fff, 25%);
             transition: 0.3s all ease-in-out;
 
             input:focus + label {
@@ -509,8 +666,8 @@ section {
               position: absolute;
               right: 0.8rem;
               top: 0.6rem;
-              border: 0.3em solid $secondary-color-dark;
-              border-color: $secondary-color-dark transparent transparent transparent;
+              border: 0.3em solid $primary-color-dark;
+              border-color: $primary-color-dark transparent transparent transparent;
               transition: 0.4s all ease-in-out;
             }
             &.expanded {
@@ -524,11 +681,11 @@ section {
               label {
                 border-top: 0.06em solid #d9d9d9;
                 &:hover {
-                  color: $secondary-color-dark;
+                  color: $primary-color-dark;
                 }
               }
               input:checked + label {
-                color: $secondary-color-dark;
+                color: $primary-color-dark;
               }
 
               &::after {
@@ -620,7 +777,7 @@ section {
           width: 1.5rem;
           height: 1.5rem;
           z-index: 1;
-          background: url('data:image/svg+xml;utf8,<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23ffc3be" viewBox="0 0 24 24"><path stroke="%23ff697c" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>')
+          background: url('data:image/svg+xml;utf8,<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23b6b7fd" viewBox="0 0 24 24"><path stroke="%23494cf3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>')
             no-repeat center center / contain;
           opacity: 0;
           transition: 0.3s all ease-out;
@@ -659,8 +816,8 @@ section {
           }
 
           input {
-            border: 2px solid $secondary-color;
-            animation: input-copy-border-animation-alt 0.5s ease-in-out;
+            border: 2px solid $primary-color;
+            animation: input-copy-border-animation 0.5s ease-in-out;
           }
         }
       }
@@ -671,49 +828,25 @@ section {
         }
       }
     }
-
-    &.standalone {
-      .content {
-        .changer {
-          .selector {
-            .method-selector-el {
-              background-color: mix($primary-color, #fff, 25%);
-
-              &::after {
-                border: 0.3em solid $primary-color-dark;
-                border-color: $primary-color-dark transparent transparent transparent;
-              }
-              &.expanded {
-                label {
-                  &:hover {
-                    color: $primary-color-dark;
-                  }
-                }
-                input:checked + label {
-                  color: $primary-color-dark;
-                }
-              }
-            }
-          }
-        }
-
-        .input-container {
-          &::after {
-            background: url('data:image/svg+xml;utf8,<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23b6b7fd" viewBox="0 0 24 24"><path stroke="%23494cf3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" /></svg>');
-          }
-
-          &.copied {
-            input {
-              border: 2px solid $primary-color;
-              animation: input-copy-border-animation 0.5s ease-in-out;
-            }
-          }
-        }
-      }
-    }
   }
 
   &.last-section {
+    .btn.primary {
+      background-color: $secondary-color;
+    }
+
+    .gh-star-link {
+      color: $secondary-color-dark;
+    }
+
+    .buy-me-coffee-btn {
+      margin-top: 1rem;
+
+      img {
+        max-height: 100%;
+      }
+    }
+
     .social-links {
       display: block;
       margin-top: 2rem;
@@ -772,7 +905,7 @@ section {
 
   pre {
     margin: 0 auto;
-    max-height: 500px;
+    max-height: 400px;
     min-width: 300px;
     max-width: 300px;
 
@@ -800,7 +933,7 @@ section {
     border: 2px solid #111;
     overflow: auto;
     height: calc(100vh - 20rem);
-    max-height: 500px;
+    max-height: 400px;
     min-width: 300px;
 
     @include breakpoint(sm) {
@@ -826,17 +959,5 @@ section {
   }
   100% {
     border-color: $primary-color;
-  }
-}
-
-@keyframes input-copy-border-animation-alt {
-  0% {
-    border-color: $secondary-color;
-  }
-  50% {
-    border-color: $secondary-color-dark;
-  }
-  100% {
-    border-color: $secondary-color;
   }
 }
