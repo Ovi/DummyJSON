@@ -4,6 +4,13 @@ const { isDbConnected } = require('../utils/db');
 const { generateUniqueIdentifier, generateHash } = require('../utils/custom-response');
 const { customResponseExpiresInDays } = require('../constants');
 const cacheMiddleware = require('../middleware/cache');
+const {
+  getMultiObjectSubset,
+  limitArray,
+  sortArray,
+} = require('../utils/util');
+
+const { HOSTNAME = 'https://dummyjson.com' } = process.env;
 
 router.post('/generate', async (req, res, next) => {
   if (!isDbConnected()) {
@@ -31,7 +38,7 @@ router.post('/generate', async (req, res, next) => {
 
     if (existingResponse) {
       // Return existing URL if found
-      return res.json({ url: `https://dummyjson.com/c/${existingResponse.identifier}` });
+      return res.json({ url: `${HOSTNAME}/c/${existingResponse.identifier}` });
     }
 
     const identifier = await generateUniqueIdentifier();
@@ -43,7 +50,7 @@ router.post('/generate', async (req, res, next) => {
 
     const newResponse = new CustomResponse({ hash, json, method, identifier });
     await newResponse.save();
-    res.json({ url: `https://dummyjson.com/c/${newResponse.identifier}` });
+    res.json({ url: `${HOSTNAME}/c/${newResponse.identifier}` });
   } catch (error) {
     next(error);
   }
@@ -75,6 +82,37 @@ router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
 
       // update last accessed time (but don't wait for it to finish)
       CustomResponse.updateOne({ identifier }, { $set: { lastAccessedAt: new Date() } }, { new: true }).exec();
+
+      if (req.method === 'GET') {
+        const { limit, skip, select, filter, sortBy, order } = req._options;
+
+        let data = record.json;
+        if (Array.isArray(data)) {
+          const total = data.length;
+
+          if (sortBy) {
+            data = sortArray(data, sortBy, order);
+          }
+
+          if (skip > 0) {
+            data = data.slice(skip);
+          }
+
+          data = limitArray(data, limit);
+
+          if (select) {
+            data = getMultiObjectSubset(data, select);
+          }
+
+          return res.json(data);
+        }
+
+        if (select) {
+          data = getMultiObjectSubset(data, select);
+        }
+
+        return res.json(data);
+      }
 
       return res.json(record.json);
     }
