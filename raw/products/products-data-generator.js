@@ -169,7 +169,7 @@ function generateThumbnailImage(product) {
   const image = `${dir}/${folder[0]}`;
 
   const sharpImage = sharp(image);
-  const resizedImage = sharpImage.resize({ width: 300, height: 300, fit: 'contain', background: "transparent" });
+  const resizedImage = sharpImage.resize({ width: 300, height: 300, fit: 'contain', background: 'transparent' });
   const pngImage = resizedImage.png();
 
   if (fs.existsSync(`${dir}/thumbnail.png`)) {
