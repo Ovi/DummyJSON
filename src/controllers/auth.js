@@ -55,7 +55,7 @@ controller.loginByUsernamePassword = async data => {
 };
 
 // get new refresh token
-controller.getNewRefreshToken = async ({ refreshToken, expiresInMins }) => {
+controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = 60 }) => {
   if (!refreshToken) {
     throw new APIError(`Refresh token required`, 401);
   }
@@ -79,7 +79,7 @@ controller.getNewRefreshToken = async ({ refreshToken, expiresInMins }) => {
 
   const payload = getUserPayload(user);
 
-  const newAccessToken = await generateAccessToken(payload);
+  const newAccessToken = await generateAccessToken(payload, expiresInMins);
   const newRefreshToken = await generateRefreshToken(payload, maxAccessTokenExpireTime);
 
   return { accessToken: newAccessToken, refreshToken: newRefreshToken };
