@@ -389,6 +389,98 @@
           }
         </code></pre>
       </div>
+
+      <div class="resource" id="recipes-add">
+        <a href="#recipes-add" class="res-title">Add Recipe</a>
+        <p class="res-tip">
+          Adding a recipe will not add it into the server.
+          <br />
+          It will simulate a POST request and will return a new created recipe with a new id
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/recipes/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: 'Tasty Pizza'
+              /* other recipe data */
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 51,
+            "name": "Tasty Pizza",
+            {...}
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="recipes-update">
+        <a href="#recipes-update" class="res-title">Update Recipe</a>
+        <p class="res-tip">
+          Updating a recipe will not update it into the server.
+          <br />
+          It will simulate a PUT/PATCH request and will return updated recipe with modified data
+        </p>
+        <pre><code class="language-js">
+          /* updating name of recipe with id 1 */
+          fetch('https://dummyjson.com/recipes/1', {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: 'Tasty Pizza'
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            "name": "Tasty Pizza",
+            {...}
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="recipes-delete">
+        <a href="#recipes-delete" class="res-title">Delete Recipe</a>
+        <p class="res-tip">
+          Deleting a recipe will not delete it into the server.
+          <br />
+          It will simulate a DELETE request and will return deleted recipe with `isDeleted` & `deletedOn` keys
+        </p>
+        <pre><code class="language-js">
+          /* deleting recipe with id 1 */
+          fetch('https://dummyjson.com/recipes/1', {
+            method: 'DELETE'
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "id": 1,
+            {...}
+            "isDeleted": true,
+            "deletedOn": /* ISOTime */
+          }
+        </code></pre>
+      </div>
+
+
     </div>
   </section>
 

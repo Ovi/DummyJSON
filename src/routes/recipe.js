@@ -6,6 +6,9 @@ const {
   getRecipeTags,
   getRecipesByTag,
   getRecipesByMealType,
+  addNewRecipe,
+  updateRecipeById,
+  deleteRecipeById,
 } = require('../controllers/recipes');
 
 // get all recipes
@@ -43,6 +46,28 @@ router.get('/meal-type/:mealType', (req, res) => {
   const { mealType } = req.params;
 
   res.send(getRecipesByMealType({ mealType, ...req._options }));
+});
+
+router.post('/add', (req, res) => {
+  res.send(addNewRecipe({ ...req.body }));
+});
+
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+
+  res.send(updateRecipeById({ id, ...req.body }));
+});
+
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+
+  res.send(updateRecipeById({ id, ...req.body }));
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  res.send(deleteRecipeById({ id }));
 });
 
 module.exports = router;
