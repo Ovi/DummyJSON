@@ -145,4 +145,106 @@ controller.getRecipesByMealType = ({ mealType, ..._options }) => {
   return result;
 };
 
+controller.addNewRecipe = ({ ...data }) => {
+  const {
+    name,
+    ingredients,
+    instructions,
+    prepTimeMinutes,
+    cookTimeMinutes,
+    servings,
+    difficulty,
+    cuisine,
+    caloriesPerServing,
+    tags,
+    userId,
+    image,
+    rating,
+    reviewCount,
+    mealType,
+  } = data;
+
+  const newRecipe = {
+    id: frozenData.recipes.length + 1, // Assuming `frozenData.recipes` holds the recipe data
+    name,
+    ingredients,
+    instructions,
+    prepTimeMinutes,
+    cookTimeMinutes,
+    servings,
+    difficulty,
+    cuisine,
+    caloriesPerServing,
+    tags,
+    userId,
+    image,
+    rating,
+    reviewCount,
+    mealType,
+  };
+
+  return newRecipe;
+};
+
+controller.updateRecipeById = ({ id, ...data }) => {
+  const {
+    name,
+    ingredients,
+    instructions,
+    prepTimeMinutes,
+    cookTimeMinutes,
+    servings,
+    difficulty,
+    cuisine,
+    caloriesPerServing,
+    tags,
+    userId,
+    image,
+    rating,
+    reviewCount,
+    mealType,
+  } = data;
+
+  const recipeFrozen = frozenData.recipes.find(r => r.id.toString() === id);
+
+  if (!recipeFrozen) {
+    throw new APIError(`Recipe with id '${id}' not found`, 404);
+  }
+
+  const updatedRecipe = {
+    id: +id, // converting id to number
+    name: name || recipeFrozen.name,
+    ingredients: ingredients || recipeFrozen.ingredients,
+    instructions: instructions || recipeFrozen.instructions,
+    prepTimeMinutes: prepTimeMinutes || recipeFrozen.prepTimeMinutes,
+    cookTimeMinutes: cookTimeMinutes || recipeFrozen.cookTimeMinutes,
+    servings: servings || recipeFrozen.servings,
+    difficulty: difficulty || recipeFrozen.difficulty,
+    cuisine: cuisine || recipeFrozen.cuisine,
+    caloriesPerServing: caloriesPerServing || recipeFrozen.caloriesPerServing,
+    tags: tags || recipeFrozen.tags,
+    userId: userId || recipeFrozen.userId,
+    image: image || recipeFrozen.image,
+    rating: rating || recipeFrozen.rating,
+    reviewCount: reviewCount || recipeFrozen.reviewCount,
+    mealType: mealType || recipeFrozen.mealType,
+  };
+
+  return updatedRecipe;
+};
+
+controller.deleteRecipeById = ({ id }) => {
+  const recipeFrozen = frozenData.recipes.find(p => p.id.toString() === id);
+
+  if (!recipeFrozen) {
+    throw new APIError(`Recipe with id '${id}' not found`, 404);
+  }
+
+  return {
+    ...recipeFrozen,
+    isDeleted: true,
+    deletedOn: new Date().toISOString(),
+  };
+};
+
 module.exports = controller;
