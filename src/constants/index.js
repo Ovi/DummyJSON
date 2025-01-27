@@ -26,7 +26,8 @@ constants.imageMimeTypes = {
 
 constants.allowedImageTypes = Object.keys(constants.imageMimeTypes);
 
-constants.thirtyDaysInMints = 30 * 24 * 60;
+// 30 days in minutes
+constants.maxTokenExpireMins = 30 * 24 * 60;
 
 constants.customResponseExpiresInDays = 90;
 

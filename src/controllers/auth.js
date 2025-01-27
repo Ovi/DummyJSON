@@ -6,7 +6,7 @@ const {
   isValidNumberInRange,
   findUserWithUsernameAndId,
 } = require('../utils/util');
-const { thirtyDaysInMints: maxAccessTokenExpireTime } = require('../constants');
+const { maxTokenExpireMins } = require('../constants');
 
 const controller = {};
 
@@ -18,8 +18,8 @@ controller.loginByUsernamePassword = async data => {
     throw new APIError(`Username and password required`, 400);
   }
 
-  if (expiresInMins && !isValidNumberInRange(expiresInMins, 1, maxAccessTokenExpireTime)) {
-    throw new APIError(`Maximum access token expire time can be ${maxAccessTokenExpireTime} minutes`);
+  if (expiresInMins && !isValidNumberInRange(expiresInMins, 1, maxTokenExpireMins)) {
+    throw new APIError(`Maximum access token expire time can be ${maxTokenExpireMins} minutes`);
   }
 
   const user = frozenData.users.find(u => {
@@ -46,7 +46,7 @@ controller.loginByUsernamePassword = async data => {
       cookieData: {
         httpOnly: true,
         secure: true,
-        maxAge: expiresInMins * 60 * 1000,
+        maxAge: expiresInMins * 60 * 1000, // convert minutes to milliseconds
       },
     };
   } catch (err) {
@@ -55,13 +55,13 @@ controller.loginByUsernamePassword = async data => {
 };
 
 // get new refresh token
-controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = 60 }) => {
+controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = maxTokenExpireMins }) => {
   if (!refreshToken) {
     throw new APIError(`Refresh token required`, 401);
   }
 
-  if (expiresInMins && !isValidNumberInRange(expiresInMins, 1, maxAccessTokenExpireTime)) {
-    throw new APIError(`Maximum access token expire time can be ${maxAccessTokenExpireTime} minutes`);
+  if (!isValidNumberInRange(expiresInMins, 1, maxTokenExpireMins)) {
+    throw new APIError(`Maximum access token expire time can be ${maxTokenExpireMins} minutes`);
   }
 
   let user;
@@ -80,7 +80,7 @@ controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = 60 }) => 
   const payload = getUserPayload(user);
 
   const newAccessToken = await generateAccessToken(payload, expiresInMins);
-  const newRefreshToken = await generateRefreshToken(payload, maxAccessTokenExpireTime);
+  const newRefreshToken = await generateRefreshToken(payload);
 
   return { accessToken: newAccessToken, refreshToken: newRefreshToken };
 };
