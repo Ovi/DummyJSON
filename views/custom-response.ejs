@@ -24,7 +24,7 @@
 
   <link rel="canonical" href="https://dummyjson.com/custom-response" />
 
-  <link rel="stylesheet" href="https://assets.dummyjson.com/public/css/styles.css" />
+  <link rel="stylesheet" href="<%= assetsUrl %>/css/styles.css" />
 
   <!-- JSON-LD structured data for rich snippets -->
   <script type="application/ld+json">
@@ -149,7 +149,7 @@
 
       <div class="btns-container">
         <button class="btn primary" onclick="generateCustomAPI()">
-          <img src="https://assets.dummyjson.com/public/img/icons/magic-wand.svg" alt="Icon">
+          <img src="<%= assetsUrl %>/img/icons/magic-wand.svg" alt="Icon">
           Generate Now
         </button>
       </div>
@@ -157,8 +157,8 @@
   </section>
 </body>
 
-<script src="https://assets.dummyjson.com/public/js/custom-json-highlight.min.js" defer></script>
-<script src="https://assets.dummyjson.com/public/js/common.min.js" defer></script>
-<script src="https://assets.dummyjson.com/public/js/custom-response.min.js" defer></script>
+<script src="<%= assetsUrl %>/js/custom-json-highlight.min.js" defer></script>
+<script src="<%= assetsUrl %>/js/common.min.js" defer></script>
+<script src="<%= assetsUrl %>/js/custom-response.min.js" defer></script>
 
 </html>

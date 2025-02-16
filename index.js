@@ -3,11 +3,11 @@ const cluster = require('node:cluster');
 const connectDB = require('./src/db/mongoose');
 const { log, logError } = require('./src/helpers/logger');
 const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
-const { validateEnvVar } = require('./src/utils/util');
+const { validateEnvVar, isDev } = require('./src/utils/util');
 const { setupCRONJobs } = require('./src/utils/cron-jobs');
 const { version } = require('./package.json');
 
-const { PORT = 8888, NODE_ENV } = process.env;
+const { PORT = 8888 } = process.env;
 
 const numCPUs = os.cpus().length;
 
@@ -22,7 +22,7 @@ async function setupMasterProcess() {
     logCounts();
 
     log(`[Master] ${process.pid} running with 4/${numCPUs} workers`);
-    log(`[Master][${NODE_ENV}] App v${version} running at http://localhost:${PORT}`);
+    log(`[Master][${isDev ? 'dev' : 'prod'}] App v${version} running at http://localhost:${PORT}`);
 
     forkWorkers(4);
   } catch (error) {

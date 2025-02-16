@@ -22,7 +22,7 @@ const data = {
 
 utils.dataInMemory = data;
 
-utils.isDev = process.env.NODE_ENV !== 'production';
+utils.isDev = process.env.NODE_ENV === 'development';
 
 utils.loadDataInMemory = async () => {
   const baseDir = './database';
