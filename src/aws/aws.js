@@ -30,6 +30,8 @@ aws.uploadToStorage = async (buffer, contentType, key) => {
       ContentType: contentType,
     });
 
+
+    
     const response = await s3Client.send(command);
     return response.$metadata;
   } catch (error) {
@@ -111,6 +113,7 @@ async function recursiveDelete(location, token) {
       },
     });
 
+    
     const deleted = await s3Client.send(deleteCommand);
     count += deleted.Deleted.length;
 
@@ -120,10 +123,12 @@ async function recursiveDelete(location, token) {
     }
   }
 
+  
   // repeat if more files to delete
   if (list.NextContinuationToken) {
     recursiveDelete(location, list.NextContinuationToken);
   }
+  
   // return total deleted count when finished
   return `${count} files deleted.`;
 }
