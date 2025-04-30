@@ -7,7 +7,7 @@ const { validateEnvVar, isDev } = require('./src/utils/util');
 const { setupCRONJobs } = require('./src/utils/cron-jobs');
 const { version } = require('./package.json');
 
-const { PORT = 8888 } = process.env;
+const { PORT = 8888, NUM_WORKERS = 4 } = process.env;
 
 const numCPUs = os.cpus().length;
 
@@ -21,10 +21,10 @@ async function setupMasterProcess() {
 
     logCounts();
 
-    log(`[Master] ${process.pid} running with 4/${numCPUs} workers`);
+    log(`[Master] ${process.pid} running with ${NUM_WORKERS}/${numCPUs} workers`);
     log(`[Master][${isDev ? 'dev' : 'prod'}] App v${version} running at http://localhost:${PORT}`);
 
-    forkWorkers(4);
+    forkWorkers(NUM_WORKERS);
   } catch (error) {
     logError(`[Master] Critical error: ${error.message}`, { error: error.stack });
     process.exit(1);

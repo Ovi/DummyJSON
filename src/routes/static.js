@@ -2,7 +2,7 @@ const path = require('node:path');
 const router = require('express').Router();
 const { capitalize } = require('../utils/util');
 
-const { GOOGLE_TAG_ID, GOOGLE_PUBLISHER_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT } = process.env;
+const { GOOGLE_TAG_ID, GOOGLE_PUBLISHER_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS } = process.env;
 const commonVariables = {
   googleTagId: GOOGLE_TAG_ID,
   googlePublisherId: GOOGLE_PUBLISHER_ID,
@@ -26,7 +26,7 @@ const availableResources = [
 ];
 
 router.get('/', (req, res) => {
-  res.render('index', { ...commonVariables });
+  res.render('index', { ...commonVariables, stats: STATS || '100 million' });
 });
 
 router.get('/docs', (req, res) => {
