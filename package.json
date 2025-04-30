@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "env-cmd -f config/dev.env nodemon index.js",
-    "minify-public-js-watch": "node scripts/minify-and-watch-public-js-files.js",
-    "public:use-dev": "node scripts/switch-public-url.js --target \"http://localhost:3000/public\" --source \"https://assets.dummyjson.com/public\"",
-    "public:use-cdn": "node scripts/switch-public-url.js --target \"https://assets.dummyjson.com/public\" --source \"http://localhost:3000/public\""
+    "minify-public-js-watch": "node scripts/minify-and-watch-public-js-files.js"
   },
   "engines": {
     "node": ">=18.0"
