@@ -18,6 +18,7 @@ const cleanRequest = (req, res, next) => {
 
     const { limit = 30, skip = 0, q, key, value, delay, sortBy } = req.query;
     let { select, order } = req.query;
+    let searchQuery = '';
 
     if (!isNumber(limit)) {
       throw new APIError(`Invalid 'limit' - must be a number`, 400);
@@ -25,6 +26,24 @@ const cleanRequest = (req, res, next) => {
 
     if (!isNumber(skip)) {
       throw new APIError(`Invalid 'skip' - must be a number`, 400);
+    }
+
+    // Accept both ?q=phone and ?q[valueSearch]=phone
+    if (trueTypeOf(q) === 'string') {
+      searchQuery = q
+        .trim()
+        .toLowerCase()
+        .split('-')
+        .join(' ');
+    } else if (q && trueTypeOf(q) === 'object' && typeof q.valueSearch === 'string') {
+      searchQuery = q.valueSearch
+        .trim()
+        .toLowerCase()
+        .split('-')
+        .join(' ');
+    } else if (q) {
+      logError('Malformed "q" param', { query: q });
+      throw new APIError(`Invalid 'q' - must be a string`, 400);
     }
 
     if (delay) {
@@ -49,15 +68,6 @@ const cleanRequest = (req, res, next) => {
       } else {
         select = null;
       }
-    }
-
-    let searchQuery = (q || '').trim().toLowerCase();
-
-    if (searchQuery) {
-      searchQuery = searchQuery
-        .toLowerCase()
-        .split('-')
-        .join(' ');
     }
 
     if (order && sortBy) {
