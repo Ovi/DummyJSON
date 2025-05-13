@@ -5,6 +5,7 @@ const {
   getUserPayload,
   isValidNumberInRange,
   findUserWithUsernameAndId,
+  trueTypeOf,
 } = require('../utils/util');
 const { maxTokenExpireMins } = require('../constants');
 
@@ -16,6 +17,10 @@ controller.loginByUsernamePassword = async data => {
 
   if (!username || !password) {
     throw new APIError(`Username and password required`, 400);
+  }
+
+  if (trueTypeOf(username) !== 'string') {
+    throw new APIError('Username is not valid', 400);
   }
 
   if (expiresInMins && !isValidNumberInRange(expiresInMins, 1, maxTokenExpireMins)) {

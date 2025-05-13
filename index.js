@@ -10,6 +10,7 @@ const { version } = require('./package.json');
 const { PORT = 8888, NUM_WORKERS = 4 } = process.env;
 
 const numCPUs = os.cpus().length;
+const maxWorkers = Math.min(NUM_WORKERS, numCPUs);
 
 async function setupMasterProcess() {
   try {
@@ -21,10 +22,10 @@ async function setupMasterProcess() {
 
     logCounts();
 
-    log(`[Master] ${process.pid} running with ${NUM_WORKERS}/${numCPUs} workers`);
+    log(`[Master] ${process.pid} running with ${maxWorkers}/${numCPUs} workers`);
     log(`[Master][${isDev ? 'dev' : 'prod'}] App v${version} running at http://localhost:${PORT}`);
 
-    forkWorkers(NUM_WORKERS);
+    forkWorkers(maxWorkers);
   } catch (error) {
     logError(`[Master] Critical error: ${error.message}`, { error: error.stack });
     process.exit(1);

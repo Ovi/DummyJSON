@@ -75,7 +75,7 @@ helpers.multerInstance = multer({
   },
 });
 
-helpers.deleteMulterTemporayFiles = async files => {
+helpers.deleteMulterTemporaryFiles = async files => {
   if (!files || !files.length) return;
 
   files.forEach(file => {
