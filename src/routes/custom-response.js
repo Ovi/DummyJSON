@@ -1,3 +1,10 @@
+/**
+ * @openapi
+ * tags:
+ *   - name: CustomResponse
+ *     description: Generate and serve custom JSON responses via unique URLs
+ */
+
 const router = require('express').Router();
 const CustomResponse = require('../models/custom-response');
 const { isDbConnected } = require('../utils/db');
@@ -5,6 +12,44 @@ const { generateUniqueIdentifier, generateHash } = require('../utils/custom-resp
 const { customResponseExpiresInDays } = require('../constants');
 const cacheMiddleware = require('../middleware/cache');
 
+/**
+ * @openapi
+ * /c/generate:
+ *   post:
+ *     summary: Generate a custom JSON response endpoint
+ *     tags: [CustomResponse]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CustomResponseGenerateRequest'
+ *     responses:
+ *       200:
+ *         description: Successfully generated a custom response URL
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CustomResponseGenerateResponse'
+ *       400:
+ *         description: Missing or invalid JSON
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CustomResponseError'
+ *       413:
+ *         description: Payload Too Large
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CustomResponseError'
+ *       500:
+ *         description: Failed to generate unique identifier
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CustomResponseError'
+ */
 router.post('/generate', async (req, res, next) => {
   if (!isDbConnected()) {
     next();
@@ -49,6 +94,38 @@ router.post('/generate', async (req, res, next) => {
   }
 });
 
+/**
+ * @openapi
+ * /c/{identifier}:
+ *   get:
+ *     summary: Get the custom JSON response by identifier
+ *     tags: [CustomResponse]
+ *     parameters:
+ *       - in: path
+ *         name: identifier
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Unique identifier for the custom response
+ *     responses:
+ *       200:
+ *         description: The custom JSON data
+ *         headers:
+ *           x-expires-on:
+ *             description: Expiry date of the custom response (ISO string)
+ *             schema:
+ *               type: string
+ *           x-expires-in-days:
+ *             description: Number of days until expiry
+ *             schema:
+ *               type: integer
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CustomResponseData'
+ *       404:
+ *         description: Not found
+ */
 router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
   if (!isDbConnected()) {
     next();

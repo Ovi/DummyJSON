@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.485.0",
+    "@scalar/express-api-reference": "^0.7.1",
     "axios": "^1.7.7",
     "color-convert": "^2.0.1",
     "compression": "^1.7.4",
@@ -36,6 +37,7 @@
     "on-finished": "^2.3.0",
     "on-headers": "^1.0.2",
     "sharp": "0.31.1",
+    "swagger-jsdoc": "^6.2.8",
     "uuid": "^10.0.0",
     "winston": "^3.14.2"
   },

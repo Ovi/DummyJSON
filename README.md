@@ -8,6 +8,11 @@ Explore the detailed documentation at [DummyJSON/Docs](https://dummyjson.com/doc
 
 **New**: Now you can generate your own [custom responses](https://dummyjson.com/custom-response) from DummyJSON, [try it now!](https://dummyjson.com/custom-response)
 
+**New**: We now have an OpenAPI 3.1.0 specification available for DummyJSON!  
+You can find the `openapi.json` [here](https://dummyjson.com/api-docs/openapi.json).  
+Additionally, we’ve launched a fully interactive API UI powered by [Scalar](https://github.com/scalar/scalar) — making it even easier to explore and integrate DummyJSON into your projects. Check it out [here](https://dummyjson.com/api-docs)!
+
+
 ## Why DummyJSON?
 
 Ever felt bogged down by the complexities of setting up a backend just to fetch dummy data for your front-end project? Or perhaps you dreamt of a learning app where obtaining realistic data didn't involve navigating through convoluted public APIs and cumbersome registration processes. Well, say hello to DummyJSON!
