@@ -38,6 +38,30 @@
         </code></pre>
       </div>
 
+      <div class="resource" id="intro-openapi">
+        <a href="#intro-openapi" class="res-title">API Documentation</a>
+        <p class="res-desc">Access our interactive OpenAPI documentation to explore all endpoints.</p>
+        <p class="res-tip">
+          DummyJSON provides OpenAPI-compliant documentation with a modern Scalar UI. You can also download the OpenAPI specification to use with your own tools.
+        </p>
+        <div class="api-links" style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://dummyjson.com/api-docs" class="btn primary">
+            <img src="<%= assetsUrl %>/img/icons/doc.svg" alt="Documentation icon" style="width: 20px; height: 20px; margin-right: 0.5rem;">
+            Interactive API Reference
+          </a>
+          <a href="https://dummyjson.com/api-docs/openapi.json" class="btn">
+            <img src="<%= assetsUrl %>/img/icons/code.svg" alt="JSON icon" style="width: 20px; height: 20px; margin-right: 0.5rem;">
+            OpenAPI JSON Spec
+          </a>
+        </div>
+        <pre><code class="language-js">
+          // Fetch the OpenAPI specification
+          fetch('https://dummyjson.com/api-docs/openapi.json')
+            .then(res => res.json())
+            .then(spec => console.log('API has', Object.keys(spec.paths).length, 'endpoints'));
+        </code></pre>
+      </div>
+
       <div class="resource" id="intro-limit">
         <a href="#intro-limit" class="res-title">Limiting Resources</a>
         <p class="res-tip">
