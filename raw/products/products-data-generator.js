@@ -1,4 +1,5 @@
-const fs = require('node:fs');
+const fs = require('node:fs').promises;
+const path = require('node:path');
 const sharp = require('sharp');
 const {
   getRandomNumberBetween,
@@ -15,15 +16,17 @@ const {
   randomNegativeComments,
 } = require('./constants');
 
-function generateData() {
+const baseDir = './dist';
+
+async function generateData() {
   try {
-    const data = fs.readFileSync('./raw/products/products.json', 'utf8');
+    const data = await fs.readFile('./raw/products/products.json', 'utf8');
     const json = JSON.parse(data);
 
-    const usersData = fs.readFileSync('./database/users.json', 'utf8');
+    const usersData = await fs.readFile('./database/users.json', 'utf8');
     const users = JSON.parse(usersData);
 
-    const newData = json.map((item, idx) => {
+    const newDataPromises = json.map(async (item, idx) => {
       const baseStock = getRandomNumberBetween(0, 100);
 
       let stock = baseStock;
@@ -37,11 +40,12 @@ function generateData() {
         availabilityStatus = 'Low Stock';
       }
 
-      const images = getProductImages(item);
-      generateThumbnailImage(item);
+      const id = idx + 1;
+      const images = await getProductImages(item);
+      const thumbnail = await generateThumbnailImage(item);
 
       return {
-        id: idx + 1,
+        id,
         title: item.title,
         description: item.description,
         category: item.category,
@@ -51,7 +55,7 @@ function generateData() {
         stock,
         tags: item.tags.map(tag => tag.toLowerCase()),
         brand: item.brand,
-        sku: generateRandomSKU(),
+        sku: generateSKU(item, id),
         weight: getRandomNumberBetween(1, 10),
         dimensions: {
           width: getRandomNumberFloatBetween(5, 30),
@@ -68,31 +72,52 @@ function generateData() {
           createdAt: new Date(),
           updatedAt: new Date(),
           barcode: generateRandomBarcode(),
-          qrCode: 'https://assets.dummyjson.com/public/qr-code.png',
+          qrCode: 'https://cdn.dummyjson.com/public/qr-code.png',
         },
         images,
-        thumbnail: encodeURLSpaces(
-          `https://cdn.dummyjson.com/products/images/${item.category}/${item.title}/thumbnail.png`,
-        ),
+        thumbnail,
       };
     });
 
-    fs.writeFileSync('./database/products.json', JSON.stringify(newData, null, 2), 'utf8');
+    console.log('Generating data...');
+
+    const newData = await Promise.all(newDataPromises);
+    await fs.writeFile('./database/products.json', JSON.stringify(newData, null, 2), 'utf8');
+
     console.log('Data Generated Successfully!');
   } catch (error) {
     console.error('Error:', error);
   }
 }
 
-generateData();
+/****************************************
+ ********** HELPER FUNCTIONS ************
+ ****************************************/
 
-function generateRandomSKU() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
-  for (let i = 0; i < 8; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
+function generateSKU(product, id) {
+  const padId = id => String(id).padStart(3, '0');
+
+  const category = product.category?.slice(0, 3).toUpperCase() || 'GEN';
+  const brand =
+    product.brand
+      ?.replace(/[^a-zA-Z]/g, '')
+      .slice(0, 3)
+      .toUpperCase() || 'BRD';
+
+  const keyword =
+    product.title
+      .split(' ')
+      .find(word => word.length > 3) // avoid "the", "for", etc.
+      ?.replace(/[^a-zA-Z]/g, '')
+      .slice(0, 3)
+      .toUpperCase() || 'PRD';
+
+  // category-brand-keyword-id -> GEN-BRD-PRD-001
+  return `${category}-${brand}-${keyword}-${padId(id)}`;
+}
+
+function slugify(str) {
+  return str.toLowerCase().replace(/ /g, '-');
 }
 
 function generateRandomReviews(users, length = 3) {
@@ -100,10 +125,8 @@ function generateRandomReviews(users, length = 3) {
 
   for (let i = 0; i < length; i++) {
     const user = fromArr(users);
-
     const isPositive = Math.random() < 0.7;
     const comment = isPositive ? fromArr(randomPositiveComments) : fromArr(randomNegativeComments);
-
     const rating = isPositive ? getRandomNumberBetween(4, 5) : getRandomNumberBetween(1, 3);
 
     reviews.push({
@@ -119,62 +142,92 @@ function generateRandomReviews(users, length = 3) {
 }
 
 function getMOQ(price) {
-  if (price > 1000) {
-    return 1;
-  }
-
-  if (price > 500) {
-    return getRandomNumberBetween(1, 2);
-  }
-
-  if (price > 100) {
-    return getRandomNumberBetween(1, 5);
-  }
-
-  if (price > 50) {
-    return getRandomNumberBetween(1, 10);
-  }
-
-  if (price > 20) {
-    return getRandomNumberBetween(1, 20);
-  }
-
+  if (price > 1000) return 1;
+  if (price > 500) return getRandomNumberBetween(1, 2);
+  if (price > 100) return getRandomNumberBetween(1, 5);
+  if (price > 50) return getRandomNumberBetween(1, 10);
+  if (price > 20) return getRandomNumberBetween(1, 20);
   return getRandomNumberBetween(1, 50);
 }
 
-function getProductImages(product) {
-  const dir = `./dist/images/${product.category}/${product.title}`;
-  if (!fs.existsSync(dir)) {
+async function getProductImages(product) {
+  const originalImagesDir = `/images/${product.category}/${product.title}`;
+  const originalDir = path.join(baseDir, originalImagesDir);
+  const newImagesDir = `/product-images/${product.category}/${slugify(product.title)}`;
+  const newDir = path.join(baseDir, newImagesDir);
+
+  try {
+    await fs.access(originalDir);
+  } catch {
     return [];
   }
 
-  const folder = fs.readdirSync(dir);
-  return folder
-    .map(file => {
-      return encodeURLSpaces(
-        `https://cdn.dummyjson.com/products/images/${product.category}/${product.title}/${file}`,
-      );
-    })
-    .filter(url => !url.endsWith('thumbnail.png'));
+  await fs.mkdir(newDir, { recursive: true });
+  const files = await fs.readdir(originalDir);
+
+  const imageUrls = await Promise.all(
+    files.map(async file => {
+      if (file === 'thumbnail.webp' || !file.match(/\.(jpg|jpeg|png|webp)$/i)) return null;
+
+      const slugifiedFile = slugify(file);
+      const webpFile = slugifiedFile.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+      const webpPath = path.join(newDir, webpFile);
+      const originalPath = path.join(originalDir, file);
+
+      try {
+        await fs.access(webpPath);
+      } catch {
+        try {
+          await sharp(originalPath)
+            .resize({ width: 1000, height: 1000, fit: 'contain', background: 'transparent' })
+            .webp({ quality: 80 })
+            .toFile(webpPath);
+        } catch (err) {
+          console.error(`Error converting ${file} to WebP:`, err);
+          return null;
+        }
+      }
+
+      return encodeURLSpaces(`https://cdn.dummyjson.com${newImagesDir}/${webpFile}`);
+    }),
+  );
+
+  return imageUrls.filter(Boolean);
 }
 
-function generateThumbnailImage(product) {
-  const dir = `./dist/images/${product.category}/${product.title}`;
+async function generateThumbnailImage(product) {
+  const originalImagesDir = `/images/${product.category}/${product.title}`;
+  const originalDir = path.join(baseDir, originalImagesDir);
+  const newImagesDir = `/product-images/${product.category}/${slugify(product.title)}`;
+  const newDir = path.join(baseDir, newImagesDir);
 
-  if (!fs.existsSync(dir)) {
+  try {
+    await fs.access(originalDir);
+  } catch {
     return;
   }
 
-  const folder = fs.readdirSync(dir);
-  const image = `${dir}/${folder[0]}`;
+  await fs.mkdir(newDir, { recursive: true });
+  const folder = await fs.readdir(originalDir);
+  const firstImage = path.join(originalDir, folder[0]);
+  const thumbnailPath = path.join(newDir, 'thumbnail.webp');
 
-  const sharpImage = sharp(image);
-  const resizedImage = sharpImage.resize({ width: 300, height: 300, fit: 'contain', background: 'transparent' });
-  const pngImage = resizedImage.png();
-
-  if (fs.existsSync(`${dir}/thumbnail.png`)) {
-    return;
+  try {
+    await fs.access(thumbnailPath);
+  } catch {
+    try {
+      await sharp(firstImage)
+        .resize({ width: 300, height: 300, fit: 'contain', background: 'transparent' })
+        .webp({ quality: 80 })
+        .toFile(thumbnailPath);
+    } catch (err) {
+      console.error('Thumbnail generation error:', err);
+      return;
+    }
   }
 
-  pngImage.toFile(`${dir}/thumbnail.png`);
+  return encodeURLSpaces(`https://cdn.dummyjson.com${newImagesDir}/thumbnail.webp`);
 }
+
+// Run
+generateData();

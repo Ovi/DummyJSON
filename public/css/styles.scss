@@ -131,7 +131,7 @@ section {
         display: inline-block;
         width: 2rem;
         height: 2rem;
-        background: url('https://assets.dummyjson.com/public/img/icons/star.svg') no-repeat center center / contain;
+        background: url('/public/img/icons/star.svg') no-repeat center center / contain;
       }
     }
 
@@ -225,7 +225,7 @@ section {
       h1,
       h2 {
         .heading-star {
-          background: url('https://assets.dummyjson.com/public/img/icons/star-alt.svg') no-repeat center center /
+          background: url('/public/img/icons/star-alt.svg') no-repeat center center /
             contain;
         }
       }

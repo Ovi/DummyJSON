@@ -4,7 +4,7 @@ const injectMiddleWares = require('./src/middleware');
 const errorMiddleware = require('./src/middleware/error');
 const authUser = require('./src/middleware/auth');
 const routes = require('./src/routes');
-const { loadDataInMemory, isDev, redirectFn } = require('./src/utils/util');
+const { loadDataInMemory } = require('./src/utils/util');
 const { log } = require('./src/helpers/logger');
 
 const { PORT = 8888 } = process.env;
@@ -27,7 +27,7 @@ async function setupApp() {
   app.set('view engine', 'ejs');
 
   // serving static files
-  app.use('/public', isDev ? express.static('public') : redirectFn);
+  app.use('/public', express.static('public'));
 
   // routes
   app.use('/', routes);

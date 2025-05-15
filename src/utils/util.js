@@ -2,7 +2,7 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { v4 } = require('uuid');
 const { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } = require('../constants');
-const { logWarn, log } = require('../helpers/logger');
+const { logWarn } = require('../helpers/logger');
 
 const utils = {};
 
@@ -217,12 +217,6 @@ utils.getUserPayload = user => ({
   gender: user.gender,
   image: user.image,
 });
-
-// redirect to domain: https://assets.dummyjson.com/public/WHATEVER
-utils.redirectFn = (req, res) => {
-  log(`CDN Redirect`, { url: req.url });
-  res.redirect(`https://assets.dummyjson.com/public${req.url}`);
-};
 
 utils.generateRandomId = () => {
   const uuid = v4();
