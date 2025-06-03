@@ -1,5 +1,6 @@
-const fs = require('node:fs/promises');
+const fs = require('node:fs');
 const path = require('node:path');
+const v8 = require('node:v8');
 const { v4 } = require('uuid');
 const { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } = require('../constants');
 const { logWarn } = require('../helpers/logger');
@@ -25,57 +26,29 @@ utils.dataInMemory = data;
 utils.isDev = process.env.NODE_ENV === 'development';
 
 utils.loadDataInMemory = async () => {
-  const baseDir = './database';
+  const baseDir = './cache';
 
-  const productsPath = path.join(baseDir, 'products.json');
-  const cartsPath = path.join(baseDir, 'carts.json');
-  const usersPath = path.join(baseDir, 'users.json');
-  const quotesPath = path.join(baseDir, 'quotes.json');
-  const todosPath = path.join(baseDir, 'todos.json');
-  const postsPath = path.join(baseDir, 'posts.json');
-  const commentsPath = path.join(baseDir, 'comments.json');
-  const recipesPath = path.join(baseDir, 'recipes.json');
+  function loadV8(name) {
+    const filePath = path.join(baseDir, `${name}.v8`);
+    const buffer = fs.readFileSync(filePath);
+    return v8.deserialize(buffer);
+  }
 
-  const paths = [
-    fs.readFile(productsPath, 'utf-8'),
-    fs.readFile(cartsPath, 'utf-8'),
-    fs.readFile(usersPath, 'utf-8'),
-    fs.readFile(quotesPath, 'utf-8'),
-    fs.readFile(todosPath, 'utf-8'),
-    fs.readFile(postsPath, 'utf-8'),
-    fs.readFile(commentsPath, 'utf-8'),
-    fs.readFile(recipesPath, 'utf-8'),
-  ];
+  // Load each resource
+  data.products = loadV8('products');
+  data.carts = loadV8('carts');
+  data.users = loadV8('users');
+  data.quotes = loadV8('quotes');
+  data.todos = loadV8('todos');
+  data.posts = loadV8('posts');
+  data.comments = loadV8('comments');
+  data.recipes = loadV8('recipes');
 
-  const [productsStr, cartsStr, usersStr, quotesStr, todosStr, postsStr, commentsStr, recipesStr] = await Promise.all(
-    paths,
-  );
+  data.categoryList = [...new Set(data.products.map(p => p.category))];
+  data.categories = utils.getSluggedData(data.categoryList, 'products', 'category');
 
-  const productsArr = JSON.parse(productsStr);
-  const categoryList = [...new Set(productsArr.map(p => p.category))];
-  const categories = utils.getSluggedData(categoryList, 'products', 'category');
-  const cartsArr = JSON.parse(cartsStr);
-  const usersArr = JSON.parse(usersStr);
-  const quotesArr = JSON.parse(quotesStr);
-  const recipesArr = JSON.parse(recipesStr);
-  const todosArr = JSON.parse(todosStr);
-  const postsArr = JSON.parse(postsStr);
-  const tagList = [...new Set(postsArr.flatMap(p => p.tags))];
-  const tags = utils.getSluggedData(tagList, 'posts', 'tag');
-  const commentsArr = JSON.parse(commentsStr);
-
-  data.products = productsArr;
-  data.categoryList = categoryList;
-  data.categories = categories;
-  data.carts = cartsArr;
-  data.users = usersArr;
-  data.quotes = quotesArr;
-  data.recipes = recipesArr;
-  data.todos = todosArr;
-  data.posts = postsArr;
-  data.tagList = tagList;
-  data.tags = tags;
-  data.comments = commentsArr;
+  data.tagList = [...new Set(data.posts.flatMap(p => p.tags))];
+  data.tags = utils.getSluggedData(data.tagList, 'posts', 'tag');
 
   utils.deepFreeze(data);
 };

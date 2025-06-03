@@ -5,6 +5,9 @@ package-lock.json
 # Output files
 dist
 
+# Cache files
+cache
+
 # Logs
 logs
 *.log
