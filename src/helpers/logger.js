@@ -1,3 +1,4 @@
+const chalk = require('chalk');
 const { createLogger, format, transports } = require('winston');
 
 const { NODE_ENV } = process.env;
@@ -24,6 +25,44 @@ const customJsonLogFormat = format.printf(({ timestamp, level, message, meta }) 
   return JSON.stringify(logObject);
 });
 
+// one liner
+// [level] message - method:status:error:meta
+const customJsonLogFormatOneLiner = format.printf(({ level, message, meta }) => {
+  const { method, status, error, ...rest } = meta || {};
+
+  const getColor = (() => {
+    switch (level) {
+      case 'error':
+        return chalk.red;
+      case 'warn':
+        return chalk.yellow;
+      case 'info':
+        return chalk.gray;
+      case 'debug':
+        return chalk.green;
+      default:
+        return chalk.blue;
+    }
+  })();
+
+  let logString = `${message}`;
+
+  if (method) logString += ` - ${method}`;
+  if (status) logString += `:${status}`;
+  if (error) logString += `:${error}`;
+  if (rest) {
+    try {
+      if (Object.keys(rest).length > 0) {
+        logString += `:${JSON.stringify(rest)}`;
+      }
+    } catch (e) {
+      logString += `:${JSON.stringify(rest)}`;
+    }
+  }
+
+  return getColor(logString);
+});
+
 // Create the logger with JSON format
 const logger = createLogger({
   level: 'info',
@@ -33,7 +72,7 @@ const logger = createLogger({
       info.meta = info.meta || {}; // Ensure meta is present
       return info;
     })(),
-    NODE_ENV === 'development' ? format.prettyPrint() : customJsonLogFormat,
+    NODE_ENV === 'development' ? customJsonLogFormatOneLiner : customJsonLogFormat,
   ),
   transports: [new transports.Console()],
 });
