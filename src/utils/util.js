@@ -84,6 +84,17 @@ utils.trueTypeOf = obj => {
     .toLowerCase();
 };
 
+utils.isEmpty = value => {
+  const type = utils.trueTypeOf(value);
+
+  if (value === null || value === undefined) return true;
+  if (type === 'string' && value.trim() === '') return true;
+  if (type === 'array' && value.length === 0) return true;
+  if (type === 'object' && Object.keys(value).length === 0) return true;
+
+  return false;
+};
+
 utils.deepFreeze = function(obj) {
   Object.freeze(obj);
 

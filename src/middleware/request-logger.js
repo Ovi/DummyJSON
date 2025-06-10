@@ -27,18 +27,6 @@ function requestLogger(req, res, next) {
     return;
   }
 
-  // ! temporary disable logging for get requests
-  if (['get', 'head'].includes(req.method.toLowerCase())) {
-    next();
-    return;
-  }
-
-  // ! temporary only log multipart requests
-  if ((req.headers['content-type'] || '').toLowerCase() !== 'multipart/form-data') {
-    next();
-    return;
-  }
-
   // request data
   req._startAt = undefined;
   req._startTime = undefined;

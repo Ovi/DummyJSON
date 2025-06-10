@@ -6,13 +6,13 @@ const { logError, log } = require('../helpers/logger');
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_TOTAL_PAYLOAD = MAX_FILE_SIZE * 5; // 25MB
 
-const cleanRequest = (req, res, next) => {
+const cleanRequest = async (req, res, next) => {
   try {
     const { method: reqMethod, path, headers, url, query, ip } = req;
     const method = reqMethod.toLowerCase();
 
     // Remove trailing slash from route
-    if (path.substr(-1) === '/' && path.length > 1) {
+    if (path.endsWith('/') && path.length > 1) {
       const requestQuery = url.slice(path.length);
       const safePath = path.slice(0, -1).replace(/\/+/g, '/');
       res.redirect(301, safePath + requestQuery);
@@ -43,7 +43,6 @@ const cleanRequest = (req, res, next) => {
         .split('-')
         .join(' ');
     } else if (q) {
-      logError('Malformed "q" param', { query: q });
       throw new APIError(`Invalid 'q' - must be a string`, 400);
     }
 
@@ -65,7 +64,7 @@ const cleanRequest = (req, res, next) => {
 
     if (order && sortBy) {
       order = order.toLowerCase();
-      if (order !== 'asc' && order !== 'desc') {
+      if (!['asc', 'desc'].includes(order)) {
         throw new APIError(`Order can be: 'asc' or 'desc'`, 400);
       }
     }
@@ -89,79 +88,73 @@ const cleanRequest = (req, res, next) => {
     const isMultipart = contentType.startsWith('multipart/form-data');
 
     if (isMultipart && !['post', 'put'].includes(method)) {
-      logError('Multipart/form-data detected on disallowed HTTP method', {
-        method,
-        path,
-        headers,
-      });
-      return next(new APIError(`Multipart/form-data is not allowed with ${method} requests`, 400));
+      throw new APIError(`Multipart/form-data is not allowed with ${method} requests`, 400);
     }
 
     if (isMultipart) {
-      const contentLength = parseInt(headers['content-length'] || '0', 10);
+      const boundaryMatch = contentType.match(/boundary="?([^\s";]+)"?$/);
+      if (!boundaryMatch) {
+        throw new APIError('Malformed multipart/form-data header: missing boundary', 400);
+      }
 
       // Empty multipart body – allow, but skip parsing
+      const contentLength = parseInt(headers['content-length'] || '0', 10);
       if (contentLength === 0) {
         log('[Info] Empty multipart/form-data body received');
-        return next();
+        next();
+        return;
       }
 
       // Reject large requests early
       if (contentLength > MAX_TOTAL_PAYLOAD) {
-        return next(new APIError('Request payload too large', 413));
+        throw new APIError('Request payload too large', 413);
       }
 
       try {
-        multerInstance.any()(req, res, err => {
-          if (err) {
-            logError('Processing multipart data error', {
-              error: err.message,
-              headers,
-            });
-            return next(new APIError(`Error processing multipart data: ${err.message}`, 400));
-          }
+        await new Promise((resolve, reject) => {
+          multerInstance.any()(req, res, err => {
+            if (err) return reject(err);
+            return resolve();
+          });
+        });
 
-          const { files } = req;
+        const { files } = req;
 
-          if (files && files.length) {
-            // eslint-disable-next-line no-restricted-syntax
-            for (const file of files) {
-              if (file.size > MAX_FILE_SIZE) {
-                logError('File too large', {
-                  file: {
-                    name: file.originalname,
-                    mimetype: file.mimetype,
-                    size: file.size,
-                  },
-                  userAgent: headers['user-agent'],
-                  ip,
-                });
+        if (files && files.length) {
+          // eslint-disable-next-line no-restricted-syntax
+          for (const file of files) {
+            if (file.size > MAX_FILE_SIZE) {
+              logError('File too large', {
+                file: {
+                  name: file.originalname,
+                  mimetype: file.mimetype,
+                  size: file.size,
+                },
+                userAgent: headers['user-agent'],
+                ip,
+              });
 
-                return next(
-                  new APIError('File too large', 413, {
-                    file: file.originalname,
-                    size: file.size,
-                    maxAllowed: MAX_FILE_SIZE,
-                  }),
-                );
-              }
-
-              log(`[File] ${file.originalname} - ${file.size} bytes`);
+              throw new APIError('File too large', 413, {
+                file: file.originalname,
+                size: file.size,
+                maxAllowed: MAX_FILE_SIZE,
+              });
             }
 
-            deleteMulterTemporaryFiles(files);
+            log(`[File] ${file.originalname} - ${file.size} bytes`);
           }
 
-          return next();
-        });
+          deleteMulterTemporaryFiles(files);
+        }
 
-        return;
+        next();
       } catch (err) {
-        logError('multipart/form-data parsing failed', {
-          error: err.message,
-          headers,
-        });
-        return next(new APIError(`Could not process multipart data: ${err.message}`, 500));
+        const isMalformed = /unexpected end of form|malformed part header/i.test(err.message);
+        if (isMalformed) {
+          throw new APIError('Malformed multipart/form-data request', 400);
+        }
+
+        throw new APIError(`Error processing multipart data: ${err.message}`, 400);
       }
     }
 
