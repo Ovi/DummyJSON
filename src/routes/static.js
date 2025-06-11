@@ -8,7 +8,6 @@ const commonVariables = {
   googlePublisherId: GOOGLE_PUBLISHER_ID,
   bannerContent: BANNER_CONTENT,
   canonical: 'https://dummyjson.com',
-  assetsUrl: '/public',
 };
 
 const availableResources = [
