@@ -3,6 +3,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const setClientInfo = require('./set-client-info');
 const requestLogger = require('./request-logger');
 const cleanRequest = require('./clean-request');
 const delayResponse = require('./delay-response');
@@ -22,6 +23,7 @@ const helmetConfig = {
 
 function injectMiddleWares(app) {
   app.set('trust proxy', 1);
+  app.use(setClientInfo);
   app.use(rateLimiter);
   app.use(helmet(helmetConfig));
   app.use(cors());

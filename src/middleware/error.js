@@ -89,6 +89,9 @@ const errorMiddleware = (err, req, res, next) => {
 module.exports = errorMiddleware;
 
 function buildRequestMetaData(req) {
+  const { clientInfo } = req;
+  const { ip, userAgent } = clientInfo || {};
+
   const requestData = {
     timestamp: new Date().toISOString(),
     path: req.path,
@@ -98,9 +101,9 @@ function buildRequestMetaData(req) {
     query: req.query,
     params: req.params,
     headers: req.headers,
-    ip: req.ip,
+    ip,
     xhr: req.xhr, // true if AJAX request
-    userAgent: req.headers['user-agent'],
+    userAgent,
     referer: req.headers.referer || req.headers.referrer,
     contentType: req.headers['content-type'],
     contentLength: req.headers['content-length'],

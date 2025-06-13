@@ -83,6 +83,19 @@
           .then(console.log);
         </code></pre>
       </div>
+
+      <div class="resource" id="intro-ip">
+        <a href="#intro-ip" class="res-title">IP Address</a>
+        <p class="res-desc">Get the IP address of the client</p>
+        <pre><code class="language-js">
+          // GET
+          fetch('https://dummyjson.com/ip')
+          .then(res => res.json())
+          .then(console.log);
+
+          /* { ip: '127.0.0.1', userAgent: 'Mozilla/5.0 ...' } */
+        </code></pre>
+      </div>
     </div>
   </section>
 

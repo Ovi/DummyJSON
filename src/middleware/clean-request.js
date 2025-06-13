@@ -8,7 +8,8 @@ const MAX_TOTAL_PAYLOAD = MAX_FILE_SIZE * 5; // 25MB
 
 const cleanRequest = async (req, res, next) => {
   try {
-    const { method: reqMethod, path, headers, url, query, ip } = req;
+    const { method: reqMethod, path, headers, url, query, clientInfo } = req;
+    const { ip, userAgent } = clientInfo;
     const method = reqMethod.toLowerCase();
 
     // Remove trailing slash from route
@@ -130,7 +131,7 @@ const cleanRequest = async (req, res, next) => {
                   mimetype: file.mimetype,
                   size: file.size,
                 },
-                userAgent: headers['user-agent'],
+                userAgent,
                 ip,
               });
 

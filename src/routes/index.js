@@ -22,6 +22,7 @@ router.use('/icon', require('./icon'));
 
 // dynamic resource routes
 router.use('/c', checkDbConnection, require('./custom-response'));
+router.use('/ip', require('./ip'));
 
 // redirect other routes
 router.use('/', require('./redirect'));

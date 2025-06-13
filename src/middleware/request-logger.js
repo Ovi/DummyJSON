@@ -40,6 +40,8 @@ function requestLogger(req, res, next) {
 
   function logRequest() {
     const referrer = req.headers.referer || req.headers.referrer;
+    const { clientInfo } = req;
+    const { ip, userAgent } = clientInfo || {};
 
     const logObject = {
       timestamp: new Date().toISOString(),
@@ -50,10 +52,10 @@ function requestLogger(req, res, next) {
         status: getResponseStatus(req, res),
         total_time_ms: getTotalTime(req, res),
         response_time_ms: getResponseTime(req, res),
-        ip: getIP(req),
+        ip,
         url: requestURL,
         referrer: referrer || '-',
-        user_agent: req.headers['user-agent'] || '-',
+        user_agent: userAgent || '-',
       },
     };
 
@@ -74,10 +76,6 @@ module.exports = requestLogger;
 function recordStartTime() {
   this._startAt = process.hrtime();
   this._startTime = new Date();
-}
-
-function getIP(req) {
-  return req.ip || (req.connection && req.connection.remoteAddress) || req.ips || undefined;
 }
 
 function getResponseStatus(req, res) {
