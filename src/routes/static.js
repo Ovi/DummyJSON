@@ -2,10 +2,9 @@ const path = require('node:path');
 const router = require('express').Router();
 const { capitalize } = require('../utils/util');
 
-const { GOOGLE_TAG_ID, GOOGLE_PUBLISHER_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS } = process.env;
+const { GOOGLE_TAG_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS } = process.env;
 const commonVariables = {
   googleTagId: GOOGLE_TAG_ID,
-  googlePublisherId: GOOGLE_PUBLISHER_ID,
   bannerContent: BANNER_CONTENT,
   canonical: 'https://dummyjson.com',
 };

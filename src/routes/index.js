@@ -17,10 +17,10 @@ router.use(['/todo', '/todos'], require('./todo'));
 router.use(['/user', '/users'], require('./user'));
 router.use(['/http', '/https'], require('./http'));
 router.use(['/test', '/ping', '/health'], require('./test'));
-router.use(['/image', '/i'], require('./image'));
-router.use('/icon', require('./icon'));
 
 // dynamic resource routes
+router.use(['/image', '/i'], require('./image'));
+router.use('/icon', require('./icon'));
 router.use('/c', checkDbConnection, require('./custom-response'));
 router.use('/ip', require('./ip'));
 

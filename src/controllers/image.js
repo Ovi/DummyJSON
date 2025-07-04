@@ -1,5 +1,11 @@
 const APIError = require('../utils/error');
-const { verifyImageInCache, storeImgInCache, getCacheKey, composeImage, isInvalidSize } = require('../utils/image');
+const {
+  verifyImageInCache,
+  storeImgInCache,
+  getCustomImageCacheKey,
+  composeImage,
+  isInvalidSize,
+} = require('../utils/image');
 const { imageMimeTypes, allowedImageTypes } = require('../constants');
 const { log } = require('../helpers/logger');
 
@@ -21,7 +27,7 @@ controller.imageComposer = async imageOptions => {
     throw new APIError(err);
   }
 
-  const cacheKey = getCacheKey(imageOptions);
+  const cacheKey = getCustomImageCacheKey(imageOptions);
 
   const hasInCache = await verifyImageInCache(cacheKey);
 

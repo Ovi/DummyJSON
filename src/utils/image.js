@@ -69,19 +69,19 @@ utils.generateProperData = options => {
   };
 };
 
-utils.isInvalidSize = (height, width) => {
+utils.isInvalidSize = (height, width, maxSize = 4000) => {
   if (width === 0 || height === 0) {
     return '👻';
   }
 
-  if (width > 4000 || height > 4000) {
+  if (width > maxSize || height > maxSize) {
     return 'Too big to be an image, why not try a smaller size?';
   }
 
   return false;
 };
 
-utils.getCacheKey = options => {
+utils.getCustomImageCacheKey = options => {
   const { width, height, background, color, fontFamily, fontSize, text, type } = options;
 
   const size = `${width}x${height}`;
