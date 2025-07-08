@@ -18,12 +18,15 @@ router.post('/login', async (req, res, next) => {
 });
 
 // logout user
-router.post('/logout', (req, res) => {
-  res.clearCookie('auth', {
+router.post('/logout', authUser, (req, res) => {
+  res.clearCookie('accessToken', {
     httpOnly: true,
     secure: true,
   });
-
+  res.clearCookie('refreshToken', {
+    httpOnly: true,
+    secure: true,
+  });
   res.status(200).json({ message: 'Logged out successfully' });
 });
 

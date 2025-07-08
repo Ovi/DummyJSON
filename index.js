@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const os = require('node:os');
 const cluster = require('node:cluster');
 const connectDB = require('./src/db/mongoose');
