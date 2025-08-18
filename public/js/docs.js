@@ -4,7 +4,6 @@ addListenerOnShowOutputButton('.show-output.btn');
 handleDocLinksClick('.docs-nav');
 handleResourcesTitleClick('.res-title');
 replaceInlineCode('.res-tip');
-enableClickToSelect();
 
 function formatCode(selector) {
   document.querySelectorAll(selector).forEach(codeElement => {
@@ -132,24 +131,6 @@ function replaceInlineCode(selector) {
     element.innerHTML = element.innerHTML.replace(regex, (match, p1) => {
       return `<span class="inline-code">${p1}</span>`;
     });
-  });
-}
-
-function enableClickToSelect() {
-  function handleSelect(event) {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents(event.target);
-    selection.removeAllRanges();
-    selection.addRange(range);
-  }
-
-  document.querySelectorAll('.inline-code').forEach(codeElement => {
-    codeElement.addEventListener('click', handleSelect);
-  });
-
-  document.querySelectorAll('code').forEach(codeElement => {
-    codeElement.addEventListener('click', handleSelect);
   });
 }
 
