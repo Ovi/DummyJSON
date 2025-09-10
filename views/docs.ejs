@@ -86,14 +86,27 @@
 
       <div class="resource" id="intro-ip">
         <a href="#intro-ip" class="res-title">IP Address</a>
-        <p class="res-desc">Get the IP address of the client</p>
+        <p class="res-desc">Get the IP address of the client.</p>
         <pre><code class="language-js">
           // GET
           fetch('https://dummyjson.com/ip')
-          .then(res => res.json())
+          .then(res => res.text())
           .then(console.log);
 
-          /* { ip: '127.0.0.1', userAgent: 'Mozilla/5.0 ...' } */
+          /* '127.0.0.1' */
+        </code></pre>
+      </div>
+
+      <div class="resource" id="intro-ip-ua">
+        <a href="#intro-ip-ua" class="res-title">User Agent</a>
+        <p class="res-desc">Get the User Agent of the client.</p>
+        <pre><code class="language-js">
+          // GET
+          fetch('https://dummyjson.com/ip/ua')
+          .then(res => res.text())
+          .then(console.log);
+
+          /* 'Mozilla/5.0 ...' */
         </code></pre>
       </div>
     </div>

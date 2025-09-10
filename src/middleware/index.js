@@ -22,7 +22,7 @@ const helmetConfig = {
 };
 
 function injectMiddleWares(app) {
-  app.set('trust proxy', 1);
+  app.set('trust proxy', true);
   app.use(setClientInfo);
   app.use(rateLimiter);
   app.use(helmet(helmetConfig));
