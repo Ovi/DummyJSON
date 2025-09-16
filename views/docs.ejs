@@ -90,23 +90,10 @@
         <pre><code class="language-js">
           // GET
           fetch('https://dummyjson.com/ip')
-          .then(res => res.text())
+          .then(res => res.json())
           .then(console.log);
 
-          /* '127.0.0.1' */
-        </code></pre>
-      </div>
-
-      <div class="resource" id="intro-ip-ua">
-        <a href="#intro-ip-ua" class="res-title">User Agent</a>
-        <p class="res-desc">Get the User Agent of the client.</p>
-        <pre><code class="language-js">
-          // GET
-          fetch('https://dummyjson.com/ip/ua')
-          .then(res => res.text())
-          .then(console.log);
-
-          /* 'Mozilla/5.0 ...' */
+          /* { ip: '127.0.0.1', userAgent: 'Mozilla/5.0 ...' } */
         </code></pre>
       </div>
     </div>
