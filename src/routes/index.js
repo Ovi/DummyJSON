@@ -5,6 +5,9 @@ const forceHTTPS = require('../middleware/force-https');
 // static page routes
 router.use('/', forceHTTPS, require('./static'));
 
+// API documentation routes
+router.use('/api-docs', require('./api-docs'));
+
 // static resource routes
 router.use('/auth', require('./auth'));
 router.use(['/cart', '/carts'], require('./cart'));
