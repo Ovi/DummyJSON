@@ -1,11 +1,9 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const v8 = require('node:v8');
-const { v4 } = require('uuid');
-const { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } = require('../constants');
-const { logWarn } = require('../helpers/logger');
-
-const utils = {};
+import fs from 'node:fs';
+import path from 'node:path';
+import v8 from 'node:v8';
+import { v4 } from 'uuid';
+import { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } from '../constants/index.js';
+import { logWarn, logError } from '../helpers/logger.js';
 
 const data = {
   products: [],
@@ -21,11 +19,31 @@ const data = {
   },
 };
 
-utils.dataInMemory = data;
+export const dataInMemory = data;
 
-utils.isDev = process.env.NODE_ENV === 'development';
+export const isDev = process.env.NODE_ENV === 'development';
 
-utils.loadDataInMemory = async () => {
+export const deepFreeze = obj => {
+  Object.freeze(obj);
+
+  if (obj === undefined) {
+    return obj;
+  }
+
+  Object.getOwnPropertyNames(obj).forEach(prop => {
+    if (
+      obj[prop] !== null &&
+      (typeof obj[prop] === 'object' || typeof obj[prop] === 'function') &&
+      !Object.isFrozen(obj[prop])
+    ) {
+      deepFreeze(obj[prop]);
+    }
+  });
+
+  return obj;
+};
+
+export const loadDataInMemory = async () => {
   const baseDir = './cache';
 
   function loadV8(name) {
@@ -45,29 +63,30 @@ utils.loadDataInMemory = async () => {
   data.recipes = loadV8('recipes');
 
   data.categoryList = [...new Set(data.products.map(p => p.category))];
-  data.categories = utils.getSluggedData(data.categoryList, 'products', 'category');
+  data.categories = getSluggedData(data.categoryList, 'products', 'category');
 
   data.tagList = [...new Set(data.posts.flatMap(p => p.tags))];
-  data.tags = utils.getSluggedData(data.tagList, 'posts', 'tag');
+  data.tags = getSluggedData(data.tagList, 'posts', 'tag');
 
-  utils.deepFreeze(data);
+  deepFreeze(data);
 };
 
-utils.getObjectSubset = function(obj, keys) {
+export const getObjectSubset = (obj, keys) => {
   return Object.assign({}, ...keys.map(key => ({ [key]: obj[key] })));
 };
 
-utils.getMultiObjectSubset = function(arr, keys) {
-  return arr.map(p => utils.getObjectSubset(p, keys));
+export const getMultiObjectSubset = (arr, keys) => {
+  return arr.map(p => getObjectSubset(p, keys));
 };
 
-utils.isNumber = num => !Number.isNaN(Number(num));
+export const isNumber = num => !Number.isNaN(Number(num));
 
-utils.validateEnvVar = () => {
+export const validateEnvVar = () => {
   const requiredUnsetEnv = REQUIRED_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
 
   if (requiredUnsetEnv.length) {
-    throw new Error(`Required ENV variables are not set: [${requiredUnsetEnv.join(', ')}]`);
+    logError(`Required ENV variables are not set: [${requiredUnsetEnv.join(', ')}]`);
+    process.exit(0);
   }
 
   const optionalUnsetEnv = OPTIONAL_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
@@ -77,15 +96,15 @@ utils.validateEnvVar = () => {
   }
 };
 
-utils.trueTypeOf = obj => {
+export const trueTypeOf = obj => {
   return Object.prototype.toString
     .call(obj)
     .slice(8, -1)
     .toLowerCase();
 };
 
-utils.isEmpty = value => {
-  const type = utils.trueTypeOf(value);
+export const isEmpty = value => {
+  const type = trueTypeOf(value);
 
   if (value === null || value === undefined) return true;
   if (type === 'string' && value.trim() === '') return true;
@@ -95,39 +114,19 @@ utils.isEmpty = value => {
   return false;
 };
 
-utils.deepFreeze = function(obj) {
-  Object.freeze(obj);
-
-  if (obj === undefined) {
-    return obj;
-  }
-
-  Object.getOwnPropertyNames(obj).forEach(prop => {
-    if (
-      obj[prop] !== null &&
-      (typeof obj[prop] === 'object' || typeof obj[prop] === 'function') &&
-      !Object.isFrozen(obj[prop])
-    ) {
-      utils.deepFreeze(obj[prop]);
-    }
-  });
-
-  return obj;
-};
-
-utils.deepCopy = obj => {
+export const deepCopy = obj => {
   if (typeof obj !== 'object' || obj === null) {
     return obj;
   }
 
   const copy = Array.isArray(obj) ? [] : {};
   Object.keys(obj).forEach(key => {
-    copy[key] = utils.deepCopy(obj[key]);
+    copy[key] = deepCopy(obj[key]);
   });
   return copy;
 };
 
-utils.getNestedValue = (obj, keys) => {
+export const getNestedValue = (obj, keys) => {
   if (!keys) {
     return null;
   }
@@ -135,12 +134,12 @@ utils.getNestedValue = (obj, keys) => {
   return keys.split('.').reduce((o, k) => (o || {})[k], obj);
 };
 
-utils.limitArray = (arr, limit) => {
+export const limitArray = (arr, limit) => {
   return limit === 0 || limit > arr.length ? arr : arr.slice(0, limit);
 };
 
-utils.sortArray = (arr, sortBy, order) => {
-  const arrCopy = utils.deepCopy(arr);
+export const sortArray = (arr, sortBy, order) => {
+  const arrCopy = deepCopy(arr);
 
   const sortedArray = arrCopy.sort((a, b) => {
     if (a[sortBy] === b[sortBy]) return 0;
@@ -153,36 +152,36 @@ utils.sortArray = (arr, sortBy, order) => {
   return sortedArray;
 };
 
-utils.capitalize = str => {
+export const capitalize = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-utils.isValidNumberInRange = (num, start, end) => {
+export const isValidNumberInRange = (num, start, end) => {
   const parsedNum = Number(num);
   return !Number.isNaN(parsedNum) && parsedNum >= start && parsedNum <= end;
 };
 
-utils.getRandomFromArray = array => {
+export const getRandomFromArray = array => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-utils.getSluggedData = (arr, resource, type) => {
-  return arr.map(item => ({
-    slug: item,
-    name: utils.capitalizeWords(item),
-    url: `https://dummyjson.com/${resource}/${type}/${item}`,
-  }));
-};
-
-utils.capitalizeWords = str => {
+export const capitalizeWords = str => {
   return str
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
 
-utils.findUserWithUsernameAndId = ({ username, id }) => {
-  const user = utils.dataInMemory.users.find(u => {
+export const getSluggedData = (arr, resource, type) => {
+  return arr.map(item => ({
+    slug: item,
+    name: capitalizeWords(item),
+    url: `https://dummyjson.com/${resource}/${type}/${item}`,
+  }));
+};
+
+export const findUserWithUsernameAndId = ({ username, id }) => {
+  const user = dataInMemory.users.find(u => {
     const validUsername = u.username.toLowerCase() === username.toLowerCase();
     const validId = id.toString() === u.id.toString();
 
@@ -192,7 +191,7 @@ utils.findUserWithUsernameAndId = ({ username, id }) => {
   return user;
 };
 
-utils.getUserPayload = user => ({
+export const getUserPayload = user => ({
   id: user.id,
   username: user.username,
   email: user.email,
@@ -202,13 +201,13 @@ utils.getUserPayload = user => ({
   image: user.image,
 });
 
-utils.generateRandomId = () => {
+export const generateRandomId = () => {
   const uuid = v4();
   const parts = uuid.split('-');
   return `${parts[0].slice(0, 4)}-${parts[1]}-${parts[2].slice(0, 4)}-${parts[3]}`;
 };
 
-utils.timeDifference = (startDateMS, endDateMS) => {
+export const timeDifference = (startDateMS, endDateMS) => {
   const difference = endDateMS - startDateMS;
   const minutes = Math.floor(difference / 1000 / 60);
   const hours = Math.floor(difference / 1000 / 60 / 60);
@@ -223,5 +222,3 @@ utils.timeDifference = (startDateMS, endDateMS) => {
 
   return result;
 };
-
-module.exports = utils;

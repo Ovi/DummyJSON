@@ -1,12 +1,14 @@
-const router = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getAllComments,
   getCommentById,
   getAllCommentsByPostId,
   addNewComment,
   updateCommentById,
   deleteCommentById,
-} = require('../controllers/comment');
+} from '../controllers/comment.js';
+
+const router = Router();
 
 // get all comments
 router.get('/', (req, res) => {
@@ -51,4 +53,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteCommentById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

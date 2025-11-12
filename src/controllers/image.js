@@ -1,19 +1,17 @@
-const APIError = require('../utils/error');
-const {
+import APIError from '../utils/error.js';
+import {
   verifyImageInCache,
   storeImgInCache,
   getCustomImageCacheKey,
   composeImage,
   isInvalidSize,
-} = require('../utils/image');
-const { imageMimeTypes, allowedImageTypes } = require('../constants');
-const { log } = require('../helpers/logger');
+} from '../utils/image.js';
+import { imageMimeTypes, allowedImageTypes } from '../constants/index.js';
+import { log } from '../helpers/logger.js';
 
 const allowedTypesString = allowedImageTypes.join("', '");
 
-const controller = {};
-
-controller.imageComposer = async imageOptions => {
+export const imageComposer = async imageOptions => {
   const contentType = imageMimeTypes[imageOptions.type];
   const result = { imageBuffer: null, contentType, cacheUrl: null };
 
@@ -50,5 +48,3 @@ controller.imageComposer = async imageOptions => {
 
   return result;
 };
-
-module.exports = controller;

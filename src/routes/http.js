@@ -1,5 +1,7 @@
-const router = require('express').Router();
-const { getHttpStatus } = require('../controllers/http');
+import { Router } from 'express';
+import { getHttpStatus } from '../controllers/http.js';
+
+const router = Router();
 
 router.use('/:httpCode/:message?', (req, res) => {
   const data = getHttpStatus(req.params);
@@ -8,7 +10,7 @@ router.use('/:httpCode/:message?', (req, res) => {
   res.status(data.status).send(data.message ? data : undefined);
 });
 
-module.exports = router;
+export default router;
 
 function getHttpCodeContentType(status) {
   return status >= 400 ? 'application/problem+json' : 'application/json';

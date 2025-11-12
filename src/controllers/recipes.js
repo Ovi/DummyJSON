@@ -1,16 +1,14 @@
-const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
+import APIError from '../utils/error.js';
+import {
+  dataInMemory as frozenData,
   getMultiObjectSubset,
   getObjectSubset,
   limitArray,
   sortArray,
-} = require('../utils/util');
-
-const controller = {};
+} from '../utils/util.js';
 
 // get all recipes
-controller.getAllRecipes = _options => {
+export const getAllRecipes = _options => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let { recipes } = frozenData;
@@ -34,7 +32,7 @@ controller.getAllRecipes = _options => {
 };
 
 // search recipes
-controller.searchRecipes = ({ q: searchQuery, ..._options }) => {
+export const searchRecipes = ({ q: searchQuery, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let recipes = frozenData.recipes.filter(r => {
@@ -60,7 +58,7 @@ controller.searchRecipes = ({ q: searchQuery, ..._options }) => {
 };
 
 // get recipe by id
-controller.getRecipeById = ({ id, select }) => {
+export const getRecipeById = ({ id, select }) => {
   const recipeFrozen = frozenData.recipes.find(r => r.id.toString() === id);
 
   if (!recipeFrozen) {
@@ -77,7 +75,7 @@ controller.getRecipeById = ({ id, select }) => {
 };
 
 // get recipe tags
-controller.getRecipeTags = () => {
+export const getRecipeTags = () => {
   const allTags = frozenData.recipes.map(r => r.tags);
 
   const uniqueTags = [...new Set(allTags.flat())];
@@ -86,7 +84,7 @@ controller.getRecipeTags = () => {
 };
 
 // get recipes by tag
-controller.getRecipesByTag = ({ tag, ..._options }) => {
+export const getRecipesByTag = ({ tag, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   if (!tag) {
@@ -116,7 +114,7 @@ controller.getRecipesByTag = ({ tag, ..._options }) => {
 };
 
 // get recipes by meal type
-controller.getRecipesByMealType = ({ mealType, ..._options }) => {
+export const getRecipesByMealType = ({ mealType, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   if (!mealType) {
@@ -145,7 +143,7 @@ controller.getRecipesByMealType = ({ mealType, ..._options }) => {
   return result;
 };
 
-controller.addNewRecipe = ({ ...data }) => {
+export const addNewRecipe = ({ ...data }) => {
   const {
     name,
     ingredients,
@@ -186,7 +184,7 @@ controller.addNewRecipe = ({ ...data }) => {
   return newRecipe;
 };
 
-controller.updateRecipeById = ({ id, ...data }) => {
+export const updateRecipeById = ({ id, ...data }) => {
   const {
     name,
     ingredients,
@@ -233,7 +231,7 @@ controller.updateRecipeById = ({ id, ...data }) => {
   return updatedRecipe;
 };
 
-controller.deleteRecipeById = ({ id }) => {
+export const deleteRecipeById = ({ id }) => {
   const recipeFrozen = frozenData.recipes.find(p => p.id.toString() === id);
 
   if (!recipeFrozen) {
@@ -246,5 +244,3 @@ controller.deleteRecipeById = ({ id }) => {
     deletedOn: new Date().toISOString(),
   };
 };
-
-module.exports = controller;

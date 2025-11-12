@@ -9,4 +9,4 @@ const delayResponse = (req, res, next) => {
   next();
 };
 
-module.exports = delayResponse;
+export default delayResponse;

@@ -1,11 +1,9 @@
-const { verifyUserHandler } = require('../helpers');
-const APIError = require('../utils/error');
-const { dataInMemory: frozenData, trueTypeOf, isNumber, limitArray } = require('../utils/util');
-
-const controller = {};
+import { verifyUserHandler } from '../helpers/index.js';
+import APIError from '../utils/error.js';
+import { dataInMemory as frozenData, trueTypeOf, isNumber, limitArray } from '../utils/util.js';
 
 // get carts
-controller.getAllCarts = ({ limit, skip }) => {
+export const getAllCarts = ({ limit, skip }) => {
   let [...carts] = frozenData.carts;
   const total = carts.length;
 
@@ -21,7 +19,7 @@ controller.getAllCarts = ({ limit, skip }) => {
 };
 
 // get carts by user id
-controller.getCartsByUserId = ({ userId, limit, skip }) => {
+export const getCartsByUserId = ({ userId, limit, skip }) => {
   verifyUserHandler(userId);
 
   let [...carts] = frozenData.carts.filter(c => c.userId.toString() === userId);
@@ -39,7 +37,7 @@ controller.getCartsByUserId = ({ userId, limit, skip }) => {
 };
 
 // get cart by id
-controller.getCartById = ({ id }) => {
+export const getCartById = ({ id }) => {
   const cartFrozen = frozenData.carts.find(c => c.id.toString() === id);
 
   if (!cartFrozen) {
@@ -50,7 +48,7 @@ controller.getCartById = ({ id }) => {
 };
 
 // add new cart
-controller.addNewCart = ({ userId, products = [] }) => {
+export const addNewCart = ({ userId, products = [] }) => {
   verifyUserHandler(userId);
 
   if (trueTypeOf(products) !== 'array') {
@@ -124,7 +122,7 @@ controller.addNewCart = ({ userId, products = [] }) => {
 };
 
 // update cart by id
-controller.updateCartById = ({ id: cartId, ...data }) => {
+export const updateCartById = ({ id: cartId, ...data }) => {
   const { userId, products: userProducts = [], merge = false } = data;
 
   const cartFrozen = frozenData.carts.find(c => c.id.toString() === cartId);
@@ -208,7 +206,7 @@ controller.updateCartById = ({ id: cartId, ...data }) => {
 };
 
 // delete cart by id
-controller.deleteCartById = ({ id }) => {
+export const deleteCartById = ({ id }) => {
   const cartFrozen = frozenData.carts.find(c => c.id.toString() === id);
 
   if (!cartFrozen) {
@@ -222,5 +220,3 @@ controller.deleteCartById = ({ id }) => {
 
   return cart;
 };
-
-module.exports = controller;

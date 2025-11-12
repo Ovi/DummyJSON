@@ -1,4 +1,6 @@
-const router = require('express').Router();
+import { Router } from 'express';
+
+const router = Router();
 
 router.get('/image', (req, res) => {
   res.status(301).redirect('/docs/image');
@@ -8,4 +10,4 @@ router.get('/c', (req, res) => {
   res.status(301).redirect('/custom-response');
 });
 
-module.exports = router;
+export default router;

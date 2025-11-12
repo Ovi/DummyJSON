@@ -8,4 +8,4 @@ function wwwRedirect(req, res, next) {
   next();
 }
 
-module.exports = wwwRedirect;
+export default wwwRedirect;

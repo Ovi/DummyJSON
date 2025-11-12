@@ -1,15 +1,15 @@
-const express = require('express');
-const compression = require('compression');
-const helmet = require('helmet');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const setClientInfo = require('./set-client-info');
-const requestLogger = require('./request-logger');
-const cleanRequest = require('./clean-request');
-const delayResponse = require('./delay-response');
-const rateLimiter = require('./rate-limiter');
-const wwwRedirect = require('./www-redirect');
-const removeHeaders = require('./remove-headers');
+import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import setClientInfo from './set-client-info.js';
+import requestLogger from './request-logger.js';
+import cleanRequest from './clean-request.js';
+import delayResponse from './delay-response.js';
+import rateLimiter from './rate-limiter.js';
+import wwwRedirect from './www-redirect.js';
+import removeHeaders from './remove-headers.js';
 
 // for parsing application/json
 const expressJson = express.json({ limit: '300kb' });
@@ -38,4 +38,4 @@ function injectMiddleWares(app) {
   app.use(delayResponse);
 }
 
-module.exports = injectMiddleWares;
+export default injectMiddleWares;

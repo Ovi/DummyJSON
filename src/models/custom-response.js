@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -33,4 +33,4 @@ const customResponseSchema = new Schema(
 
 const CustomResponse = mongoose.model('CustomResponse', customResponseSchema);
 
-module.exports = CustomResponse;
+export default CustomResponse;

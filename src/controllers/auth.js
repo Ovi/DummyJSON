@@ -1,18 +1,16 @@
-const APIError = require('../utils/error');
-const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
-const {
-  dataInMemory: frozenData,
+import APIError from '../utils/error.js';
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
+import {
+  dataInMemory as frozenData,
   getUserPayload,
   isValidNumberInRange,
   findUserWithUsernameAndId,
   trueTypeOf,
-} = require('../utils/util');
-const { maxTokenExpireMins } = require('../constants');
-
-const controller = {};
+} from '../utils/util.js';
+import { maxTokenExpireMins } from '../constants/index.js';
 
 // login user by username and password
-controller.loginByUsernamePassword = async data => {
+export const loginByUsernamePassword = async data => {
   const { username, password, expiresInMins = 60 } = data;
 
   if (!username || !password) {
@@ -60,7 +58,7 @@ controller.loginByUsernamePassword = async data => {
 };
 
 // get new refresh token
-controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = maxTokenExpireMins }) => {
+export const getNewRefreshToken = async ({ refreshToken, expiresInMins = maxTokenExpireMins }) => {
   if (!refreshToken) {
     throw new APIError(`Refresh token required`, 401);
   }
@@ -89,5 +87,3 @@ controller.getNewRefreshToken = async ({ refreshToken, expiresInMins = maxTokenE
 
   return { accessToken: newAccessToken, refreshToken: newRefreshToken };
 };
-
-module.exports = controller;

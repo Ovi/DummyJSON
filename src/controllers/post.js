@@ -1,16 +1,14 @@
-const { verifyUserHandler, verifyPostHandler } = require('../helpers');
-const {
-  dataInMemory: frozenData,
+import { verifyUserHandler, verifyPostHandler } from '../helpers/index.js';
+import {
+  dataInMemory as frozenData,
   getMultiObjectSubset,
   getObjectSubset,
   limitArray,
   sortArray,
-} = require('../utils/util');
-
-const controller = {};
+} from '../utils/util.js';
 
 // get all posts
-controller.getAllPosts = _options => {
+export const getAllPosts = _options => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let { posts } = frozenData;
@@ -34,7 +32,7 @@ controller.getAllPosts = _options => {
 };
 
 // search posts
-controller.searchPosts = ({ q: searchQuery, ..._options }) => {
+export const searchPosts = ({ q: searchQuery, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let posts = frozenData.posts.filter(p => {
@@ -60,17 +58,17 @@ controller.searchPosts = ({ q: searchQuery, ..._options }) => {
 };
 
 // get post tag list
-controller.getPostTagList = () => {
+export const getPostTagList = () => {
   return frozenData.tagList;
 };
 
 // get post tags
-controller.getPostTags = () => {
+export const getPostTags = () => {
   return frozenData.tags;
 };
 
 // get posts by tag
-controller.getPostsByTag = ({ tag = '', ..._options }) => {
+export const getPostsByTag = ({ tag = '', ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let posts = frozenData.posts.filter(p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()));
@@ -94,7 +92,7 @@ controller.getPostsByTag = ({ tag = '', ..._options }) => {
 };
 
 // get post by id
-controller.getPostById = ({ id, select }) => {
+export const getPostById = ({ id, select }) => {
   let { ...post } = verifyPostHandler(id);
 
   if (select) {
@@ -105,7 +103,7 @@ controller.getPostById = ({ id, select }) => {
 };
 
 // get posts by userId
-controller.getPostsByUserId = ({ userId, ..._options }) => {
+export const getPostsByUserId = ({ userId, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   verifyUserHandler(userId);
@@ -131,7 +129,7 @@ controller.getPostsByUserId = ({ userId, ..._options }) => {
 };
 
 // add new post
-controller.addNewPost = ({ title, body, userId, tags, reactions }) => {
+export const addNewPost = ({ title, body, userId, tags, reactions }) => {
   verifyUserHandler(userId);
 
   const newPost = {
@@ -147,7 +145,7 @@ controller.addNewPost = ({ title, body, userId, tags, reactions }) => {
 };
 
 // update post
-controller.updatePost = ({ id, ...data }) => {
+export const updatePost = ({ id, ...data }) => {
   const { title, body, userId, tags, reactions } = data;
 
   const post = verifyPostHandler(id);
@@ -165,7 +163,7 @@ controller.updatePost = ({ id, ...data }) => {
 };
 
 // delete post by id
-controller.deletePostById = ({ id }) => {
+export const deletePostById = ({ id }) => {
   const { ...post } = verifyPostHandler(id);
 
   post.isDeleted = true;
@@ -173,5 +171,3 @@ controller.deletePostById = ({ id }) => {
 
   return post;
 };
-
-module.exports = controller;

@@ -1,10 +1,8 @@
-const APIError = require('../utils/error');
-const { dataInMemory: frozenData, limitArray, isValidNumberInRange, getRandomFromArray } = require('../utils/util');
-
-const controller = {};
+import APIError from '../utils/error.js';
+import { dataInMemory as frozenData, limitArray, isValidNumberInRange, getRandomFromArray } from '../utils/util.js';
 
 // get all quotes
-controller.getAllQuotes = ({ limit, skip }) => {
+export const getAllQuotes = ({ limit, skip }) => {
   let [...quotes] = frozenData.quotes;
   const total = quotes.length;
 
@@ -20,7 +18,7 @@ controller.getAllQuotes = ({ limit, skip }) => {
 };
 
 // get random quote(s)
-controller.getRandomQuote = ({ length }) => {
+export const getRandomQuote = ({ length }) => {
   const { quotes } = frozenData;
 
   if (!length) {
@@ -46,7 +44,7 @@ controller.getRandomQuote = ({ length }) => {
 };
 
 // get quote by id
-controller.getQuoteById = ({ id }) => {
+export const getQuoteById = ({ id }) => {
   const quoteFrozen = frozenData.quotes.find(u => u.id.toString() === id);
 
   if (!quoteFrozen) {
@@ -55,5 +53,3 @@ controller.getQuoteById = ({ id }) => {
 
   return quoteFrozen;
 };
-
-module.exports = controller;

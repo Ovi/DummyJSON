@@ -1,8 +1,10 @@
-const router = require('express').Router();
-const { imageComposer } = require('../controllers/image');
-const { logError } = require('../helpers/logger');
-const APIError = require('../utils/error');
-const { generateProperData } = require('../utils/image');
+import { Router } from 'express';
+import { imageComposer } from '../controllers/image.js';
+import { logError } from '../helpers/logger.js';
+import APIError from '../utils/error.js';
+import { generateProperData } from '../utils/image.js';
+
+const router = Router();
 
 const endpoint = '/:size/:backgroundParam?/:colorParam?/:typeParam?';
 router.get(endpoint, async (req, res, next) => {
@@ -41,4 +43,4 @@ router.get(endpoint, async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

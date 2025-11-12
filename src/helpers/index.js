@@ -1,15 +1,17 @@
-const path = require('node:path');
-const fs = require('node:fs');
-const multer = require('multer');
-const { requestWhitelist } = require('../constants');
-const { isNumber, dataInMemory } = require('../utils/util');
-const APIError = require('../utils/error');
-const { logError, log } = require('./logger');
+import path from 'node:path';
+import fs from 'node:fs';
+import multer from 'multer';
+import { fileURLToPath } from 'node:url';
+import { requestWhitelist } from '../constants/index.js';
+import { isNumber, dataInMemory } from '../utils/util.js';
+import APIError from '../utils/error.js';
+import { logError, log } from './logger.js';
 
-const helpers = {};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // verify if we have user id and it's valid
-helpers.verifyUserHandler = id => {
+export const verifyUserHandler = id => {
   const userId = (id || '').toString();
 
   if (!userId) {
@@ -30,7 +32,7 @@ helpers.verifyUserHandler = id => {
 };
 
 // verify if we have post id and it's valid
-helpers.verifyPostHandler = id => {
+export const verifyPostHandler = id => {
   const postId = (id || '').toString();
 
   if (!postId) {
@@ -50,14 +52,14 @@ helpers.verifyPostHandler = id => {
   return post;
 };
 
-helpers.isRequestInWhitelist = req => {
+export const isRequestInWhitelist = req => {
   const url = req.originalUrl || req.url;
 
   return requestWhitelist.find(u => url.includes(u));
 };
 
 // Configure multer to use disk storage for temporary file handling
-helpers.multerInstance = multer({
+export const multerInstance = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
       const tmpDir = path.join(__dirname, '../..', 'tmp');
@@ -75,7 +77,7 @@ helpers.multerInstance = multer({
   },
 });
 
-helpers.deleteMulterTemporaryFiles = async files => {
+export const deleteMulterTemporaryFiles = async files => {
   if (!files || !files.length) return;
 
   files.forEach(file => {
@@ -88,5 +90,3 @@ helpers.deleteMulterTemporaryFiles = async files => {
     });
   });
 };
-
-module.exports = helpers;

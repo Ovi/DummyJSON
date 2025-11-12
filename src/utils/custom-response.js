@@ -1,10 +1,8 @@
-const crypto = require('node:crypto');
-const CustomResponse = require('../models/custom-response');
-const { generateRandomId } = require('./util');
+import crypto from 'node:crypto';
+import CustomResponse from '../models/custom-response.js';
+import { generateRandomId } from './util.js';
 
-const util = {};
-
-util.generateUniqueIdentifier = async () => {
+export const generateUniqueIdentifier = async () => {
   let MAX_ATTEMPTS = 5;
   let identifier;
   let isUnique = false;
@@ -21,10 +19,8 @@ util.generateUniqueIdentifier = async () => {
   return identifier;
 };
 
-util.generateHash = (json, method) => {
+export const generateHash = (json, method) => {
   const hash = crypto.createHash('sha256');
   hash.update(JSON.stringify(json) + method);
   return hash.digest('hex');
 };
-
-module.exports = util;

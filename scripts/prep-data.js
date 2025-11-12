@@ -15,9 +15,9 @@
  *     node scripts/prep-data.js
  */
 
-const fs = require('node:fs');
-const v8 = require('node:v8');
-const path = require('node:path');
+import fs from 'node:fs';
+import v8 from 'node:v8';
+import path from 'node:path';
 
 const inputDir = './database';
 const outputDir = './cache';

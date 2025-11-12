@@ -1,5 +1,7 @@
-const router = require('express').Router();
-const { generateIcon } = require('../controllers/icon');
+import { Router } from 'express';
+import { generateIcon } from '../controllers/icon.js';
+
+const router = Router();
 
 // generate icon
 router.get('/:hash?/:size?', (req, res) => {
@@ -16,4 +18,4 @@ router.get('/:hash?/:size?', (req, res) => {
   res.send(icon);
 });
 
-module.exports = router;
+export default router;

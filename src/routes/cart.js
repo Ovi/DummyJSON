@@ -1,12 +1,14 @@
-const router = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getAllCarts,
   getCartsByUserId,
   getCartById,
   addNewCart,
   updateCartById,
   deleteCartById,
-} = require('../controllers/cart');
+} from '../controllers/cart.js';
+
+const router = Router();
 
 // get all carts
 router.get('/', (req, res) => {
@@ -50,4 +52,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteCartById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

@@ -1,5 +1,5 @@
-const fs = require('node:fs');
-const path = require('node:path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 // Helper function to check if a filename is in camelCase
 function isCamelCase(filename) {

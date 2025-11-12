@@ -1,10 +1,8 @@
-const APIError = require('../utils/error');
-const { dataInMemory: frozenData, isNumber } = require('../utils/util');
-
-const controller = {};
+import APIError from '../utils/error.js';
+import { dataInMemory as frozenData, isNumber } from '../utils/util.js';
 
 // mock http code response
-controller.getHttpStatus = ({ httpCode: status, message }) => {
+export const getHttpStatus = ({ httpCode: status, message }) => {
   if (!isNumber(status)) {
     throw new APIError(`Status code '${status}' is invalid`, 500);
   }
@@ -31,5 +29,3 @@ controller.getHttpStatus = ({ httpCode: status, message }) => {
 
   return response;
 };
-
-module.exports = controller;

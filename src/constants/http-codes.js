@@ -68,4 +68,4 @@ const httpCodes = {
   599: 'Network Connect Timeout Error',
 };
 
-module.exports = httpCodes;
+export default httpCodes;

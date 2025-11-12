@@ -1,17 +1,15 @@
-const { verifyUserHandler } = require('../helpers');
-const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
+import { verifyUserHandler } from '../helpers/index.js';
+import APIError from '../utils/error.js';
+import {
+  dataInMemory as frozenData,
   getMultiObjectSubset,
   limitArray,
   getRandomFromArray,
   isValidNumberInRange,
-} = require('../utils/util');
-
-const controller = {};
+} from '../utils/util.js';
 
 // get all todos
-controller.getAllTodos = ({ limit, skip }) => {
+export const getAllTodos = ({ limit, skip }) => {
   let [...todos] = frozenData.todos;
   const total = todos.length;
 
@@ -27,7 +25,7 @@ controller.getAllTodos = ({ limit, skip }) => {
 };
 
 // get random todo(s)
-controller.getRandomTodo = ({ length }) => {
+export const getRandomTodo = ({ length }) => {
   const { todos } = frozenData;
 
   if (!length) {
@@ -53,7 +51,7 @@ controller.getRandomTodo = ({ length }) => {
 };
 
 // get todo by id
-controller.getTodoById = ({ id }) => {
+export const getTodoById = ({ id }) => {
   const todoFrozen = frozenData.todos.find(u => u.id.toString() === id);
 
   if (!todoFrozen) {
@@ -64,7 +62,7 @@ controller.getTodoById = ({ id }) => {
 };
 
 // get todos by userId
-controller.getTodosByUserId = ({ userId, limit, skip, select }) => {
+export const getTodosByUserId = ({ userId, limit, skip, select }) => {
   verifyUserHandler(userId);
 
   let [...todos] = frozenData.todos.filter(p => p.userId.toString() === userId);
@@ -86,7 +84,7 @@ controller.getTodosByUserId = ({ userId, limit, skip, select }) => {
 };
 
 // add new todo
-controller.addNewTodo = ({ todo, completed, userId }) => {
+export const addNewTodo = ({ todo, completed, userId }) => {
   verifyUserHandler(userId);
 
   const newTodo = {
@@ -100,7 +98,7 @@ controller.addNewTodo = ({ todo, completed, userId }) => {
 };
 
 // update todo by id
-controller.updateTodoById = ({ id, ...data }) => {
+export const updateTodoById = ({ id, ...data }) => {
   const { todo, completed, userId } = data;
 
   const foundTodo = frozenData.todos.find(p => p.id.toString() === id);
@@ -120,7 +118,7 @@ controller.updateTodoById = ({ id, ...data }) => {
 };
 
 // delete todo by id
-controller.deleteTodoById = ({ id }) => {
+export const deleteTodoById = ({ id }) => {
   const todoFrozen = frozenData.todos.find(p => p.id.toString() === id);
 
   if (!todoFrozen) {
@@ -134,5 +132,3 @@ controller.deleteTodoById = ({ id }) => {
 
   return todo;
 };
-
-module.exports = controller;
