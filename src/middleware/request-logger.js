@@ -1,8 +1,8 @@
-const cluster = require('node:cluster');
-const onFinished = require('on-finished');
-const onHeaders = require('on-headers');
-const { isRequestInWhitelist } = require('../helpers');
-const { logger } = require('../helpers/logger');
+import cluster from 'node:cluster';
+import onFinished from 'on-finished';
+import onHeaders from 'on-headers';
+import { isRequestInWhitelist } from '../helpers/index.js';
+import { logger } from '../helpers/logger.js';
 
 const { LOG_ENABLED } = process.env;
 
@@ -71,7 +71,7 @@ function requestLogger(req, res, next) {
   next();
 }
 
-module.exports = requestLogger;
+export default requestLogger;
 
 function recordStartTime() {
   this._startAt = process.hrtime();

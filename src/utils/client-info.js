@@ -10,4 +10,4 @@ const extractClientInfo = req => {
   };
 };
 
-module.exports = extractClientInfo;
+export default extractClientInfo;

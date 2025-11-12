@@ -1,18 +1,16 @@
 /* eslint-disable no-console */
-const { createHash } = require('node:crypto');
-const colorConvert = require('color-convert');
-const sharp = require('sharp');
-const { isNumber } = require('./util');
-const aws = require('../aws/aws');
-const { logError, log } = require('../helpers/logger');
+import { createHash } from 'node:crypto';
+import colorConvert from 'color-convert';
+import sharp from 'sharp';
+import { isNumber } from './util.js';
+import { verifyInStorage, getFromStorage, uploadToStorage, deleteFolderFromStorage } from '../aws/aws.js';
+import { logError, log } from '../helpers/logger.js';
 
 const { CACHE_ENABLED } = process.env;
 
 sharp.cache(false);
 
-const utils = {};
-
-utils.generateProperData = options => {
+export const generateProperData = options => {
   const {
     size,
     background: bg,
@@ -69,7 +67,7 @@ utils.generateProperData = options => {
   };
 };
 
-utils.isInvalidSize = (height, width, maxSize = 4000) => {
+export const isInvalidSize = (height, width, maxSize = 4000) => {
   if (width === 0 || height === 0) {
     return '👻';
   }
@@ -81,7 +79,7 @@ utils.isInvalidSize = (height, width, maxSize = 4000) => {
   return false;
 };
 
-utils.getCustomImageCacheKey = options => {
+export const getCustomImageCacheKey = options => {
   const { width, height, background, color, fontFamily, fontSize, text, type } = options;
 
   const size = `${width}x${height}`;
@@ -109,7 +107,7 @@ utils.getCustomImageCacheKey = options => {
  * @param options.background {string} image background color in hex
  * @param options.hasSpecifiedFontSize {boolean} to check if font size if provided by user
  */
-utils.composeImage = async options => {
+export const composeImage = async options => {
   const { width, height, text, type, fontFamily, fontSize, color, background, hasSpecifiedFontSize } = options;
 
   const image = sharp({
@@ -154,24 +152,24 @@ utils.composeImage = async options => {
   return imageBuffer;
 };
 
-utils.verifyImageInCache = async imgPath => {
+export const verifyImageInCache = async imgPath => {
   if (!CACHE_ENABLED) return null;
 
-  const hasInCache = await aws.verifyInStorage(imgPath);
+  const hasInCache = await verifyInStorage(imgPath);
   return hasInCache;
 };
 
-utils.getImageFromCache = async imgPath => {
+export const getImageFromCache = async imgPath => {
   if (!CACHE_ENABLED) return null;
 
-  const cachedImage = await aws.getFromStorage(imgPath);
+  const cachedImage = await getFromStorage(imgPath);
   return cachedImage;
 };
 
-utils.storeImgInCache = async (buffer, contentType, key) => {
+export const storeImgInCache = async (buffer, contentType, key) => {
   if (!CACHE_ENABLED) return null;
 
-  const metadata = await aws.uploadToStorage(buffer, contentType, key);
+  const metadata = await uploadToStorage(buffer, contentType, key);
   if (metadata?.httpStatusCode === 200) {
     log('Image cached', { key });
   } else {
@@ -181,14 +179,12 @@ utils.storeImgInCache = async (buffer, contentType, key) => {
   return metadata;
 };
 
-utils.deleteAllCache = async () => {
+export const deleteAllCache = async () => {
   if (!CACHE_ENABLED) return null;
 
-  const metadata = await aws.deleteFolderFromStorage('cache');
+  const metadata = await deleteFolderFromStorage('cache');
   return metadata;
 };
-
-module.exports = utils;
 
 // Function to resolve color (accepts both color names and hex codes)
 function resolveColor(inputColor) {

@@ -1,6 +1,6 @@
-const fs = require('node:fs');
-const chokidar = require('chokidar');
-const uglifyJS = require('uglify-js');
+import fs from 'node:fs';
+import chokidar from 'chokidar';
+import uglifyJS from 'uglify-js';
 
 // Function to minify and compress JavaScript files
 function minifyJS(filePath) {

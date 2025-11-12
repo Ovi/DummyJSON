@@ -1,7 +1,7 @@
-const APIError = require('../utils/error');
-const { isNumber, trueTypeOf } = require('../utils/util');
-const { multerInstance, deleteMulterTemporaryFiles } = require('../helpers');
-const { logError, log } = require('../helpers/logger');
+import APIError from '../utils/error.js';
+import { isNumber, trueTypeOf } from '../utils/util.js';
+import { multerInstance, deleteMulterTemporaryFiles } from '../helpers/index.js';
+import { logError, log } from '../helpers/logger.js';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_TOTAL_PAYLOAD = MAX_FILE_SIZE * 5; // 25MB
@@ -165,4 +165,4 @@ const cleanRequest = async (req, res, next) => {
   }
 };
 
-module.exports = cleanRequest;
+export default cleanRequest;

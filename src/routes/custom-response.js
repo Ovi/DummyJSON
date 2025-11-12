@@ -1,16 +1,12 @@
-const router = require('express').Router();
-const CustomResponse = require('../models/custom-response');
-const { isDbConnected } = require('../utils/db');
-const { generateUniqueIdentifier, generateHash } = require('../utils/custom-response');
-const { customResponseExpiresInDays } = require('../constants');
-const cacheMiddleware = require('../middleware/cache');
+import { Router } from 'express';
+import CustomResponse from '../models/custom-response.js';
+import { generateUniqueIdentifier, generateHash } from '../utils/custom-response.js';
+import { customResponseExpiresInDays } from '../constants/index.js';
+import cacheMiddleware from '../middleware/cache.js';
+
+const router = Router();
 
 router.post('/generate', async (req, res, next) => {
-  if (!isDbConnected()) {
-    next();
-    return;
-  }
-
   const { json, method } = req.body;
 
   if (!json) {
@@ -50,11 +46,6 @@ router.post('/generate', async (req, res, next) => {
 });
 
 router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
-  if (!isDbConnected()) {
-    next();
-    return;
-  }
-
   const { identifier } = req.params;
 
   try {
@@ -85,4 +76,4 @@ router.use('/:identifier', cacheMiddleware, async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

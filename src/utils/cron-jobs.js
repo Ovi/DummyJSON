@@ -1,18 +1,9 @@
-const cron = require('node-cron');
-const CustomResponse = require('../models/custom-response');
-const { customResponseExpiresInDays } = require('../constants');
-const { isDbConnected } = require('./db');
-const connectDB = require('../db/mongoose');
-const { logError, log } = require('../helpers/logger');
+import cron from 'node-cron';
+import CustomResponse from '../models/custom-response.js';
+import { customResponseExpiresInDays } from '../constants/index.js';
+import { logError, log } from '../helpers/logger.js';
 
 const deleteOldCustomResponses = async () => {
-  await connectDB();
-
-  if (!isDbConnected()) {
-    logError('[CUSTOM RESPONSE] DB not connected. Exiting deleteOldCustomResponses');
-    return;
-  }
-
   const ninetyDaysAgo = new Date();
   ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - customResponseExpiresInDays);
   ninetyDaysAgo.setHours(0, 0, 0, 0); // Set to midnight of that day
@@ -31,6 +22,4 @@ const setupCRONJobs = () => {
   cron.schedule('0 0 * * *', deleteOldCustomResponses);
 };
 
-module.exports = {
-  setupCRONJobs,
-};
+export { setupCRONJobs };

@@ -1,12 +1,13 @@
 {
   "name": "dummyjson",
   "version": "0.1.0",
+  "type": "module",
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
-    "start": "node index.js",
+    "start": "NODE_ENV=production node index.js",
     "dev": "env-cmd -f config/dev.env nodemon index.js",
-    "minify-public-js-watch": "node scripts/minify-and-watch-public-js-files.js"
+    "minify-public-js-watch": "NODE_ENV=production node scripts/minify-and-watch-public-js-files.js"
   },
   "engines": {
     "node": ">=18.0"

@@ -1,8 +1,10 @@
-const router = require('express').Router();
-const extractClientInfo = require('../utils/client-info');
+import { Router } from 'express';
+import extractClientInfo from '../utils/client-info.js';
+
+const router = Router();
 
 router.get('/', (req, res) => {
   res.send(extractClientInfo(req));
 });
 
-module.exports = router;
+export default router;

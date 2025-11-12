@@ -1,6 +1,11 @@
-const path = require('node:path');
-const router = require('express').Router();
-const { capitalize } = require('../utils/util');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Router } from 'express';
+import { capitalize } from '../utils/util.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const router = Router();
 
 const { GOOGLE_TAG_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS } = process.env;
 const commonVariables = {
@@ -85,4 +90,4 @@ router.get('/favicon.ico', (req, res) => {
   res.sendFile(path.join(__dirname, '../../', 'public', 'favicon.ico'));
 });
 
-module.exports = router;
+export default router;

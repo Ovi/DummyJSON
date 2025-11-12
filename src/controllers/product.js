@@ -1,16 +1,14 @@
-const APIError = require('../utils/error');
-const {
-  dataInMemory: frozenData,
+import APIError from '../utils/error.js';
+import {
+  dataInMemory as frozenData,
   getMultiObjectSubset,
   getObjectSubset,
   limitArray,
   sortArray,
-} = require('../utils/util');
-
-const controller = {};
+} from '../utils/util.js';
 
 // get all products
-controller.getAllProducts = ({ limit, skip, select, sortBy, order }) => {
+export const getAllProducts = ({ limit, skip, select, sortBy, order }) => {
   let products = [...frozenData.products];
   const total = products.length;
 
@@ -32,7 +30,7 @@ controller.getAllProducts = ({ limit, skip, select, sortBy, order }) => {
 };
 
 // search products
-controller.searchProducts = _options => {
+export const searchProducts = _options => {
   const { limit, skip, select, q: searchQuery, sortBy, order } = _options;
 
   let products = frozenData.products.filter(p => {
@@ -58,17 +56,17 @@ controller.searchProducts = _options => {
 };
 
 // get product category list
-controller.getProductCategoryList = () => {
+export const getProductCategoryList = () => {
   return frozenData.categoryList;
 };
 
 // get product categories
-controller.getProductCategories = () => {
+export const getProductCategories = () => {
   return frozenData.categories;
 };
 
 // get product by id
-controller.getProductById = ({ id, select }) => {
+export const getProductById = ({ id, select }) => {
   const productFrozen = frozenData.products.find(p => p.id.toString() === id);
 
   if (!productFrozen) {
@@ -85,7 +83,7 @@ controller.getProductById = ({ id, select }) => {
 };
 
 // get products by categoryName
-controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
+export const getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let products = frozenData.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
@@ -109,7 +107,7 @@ controller.getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
 };
 
 // add new product
-controller.addNewProduct = ({ ...data }) => {
+export const addNewProduct = ({ ...data }) => {
   const { title, price, discountPercentage, stock, rating, images, thumbnail, description, brand, category } = data;
 
   const newProduct = {
@@ -130,7 +128,7 @@ controller.addNewProduct = ({ ...data }) => {
 };
 
 // update product by id
-controller.updateProductById = ({ id, ...data }) => {
+export const updateProductById = ({ id, ...data }) => {
   const { title, price, discountPercentage, stock, rating, images, thumbnail, description, brand, category } = data;
 
   const productFrozen = frozenData.products.find(p => p.id.toString() === id);
@@ -157,7 +155,7 @@ controller.updateProductById = ({ id, ...data }) => {
 };
 
 // delete product by id
-controller.deleteProductById = ({ id }) => {
+export const deleteProductById = ({ id }) => {
   const productFrozen = frozenData.products.find(p => p.id.toString() === id);
 
   if (!productFrozen) {
@@ -171,5 +169,3 @@ controller.deleteProductById = ({ id }) => {
 
   return product;
 };
-
-module.exports = controller;

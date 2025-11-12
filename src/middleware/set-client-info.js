@@ -1,8 +1,8 @@
-const extractClientInfo = require('../utils/client-info');
+import extractClientInfo from '../utils/client-info.js';
 
 async function setClientInfo(req, res, next) {
   req.clientInfo = extractClientInfo(req) || {};
   next();
 }
 
-module.exports = setClientInfo;
+export default setClientInfo;

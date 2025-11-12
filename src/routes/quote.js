@@ -1,5 +1,7 @@
-const router = require('express').Router();
-const { getAllQuotes, getRandomQuote, getQuoteById } = require('../controllers/quote');
+import { Router } from 'express';
+import { getAllQuotes, getRandomQuote, getQuoteById } from '../controllers/quote.js';
+
+const router = Router();
 
 // get all quotes
 router.get('/', (req, res) => {
@@ -16,4 +18,4 @@ router.get('/:id', (req, res) => {
   res.send(getQuoteById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

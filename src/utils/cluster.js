@@ -1,55 +1,14 @@
-const https = require('node:https');
-const cluster = require('node:cluster');
-const { timeDifference } = require('./util');
-const { log, logError } = require('../helpers/logger');
-
-const clusterUtils = {};
+import https from 'node:https';
+import cluster from 'node:cluster';
+import { timeDifference } from './util.js';
+import { log, logError } from '../helpers/logger.js';
 
 const counts = {
   requestCount: 0,
   customRequestCount: 0,
 };
 
-clusterUtils.handleClusterExit = (worker, code, signal) => {
-  let reason;
-
-  if (signal) {
-    reason = `Worker was killed by signal: ${signal}`;
-  } else if (code !== 0) {
-    reason = `Worker exited with error code: ${code}`;
-  } else {
-    reason = 'Worker exited successfully';
-  }
-
-  log(`[Master] ${worker.process.pid} died. ${reason}`);
-
-  cluster.fork();
-};
-
-clusterUtils.handleClusterMessage = (worker, message) => {
-  if (message.type === 'request_counts') {
-    counts.requestCount += message.requestCount || 0;
-    counts.customRequestCount += message.customRequestCount || 0;
-  }
-
-  if (message.type === 'error') {
-    log(`[Master] Received error from worker ${worker.process.pid}: ${message.error}`);
-    clusterUtils.sendWorkedDiedPushNotification(worker.process.pid, message.error || 'No error details');
-  }
-};
-
-clusterUtils.logCounts = () => {
-  const startTime = Date.now();
-
-  setInterval(() => {
-    const diff = timeDifference(startTime, Date.now());
-
-    log(`[Count] ${counts.requestCount} requests in ${diff}`);
-    log(`[Count] ${counts.customRequestCount} custom requests in ${diff}`);
-  }, 30 * 1000 /* 30 seconds */);
-};
-
-clusterUtils.sendWorkedDiedPushNotification = (workerId, errorDetails) => {
+export const sendWorkedDiedPushNotification = (workerId, errorDetails) => {
   const { PUSHOVER_USER_KEY, PUSHOVER_API_TOKEN } = process.env;
   if (!PUSHOVER_USER_KEY || !PUSHOVER_API_TOKEN) return;
 
@@ -86,4 +45,41 @@ clusterUtils.sendWorkedDiedPushNotification = (workerId, errorDetails) => {
   req.end();
 };
 
-module.exports = clusterUtils;
+export const handleClusterExit = (worker, code, signal) => {
+  let reason;
+
+  if (signal) {
+    reason = `Worker was killed by signal: ${signal}`;
+  } else if (code !== 0) {
+    reason = `Worker exited with error code: ${code}`;
+  } else {
+    reason = 'Worker exited successfully';
+  }
+
+  log(`[Master] ${worker.process.pid} died. ${reason}`);
+
+  cluster.fork();
+};
+
+export const handleClusterMessage = (worker, message) => {
+  if (message.type === 'request_counts') {
+    counts.requestCount += message.requestCount || 0;
+    counts.customRequestCount += message.customRequestCount || 0;
+  }
+
+  if (message.type === 'error') {
+    log(`[Master] Received error from worker ${worker.process.pid}: ${message.error}`);
+    sendWorkedDiedPushNotification(worker.process.pid, message.error || 'No error details');
+  }
+};
+
+export const logCounts = () => {
+  const startTime = Date.now();
+
+  setInterval(() => {
+    const diff = timeDifference(startTime, Date.now());
+
+    log(`[Count] ${counts.requestCount} requests in ${diff}`);
+    log(`[Count] ${counts.customRequestCount} custom requests in ${diff}`);
+  }, 30 * 1000 /* 30 seconds */);
+};

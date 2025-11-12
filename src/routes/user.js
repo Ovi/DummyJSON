@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { getCartsByUserId } = require('../controllers/cart');
-const { getPostsByUserId } = require('../controllers/post');
-const { getTodosByUserId } = require('../controllers/todo');
-const {
+import { Router } from 'express';
+import { getCartsByUserId } from '../controllers/cart.js';
+import { getPostsByUserId } from '../controllers/post.js';
+import { getTodosByUserId } from '../controllers/todo.js';
+import {
   getAllUsers,
   getUserById,
   searchUsers,
@@ -10,10 +10,12 @@ const {
   updateUserById,
   deleteUserById,
   filterUsers,
-} = require('../controllers/user');
-const authUser = require('../middleware/auth');
-const { verifyUserHandler } = require('../helpers');
-const { loginByUsernamePassword } = require('../controllers/auth');
+} from '../controllers/user.js';
+import authUser from '../middleware/auth.js';
+import { verifyUserHandler } from '../helpers/index.js';
+import { loginByUsernamePassword } from '../controllers/auth.js';
+
+const router = Router();
 
 // get all users
 router.get('/', (req, res) => {
@@ -115,4 +117,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteUserById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

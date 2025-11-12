@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getAllRecipes,
   getRecipeById,
   searchRecipes,
@@ -9,7 +9,9 @@ const {
   addNewRecipe,
   updateRecipeById,
   deleteRecipeById,
-} = require('../controllers/recipes');
+} from '../controllers/recipes.js';
+
+const router = Router();
 
 // get all recipes
 router.get('/', (req, res) => {
@@ -70,4 +72,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteRecipeById({ id }));
 });
 
-module.exports = router;
+export default router;

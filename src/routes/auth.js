@@ -1,6 +1,8 @@
-const router = require('express').Router();
-const { loginByUsernamePassword, getNewRefreshToken } = require('../controllers/auth');
-const authUser = require('../middleware/auth');
+import { Router } from 'express';
+import { loginByUsernamePassword, getNewRefreshToken } from '../controllers/auth.js';
+import authUser from '../middleware/auth.js';
+
+const router = Router();
 
 // login user
 router.post('/login', async (req, res, next) => {
@@ -66,4 +68,4 @@ router.post('/refresh', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;

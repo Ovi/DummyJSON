@@ -1,9 +1,9 @@
-const utils = require('../utils/util');
+import { isDev } from '../utils/util.js';
 
 async function forceHTTPS(req, res, next) {
   const { originalUrl, secure } = req;
 
-  if (!secure && !utils.isDev) {
+  if (!secure && !isDev) {
     res.redirect(`https://${req.headers.host}${originalUrl}`);
     return;
   }
@@ -11,4 +11,4 @@ async function forceHTTPS(req, res, next) {
   next();
 }
 
-module.exports = forceHTTPS;
+export default forceHTTPS;

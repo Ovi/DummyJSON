@@ -11,4 +11,4 @@ function removeHeaders(req, res, next) {
   next();
 }
 
-module.exports = removeHeaders;
+export default removeHeaders;

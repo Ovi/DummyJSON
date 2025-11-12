@@ -1,4 +1,4 @@
-const rateLimit = require('express-rate-limit');
+import rateLimit from 'express-rate-limit';
 
 const { NODE_ENV } = process.env;
 
@@ -11,4 +11,4 @@ const rateLimiter = rateLimit({
   skip: () => NODE_ENV === 'development',
 });
 
-module.exports = rateLimiter;
+export default rateLimiter;

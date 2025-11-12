@@ -1,5 +1,5 @@
-const { log, logError } = require('../helpers/logger');
-const { isEmpty } = require('../utils/util');
+import { log, logError } from '../helpers/logger.js';
+import { isEmpty } from '../utils/util.js';
 
 /* eslint-disable no-console */
 const commonErrorMessages = [
@@ -86,7 +86,7 @@ const errorMiddleware = (err, req, res, next) => {
   res.status(err.status || 500).json(error);
 };
 
-module.exports = errorMiddleware;
+export default errorMiddleware;
 
 function buildRequestMetaData(req) {
   const { clientInfo } = req;

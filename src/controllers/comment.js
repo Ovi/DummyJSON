@@ -1,11 +1,9 @@
-const { verifyPostHandler, verifyUserHandler } = require('../helpers');
-const APIError = require('../utils/error');
-const { dataInMemory: frozenData, trueTypeOf, limitArray } = require('../utils/util');
-
-const controller = {};
+import { verifyPostHandler, verifyUserHandler } from '../helpers/index.js';
+import APIError from '../utils/error.js';
+import { dataInMemory as frozenData, trueTypeOf, limitArray } from '../utils/util.js';
 
 // get all comments
-controller.getAllComments = ({ limit, skip }) => {
+export const getAllComments = ({ limit, skip }) => {
   let [...comments] = frozenData.comments;
   const total = comments.length;
 
@@ -21,7 +19,7 @@ controller.getAllComments = ({ limit, skip }) => {
 };
 
 // get comment by id
-controller.getCommentById = ({ id }) => {
+export const getCommentById = ({ id }) => {
   const commentFrozen = frozenData.comments.find(u => u.id.toString() === id);
 
   if (!commentFrozen) {
@@ -32,7 +30,7 @@ controller.getCommentById = ({ id }) => {
 };
 
 // get all comments by postId
-controller.getAllCommentsByPostId = ({ postId, limit, skip }) => {
+export const getAllCommentsByPostId = ({ postId, limit, skip }) => {
   verifyPostHandler(postId);
 
   let [...comments] = frozenData.comments.filter(c => c.postId.toString() === postId);
@@ -50,7 +48,7 @@ controller.getAllCommentsByPostId = ({ postId, limit, skip }) => {
 };
 
 // add new comment
-controller.addNewComment = ({ body, postId, userId }) => {
+export const addNewComment = ({ body, postId, userId }) => {
   // verify if we have valid body
   if (!body || trueTypeOf(body) !== 'string') {
     throw new APIError(`Invalid comment body`, 400);
@@ -75,7 +73,7 @@ controller.addNewComment = ({ body, postId, userId }) => {
 };
 
 // update comment by id
-controller.updateCommentById = ({ id, ...data }) => {
+export const updateCommentById = ({ id, ...data }) => {
   const { body, postId, userId } = data;
 
   // see if we can find the comment
@@ -109,7 +107,7 @@ controller.updateCommentById = ({ id, ...data }) => {
 };
 
 // delete comment by id
-controller.deleteCommentById = ({ id }) => {
+export const deleteCommentById = ({ id }) => {
   const commentFrozen = frozenData.comments.find(c => c.id.toString() === id);
 
   if (!commentFrozen) {
@@ -123,5 +121,3 @@ controller.deleteCommentById = ({ id }) => {
 
   return comment;
 };
-
-module.exports = controller;

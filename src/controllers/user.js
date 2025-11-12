@@ -1,17 +1,15 @@
-const { verifyUserHandler } = require('../helpers');
-const {
-  dataInMemory: frozenData,
+import { verifyUserHandler } from '../helpers/index.js';
+import {
+  dataInMemory as frozenData,
   getMultiObjectSubset,
   getObjectSubset,
   getNestedValue,
   limitArray,
   sortArray,
-} = require('../utils/util');
-
-const controller = {};
+} from '../utils/util.js';
 
 // get all users
-controller.getAllUsers = _options => {
+export const getAllUsers = _options => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let users = [...frozenData.users];
@@ -35,7 +33,7 @@ controller.getAllUsers = _options => {
 };
 
 // search users
-controller.searchUsers = ({ q: searchQuery, ..._options }) => {
+export const searchUsers = ({ q: searchQuery, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let users = frozenData.users.filter(u => {
@@ -66,7 +64,7 @@ controller.searchUsers = ({ q: searchQuery, ..._options }) => {
 };
 
 // filter users
-controller.filterUsers = ({ key, value, ..._options }) => {
+export const filterUsers = ({ key, value, ..._options }) => {
   const { limit, skip, select, sortBy, order } = _options;
 
   let users = frozenData.users.filter(u => {
@@ -93,7 +91,7 @@ controller.filterUsers = ({ key, value, ..._options }) => {
 };
 
 // get user by id
-controller.getUserById = ({ id, select }) => {
+export const getUserById = ({ id, select }) => {
   let { ...user } = verifyUserHandler(id);
 
   if (select) {
@@ -104,7 +102,7 @@ controller.getUserById = ({ id, select }) => {
 };
 
 // add new user
-controller.addNewUser = ({ ...data }) => {
+export const addNewUser = ({ ...data }) => {
   const {
     firstName = '',
     lastName = '',
@@ -210,7 +208,7 @@ controller.addNewUser = ({ ...data }) => {
 };
 
 // update user by id
-controller.updateUserById = ({ id, ...data }) => {
+export const updateUserById = ({ id, ...data }) => {
   const user = verifyUserHandler(id);
 
   const {
@@ -318,7 +316,7 @@ controller.updateUserById = ({ id, ...data }) => {
 };
 
 // delete user by id
-controller.deleteUserById = ({ id }) => {
+export const deleteUserById = ({ id }) => {
   const { ...user } = verifyUserHandler(id);
 
   user.isDeleted = true;
@@ -326,5 +324,3 @@ controller.deleteUserById = ({ id }) => {
 
   return user;
 };
-
-module.exports = controller;

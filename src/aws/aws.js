@@ -1,4 +1,4 @@
-const {
+import {
   S3Client,
   PutObjectCommand,
   GetObjectCommand,
@@ -6,8 +6,8 @@ const {
   DeleteObjectCommand,
   ListObjectsV2Command,
   DeleteObjectsCommand,
-} = require('@aws-sdk/client-s3');
-const { logError } = require('../helpers/logger');
+} from '@aws-sdk/client-s3';
+import { logError } from '../helpers/logger.js';
 
 const { AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_BUCKET_NAME, AWS_BUCKET_REGION } = process.env;
 
@@ -19,9 +19,7 @@ const s3Client = new S3Client({
   region: AWS_BUCKET_REGION,
 });
 
-const aws = {};
-
-aws.uploadToStorage = async (buffer, contentType, key) => {
+export const uploadToStorage = async (buffer, contentType, key) => {
   try {
     const command = new PutObjectCommand({
       Bucket: AWS_BUCKET_NAME,
@@ -37,7 +35,7 @@ aws.uploadToStorage = async (buffer, contentType, key) => {
   }
 };
 
-aws.verifyInStorage = async key => {
+export const verifyInStorage = async key => {
   try {
     const command = new HeadObjectCommand({
       Bucket: AWS_BUCKET_NAME,
@@ -51,7 +49,7 @@ aws.verifyInStorage = async key => {
   }
 };
 
-aws.getFromStorage = async key => {
+export const getFromStorage = async key => {
   try {
     const command = new GetObjectCommand({
       Bucket: AWS_BUCKET_NAME,
@@ -65,29 +63,13 @@ aws.getFromStorage = async key => {
   }
 };
 
-aws.deleteFileFromStorage = async key => {
-  try {
-    const command = new DeleteObjectCommand({
-      Bucket: AWS_BUCKET_NAME,
-      Key: key,
-    });
-
-    const res = await s3Client.send(command);
-    return res;
-  } catch (error) {
-    return null;
-  }
-};
-
-aws.deleteFolderFromStorage = async key => {
+export const deleteFolderFromStorage = async key => {
   try {
     return recursiveDelete(key);
   } catch (error) {
     return null;
   }
 };
-
-module.exports = aws;
 
 async function recursiveDelete(location, token) {
   let count = 0; // number of files deleted

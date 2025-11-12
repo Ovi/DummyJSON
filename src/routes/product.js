@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getAllProducts,
   getProductById,
   searchProducts,
@@ -9,7 +9,9 @@ const {
   addNewProduct,
   updateProductById,
   deleteProductById,
-} = require('../controllers/product');
+} from '../controllers/product.js';
+
+const router = Router();
 
 // get all products
 router.get('/', (req, res) => {
@@ -70,4 +72,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteProductById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

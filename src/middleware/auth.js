@@ -1,6 +1,6 @@
-const APIError = require('../utils/error');
-const { verifyAccessToken } = require('../utils/jwt');
-const { findUserWithUsernameAndId } = require('../utils/util');
+import APIError from '../utils/error.js';
+import { verifyAccessToken } from '../utils/jwt.js';
+import { findUserWithUsernameAndId } from '../utils/util.js';
 
 const authUser = async (req, res, next) => {
   try {
@@ -31,4 +31,4 @@ const authUser = async (req, res, next) => {
   }
 };
 
-module.exports = authUser;
+export default authUser;

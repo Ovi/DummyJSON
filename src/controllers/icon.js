@@ -1,11 +1,9 @@
-const crypto = require('node:crypto');
-const jdenticon = require('jdenticon');
-const { isValidNumberInRange } = require('../utils/util');
-
-const controller = {};
+import crypto from 'node:crypto';
+import { toSvg, toPng } from 'jdenticon';
+import { isValidNumberInRange } from '../utils/util.js';
 
 // generate icon
-controller.generateIcon = ({ hash, size, type }) => {
+export const generateIcon = ({ hash, size, type }) => {
   const h = crypto
     .createHash('sha256')
     .update(hash)
@@ -17,9 +15,7 @@ controller.generateIcon = ({ hash, size, type }) => {
     s = '100';
   }
 
-  const generatorFn = type === 'svg' ? jdenticon.toSvg : jdenticon.toPng;
+  const generatorFn = type === 'svg' ? toSvg : toPng;
 
   return generatorFn(h, parseInt(s, 10));
 };
-
-module.exports = controller;

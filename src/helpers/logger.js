@@ -1,5 +1,5 @@
-const chalk = require('chalk');
-const { createLogger, format, transports } = require('winston');
+import chalk from 'chalk';
+import { createLogger, format, transports } from 'winston';
 
 const { NODE_ENV } = process.env;
 
@@ -93,10 +93,4 @@ const logError = (message, meta = {}) => basicLog(message, meta, 'error');
 const logWarn = (message, meta = {}) => basicLog(message, meta, 'warn');
 const logVerbose = (message, meta = {}) => basicLog(message, meta, 'verbose');
 
-module.exports = {
-  log,
-  logger,
-  logError,
-  logWarn,
-  logVerbose,
-};
+export { log, logger, logError, logWarn, logVerbose };

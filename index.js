@@ -1,10 +1,13 @@
-const os = require('node:os');
-const cluster = require('node:cluster');
-const connectDB = require('./src/db/mongoose');
-const { log, logError } = require('./src/helpers/logger');
-const { handleClusterExit, handleClusterMessage, logCounts } = require('./src/utils/cluster');
-const { validateEnvVar, isDev } = require('./src/utils/util');
-const { setupCRONJobs } = require('./src/utils/cron-jobs');
+import os from 'node:os';
+import cluster from 'node:cluster';
+import { createRequire } from 'node:module';
+import { connectDB } from './src/db/mongoose.js';
+import { log, logError } from './src/helpers/logger.js';
+import { handleClusterExit, handleClusterMessage, logCounts } from './src/utils/cluster.js';
+import { validateEnvVar, isDev } from './src/utils/util.js';
+import { setupCRONJobs } from './src/utils/cron-jobs.js';
+
+const require = createRequire(import.meta.url);
 const { version } = require('./package.json');
 
 const { PORT = 8888, NUM_WORKERS = 4 } = process.env;
@@ -43,7 +46,7 @@ function forkWorkers(numWorkers) {
 if (cluster.isMaster) {
   setupMasterProcess();
 } else {
-  require('./worker');
+  await import('./worker.js');
 
   process.on('uncaughtException', err => {
     logError(`[Worker] Error in worker ${process.pid}: ${err.message}`, { error: err.stack });

@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getAllTodos,
   getRandomTodo,
   getTodoById,
@@ -7,7 +7,9 @@ const {
   addNewTodo,
   updateTodoById,
   deleteTodoById,
-} = require('../controllers/todo');
+} from '../controllers/todo.js';
+
+const router = Router();
 
 // get all todos
 router.get('/', (req, res) => {
@@ -56,4 +58,4 @@ router.delete('/:id', (req, res) => {
   res.send(deleteTodoById({ ...req.params }));
 });
 
-module.exports = router;
+export default router;

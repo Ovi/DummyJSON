@@ -1,9 +1,8 @@
-const httpCodes = require('./http-codes');
+export { default as httpCodes } from './http-codes.js';
 
-const constants = {};
-
-constants.REQUIRED_ENV_VARIABLES = ['JWT_SECRET', 'MONGODB_URI', 'MONGODB_DB_NAME'];
-constants.OPTIONAL_ENV_VARIABLES = [
+export const REQUIRED_ENV_VARIABLES = ['JWT_SECRET', 'MONGODB_URI'];
+export const OPTIONAL_ENV_VARIABLES = [
+  'MONGODB_DB_NAME',
   'GOOGLE_TAG_ID',
   'GOOGLE_ADS_TXT_CONTENT',
   'AWS_ACCESS_KEY',
@@ -15,21 +14,17 @@ constants.OPTIONAL_ENV_VARIABLES = [
   'STATS',
 ];
 
-constants.requestWhitelist = ['/favicon.ico', '/static', '/public', '/fav.png'];
+export const requestWhitelist = ['/favicon.ico', '/static', '/public', '/fav.png'];
 
-constants.httpCodes = httpCodes;
-
-constants.imageMimeTypes = {
+export const imageMimeTypes = {
   png: 'image/png',
   jpg: 'image/jpeg',
   webp: 'image/webp',
 };
 
-constants.allowedImageTypes = Object.keys(constants.imageMimeTypes);
+export const allowedImageTypes = Object.keys(imageMimeTypes);
 
 // 30 days in minutes
-constants.maxTokenExpireMins = 30 * 24 * 60;
+export const maxTokenExpireMins = 30 * 24 * 60;
 
-constants.customResponseExpiresInDays = 90;
-
-module.exports = constants;
+export const customResponseExpiresInDays = 90;
