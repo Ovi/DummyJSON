@@ -86,7 +86,7 @@ export const validateEnvVar = () => {
 
   if (requiredUnsetEnv.length) {
     logError(`Required ENV variables are not set: [${requiredUnsetEnv.join(', ')}]`);
-    process.exit(0);
+    process.exit(1);
   }
 
   const optionalUnsetEnv = OPTIONAL_ENV_VARIABLES.filter(env => !(typeof process.env[env] !== 'undefined'));
