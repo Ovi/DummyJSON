@@ -36,7 +36,7 @@
     "macAddress": "47:fa:41:18:ec:eb",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "05/28",
       "cardNumber": "9289760655481815",
       "cardType": "Elo",
       "currency": "CNY",
@@ -106,7 +106,7 @@
     "macAddress": "79:15:78:99:60:aa",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "01/30",
       "cardNumber": "6737807858721625",
       "cardType": "Elo",
       "currency": "SEK",
@@ -176,7 +176,7 @@
     "macAddress": "12:a3:d3:6f:5c:5b",
     "university": "Pepperdine University",
     "bank": {
-      "cardExpire": "04/25",
+      "cardExpire": "10/27",
       "cardNumber": "7795895470082859",
       "cardType": "Korean Express",
       "currency": "SEK",
@@ -246,7 +246,7 @@
     "macAddress": "10:7d:df:1f:97:58",
     "university": "University of Southern California",
     "bank": {
-      "cardExpire": "05/29",
+      "cardExpire": "07/30",
       "cardNumber": "5005519846254763",
       "cardType": "Mastercard",
       "currency": "INR",
@@ -316,7 +316,7 @@
     "macAddress": "32:b9:7e:8d:f5:e8",
     "university": "Northeastern University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "07/30",
       "cardNumber": "5772950119588627",
       "cardType": "American Express",
       "currency": "CAD",
@@ -386,7 +386,7 @@
     "macAddress": "9c:7f:ea:34:18:19",
     "university": "University of North Carolina--Chapel Hill",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "06/30",
       "cardNumber": "6771923832947881",
       "cardType": "Diners Club International",
       "currency": "BRL",
@@ -456,7 +456,7 @@
     "macAddress": "d2:64:58:2d:1c:46",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "12/29",
       "cardNumber": "7344951706130140",
       "cardType": "JCB",
       "currency": "EUR",
@@ -526,7 +526,7 @@
     "macAddress": "8d:2e:c2:d6:e7:a8",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "08/30",
       "cardNumber": "6412128967460199",
       "cardType": "Maestro",
       "currency": "CNY",
@@ -596,7 +596,7 @@
     "macAddress": "59:e:9e:e3:29:da",
     "university": "Syracuse University",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "10/27",
       "cardNumber": "7183482484317509",
       "cardType": "Visa",
       "currency": "CAD",
@@ -666,7 +666,7 @@
     "macAddress": "b1:b0:d0:a2:82:80",
     "university": "California Institute of Technology (Caltech)",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "03/30",
       "cardNumber": "6118714010128731",
       "cardType": "NPS",
       "currency": "CNY",
@@ -736,7 +736,7 @@
     "macAddress": "31:9a:28:8b:99:6c",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "12/29",
       "cardNumber": "2302893002194899",
       "cardType": "Discover",
       "currency": "GBP",
@@ -806,7 +806,7 @@
     "macAddress": "53:d7:a4:6:1e:58",
     "university": "William & Mary",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "02/29",
       "cardNumber": "1539872303456158",
       "cardType": "Carte Bancaire",
       "currency": "CAD",
@@ -876,7 +876,7 @@
     "macAddress": "d4:fe:ae:8f:eb:a3",
     "university": "New York University (NYU)",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "03/30",
       "cardNumber": "1681772579326385",
       "cardType": "Discover",
       "currency": "SEK",
@@ -946,7 +946,7 @@
     "macAddress": "f6:ff:37:aa:6c:f1",
     "university": "Northeastern University",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "12/27",
       "cardNumber": "5675368650551956",
       "cardType": "Maestro",
       "currency": "CNY",
@@ -1016,7 +1016,7 @@
     "macAddress": "f5:68:28:f9:ec:89",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "05/30",
       "cardNumber": "6053000793215148",
       "cardType": "Mir",
       "currency": "EUR",
@@ -1086,7 +1086,7 @@
     "macAddress": "b3:ff:f3:c5:37:46",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "04/27",
+      "cardExpire": "08/29",
       "cardNumber": "0961014686718571",
       "cardType": "Carte Bancaire",
       "currency": "USD",
@@ -1156,7 +1156,7 @@
     "macAddress": "f8:e5:bd:43:bc:d8",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "01/29",
       "cardNumber": "4557521697420096",
       "cardType": "UnionPay",
       "currency": "SEK",
@@ -1226,7 +1226,7 @@
     "macAddress": "40:d:5c:1:7d:bf",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "04/30",
       "cardNumber": "7884268130452098",
       "cardType": "UnionPay",
       "currency": "NZD",
@@ -1296,7 +1296,7 @@
     "macAddress": "1d:a6:58:2a:e5:e4",
     "university": "California Institute of Technology (Caltech)",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "01/27",
       "cardNumber": "4832361886407551",
       "cardType": "RuPay",
       "currency": "BRL",
@@ -1366,7 +1366,7 @@
     "macAddress": "81:14:1:97:88:85",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "07/30",
       "cardNumber": "2109192842527801",
       "cardType": "BC Card",
       "currency": "EUR",
@@ -1436,7 +1436,7 @@
     "macAddress": "13:b0:d0:23:4d:26",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "09/27",
       "cardNumber": "5549175461210252",
       "cardType": "Mir",
       "currency": "CNY",
@@ -1506,7 +1506,7 @@
     "macAddress": "75:17:c6:35:fc:6d",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "05/28",
       "cardNumber": "0798116671286564",
       "cardType": "JCB",
       "currency": "GBP",
@@ -1576,7 +1576,7 @@
     "macAddress": "fc:f:29:e1:37:b8",
     "university": "Syracuse University",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "09/30",
       "cardNumber": "3150496938377346",
       "cardType": "American Express",
       "currency": "PKR",
@@ -1646,7 +1646,7 @@
     "macAddress": "a7:26:10:7a:36:29",
     "university": "Columbia University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "12/29",
       "cardNumber": "5545852224851851",
       "cardType": "JCB",
       "currency": "TRY",
@@ -1716,7 +1716,7 @@
     "macAddress": "b:ff:33:67:94:e4",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "06/27",
       "cardNumber": "1298153007505587",
       "cardType": "RuPay",
       "currency": "JPY",
@@ -1786,7 +1786,7 @@
     "macAddress": "89:5e:5a:2a:72:42",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "08/28",
       "cardNumber": "9584313788145560",
       "cardType": "RuPay",
       "currency": "INR",
@@ -1856,7 +1856,7 @@
     "macAddress": "6e:73:dc:3a:85:10",
     "university": "Columbia University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "05/29",
       "cardNumber": "8452555751345228",
       "cardType": "Korean Express",
       "currency": "NZD",
@@ -1926,7 +1926,7 @@
     "macAddress": "18:b6:c7:a:50:3f",
     "university": "Johns Hopkins University",
     "bank": {
-      "cardExpire": "05/29",
+      "cardExpire": "12/28",
       "cardNumber": "2903637820228856",
       "cardType": "Visa",
       "currency": "JPY",
@@ -1996,7 +1996,7 @@
     "macAddress": "fa:c3:1b:21:5f:44",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "11/29",
       "cardNumber": "7262597174206766",
       "cardType": "Diners Club International",
       "currency": "SEK",
@@ -2066,7 +2066,7 @@
     "macAddress": "fb:0:94:21:16:c",
     "university": "Syracuse University",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "06/28",
       "cardNumber": "3756638438861539",
       "cardType": "Carte Bancaire",
       "currency": "JPY",
@@ -2136,7 +2136,7 @@
     "macAddress": "a6:1e:22:5f:fd:49",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "01/27",
       "cardNumber": "3430117055178040",
       "cardType": "RuPay",
       "currency": "GBP",
@@ -2206,7 +2206,7 @@
     "macAddress": "96:92:8f:92:af:fe",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "11/30",
       "cardNumber": "6770466105455683",
       "cardType": "UnionPay",
       "currency": "TRY",
@@ -2276,7 +2276,7 @@
     "macAddress": "35:0:ad:91:5f:f3",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "04/30",
       "cardNumber": "9469552713257189",
       "cardType": "NPS",
       "currency": "NZD",
@@ -2346,7 +2346,7 @@
     "macAddress": "23:b:b2:dd:6:f",
     "university": "University of North Carolina--Chapel Hill",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "10/29",
       "cardNumber": "1261953782214521",
       "cardType": "Visa",
       "currency": "INR",
@@ -2416,7 +2416,7 @@
     "macAddress": "33:6c:1c:b8:f5:92",
     "university": "Pepperdine University",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "11/29",
       "cardNumber": "5624707322246699",
       "cardType": "Elo",
       "currency": "PKR",
@@ -2486,7 +2486,7 @@
     "macAddress": "3c:5f:b3:2:1c:5",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "06/28",
       "cardNumber": "8250985716703050",
       "cardType": "BC Card",
       "currency": "JPY",
@@ -2556,7 +2556,7 @@
     "macAddress": "51:97:60:8b:4a:75",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "01/27",
       "cardNumber": "0954541144518224",
       "cardType": "Interac",
       "currency": "SEK",
@@ -2626,7 +2626,7 @@
     "macAddress": "7d:16:14:f8:d5:4",
     "university": "Princeton University",
     "bank": {
-      "cardExpire": "01/27",
+      "cardExpire": "10/28",
       "cardNumber": "6700474320260358",
       "cardType": "RuPay",
       "currency": "TRY",
@@ -2696,7 +2696,7 @@
     "macAddress": "39:83:8b:37:af:6e",
     "university": "Syracuse University",
     "bank": {
-      "cardExpire": "01/25",
+      "cardExpire": "08/29",
       "cardNumber": "2810336175495461",
       "cardType": "JCB",
       "currency": "CNY",
@@ -2766,7 +2766,7 @@
     "macAddress": "fb:e6:93:1f:65:b1",
     "university": "Northeastern University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "06/27",
       "cardNumber": "0222821965561452",
       "cardType": "Visa",
       "currency": "BRL",
@@ -2836,7 +2836,7 @@
     "macAddress": "4d:df:1b:97:83:c0",
     "university": "University of California--Irvine",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "05/27",
       "cardNumber": "9330874027500659",
       "cardType": "Interac",
       "currency": "CAD",
@@ -2906,7 +2906,7 @@
     "macAddress": "f0:9a:ba:d9:48:d5",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "09/30",
       "cardNumber": "5465476274483180",
       "cardType": "Maestro",
       "currency": "EUR",
@@ -2976,7 +2976,7 @@
     "macAddress": "39:b4:48:18:5:9c",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "04/30",
       "cardNumber": "2928698223409259",
       "cardType": "Maestro",
       "currency": "TRY",
@@ -3046,7 +3046,7 @@
     "macAddress": "79:c9:54:dd:af:2a",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "04/28",
       "cardNumber": "6881960720756508",
       "cardType": "Diners Club International",
       "currency": "SEK",
@@ -3116,7 +3116,7 @@
     "macAddress": "f6:3c:e7:3b:d6:40",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "06/27",
       "cardNumber": "2005194726432164",
       "cardType": "RuPay",
       "currency": "TRY",
@@ -3186,7 +3186,7 @@
     "macAddress": "d5:da:6d:bc:6d:1b",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "06/30",
       "cardNumber": "4206391100396837",
       "cardType": "Interac",
       "currency": "SEK",
@@ -3256,7 +3256,7 @@
     "macAddress": "74:f6:24:f2:f7:6d",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "06/27",
       "cardNumber": "2176026170212775",
       "cardType": "JCB",
       "currency": "EUR",
@@ -3326,7 +3326,7 @@
     "macAddress": "d0:4b:7c:b2:be:9d",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "10/27",
       "cardNumber": "2753155771474852",
       "cardType": "Elo",
       "currency": "CNY",
@@ -3396,7 +3396,7 @@
     "macAddress": "fd:58:46:54:61:ac",
     "university": "University of California--Los Angeles (UCLA)",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "08/29",
       "cardNumber": "6854860175138599",
       "cardType": "Discover",
       "currency": "AUD",
@@ -3466,7 +3466,7 @@
     "macAddress": "29:78:ea:4:44:a5",
     "university": "University of California--San Diego",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "06/30",
       "cardNumber": "6288370557661493",
       "cardType": "RuPay International",
       "currency": "INR",
@@ -3536,7 +3536,7 @@
     "macAddress": "f6:59:76:66:c0:85",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "04/28",
       "cardNumber": "0096889176292417",
       "cardType": "American Express",
       "currency": "AUD",
@@ -3606,7 +3606,7 @@
     "macAddress": "2a:b3:40:74:92:a8",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "04/27",
       "cardNumber": "0086440424090418",
       "cardType": "Elo",
       "currency": "CNY",
@@ -3676,7 +3676,7 @@
     "macAddress": "7a:71:1b:67:63:5",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "07/28",
       "cardNumber": "7587335214855221",
       "cardType": "Elo",
       "currency": "EUR",
@@ -3746,7 +3746,7 @@
     "macAddress": "4e:2b:e4:33:7a:f8",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "01/27",
       "cardNumber": "0450868014964799",
       "cardType": "UnionPay",
       "currency": "CAD",
@@ -3816,7 +3816,7 @@
     "macAddress": "65:e0:58:aa:7:b4",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "12/29",
       "cardNumber": "6705255508829652",
       "cardType": "Diners Club International",
       "currency": "BRL",
@@ -3886,7 +3886,7 @@
     "macAddress": "d0:d0:f:51:4d:7b",
     "university": "University of Rochester",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "11/28",
       "cardNumber": "3634000039515767",
       "cardType": "RuPay",
       "currency": "INR",
@@ -3956,7 +3956,7 @@
     "macAddress": "d3:ae:d1:ad:ca:48",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "03/27",
       "cardNumber": "5514219246750913",
       "cardType": "Maestro",
       "currency": "USD",
@@ -4026,7 +4026,7 @@
     "macAddress": "8c:df:ff:9a:1f:7c",
     "university": "Vanderbilt University",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "03/27",
       "cardNumber": "2403745255892443",
       "cardType": "RuPay International",
       "currency": "JPY",
@@ -4096,7 +4096,7 @@
     "macAddress": "b2:fd:ca:1b:3b:a5",
     "university": "Cornell University",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "02/27",
       "cardNumber": "4591531606680865",
       "cardType": "Interac",
       "currency": "TRY",
@@ -4166,7 +4166,7 @@
     "macAddress": "b6:5c:51:80:86:8c",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "08/28",
       "cardNumber": "8264568585824305",
       "cardType": "American Express",
       "currency": "CNY",
@@ -4236,7 +4236,7 @@
     "macAddress": "28:73:d7:7d:f4:6d",
     "university": "University of Chicago",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "11/27",
       "cardNumber": "3084533256202332",
       "cardType": "NPS",
       "currency": "USD",
@@ -4306,7 +4306,7 @@
     "macAddress": "a2:28:a3:57:d4:9d",
     "university": "Wake Forest University",
     "bank": {
-      "cardExpire": "02/29",
+      "cardExpire": "01/30",
       "cardNumber": "1079394473352313",
       "cardType": "JCB",
       "currency": "EUR",
@@ -4376,7 +4376,7 @@
     "macAddress": "20:56:60:fb:66:cd",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "02/29",
+      "cardExpire": "01/29",
       "cardNumber": "7041364889746727",
       "cardType": "JCB",
       "currency": "EUR",
@@ -4446,7 +4446,7 @@
     "macAddress": "0:40:32:8d:3f:88",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "11/29",
       "cardNumber": "9629035137888083",
       "cardType": "Discover",
       "currency": "EUR",
@@ -4516,7 +4516,7 @@
     "macAddress": "79:e4:91:62:7f:fe",
     "university": "Columbia University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "11/29",
       "cardNumber": "1180346029649699",
       "cardType": "Visa",
       "currency": "SEK",
@@ -4586,7 +4586,7 @@
     "macAddress": "e2:71:6d:81:6:db",
     "university": "Cornell University",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "02/28",
       "cardNumber": "4568070192850216",
       "cardType": "Interac",
       "currency": "SEK",
@@ -4656,7 +4656,7 @@
     "macAddress": "24:fa:90:ce:f1:f6",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "02/29",
       "cardNumber": "8806270262728263",
       "cardType": "Mir",
       "currency": "CNY",
@@ -4726,7 +4726,7 @@
     "macAddress": "6:12:26:1a:e:df",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "05/27",
       "cardNumber": "6963383908262873",
       "cardType": "Mir",
       "currency": "EUR",
@@ -4796,7 +4796,7 @@
     "macAddress": "33:21:99:79:b5:da",
     "university": "University of North Carolina--Chapel Hill",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "11/27",
       "cardNumber": "1396878035487909",
       "cardType": "Korean Express",
       "currency": "BRL",
@@ -4866,7 +4866,7 @@
     "macAddress": "42:fa:3e:8:22:1f",
     "university": "University of Miami",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "03/29",
       "cardNumber": "0004533077435886",
       "cardType": "JCB",
       "currency": "NZD",
@@ -4936,7 +4936,7 @@
     "macAddress": "52:b1:47:d6:3:f3",
     "university": "Pepperdine University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "04/28",
       "cardNumber": "4479067299414090",
       "cardType": "BC Card",
       "currency": "GBP",
@@ -5006,7 +5006,7 @@
     "macAddress": "af:30:29:ce:56:31",
     "university": "Carnegie Mellon University",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "04/29",
       "cardNumber": "6462322415526863",
       "cardType": "Discover",
       "currency": "GBP",
@@ -5076,7 +5076,7 @@
     "macAddress": "27:d2:0:38:f1:2f",
     "university": "Northeastern University",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "12/27",
       "cardNumber": "0286066544193669",
       "cardType": "Interac",
       "currency": "NZD",
@@ -5146,7 +5146,7 @@
     "macAddress": "5e:0:af:4:76:1e",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "01/30",
       "cardNumber": "8134274630822627",
       "cardType": "Maestro",
       "currency": "CAD",
@@ -5216,7 +5216,7 @@
     "macAddress": "be:d1:6e:a1:53:65",
     "university": "Northeastern University",
     "bank": {
-      "cardExpire": "02/29",
+      "cardExpire": "02/27",
       "cardNumber": "1062034068290751",
       "cardType": "Carte Bancaire",
       "currency": "TRY",
@@ -5286,7 +5286,7 @@
     "macAddress": "92:df:e0:81:ba:1",
     "university": "University of Rochester",
     "bank": {
-      "cardExpire": "02/29",
+      "cardExpire": "10/28",
       "cardNumber": "5808937389274255",
       "cardType": "Interac",
       "currency": "TRY",
@@ -5356,7 +5356,7 @@
     "macAddress": "b4:cb:7d:c1:3:df",
     "university": "Emory University",
     "bank": {
-      "cardExpire": "01/25",
+      "cardExpire": "12/30",
       "cardNumber": "5823091810751272",
       "cardType": "Interac",
       "currency": "GBP",
@@ -5426,7 +5426,7 @@
     "macAddress": "df:94:e1:e7:3a:7",
     "university": "Wake Forest University",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "03/30",
       "cardNumber": "5139010746167383",
       "cardType": "Visa",
       "currency": "JPY",
@@ -5496,7 +5496,7 @@
     "macAddress": "7f:5b:44:3e:95:5a",
     "university": "University of Southern California",
     "bank": {
-      "cardExpire": "01/27",
+      "cardExpire": "09/28",
       "cardNumber": "2154615254029215",
       "cardType": "BC Card",
       "currency": "TRY",
@@ -5566,7 +5566,7 @@
     "macAddress": "c4:f4:db:3e:e5:8f",
     "university": "Duke University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "10/28",
       "cardNumber": "9459153361622170",
       "cardType": "Interac",
       "currency": "SEK",
@@ -5636,7 +5636,7 @@
     "macAddress": "e:c0:3:62:e2:d0",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "02/30",
       "cardNumber": "5515141157559443",
       "cardType": "RuPay",
       "currency": "BRL",
@@ -5706,7 +5706,7 @@
     "macAddress": "6c:98:f0:ac:bb:c2",
     "university": "Johns Hopkins University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "11/28",
       "cardNumber": "1538182929774481",
       "cardType": "NPS",
       "currency": "TRY",
@@ -5776,7 +5776,7 @@
     "macAddress": "b7:c7:29:ff:e0:49",
     "university": "William & Mary",
     "bank": {
-      "cardExpire": "04/25",
+      "cardExpire": "07/29",
       "cardNumber": "6536029246670234",
       "cardType": "Elo",
       "currency": "USD",
@@ -5846,7 +5846,7 @@
     "macAddress": "89:50:ac:7e:d0:b6",
     "university": "Cornell University",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "02/28",
       "cardNumber": "8091040778935991",
       "cardType": "Interac",
       "currency": "AUD",
@@ -5916,7 +5916,7 @@
     "macAddress": "35:b4:67:82:6e:1",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "12/30",
       "cardNumber": "2496562393258272",
       "cardType": "NPS",
       "currency": "INR",
@@ -5986,7 +5986,7 @@
     "macAddress": "47:c8:97:c1:19:ab",
     "university": "William & Mary",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "04/30",
       "cardNumber": "7295012770485771",
       "cardType": "Diners Club International",
       "currency": "JPY",
@@ -6056,7 +6056,7 @@
     "macAddress": "6f:92:45:21:c8:b3",
     "university": "Emory University",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "04/27",
       "cardNumber": "0117537155001958",
       "cardType": "BC Card",
       "currency": "JPY",
@@ -6126,7 +6126,7 @@
     "macAddress": "5a:18:55:d7:84:b9",
     "university": "Vanderbilt University",
     "bank": {
-      "cardExpire": "01/27",
+      "cardExpire": "10/29",
       "cardNumber": "9134131973853862",
       "cardType": "Visa",
       "currency": "NZD",
@@ -6196,7 +6196,7 @@
     "macAddress": "1c:f0:2c:ff:21:53",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "01/27",
       "cardNumber": "4767228408396406",
       "cardType": "Carte Bancaire",
       "currency": "SEK",
@@ -6266,7 +6266,7 @@
     "macAddress": "ff:d1:93:5a:64:df",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "09/29",
       "cardNumber": "2969944034477874",
       "cardType": "Diners Club International",
       "currency": "AUD",
@@ -6336,7 +6336,7 @@
     "macAddress": "90:74:c5:2e:24:75",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "01/27",
+      "cardExpire": "08/27",
       "cardNumber": "9177025151144670",
       "cardType": "Korean Express",
       "currency": "EUR",
@@ -6406,7 +6406,7 @@
     "macAddress": "75:e4:8e:ea:ce:9d",
     "university": "University of Chicago",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "09/29",
       "cardNumber": "7832657139737556",
       "cardType": "American Express",
       "currency": "BRL",
@@ -6476,7 +6476,7 @@
     "macAddress": "25:d5:d5:70:83:6f",
     "university": "Duke University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "05/29",
       "cardNumber": "6997033478445337",
       "cardType": "Interac",
       "currency": "TRY",
@@ -6546,7 +6546,7 @@
     "macAddress": "13:d2:72:d4:3b:94",
     "university": "University of Chicago",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "02/30",
       "cardNumber": "7515727970528432",
       "cardType": "Diners Club International",
       "currency": "PKR",
@@ -6616,7 +6616,7 @@
     "macAddress": "ea:9f:90:df:f0:43",
     "university": "Wake Forest University",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "08/28",
       "cardNumber": "2496284584728933",
       "cardType": "RuPay",
       "currency": "INR",
@@ -6686,7 +6686,7 @@
     "macAddress": "34:95:bd:59:f4:39",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "07/29",
       "cardNumber": "9694556473609201",
       "cardType": "BC Card",
       "currency": "GBP",
@@ -6756,7 +6756,7 @@
     "macAddress": "79:d9:1b:19:e2:73",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "01/25",
+      "cardExpire": "11/27",
       "cardNumber": "1802378580921273",
       "cardType": "Maestro",
       "currency": "PKR",
@@ -6826,7 +6826,7 @@
     "macAddress": "30:fa:b2:ca:17:91",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "10/29",
       "cardNumber": "9676524532044930",
       "cardType": "BC Card",
       "currency": "EUR",
@@ -6966,7 +6966,7 @@
     "macAddress": "96:21:23:2c:f:d5",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "12/29",
       "cardNumber": "9133716000907183",
       "cardType": "Korean Express",
       "currency": "CNY",
@@ -7036,7 +7036,7 @@
     "macAddress": "f3:c3:7b:69:2e:ab",
     "university": "Wake Forest University",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "07/27",
       "cardNumber": "2722859346991737",
       "cardType": "JCB",
       "currency": "CAD",
@@ -7106,7 +7106,7 @@
     "macAddress": "6d:ab:13:25:a0:10",
     "university": "Brown University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "04/30",
       "cardNumber": "3399117834001550",
       "cardType": "Discover",
       "currency": "SEK",
@@ -7176,7 +7176,7 @@
     "macAddress": "3b:9b:ee:cf:1f:de",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "09/30",
       "cardNumber": "0804635043652938",
       "cardType": "American Express",
       "currency": "USD",
@@ -7246,7 +7246,7 @@
     "macAddress": "29:bc:a7:64:58:48",
     "university": "University of Miami",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "04/30",
       "cardNumber": "2205427429854197",
       "cardType": "Mir",
       "currency": "NZD",
@@ -7316,7 +7316,7 @@
     "macAddress": "64:a6:72:4d:9e:79",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "03/30",
       "cardNumber": "5350949324601165",
       "cardType": "Elo",
       "currency": "JPY",
@@ -7386,7 +7386,7 @@
     "macAddress": "b:2c:b2:76:6e:e",
     "university": "University of Texas--Austin",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "01/30",
       "cardNumber": "4479775232019347",
       "cardType": "RuPay International",
       "currency": "INR",
@@ -7526,7 +7526,7 @@
     "macAddress": "11:ea:1d:70:da:c6",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "05/30",
       "cardNumber": "4782758877098925",
       "cardType": "Elo",
       "currency": "NZD",
@@ -7596,7 +7596,7 @@
     "macAddress": "e9:4b:99:81:79:4b",
     "university": "Pepperdine University",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "08/30",
       "cardNumber": "5938771361619691",
       "cardType": "NPS",
       "currency": "INR",
@@ -7666,7 +7666,7 @@
     "macAddress": "3f:6c:6:36:28:78",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "05/29",
       "cardNumber": "7250434898043625",
       "cardType": "Korean Express",
       "currency": "TRY",
@@ -7736,7 +7736,7 @@
     "macAddress": "5b:14:cc:6f:e:fe",
     "university": "Rice University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "04/28",
       "cardNumber": "4699798769712227",
       "cardType": "Discover",
       "currency": "AUD",
@@ -7806,7 +7806,7 @@
     "macAddress": "4c:83:2a:82:f:c6",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "11/30",
       "cardNumber": "3843242207440634",
       "cardType": "JCB",
       "currency": "EUR",
@@ -7946,7 +7946,7 @@
     "macAddress": "55:fb:cb:7e:dd:4d",
     "university": "University of California--Irvine",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "06/27",
       "cardNumber": "8976448819859905",
       "cardType": "RuPay",
       "currency": "INR",
@@ -8016,7 +8016,7 @@
     "macAddress": "92:10:92:b4:b7:22",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "08/30",
       "cardNumber": "2252651728587119",
       "cardType": "Diners Club International",
       "currency": "JPY",
@@ -8086,7 +8086,7 @@
     "macAddress": "dc:61:49:ad:14:4",
     "university": "University of California--San Diego",
     "bank": {
-      "cardExpire": "01/27",
+      "cardExpire": "05/29",
       "cardNumber": "0528978503635481",
       "cardType": "NPS",
       "currency": "EUR",
@@ -8156,7 +8156,7 @@
     "macAddress": "1:64:41:63:ca:9e",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "05/30",
       "cardNumber": "5739347905804766",
       "cardType": "Visa",
       "currency": "BRL",
@@ -8226,7 +8226,7 @@
     "macAddress": "da:86:2b:7:2c:43",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "02/29",
+      "cardExpire": "07/30",
       "cardNumber": "4394606274122096",
       "cardType": "UnionPay",
       "currency": "GBP",
@@ -8296,7 +8296,7 @@
     "macAddress": "14:6:e:a9:22:34",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "06/27",
       "cardNumber": "9764305340302210",
       "cardType": "RuPay International",
       "currency": "GBP",
@@ -8366,7 +8366,7 @@
     "macAddress": "9a:6a:39:30:cb:e9",
     "university": "University of California--Santa Barbara",
     "bank": {
-      "cardExpire": "01/25",
+      "cardExpire": "06/27",
       "cardNumber": "9055611432696007",
       "cardType": "Visa",
       "currency": "BRL",
@@ -8436,7 +8436,7 @@
     "macAddress": "4:c3:e9:35:23:2a",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "02/30",
       "cardNumber": "8933423589330803",
       "cardType": "Carte Bancaire",
       "currency": "SEK",
@@ -8506,7 +8506,7 @@
     "macAddress": "90:df:b7:26:95:1",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "05/27",
       "cardNumber": "8934881274348898",
       "cardType": "Elo",
       "currency": "PKR",
@@ -8576,7 +8576,7 @@
     "macAddress": "aa:b8:2b:92:fa:a1",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "08/28",
       "cardNumber": "3605368781322177",
       "cardType": "RuPay International",
       "currency": "BRL",
@@ -8646,7 +8646,7 @@
     "macAddress": "e3:f5:6d:86:ed:bd",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "01/30",
       "cardNumber": "7516988588241862",
       "cardType": "Mir",
       "currency": "TRY",
@@ -8716,7 +8716,7 @@
     "macAddress": "b0:84:9f:82:c1:7e",
     "university": "University of North Carolina--Chapel Hill",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "12/27",
       "cardNumber": "2034381528111711",
       "cardType": "Diners Club International",
       "currency": "CAD",
@@ -8786,7 +8786,7 @@
     "macAddress": "cd:79:10:9d:88:15",
     "university": "Duke University",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "04/29",
       "cardNumber": "6522497852885853",
       "cardType": "Elo",
       "currency": "BRL",
@@ -8856,7 +8856,7 @@
     "macAddress": "28:14:5f:91:dc:81",
     "university": "University of Connecticut",
     "bank": {
-      "cardExpire": "03/29",
+      "cardExpire": "08/28",
       "cardNumber": "3251665877187417",
       "cardType": "Discover",
       "currency": "USD",
@@ -8926,7 +8926,7 @@
     "macAddress": "a7:1d:7:5d:96:86",
     "university": "Rice University",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "04/27",
       "cardNumber": "8269179753161878",
       "cardType": "Maestro",
       "currency": "CAD",
@@ -8996,7 +8996,7 @@
     "macAddress": "a6:52:5f:7c:d0:21",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "07/28",
       "cardNumber": "5399572822435878",
       "cardType": "Mastercard",
       "currency": "JPY",
@@ -9066,7 +9066,7 @@
     "macAddress": "8b:b1:8:34:e9:b7",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "09/29",
       "cardNumber": "5739495023800605",
       "cardType": "Korean Express",
       "currency": "AUD",
@@ -9136,7 +9136,7 @@
     "macAddress": "e7:a2:59:b:23:32",
     "university": "Pepperdine University",
     "bank": {
-      "cardExpire": "04/27",
+      "cardExpire": "08/27",
       "cardNumber": "6517542791688067",
       "cardType": "American Express",
       "currency": "GBP",
@@ -9206,7 +9206,7 @@
     "macAddress": "d5:fe:f3:d2:f0:2b",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "09/29",
       "cardNumber": "6146612258780756",
       "cardType": "BC Card",
       "currency": "PKR",
@@ -9276,7 +9276,7 @@
     "macAddress": "4:fe:6d:fc:cb:53",
     "university": "Emory University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "01/28",
       "cardNumber": "0909826616438432",
       "cardType": "Mir",
       "currency": "GBP",
@@ -9346,7 +9346,7 @@
     "macAddress": "29:7c:5d:5b:eb:e8",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "01/25",
+      "cardExpire": "04/29",
       "cardNumber": "2553574204711282",
       "cardType": "Carte Bancaire",
       "currency": "JPY",
@@ -9416,7 +9416,7 @@
     "macAddress": "11:be:4d:5a:92:7d",
     "university": "University of California--Berkeley",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "05/27",
       "cardNumber": "2186461769081882",
       "cardType": "BC Card",
       "currency": "AUD",
@@ -9486,7 +9486,7 @@
     "macAddress": "4e:15:99:a0:22:33",
     "university": "Northwestern University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "06/27",
       "cardNumber": "2791153884967760",
       "cardType": "American Express",
       "currency": "CAD",
@@ -9556,7 +9556,7 @@
     "macAddress": "c0:5b:be:a7:62:ee",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "05/29",
+      "cardExpire": "08/30",
       "cardNumber": "7526815469256987",
       "cardType": "Interac",
       "currency": "SEK",
@@ -9626,7 +9626,7 @@
     "macAddress": "ea:68:4b:14:68:2a",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "04/27",
       "cardNumber": "0685326755057038",
       "cardType": "Korean Express",
       "currency": "AUD",
@@ -9696,7 +9696,7 @@
     "macAddress": "1b:5f:54:b8:11:17",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "05/28",
       "cardNumber": "8454810784553018",
       "cardType": "BC Card",
       "currency": "EUR",
@@ -9766,7 +9766,7 @@
     "macAddress": "5f:9:f8:f3:a4:39",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "03/28",
       "cardNumber": "2851128641003051",
       "cardType": "UnionPay",
       "currency": "PKR",
@@ -9836,7 +9836,7 @@
     "macAddress": "69:69:35:e5:20:8b",
     "university": "New York University (NYU)",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "03/28",
       "cardNumber": "3390961559078973",
       "cardType": "NPS",
       "currency": "AUD",
@@ -9906,7 +9906,7 @@
     "macAddress": "c1:1:6a:d:86:c4",
     "university": "Stanford University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "09/27",
       "cardNumber": "1425750681868097",
       "cardType": "Mir",
       "currency": "USD",
@@ -9976,7 +9976,7 @@
     "macAddress": "eb:ab:3d:6b:ec:9",
     "university": "Purdue University",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "11/29",
       "cardNumber": "4329547160269723",
       "cardType": "RuPay",
       "currency": "TRY",
@@ -10046,7 +10046,7 @@
     "macAddress": "b8:bd:c:c1:da:a2",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "05/30",
       "cardNumber": "8978751633663357",
       "cardType": "Discover",
       "currency": "SEK",
@@ -10116,7 +10116,7 @@
     "macAddress": "2a:d6:6b:5:8e:22",
     "university": "University of Connecticut",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "05/30",
       "cardNumber": "6660079028324510",
       "cardType": "RuPay International",
       "currency": "EUR",
@@ -10186,7 +10186,7 @@
     "macAddress": "5a:a0:5b:41:f2:96",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "05/29",
       "cardNumber": "7459759050034314",
       "cardType": "Elo",
       "currency": "EUR",
@@ -10256,7 +10256,7 @@
     "macAddress": "69:dd:33:c0:84:9e",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "10/30",
       "cardNumber": "9583309773717983",
       "cardType": "Mir",
       "currency": "SEK",
@@ -10326,7 +10326,7 @@
     "macAddress": "8c:49:78:e2:70:b2",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "05/29",
+      "cardExpire": "04/28",
       "cardNumber": "5711570153778161",
       "cardType": "JCB",
       "currency": "EUR",
@@ -10396,7 +10396,7 @@
     "macAddress": "62:a8:ed:34:97:bb",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "01/28",
       "cardNumber": "1952017598239931",
       "cardType": "Discover",
       "currency": "EUR",
@@ -10466,7 +10466,7 @@
     "macAddress": "3c:5:3b:9:ea:d",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "12/29",
       "cardNumber": "0258148865583178",
       "cardType": "NPS",
       "currency": "NZD",
@@ -10536,7 +10536,7 @@
     "macAddress": "1b:a1:e1:cd:a2:39",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "04/27",
       "cardNumber": "1975042725433931",
       "cardType": "Visa",
       "currency": "CNY",
@@ -10606,7 +10606,7 @@
     "macAddress": "3d:ed:8:56:8c:18",
     "university": "University of North Carolina--Chapel Hill",
     "bank": {
-      "cardExpire": "04/27",
+      "cardExpire": "08/29",
       "cardNumber": "8771167238171154",
       "cardType": "Mastercard",
       "currency": "BRL",
@@ -10676,7 +10676,7 @@
     "macAddress": "d9:7e:c8:a5:a6:76",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "04/25",
+      "cardExpire": "09/28",
       "cardNumber": "9919121465723810",
       "cardType": "Visa",
       "currency": "BRL",
@@ -10746,7 +10746,7 @@
     "macAddress": "22:2f:1c:38:57:2",
     "university": "Vanderbilt University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "11/27",
       "cardNumber": "6840230691097937",
       "cardType": "Interac",
       "currency": "CAD",
@@ -10816,7 +10816,7 @@
     "macAddress": "a9:21:d3:16:61:4b",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "02/27",
+      "cardExpire": "02/28",
       "cardNumber": "3588152310018223",
       "cardType": "BC Card",
       "currency": "AUD",
@@ -10886,7 +10886,7 @@
     "macAddress": "69:8b:7e:5f:44:93",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "12/29",
       "cardNumber": "6768824763441600",
       "cardType": "Carte Bancaire",
       "currency": "GBP",
@@ -10956,7 +10956,7 @@
     "macAddress": "9e:3f:8b:b:83:af",
     "university": "University of Pennsylvania",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "03/29",
       "cardNumber": "1831274525877757",
       "cardType": "RuPay International",
       "currency": "INR",
@@ -11026,7 +11026,7 @@
     "macAddress": "41:7:7b:23:29:e9",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "10/29",
       "cardNumber": "3086621278059815",
       "cardType": "Maestro",
       "currency": "PKR",
@@ -11096,7 +11096,7 @@
     "macAddress": "52:99:c0:85:5b:a4",
     "university": "Emory University",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "12/29",
       "cardNumber": "8925851514710054",
       "cardType": "Diners Club International",
       "currency": "EUR",
@@ -11166,7 +11166,7 @@
     "macAddress": "f2:41:35:ae:58:9",
     "university": "New York University (NYU)",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "03/28",
       "cardNumber": "5888242155607102",
       "cardType": "Maestro",
       "currency": "CAD",
@@ -11236,7 +11236,7 @@
     "macAddress": "92:2c:b6:84:2c:dc",
     "university": "Northwestern University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "03/28",
       "cardNumber": "6156021725409231",
       "cardType": "Mastercard",
       "currency": "TRY",
@@ -11306,7 +11306,7 @@
     "macAddress": "9e:58:c9:90:83:c1",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "03/29",
+      "cardExpire": "07/27",
       "cardNumber": "7049636055800913",
       "cardType": "Interac",
       "currency": "CNY",
@@ -11376,7 +11376,7 @@
     "macAddress": "aa:f8:66:52:fd:86",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "06/30",
       "cardNumber": "7118380601962995",
       "cardType": "Elo",
       "currency": "JPY",
@@ -11446,7 +11446,7 @@
     "macAddress": "e2:a5:4:ce:d7:60",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "03/28",
+      "cardExpire": "12/30",
       "cardNumber": "2750280981054387",
       "cardType": "Maestro",
       "currency": "AUD",
@@ -11516,7 +11516,7 @@
     "macAddress": "b4:8d:f5:69:63:94",
     "university": "Johns Hopkins University",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "03/28",
       "cardNumber": "4275330541477827",
       "cardType": "Korean Express",
       "currency": "USD",
@@ -11586,7 +11586,7 @@
     "macAddress": "7f:a7:45:db:ae:69",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "05/26",
+      "cardExpire": "02/29",
       "cardNumber": "2727805642998721",
       "cardType": "Visa",
       "currency": "INR",
@@ -11656,7 +11656,7 @@
     "macAddress": "1e:2c:32:b6:ec:58",
     "university": "University of Miami",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "11/27",
       "cardNumber": "3853913537238924",
       "cardType": "American Express",
       "currency": "BRL",
@@ -11726,7 +11726,7 @@
     "macAddress": "f0:ee:f4:17:28:a5",
     "university": "Emory University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "06/30",
       "cardNumber": "1590500951112187",
       "cardType": "RuPay International",
       "currency": "INR",
@@ -11796,7 +11796,7 @@
     "macAddress": "dd:39:a5:34:a7:f3",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "01/27",
       "cardNumber": "3437946274183958",
       "cardType": "JCB",
       "currency": "GBP",
@@ -11866,7 +11866,7 @@
     "macAddress": "86:21:8a:36:a2:4",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "09/30",
       "cardNumber": "4376114477815917",
       "cardType": "Mastercard",
       "currency": "JPY",
@@ -11936,7 +11936,7 @@
     "macAddress": "bb:ba:65:83:50:d2",
     "university": "Purdue University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "08/27",
       "cardNumber": "7379253590169144",
       "cardType": "Interac",
       "currency": "GBP",
@@ -12006,7 +12006,7 @@
     "macAddress": "e5:32:fa:4f:da:f3",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "08/27",
       "cardNumber": "5174779352968109",
       "cardType": "Visa",
       "currency": "CNY",
@@ -12076,7 +12076,7 @@
     "macAddress": "7f:1d:2a:a2:c0:29",
     "university": "Columbia University",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "01/30",
       "cardNumber": "3646724579262062",
       "cardType": "Maestro",
       "currency": "AUD",
@@ -12146,7 +12146,7 @@
     "macAddress": "dd:92:4:f7:21:ea",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "05/28",
+      "cardExpire": "08/29",
       "cardNumber": "8349323088886313",
       "cardType": "American Express",
       "currency": "USD",
@@ -12216,7 +12216,7 @@
     "macAddress": "89:62:2:94:2d:41",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "11/30",
       "cardNumber": "5642774449643399",
       "cardType": "Maestro",
       "currency": "EUR",
@@ -12286,7 +12286,7 @@
     "macAddress": "c:a3:46:aa:98:7c",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "04/27",
+      "cardExpire": "04/29",
       "cardNumber": "2778429500540154",
       "cardType": "Maestro",
       "currency": "SEK",
@@ -12356,7 +12356,7 @@
     "macAddress": "b6:25:29:40:c0:e3",
     "university": "Carnegie Mellon University",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "08/30",
       "cardNumber": "4449074075966103",
       "cardType": "RuPay International",
       "currency": "CNY",
@@ -12426,7 +12426,7 @@
     "macAddress": "5b:61:7f:86:19:aa",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "04/25",
+      "cardExpire": "11/28",
       "cardNumber": "2080834444771837",
       "cardType": "BC Card",
       "currency": "PKR",
@@ -12496,7 +12496,7 @@
     "macAddress": "87:21:ab:ff:43:f9",
     "university": "Princeton University",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "12/30",
       "cardNumber": "8022867318246990",
       "cardType": "Mastercard",
       "currency": "PKR",
@@ -12566,7 +12566,7 @@
     "macAddress": "a0:81:60:92:50:e9",
     "university": "University of Virginia",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "01/29",
       "cardNumber": "1017932250628592",
       "cardType": "JCB",
       "currency": "GBP",
@@ -12636,7 +12636,7 @@
     "macAddress": "6c:11:5e:d9:f0:de",
     "university": "Yale University",
     "bank": {
-      "cardExpire": "01/26",
+      "cardExpire": "06/28",
       "cardNumber": "8943098914544972",
       "cardType": "RuPay",
       "currency": "INR",
@@ -12706,7 +12706,7 @@
     "macAddress": "7a:26:2d:97:71:e3",
     "university": "William & Mary",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "06/29",
       "cardNumber": "5919588760881253",
       "cardType": "RuPay",
       "currency": "AUD",
@@ -12776,7 +12776,7 @@
     "macAddress": "5f:fb:b6:26:7c:7c",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "06/30",
       "cardNumber": "1493621436986299",
       "cardType": "Discover",
       "currency": "AUD",
@@ -12846,7 +12846,7 @@
     "macAddress": "b9:66:87:b5:99:4e",
     "university": "Boston University",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "03/28",
       "cardNumber": "7088225084924944",
       "cardType": "Elo",
       "currency": "JPY",
@@ -12916,7 +12916,7 @@
     "macAddress": "dc:58:e5:e2:32:dd",
     "university": "Washington University in St. Louis",
     "bank": {
-      "cardExpire": "02/26",
+      "cardExpire": "12/30",
       "cardNumber": "2120519729346846",
       "cardType": "Maestro",
       "currency": "CNY",
@@ -12986,7 +12986,7 @@
     "macAddress": "53:2c:94:c9:77:6f",
     "university": "University of Wisconsin--Madison",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "09/30",
       "cardNumber": "9429629624339136",
       "cardType": "American Express",
       "currency": "USD",
@@ -13126,7 +13126,7 @@
     "macAddress": "9d:d1:19:e7:45:26",
     "university": "Columbia University",
     "bank": {
-      "cardExpire": "01/29",
+      "cardExpire": "07/30",
       "cardNumber": "0409564202862832",
       "cardType": "NPS",
       "currency": "BRL",
@@ -13196,7 +13196,7 @@
     "macAddress": "2b:8:d6:5a:ed:81",
     "university": "Northwestern University",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "12/28",
       "cardNumber": "4617253728735584",
       "cardType": "Interac",
       "currency": "USD",
@@ -13266,7 +13266,7 @@
     "macAddress": "8f:50:fe:d9:74:ae",
     "university": "Purdue University",
     "bank": {
-      "cardExpire": "03/25",
+      "cardExpire": "01/27",
       "cardNumber": "2826840441530519",
       "cardType": "NPS",
       "currency": "INR",
@@ -13336,7 +13336,7 @@
     "macAddress": "cc:f1:65:43:56:ac",
     "university": "University of Illinois--Urbana-Champaign",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "04/29",
       "cardNumber": "5030561746147503",
       "cardType": "American Express",
       "currency": "BRL",
@@ -13406,7 +13406,7 @@
     "macAddress": "13:a4:4b:c5:38:3",
     "university": "University of Notre Dame",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "04/29",
       "cardNumber": "5672721110427670",
       "cardType": "Maestro",
       "currency": "SEK",
@@ -13476,7 +13476,7 @@
     "macAddress": "5:57:74:1d:33:1f",
     "university": "Georgetown University",
     "bank": {
-      "cardExpire": "04/28",
+      "cardExpire": "01/27",
       "cardNumber": "4298545687586865",
       "cardType": "RuPay International",
       "currency": "CNY",
@@ -13546,7 +13546,7 @@
     "macAddress": "2c:15:a1:cf:f1:5d",
     "university": "Harvard University",
     "bank": {
-      "cardExpire": "05/29",
+      "cardExpire": "04/27",
       "cardNumber": "7662791813633563",
       "cardType": "Elo",
       "currency": "PKR",
@@ -13616,7 +13616,7 @@
     "macAddress": "14:4f:60:e6:51:5f",
     "university": "Ohio State University",
     "bank": {
-      "cardExpire": "03/29",
+      "cardExpire": "05/30",
       "cardNumber": "6372196314757705",
       "cardType": "Carte Bancaire",
       "currency": "BRL",
@@ -13686,7 +13686,7 @@
     "macAddress": "f3:cd:e1:2e:10:75",
     "university": "Princeton University",
     "bank": {
-      "cardExpire": "04/29",
+      "cardExpire": "08/27",
       "cardNumber": "8955473995911969",
       "cardType": "RuPay International",
       "currency": "TRY",
@@ -13756,7 +13756,7 @@
     "macAddress": "19:68:58:3c:91:f5",
     "university": "University of California--Irvine",
     "bank": {
-      "cardExpire": "05/27",
+      "cardExpire": "03/30",
       "cardNumber": "4840670160554887",
       "cardType": "Elo",
       "currency": "USD",
@@ -13826,7 +13826,7 @@
     "macAddress": "c9:28:a6:29:90:5e",
     "university": "Boston College",
     "bank": {
-      "cardExpire": "03/26",
+      "cardExpire": "05/27",
       "cardNumber": "0926288341553758",
       "cardType": "Interac",
       "currency": "PKR",
@@ -13896,7 +13896,7 @@
     "macAddress": "7e:75:8d:b9:ed:39",
     "university": "Massachusetts Institute of Technology (MIT)",
     "bank": {
-      "cardExpire": "05/25",
+      "cardExpire": "06/30",
       "cardNumber": "0634175518937018",
       "cardType": "Diners Club International",
       "currency": "PKR",
@@ -13966,7 +13966,7 @@
     "macAddress": "e1:22:78:3f:9b:8c",
     "university": "Stanford University",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "08/27",
       "cardNumber": "4644560059607863",
       "cardType": "JCB",
       "currency": "NZD",
@@ -14036,7 +14036,7 @@
     "macAddress": "dd:f8:8b:85:b9:33",
     "university": "University of California--Irvine",
     "bank": {
-      "cardExpire": "02/25",
+      "cardExpire": "09/30",
       "cardNumber": "3933177759239199",
       "cardType": "Carte Bancaire",
       "currency": "USD",
@@ -14106,7 +14106,7 @@
     "macAddress": "12:1a:8:4a:c:bf",
     "university": "University of Michigan--Ann Arbor",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "04/29",
       "cardNumber": "2464610673262229",
       "cardType": "RuPay International",
       "currency": "PKR",
@@ -14176,7 +14176,7 @@
     "macAddress": "e:ea:3e:f3:2d:90",
     "university": "Dartmouth College",
     "bank": {
-      "cardExpire": "04/26",
+      "cardExpire": "01/27",
       "cardNumber": "1025143372459028",
       "cardType": "BC Card",
       "currency": "SEK",
@@ -14246,7 +14246,7 @@
     "macAddress": "fc:6e:67:26:8b:ff",
     "university": "University of Florida",
     "bank": {
-      "cardExpire": "02/28",
+      "cardExpire": "03/30",
       "cardNumber": "1648285370019902",
       "cardType": "Mir",
       "currency": "CAD",
@@ -14386,7 +14386,7 @@
     "macAddress": "83:75:b2:b6:ca:8b",
     "university": "Tufts University",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "01/30",
       "cardNumber": "8424167615739668",
       "cardType": "BC Card",
       "currency": "BRL",
@@ -14456,7 +14456,7 @@
     "macAddress": "5e:fa:19:da:b9:fc",
     "university": "University of Rochester",
     "bank": {
-      "cardExpire": "03/27",
+      "cardExpire": "05/30",
       "cardNumber": "1244339250635074",
       "cardType": "RuPay",
       "currency": "GBP",
@@ -14526,7 +14526,7 @@
     "macAddress": "64:d:24:41:77:b8",
     "university": "University of Texas--Austin",
     "bank": {
-      "cardExpire": "01/28",
+      "cardExpire": "04/27",
       "cardNumber": "7490457183718588",
       "cardType": "RuPay International",
       "currency": "INR",
