@@ -22,7 +22,7 @@
       <div class="resource" id="products-all">
         <a href="#products-all" class="res-title">Get all products</a>
         <p class="res-desc">
-          By default you will get 30 items, use <a href="#products-limit_skip">Limit and skip</a> to paginate through all items.
+          By default you will get 30 items, use <a href="#products-limit_skip">Limit and skip</a> to paginate through all items. All query parameters (<code>limit</code>, <code>skip</code>, <code>select</code>, <code>sortBy</code>, <code>order</code>) can be combined.
         </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products')
@@ -107,6 +107,9 @@
 
       <div class="resource" id="products-single">
         <a href="#products-single" class="res-title">Get a single product</a>
+        <p class="res-desc">
+          Retrieve detailed information for a specific product by ID. Supports the <code>select</code> parameter to return only specific fields.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/1')
           .then(res => res.json())
@@ -175,10 +178,20 @@
             "images": ["...", "...", "..."]
           }
         </code></pre>
+
+        <p class="res-tip">
+          <strong>Error Handling:</strong> If the product ID doesn't exist, the API returns a 404 error with message: <code>{"message": "Product with id '{id}' not found"}</code>
+        </p>
       </div>
 
       <div class="resource" id="products-search">
         <a href="#products-search" class="res-title">Search products</a>
+        <p class="res-desc">
+          Search products by keyword. The search is case-insensitive and supports partial matching across product titles and descriptions.
+        </p>
+        <p class="res-tip">
+          <strong>Search Behavior:</strong> The search query (<code>q</code>) is case-insensitive and matches partial text. For example, "phone" will match "iPhone", "Smartphone", and "Headphones". Special characters and numbers are supported.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/search?q=phone')
           .then(res => res.json())
@@ -192,7 +205,7 @@
             "products": [
               {
                 "id": 101,
-                "title": "title": "Apple AirPods Max Silver",
+                "title": "Apple AirPods Max Silver",
                 "category": "mobile-accessories"
                 ...
               },
@@ -206,17 +219,22 @@
             "limit": 23
           }
         </code></pre>
+
+        <p class="res-tip">
+          <strong>Note:</strong> The <code>total</code> field reflects the number of products matching the search query, not the total product count. All pagination parameters (<code>limit</code>, <code>skip</code>, <code>select</code>) work with search.
+        </p>
       </div>
 
       <div class="resource" id="products-limit_skip">
         <a href="#products-limit_skip" class="res-title">Limit and skip products</a>
         <p class="res-tip">
-          You can pass `limit` and `skip` params to limit and skip the
-          results for pagination, and use `limit=0` to get all items.
+          Use <code>limit</code> and <code>skip</code> params for pagination. The <code>limit</code> parameter controls how many items to return (default: 30), and <code>skip</code> determines how many items to skip.
         </p>
         <p class="res-tip">
-          You can pass `select` as query params with comma-separated values
-          to select specific data
+          Use <code>select</code> to return only specific fields by passing comma-separated field names (e.g., <code>select=title,price</code>). The <code>id</code> field is always included. Note that nested field selection (e.g., <code>dimensions.width</code>) is not supported.
+        </p>
+        <p class="res-tip">
+          <strong>⚠️ Important:</strong> Setting <code>limit=0</code> or any value exceeding the total product count (194) will return all products. Always use values between 1-194 to avoid performance issues.
         </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products?limit=10&skip=10&select=title,price')
@@ -244,13 +262,19 @@
             "limit": 10
           }
         </code></pre>
+
+        <p class="res-tip">
+          <strong>Pagination Guide:</strong> Use the response metadata to implement pagination. Check if more results exist with: <code>hasMore = (skip + limit) < total</code>. Calculate total pages with: <code>Math.ceil(total / limit)</code>.
+        </p>
       </div>
 
       <div class="resource" id="products-sort">
         <a href="#products-sort" class="res-title">Sort products</a>
         <p class="res-tip">
-          You can pass `sortBy` and `order` params to sort the results,
-          `sortBy` should be field name and `order` should be "asc" or "desc"
+          Sort results using <code>sortBy</code> (field name) and <code>order</code> ("asc" or "desc"). Valid <code>sortBy</code> fields include: <code>title</code>, <code>price</code>, <code>rating</code>, <code>stock</code>, <code>discountPercentage</code>, <code>category</code>, and <code>brand</code>.
+        </p>
+        <p class="res-tip">
+          <strong>⚠️ Note:</strong> Invalid <code>sortBy</code> field names will not return an error but will result in unsorted data (first 30 products in default order). Always validate field names before making requests.
         </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products?sortBy=title&order=asc')
@@ -287,6 +311,9 @@
 
       <div class="resource" id="products-categories">
         <a href="#products-categories" class="res-title">Get all products categories</a>
+        <p class="res-desc">
+          Returns a list of all available product categories with their slugs, names, and URLs.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/categories')
           .then(res => res.json())
@@ -322,6 +349,9 @@
 
       <div class="resource" id="products-category_list">
         <a href="#products-category_list" class="res-title">Get products category list</a>
+        <p class="res-desc">
+          Returns a simple array of category slug strings. Use this endpoint to get category names for filtering products.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/category-list')
           .then(res => res.json())
@@ -362,6 +392,12 @@
 
       <div class="resource" id="products-category">
         <a href="#products-category" class="res-title">Get products by a category</a>
+        <p class="res-desc">
+          Filter products by category slug. All query parameters (<code>limit</code>, <code>skip</code>, <code>select</code>, <code>sortBy</code>, <code>order</code>) are supported.
+        </p>
+        <p class="res-tip">
+          <strong>Note:</strong> Invalid category names return an empty result set with <code>total: 0</code> (not a 404 error). Use <code>/products/category-list</code> to get valid category names.
+        </p>
         <pre><code class="language-js">
           fetch('https://dummyjson.com/products/category/smartphones')
           .then(res => res.json())
