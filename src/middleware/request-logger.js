@@ -1,6 +1,7 @@
 import onFinished from 'on-finished';
 import onHeaders from 'on-headers';
 import { flushRouteStatsSnapshot } from '../helpers/route-stat.js';
+import { flushUserAgentStatsSnapshot } from '../helpers/user-agent-stat.js';
 import { isRequestInWhitelist } from '../helpers/index.js';
 import { log, logError } from '../helpers/logger.js';
 import { timeDifference } from '../utils/util.js';
@@ -11,6 +12,7 @@ const counts = {
   overallRequestCount: 0,
   customRouteCount: 0,
   pathCounts: {}, // last minute counts only
+  userAgentCounts: {}, // last minute counts only
 };
 
 function requestLogger(req, res, next) {
@@ -28,6 +30,11 @@ function requestLogger(req, res, next) {
 
   const fullPath = requestURL.split('?')[0]?.toLowerCase();
   counts.pathCounts[fullPath] = (counts.pathCounts[fullPath] || 0) + 1;
+
+  // Track user-agent
+  const { clientInfo } = req;
+  const userAgent = clientInfo?.userAgent || 'unknown';
+  counts.userAgentCounts[userAgent] = (counts.userAgentCounts[userAgent] || 0) + 1;
 
   if (!LOG_ENABLED) {
     next();
@@ -139,7 +146,14 @@ function startCountLogger() {
       logError('Error flushing route stats snapshot', { error: err });
     }
 
+    try {
+      await flushUserAgentStatsSnapshot(counts.userAgentCounts);
+    } catch (err) {
+      logError('Error flushing user-agent stats snapshot', { error: err });
+    }
+
     counts.pathCounts = {};
+    counts.userAgentCounts = {};
   }, 60 * 1000 /* 1 minute */);
 }
 
