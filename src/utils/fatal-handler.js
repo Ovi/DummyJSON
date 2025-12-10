@@ -3,6 +3,7 @@ import { log, logError } from '../helpers/logger.js';
 import { buildRequestMetaData } from '../middleware/error.js';
 import { getCurrentRequest } from '../utils/request-context.js';
 import { sendProcessErrorPushNotification } from '../utils/util.js';
+import { server } from '../../index.js';
 
 export function registerFatalHandlers() {
   process.on('uncaughtException', err => {

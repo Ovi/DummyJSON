@@ -38,7 +38,7 @@ app.get('*', (req, res) => res.status(404).send());
 app.use(errorMiddleware);
 
 // Keep a reference to server so we can close it on SIGINT/SIGTERM
-const server = app.listen(PORT, () => {
+export const server = app.listen(PORT, () => {
   console.log(`[${NODE_ENV}] App running at http://localhost:${PORT}`);
 });
 
