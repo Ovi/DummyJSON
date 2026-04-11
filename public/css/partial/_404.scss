@@ -1,0 +1,108 @@
+// 404 page (uses variables from _base via _nav import chain)
+
+.page-404 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.25rem 3rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #f0f0ff 0%,
+    #f5f4ff 30%,
+    #fff8f7 65%,
+    #ffffff 100%
+  );
+
+  @include breakpoint(md) {
+    padding-top: 6rem;
+  }
+
+  &__glow {
+    position: absolute;
+    width: min(280px, 70vw);
+    height: min(280px, 70vw);
+    border-radius: 50%;
+    background: rgba($primary-color, 0.25);
+    filter: blur(70px);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 36rem;
+  }
+
+  &__art {
+    width: min(100%, 420px);
+    margin-bottom: 0.5rem;
+    animation: page-404-float 5s ease-in-out infinite;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 28px rgba($primary-color-dark, 0.12));
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $primary-color-dark;
+    background: rgba($primary-color, 0.45);
+    border: 1px solid rgba($primary-color-dark, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #111;
+    margin: 0 0 0.75rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: rgba(17, 17, 17, 0.72);
+    margin: 0 0 1.75rem;
+    max-width: 28rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    justify-content: center;
+  }
+}
+
+@keyframes page-404-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}

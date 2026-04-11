@@ -8,7 +8,7 @@ import { validateEnvVar, loadDataInMemory } from './src/utils/util.js';
 import { setupCRONJobs } from './src/utils/cron-jobs.js';
 import { registerFatalHandlers, registerShutdownHandlers } from './src/utils/fatal-handler.js';
 
-const { PORT = 8888, NODE_ENV } = process.env;
+const { PORT = 8888, NODE_ENV, GOOGLE_TAG_ID, BANNER_CONTENT } = process.env;
 
 validateEnvVar();
 
@@ -33,7 +33,12 @@ app.use('/', routes);
 // routes with authorization
 app.use('/auth/', authUser, routes);
 
-app.get('*', (req, res) => res.status(404).send());
+app.get('*', (req, res) => {
+  res.status(404).render('404', {
+    googleTagId: GOOGLE_TAG_ID,
+    bannerContent: BANNER_CONTENT,
+  });
+});
 
 app.use(errorMiddleware);
 

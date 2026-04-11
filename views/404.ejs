@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/public/fav.png" />
+
+  <title>Page not found — DummyJSON</title>
+  <meta name="description" content="This page does not exist. Return to DummyJSON for the fake REST API and documentation." />
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="stylesheet" href="/public/css/styles.css" />
+
+  <% if (typeof googleTagId !== "undefined" && googleTagId) { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+</head>
+
+<body>
+  <%- include('./partials/header') %>
+
+  <main class="page-404" role="main">
+    <div class="page-404__glow" aria-hidden="true"></div>
+    <div class="page-404__inner">
+      <div class="page-404__art">
+        <img src="/public/img/illustration-404.svg" width="480" height="360" alt="404 — page not found illustration" />
+      </div>
+      <span class="page-404__badge">Error 404</span>
+      <h1>This page floated away</h1>
+      <p>
+        The URL you opened is not part of DummyJSON. It may have moved, or the link could be mistyped.
+        Head home or open the docs to keep building.
+      </p>
+      <div class="page-404__actions">
+        <a href="/" class="btn primary">Back to home</a>
+        <a href="/docs" class="btn secondary">Browse API docs</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/public/js/common.min.js" defer></script>
+</body>
+
+</html>
