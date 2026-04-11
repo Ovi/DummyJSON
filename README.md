@@ -18,31 +18,6 @@
 * Supports all HTTP methods
 * Great for prototyping, testing, and learning
 
-
-## Quick Example
-
-```js
-fetch('https://dummyjson.com/products')
-  .then(res => res.json())
-  .then(console.log);
-```
-
-## Resources
-
-* [Products (190+)](https://dummyjson.com/products)
-* [Users (200+)](https://dummyjson.com/users)
-* [Carts (200+)](https://dummyjson.com/carts)
-* [Posts (250+)](https://dummyjson.com/posts)
-* [Comments (340+)](https://dummyjson.com/comments)
-* [Quotes (1400+)](https://dummyjson.com/quotes)
-* [Recipes (50+)](https://dummyjson.com/recipes)
-* [Todos (250+)](https://dummyjson.com/todos)
-* [Auth](https://dummyjson.com/auth)
-* [Custom HTTP Response](https://dummyjson.com/custom-response)
-* [Dummy Image Generator](https://dummyjson.com/image)
-* [Generate Identicon](https://dummyjson.com/icon)
-* [Mock HTTP Response](https://dummyjson.com/http)
-
 ## How to Fetch Data
 
 Use any method you prefer - fetch API, Axios, jQuery AJAX - it all works seamlessly.
@@ -63,6 +38,22 @@ console.log(response.data);
 ```
 
 P.S.: Pagination is supported.
+
+## Resources
+
+* [Products (190+)](https://dummyjson.com/products)
+* [Users (200+)](https://dummyjson.com/users)
+* [Carts (200+)](https://dummyjson.com/carts)
+* [Posts (250+)](https://dummyjson.com/posts)
+* [Comments (340+)](https://dummyjson.com/comments)
+* [Quotes (1400+)](https://dummyjson.com/quotes)
+* [Recipes (50+)](https://dummyjson.com/recipes)
+* [Todos (250+)](https://dummyjson.com/todos)
+* [Auth](https://dummyjson.com/auth)
+* [Custom HTTP Response](https://dummyjson.com/custom-response)
+* [Dummy Image Generator](https://dummyjson.com/image)
+* [Generate Identicon](https://dummyjson.com/icon)
+* [Mock HTTP Response](https://dummyjson.com/http)
 
 ## Features
 
