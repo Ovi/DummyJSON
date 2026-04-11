@@ -8,8 +8,9 @@ function generateData() {
 
     const usersData = fs.readFileSync('./database/users.json', 'utf8');
     const users = JSON.parse(usersData);
+    const usersById = [...users].sort((a, b) => a.id - b.id);
 
-    const newData = Array.from({ length: 50 }).map((_, idx) => {
+    const newData = usersById.map((user, idx) => {
       const productsArr = getRandomNumberOfProducts(products, getRandomNumberBetween(2, 6));
 
       const randomProducts = productsArr.map(product => {
@@ -35,7 +36,7 @@ function generateData() {
       const discountedTotal = randomProducts.reduce((acc, curr) => acc + curr.discountedTotal, 0).toFixed(2) * 1;
       const totalProducts = randomProducts.length;
       const totalQuantity = randomProducts.reduce((acc, curr) => acc + curr.quantity, 0);
-      const userId = fromArr(users).id;
+      const userId = user.id;
 
       return {
         id: idx + 1,
