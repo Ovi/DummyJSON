@@ -20,6 +20,12 @@ const helmetConfig = {
   crossOriginResourcePolicy: false,
 };
 
+// Allow all origins with credentials (cookies)
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+
 function injectMiddleWares(app) {
   app.set('trust proxy', true);
   // Store request in AsyncLocalStorage context early in the middleware chain
@@ -27,7 +33,7 @@ function injectMiddleWares(app) {
   app.use(setClientInfo);
   app.use(rateLimiter);
   app.use(helmet(helmetConfig));
-  app.use(cors());
+  app.use(cors(corsOptions));
   app.use(compression());
   app.use(cookieParser());
   app.use(expressJson);
