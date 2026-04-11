@@ -41,19 +41,19 @@ P.S.: Pagination is supported.
 
 ## Resources
 
-* [Products (190+)](https://dummyjson.com/products)
-* [Users (200+)](https://dummyjson.com/users)
-* [Carts (200+)](https://dummyjson.com/carts)
-* [Posts (250+)](https://dummyjson.com/posts)
-* [Comments (340+)](https://dummyjson.com/comments)
-* [Quotes (1400+)](https://dummyjson.com/quotes)
-* [Recipes (50+)](https://dummyjson.com/recipes)
-* [Todos (250+)](https://dummyjson.com/todos)
-* [Auth](https://dummyjson.com/auth)
+* [Products (190+)](https://dummyjson.com/docs/products)
+* [Users (200+)](https://dummyjson.com/docs/users)
+* [Carts (200+)](https://dummyjson.com/docs/carts)
+* [Posts (250+)](https://dummyjson.com/docs/posts)
+* [Comments (340+)](https://dummyjson.com/docs/comments)
+* [Quotes (1400+)](https://dummyjson.com/docs/quotes)
+* [Recipes (50+)](https://dummyjson.com/docs/recipes)
+* [Todos (250+)](https://dummyjson.com/docs/todos)
+* [Auth](https://dummyjson.com/docs/auth)
 * [Custom HTTP Response](https://dummyjson.com/custom-response)
-* [Dummy Image Generator](https://dummyjson.com/image)
-* [Generate Identicon](https://dummyjson.com/icon)
-* [Mock HTTP Response](https://dummyjson.com/http)
+* [Dummy Image Generator](https://dummyjson.com/docs/image)
+* [Generate Identicon](https://dummyjson.com/docs/image#image-identicon)
+* [Mock HTTP Response](https://dummyjson.com/docs/http)
 
 ## Features
 
