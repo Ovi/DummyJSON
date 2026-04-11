@@ -51,11 +51,17 @@ router.get('/docs/:resource', (req, res, next) => {
 
   const capitalizedResource = capitalize(resource);
 
+  let description = `REST Endpoints filled with ${capitalizedResource} JSON data, DummyJSON provides a free fake REST API with placeholder JSON data for development, testing, and prototyping. Access realistic data quickly for your projects.`;
+
+  if (resource === 'image') {
+    description = `The ${capitalizedResource} endpoint provides customizable placeholder images by specifying size in the URL, with options for background color, text color, and display text, ideal for use in websites and wireframes.`;
+  }
+
   res.render(`docs-${resource}`, {
     ...commonVariables,
     page: capitalizedResource,
     canonical: `https://dummyjson.com/docs/${resource}`,
-    description: `REST Endpoints filled with ${capitalizedResource} JSON data, DummyJSON provides a free fake REST API with placeholder JSON data for development, testing, and prototyping. Access realistic data quickly for your projects.`,
+    description,
   });
 });
 
