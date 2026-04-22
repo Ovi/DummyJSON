@@ -1,28 +1,21 @@
-# Use the official Node.js image as the base image
-FROM node:20.13.1-alpine3.18
+FROM node:24.14.1-alpine3.23
 
-# Create and set the working directory inside the container
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# copy custom fonts folder for fontconfig
-COPY ./fonts /usr/share/fonts
-# install fontconfig
+### Font Config ###
+# Install runtime OS dependencies
 RUN apk add --no-cache fontconfig
-# clear any font cache for fontconfig
-RUN fc-cache -f -v
+COPY ./fonts /usr/share/fonts
+# Rebuild the font cache
+RUN fc-cache -f
 
-# Copy package.json and install dependencies
-COPY ./package.json /usr/src/app/
-RUN npm install -g yarn --force && yarn install
+COPY ./package.json ./
+RUN npm install --omit=dev --no-audit --no-fund && npm cache clean --force
 
-# Copy the rest of the source code
-COPY ./ /usr/src/app
+COPY ./ ./
 
-# Environment setup
 ENV NODE_ENV production
 ENV PORT 80
 EXPOSE 80
 
-# Start the app
-CMD [ "yarn", "start" ]
+CMD ["node", "index.js"]

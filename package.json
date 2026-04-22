@@ -5,12 +5,12 @@
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
+    "start": "node index.js",
     "dev": "env-cmd -f .env nodemon index.js",
     "minify-public-js-watch": "NODE_ENV=production node scripts/minify-and-watch-public-js-files.js"
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=24"
   },
   "license": "MIT",
   "dependencies": {
