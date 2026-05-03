@@ -79,9 +79,9 @@ export const addNewCart = ({ userId, products = [] }) => {
   let totalQuantity = 0;
 
   // get products in the relevant schema
-  const someProducts = productsByIds.map((p, idx) => {
-    // get quantity of the product
-    const quantity = productQty[idx];
+  const someProducts = productsByIds.map((p) => {
+    const originalIndex = productIds.indexOf(p.id); // match by id
+    const quantity = productQty[originalIndex];
 
     // total price (price * quantity)
     const priceWithQty = p.price * quantity;
