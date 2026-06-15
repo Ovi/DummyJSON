@@ -26,6 +26,7 @@ const availableResources = [
   'recipes',
   'auth',
   'http',
+  '2fa',
 ];
 
 router.get('/', (req, res) => {
@@ -68,6 +69,13 @@ router.get('/docs/:resource', (req, res, next) => {
 router.get('/custom-response', (req, res) => {
   res.render('custom-response', {
     ...commonVariables,
+  });
+});
+
+router.get('/tools', (req, res) => {
+  res.render('tools', {
+    ...commonVariables,
+    canonical: 'https://dummyjson.com/tools',
   });
 });
 

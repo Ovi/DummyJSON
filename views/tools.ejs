@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
+
+  <title>Free Developer Tools | DummyJSON</title>
+  <meta name="description" content="Free developer tools by DummyJSON — generate TOTP 2FA codes, create custom JSON API responses, and more for development and testing." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+
+  <meta property="og:title" content="Free Developer Tools | DummyJSON" />
+  <meta property="og:description" content="Free developer tools by DummyJSON — generate TOTP 2FA codes, create custom JSON API responses, and more." />
+  <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
+  <meta property="og:url" content="https://dummyjson.com/tools" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <link rel="canonical" href="https://dummyjson.com/tools" />
+
+  <link rel="stylesheet" href="/public/css/styles.css" />
+
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874186634672982"
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+<body>
+  <%- include('./partials/header') %>
+
+  <section class="resources no-down-breeze tools-page">
+    <div class="content">
+      <div class="tools-header">
+        <h2>
+          <span class="heading-star"></span>
+          Developer Tools
+        </h2>
+        <p>
+          Handy utilities for development, testing, and prototyping.
+        </p>
+      </div>
+
+      <ul class="tools-grid">
+        <li class="tool-card tool-card--totp">
+          <a href="/2fa">
+            <div class="tool-card__icon" aria-hidden="true">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
+              </svg>
+            </div>
+
+            <div class="tool-card__body">
+              <h3>2FA TOTP Generator</h3>
+              <p class="tool-card__desc">
+                Generate real-time verification codes from your authenticator secret key. Works with Google Authenticator, Authy, and other TOTP apps.
+              </p>
+            </div>
+          </a>
+        </li>
+
+        <li class="tool-card tool-card--custom">
+          <a href="/custom-response">
+            <div class="tool-card__icon" aria-hidden="true">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
+              </svg>
+            </div>
+
+            <div class="tool-card__body">
+              <h3>Custom Response</h3>
+              <p class="tool-card__desc">
+                Spin up a mock REST API endpoint with any JSON body you define. Perfect for prototyping frontends without a backend.
+              </p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
+
+<script src="/public/js/common.min.js" defer></script>
+
+</html>

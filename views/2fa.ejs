@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
+
+  <title>2FA TOTP Code Generator | DummyJSON</title>
+  <meta name="description" content="Generate real TOTP verification codes from your authenticator secret key. Compatible with Google Authenticator and other 2FA apps. Free developer tool by DummyJSON." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+
+  <meta property="og:title" content="2FA TOTP Code Generator | DummyJSON" />
+  <meta property="og:description" content="Generate real TOTP verification codes from your authenticator secret key. Compatible with Google Authenticator and other 2FA apps." />
+  <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
+  <meta property="og:url" content="https://dummyjson.com/2fa" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <link rel="canonical" href="https://dummyjson.com/2fa" />
+
+  <link rel="stylesheet" href="/public/css/styles.css" />
+
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874186634672982"
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+<body>
+  <%- include('./partials/header') %>
+
+  <section class="custom-response standalone totp-2fa">
+    <div class="content centered">
+      <h2>
+        <span class="heading-star"></span>
+        2FA TOTP <br /> Code Generator
+      </h2>
+      <p>
+        Enter your authenticator secret key to generate a real-time verification code.
+        <br />
+        Compatible with Google Authenticator, Authy, and other TOTP apps.
+      </p>
+
+      <div class="input-container totp-key-input">
+        <input type="text" id="totp-key" placeholder="Base32 secret or otpauth:// URI" autocomplete="off" spellcheck="false" />
+      </div>
+
+      <div class="totp-result" id="totp-result" hidden>
+        <div class="input-container x-copy totp-code-input">
+          <div class="totp-timer" id="totp-timer" role="timer" aria-label="Code refresh timer">
+            <svg class="totp-timer__svg" viewBox="0 0 40 40" aria-hidden="true">
+              <circle class="totp-timer__track" cx="20" cy="20" r="17" />
+              <circle class="totp-timer__progress" id="totp-timer-progress" cx="20" cy="20" r="17" />
+            </svg>
+            <span class="totp-timer__seconds" id="totp-timer-seconds">30</span>
+          </div>
+          <input type="text" id="totp-code" readonly value="" aria-label="Verification code" />
+        </div>
+      </div>
+
+      <p class="totp-error" id="totp-error" hidden></p>
+
+      <div class="btns-container">
+        <button class="btn primary" id="totp-generate-btn">
+          <img src="/public/img/icons/magic-wand.svg" alt="Icon">
+          Generate Code
+        </button>
+        <a href="/docs/2fa" class="btn">API Docs</a>
+      </div>
+
+      <p class="totp-privacy-note">
+        Your secret is only sent to generate the code and is never stored.
+        For API usage, prefer <code>POST</code> over <code>GET</code> to keep secrets out of URLs.
+      </p>
+    </div>
+  </section>
+</body>
+
+<script src="/public/js/common.min.js" defer></script>
+<script src="/public/js/2fa.min.js" defer></script>
+
+</html>
