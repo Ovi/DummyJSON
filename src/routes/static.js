@@ -26,7 +26,7 @@ const availableResources = [
   'recipes',
   'auth',
   'http',
-  '2fa',
+  'tools',
 ];
 
 router.get('/', (req, res) => {
@@ -40,6 +40,10 @@ router.get('/docs', (req, res) => {
     canonical: `https://dummyjson.com/docs`,
     description: `DummyJSON provides a free fake REST API with placeholder JSON data for development, testing, and prototyping. Access realistic data quickly for your projects.`,
   });
+});
+
+router.get('/docs/2fa', (req, res) => {
+  res.redirect(301, '/docs/tools#tools-2fa-get');
 });
 
 router.get('/docs/:resource', (req, res, next) => {
@@ -56,6 +60,10 @@ router.get('/docs/:resource', (req, res, next) => {
 
   if (resource === 'image') {
     description = `The ${capitalizedResource} endpoint provides customizable placeholder images by specifying size in the URL, with options for background color, text color, and display text, ideal for use in websites and wireframes.`;
+  }
+
+  if (resource === 'tools') {
+    description = `Developer tools docs for DummyJSON — generate TOTP 2FA codes and create custom JSON API responses for development, testing, and prototyping.`;
   }
 
   res.render(`docs-${resource}`, {

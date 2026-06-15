@@ -82,6 +82,18 @@ function handleDocLinksClick(selector) {
         }
 
         if (this.classList?.contains('parent-menu-item')) {
+          if (this.classList.contains('parent-menu-toggle')) {
+            e.preventDefault();
+
+            const hasClass = this.classList.contains('active');
+
+            document
+              .querySelectorAll('a')
+              .forEach(a => a.classList.remove('active'));
+            if (!hasClass) this.classList.add('active');
+            return;
+          }
+
           const url = new URL(this.href);
           const thisPathName = url.pathname.endsWith('/')
             ? this.pathname.slice(0, -1)
@@ -139,15 +151,17 @@ function selectNavItem(hash) {
 
   const [resource] = hash.replace('#', '')?.split('-') || [];
 
-  const selectorText1 = `.docs-nav a[href="/docs/${hash}"]`;
-  const selectorText2 = `.docs-nav a[href="/docs/${resource}/${hash}"]`;
+  const selectors = [
+    `.docs-nav a[href="/docs/tools${hash}"]`,
+    `.docs-nav a[href="/docs/${hash}"]`,
+    `.docs-nav a[href="/docs/${resource}/${hash}"]`,
+  ];
 
-  const selector1 = document.querySelector(selectorText1);
-  const selector2 = document.querySelector(selectorText2);
+  const element = selectors
+    .map(selector => document.querySelector(selector))
+    .find(Boolean);
 
-  if (!selector1 && !selector2) return;
-
-  const element = selector1 || selector2;
+  if (!element) return;
 
   document
     .querySelectorAll('.child-menu a')
@@ -161,4 +175,14 @@ function selectNavItem(hash) {
     .closest('li')
     .querySelector('.parent-menu-item')
     .classList.add('active');
+}
+
+function _markParentAndChildActive(element) {
+  element.classList.add('active');
+  element
+    .closest('li')
+    ?.closest('.child-menu')
+    ?.closest('li')
+    ?.querySelector('.parent-menu-item')
+    ?.classList.add('active');
 }

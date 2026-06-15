@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- header -->
+<%- include('./partials/docs-head') %>
+
+<body>
+  <!-- header -->
+  <%- include('./partials/header') %>
+
+  <!-- side-nav -->
+  <%- include('./partials/docs-side-nav') %>
+
+  <section>
+    <div class="content">
+      <h1 class="docs-title">
+        <img src="/public/img/icons/globe.svg" class="icon" alt="svg icon" /> Developer Tools - Docs
+      </h1>
+      <p class="display-para">
+        DummyJSON provides free developer tools for testing and prototyping — generate real TOTP verification codes and create custom JSON API endpoints.
+      </p>
+
+      <div class="resource" id="tools-2fa-get">
+        <a href="#tools-2fa-get" class="res-title">2FA TOTP — Generate (GET)</a>
+        <p class="res-tip">
+          Pass your base32 secret key as a query parameter:
+          <br />
+          <a href="https://dummyjson.com/2fa?key=JBSWY3DPEHPK3PXP">dummyjson.com/2fa?key=YOUR_SECRET</a>
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/2fa?key=JBSWY3DPEHPK3PXP')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "totp": "123456",
+            "expiresIn": 17,
+            "period": 30
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-2fa-post">
+        <a href="#tools-2fa-post" class="res-title">2FA TOTP — Generate (POST)</a>
+        <p class="res-tip">
+          Prefer POST when sending secrets — it keeps the key out of URLs and server logs.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/2fa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key: 'JBSWY3DPEHPK3PXP' })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "totp": "123456",
+            "expiresIn": 17,
+            "period": 30
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-2fa-formats">
+        <a href="#tools-2fa-formats" class="res-title">2FA TOTP — Supported Secret Formats</a>
+        <p class="res-desc">The endpoint accepts the following secret formats:</p>
+        <ul class="res-list">
+          <li><strong>Base32 secret</strong> — e.g. <code>JBSWY3DPEHPK3PXP</code> (spaces and dashes are stripped automatically)</li>
+          <li><strong>otpauth URI</strong> — e.g. <code>otpauth://totp/Label?secret=JBSWY3DPEHPK3PXP&amp;issuer=Example</code></li>
+        </ul>
+        <p class="res-tip">
+          Try the interactive tool at <a href="https://dummyjson.com/2fa">dummyjson.com/2fa</a>.
+          The endpoint is also available at <code>/totp</code>.
+        </p>
+      </div>
+
+      <div class="resource" id="tools-custom-generate">
+        <a href="#tools-custom-generate" class="res-title">Custom Response — Generate API</a>
+        <p class="res-tip">
+          Create a mock REST API by sending your JSON response body and preferred HTTP method.
+          Returns a unique URL you can call from your app.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/c/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              json: { message: 'Hello from my custom API' },
+              method: 'GET'
+            })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "url": "https://dummyjson.com/c/f4d8-2771-4d04-addf"
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-custom-use">
+        <a href="#tools-custom-use" class="res-title">Custom Response — Use Your API</a>
+        <p class="res-tip">
+          Call your generated URL with the HTTP method you specified when creating it:
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/c/f4d8-2771-4d04-addf')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "message": "Hello from my custom API"
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-custom-notes">
+        <a href="#tools-custom-notes" class="res-title">Custom Response — Notes</a>
+        <p class="res-desc">A few things to keep in mind when using custom responses:</p>
+        <ul class="res-list">
+          <li>Supported methods: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code></li>
+          <li>Maximum payload size: <strong>300 KB</strong></li>
+          <li>Responses expire after <strong>90 days</strong> — check the <code>x-expires-on</code> response header</li>
+        </ul>
+        <p class="res-tip">
+          Use the interactive builder at <a href="https://dummyjson.com/custom-response">dummyjson.com/custom-response</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <%- include('./partials/docs-footer') %>
+
+  <script>
+    selectNavItem(window.location.hash || '#tools-2fa-get');
+  </script>
+</body>
+
+</html>
