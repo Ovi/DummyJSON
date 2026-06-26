@@ -1,5 +1,5 @@
 import APIError from '../utils/error.js';
-import { isNumber, trueTypeOf } from '../utils/util.js';
+import { isNumber, trueTypeOf, isValidString } from '../utils/util.js';
 import { multerInstance, deleteMulterTemporaryFiles } from '../helpers/index.js';
 import { logError, log } from '../helpers/logger.js';
 
@@ -23,66 +23,69 @@ const cleanRequest = async (req, res, next) => {
     const options = {};
     req._options = options;
 
-    const { limit = 30, skip = 0, q, key, value, delay, sortBy } = query;
-    let { select, order } = query;
-    let searchQuery = '';
+    const { sortBy, order: sortOrder, limit = 30, skip = 0, select: selectedFields, q, key, value, delay } = query;
+    let select = selectedFields;
 
-    if (!isNumber(limit)) throw new APIError(`Invalid 'limit' - must be a number`, 400);
-    if (!isNumber(skip)) throw new APIError(`Invalid 'skip' - must be a number`, 400);
+    let order = 'asc';
+    if (isValidString(sortBy) && isValidString(sortOrder)) {
+      order = sortOrder.toLowerCase();
+      if (!['asc', 'desc'].includes(order)) {
+        throw new APIError(`Invalid 'order' - should be either 'asc' or 'desc'`, 400);
+      }
+    }
+
+    if (!isNumber(limit) || limit < 0) {
+      throw new APIError(`Invalid 'limit' - should be a positive number`, 400);
+    }
+
+    if (!isNumber(skip) || skip < 0) {
+      throw new APIError(`Invalid 'skip' - should be a positive number`, 400);
+    }
 
     // Accept both ?q=phone and ?q[valueSearch]=phone
-    if (trueTypeOf(q) === 'string') {
-      searchQuery = q
-        .trim()
-        .toLowerCase()
-        .split('-')
-        .join(' ');
-    } else if (q && trueTypeOf(q) === 'object' && typeof q.valueSearch === 'string') {
-      searchQuery = q.valueSearch
-        .trim()
-        .toLowerCase()
-        .split('-')
-        .join(' ');
+    let searchQuery = '';
+    if (isValidString(q)) {
+      searchQuery = q;
+    } else if (q && trueTypeOf(q) === 'object' && isValidString(q.valueSearch)) {
+      searchQuery = q.valueSearch;
     } else if (q) {
-      throw new APIError(`Invalid 'q' - must be a string`, 400);
+      throw new APIError(`Invalid 'q' - should be a valid string or object with 'valueSearch' string`, 400);
     }
-
-    if (delay) {
-      if (!isNumber(delay)) throw new APIError('Delay must be a number in milliseconds', 400);
-      if (delay > 5000) throw new APIError('Delay cannot be greater than 5 seconds', 400);
-      if (delay < 0) throw new APIError('Delay cannot be less than 0', 400);
-    }
+    searchQuery = searchQuery
+      .trim()
+      .toLowerCase()
+      .split('-')
+      .join(' ');
 
     if (select) {
       if (trueTypeOf(select) === 'array') {
         select = ['id', ...select];
-      } else if (trueTypeOf(select) === 'string') {
+      } else if (isValidString(select)) {
         select = ['id', ...select.split(',')];
       } else {
         select = null;
       }
     }
 
-    if (order && sortBy) {
-      order = order.toLowerCase();
-      if (!['asc', 'desc'].includes(order)) {
-        throw new APIError(`Order can be: 'asc' or 'desc'`, 400);
+    if (delay) {
+      if (!isNumber(delay) || delay < 0) {
+        throw new APIError('Delay should be a positive number in milliseconds', 400);
+      }
+
+      if (delay > 5000) {
+        throw new APIError('Delay should be less than 5 seconds (5000 milliseconds)', 400);
       }
     }
 
-    if (sortBy && !order) {
-      order = 'asc';
-    }
-
-    options.limit = parseInt(limit, 10);
-    options.skip = parseInt(skip, 10);
-    options.delay = parseInt(delay, 10);
-    options.select = select;
-    options.q = searchQuery;
-    options.key = key;
-    options.value = value;
     options.sortBy = sortBy;
     options.order = order;
+    options.limit = parseInt(limit, 10);
+    options.skip = parseInt(skip, 10);
+    options.q = searchQuery;
+    options.select = select;
+    options.key = key;
+    options.value = value;
+    options.delay = parseInt(delay, 10);
 
     // Multipart handling
     const contentType = (headers['content-type'] || '').toLowerCase();

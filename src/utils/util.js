@@ -117,6 +117,10 @@ export const trueTypeOf = obj => {
     .toLowerCase();
 };
 
+export const isValidString = str => {
+  return trueTypeOf(str) === 'string' && str.trim() !== '';
+};
+
 export const isEmpty = value => {
   const type = trueTypeOf(value);
 
