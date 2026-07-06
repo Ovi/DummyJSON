@@ -16,7 +16,7 @@
         <img src="/public/img/icons/globe.svg" class="icon" alt="svg icon" /> Developer Tools - Docs
       </h1>
       <p class="display-para">
-        DummyJSON provides free developer tools for testing and prototyping — generate real TOTP verification codes and create custom JSON API endpoints.
+        DummyJSON provides free developer tools for testing and prototyping — generate real TOTP verification codes, create custom JSON API endpoints, and inspect webhook requests.
       </p>
 
       <div class="resource" id="tools-2fa-get">
@@ -140,6 +140,123 @@
         </ul>
         <p class="res-tip">
           Use the interactive builder at <a href="https://dummyjson.com/custom-response">dummyjson.com/custom-response</a>.
+        </p>
+      </div>
+
+      <div class="resource" id="tools-webhook-create">
+        <a href="#tools-webhook-create" class="res-title">Webhook — Create Endpoint</a>
+        <p class="res-tip">
+          Create a temporary webhook URL to capture and inspect incoming HTTP requests:
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/webhook/create', {
+            method: 'POST'
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "identifier": "a3f9k2m1",
+            "url": "https://dummyjson.com/webhook/a3f9k2m1",
+            "expiresAt": "2026-07-07T12:00:00.000Z"
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-webhook-capture">
+        <a href="#tools-webhook-capture" class="res-title">Webhook — Capture Requests</a>
+        <p class="res-tip">
+          Send any HTTP request to your webhook URL. The request is stored and the endpoint responds with:
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/webhook/a3f9k2m1', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event: 'order.created' })
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "received": true,
+            "requestId": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-webhook-list">
+        <a href="#tools-webhook-list" class="res-title">Webhook — List Captured Requests</a>
+        <p class="res-tip">
+          Poll this endpoint to retrieve all captured requests for a webhook:
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/webhook/a3f9k2m1/requests')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "identifier": "a3f9k2m1",
+            "expiresAt": "2026-07-07T12:00:00.000Z",
+            "requests": [
+              {
+                "requestId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                "method": "POST",
+                "headers": { "content-type": "application/json" },
+                "query": {},
+                "body": { "event": "order.created" },
+                "receivedAt": "2026-07-06T12:00:00.000Z"
+              }
+            ]
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-webhook-delete">
+        <a href="#tools-webhook-delete" class="res-title">Webhook — Delete a Request</a>
+        <p class="res-tip">
+          Remove a single captured request by its <code>requestId</code>:
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/webhook/a3f9k2m1/requests/f47ac10b-58cc-4372-a567-0e02b2c3d479', {
+            method: 'DELETE'
+          })
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "deleted": true
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="tools-webhook-notes">
+        <a href="#tools-webhook-notes" class="res-title">Webhook — Notes</a>
+        <p class="res-desc">A few things to keep in mind when using webhooks:</p>
+        <ul class="res-list">
+          <li>All HTTP methods are supported: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>, <code>OPTIONS</code>, etc.</li>
+          <li>Maximum payload size: <strong>300 KB</strong></li>
+          <li>Maximum <strong>100 requests</strong> stored per webhook — oldest requests are dropped when the limit is reached</li>
+          <li>Webhooks expire after <strong>1 day</strong> — check the <code>x-expires-on</code> response header</li>
+          <li>Sensitive headers (<code>authorization</code>, <code>cookie</code>, <code>x-api-key</code>) are stripped before storage</li>
+        </ul>
+        <p class="res-tip">
+          Use the interactive inspector at <a href="https://dummyjson.com/webhook">dummyjson.com/webhook</a>.
         </p>
       </div>
     </div>

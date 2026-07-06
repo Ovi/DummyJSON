@@ -1,5 +1,6 @@
 import cron from 'node-cron';
 import CustomResponse from '../models/custom-response.js';
+import Webhook from '../models/webhook.js';
 import { customResponseExpiresInDays } from '../constants/index.js';
 import { logError, log } from '../helpers/logger.js';
 
@@ -17,9 +18,19 @@ const deleteOldCustomResponses = async () => {
   }
 };
 
+const deleteExpiredWebhooks = async () => {
+  try {
+    const { deletedCount } = await Webhook.deleteMany({ expiresAt: { $lt: new Date() } });
+    log(`[WEBHOOK] Deleted ${deletedCount} expired Webhook entries.`);
+  } catch (err) {
+    logError('[WEBHOOK] Error deleting expired Webhook entries', { error: err });
+  }
+};
+
 const setupCRONJobs = () => {
   // Schedule cron job to run deleteOldCustomResponses every day at midnight
   cron.schedule('0 0 * * *', deleteOldCustomResponses);
+  cron.schedule('0 0 * * *', deleteExpiredWebhooks);
 };
 
 export { setupCRONJobs };

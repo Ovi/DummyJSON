@@ -27,3 +27,4 @@ export const allowedImageTypes = Object.keys(imageMimeTypes);
 export const maxTokenExpireMins = 30 * 24 * 60;
 
 export const customResponseExpiresInDays = 90;
+export const webhookExpiresInDays = 1;

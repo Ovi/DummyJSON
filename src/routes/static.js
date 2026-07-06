@@ -80,6 +80,13 @@ router.get('/custom-response', (req, res) => {
   });
 });
 
+router.get('/webhook', (req, res) => {
+  res.render('webhook', {
+    ...commonVariables,
+    canonical: 'https://dummyjson.com/webhook',
+  });
+});
+
 router.get('/tools', (req, res) => {
   res.render('tools', {
     ...commonVariables,

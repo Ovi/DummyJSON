@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
+
+  <title>Free Webhook Inspector for Testing | DummyJSON</title>
+  <meta name="description" content="Create temporary webhook endpoints to inspect incoming HTTP requests. Perfect for development, testing, and debugging webhooks." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+
+  <meta property="og:title" content="Free Webhook Inspector for Testing | DummyJSON" />
+  <meta property="og:description" content="Create temporary webhook endpoints to inspect incoming HTTP requests. Perfect for development, testing, and debugging webhooks." />
+  <meta property="og:image" content="https://dummyjson.com/public/img/meta.png" />
+  <meta property="og:url" content="<%= typeof canonical !== 'undefined' ? canonical : 'https://dummyjson.com/webhook' %>" />
+  <meta property="og:site_name" content="DummyJSON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <link rel="canonical" href="<%= typeof canonical !== 'undefined' ? canonical : 'https://dummyjson.com/webhook' %>" />
+
+  <link rel="stylesheet" href="/public/css/styles.css" />
+
+  <% if (typeof(googleTagId) !== "undefined") { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= googleTagId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<%= googleTagId %>');
+  </script>
+  <% } %>
+
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874186634672982"
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+<body class="<%= typeof identifier !== 'undefined' ? 'webhook-page' : 'webhook-page webhook-page--landing' %>">
+  <%- include('./partials/header') %>
+
+  <section
+    class="custom-response standalone webhook-tool<%= typeof identifier === 'undefined' ? ' webhook-tool--landing' : '' %>"
+    data-identifier="<%= typeof identifier !== 'undefined' ? identifier : '' %>"
+    data-expires-at="<%= typeof expiresAt !== 'undefined' ? expiresAt : '' %>"
+  >
+    <div class="content centered">
+      <% if (typeof identifier === 'undefined') { %>
+      <h2>
+        <span class="heading-star"></span>
+        Webhook Inspector
+      </h2>
+      <p class="webhook-lead">
+        Create a temporary webhook endpoint to inspect incoming HTTP requests.
+      </p>
+      <p class="webhook-lead-aside">
+        Perfect for testing callbacks, debugging integrations, and prototyping.
+      </p>
+
+      <div class="btns-container">
+        <button class="btn primary" id="create-webhook-btn">
+          <img src="/public/img/icons/magic-wand.svg" alt="Icon">
+          Create Webhook
+        </button>
+        <a href="/docs/tools#tools-webhook-create" class="btn">API Docs</a>
+      </div>
+
+      <p class="webhook-notes">
+        Accepts every HTTP method — <strong>GET</strong>, <strong>POST</strong>, and beyond. Your endpoint stays live for <strong>24 hours</strong>, with your latest <strong>100 requests</strong> ready to inspect.
+      </p>
+      <% } else { %>
+      <h2>
+        <span class="heading-star"></span>
+        Webhook Inspector
+      </h2>
+      <p>
+        Send HTTP requests to your webhook URL below. Incoming requests will appear here in real time.
+      </p>
+
+      <div class="webhook-inspector">
+        <div class="input-container x-copy">
+          <input type="url" readonly value="https://dummyjson.com/webhook/<%= identifier %>" />
+        </div>
+
+        <p class="webhook-expiry" id="webhook-expiry"></p>
+
+        <div class="webhook-requests" id="webhook-requests">
+          <p class="webhook-empty" id="webhook-empty"<%= (requests && requests.length) ? ' style="display:none"' : '' %>>
+            Waiting for requests…
+            <br />
+            Send a <strong>POST</strong> or <strong>GET</strong> request to your URL to get started.</p>
+        </div>
+        <% if (requests && requests.length) { %>
+        <script id="webhook-initial-requests" type="application/json"><%- JSON.stringify(requests) %></script>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+  </section>
+</body>
+
+<script src="/public/js/custom-json-highlight.min.js" defer></script>
+<script src="/public/js/common.min.js" defer></script>
+<script src="/public/js/webhook.min.js" defer></script>
+
+</html>
