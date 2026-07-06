@@ -7,17 +7,22 @@
 </url>
 <url>
 	<loc>https://dummyjson.com/tools</loc>
-	<lastmod>2026-06-15T00:00:00+00:00</lastmod>
+	<lastmod>2026-07-06T00:00:00+00:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://dummyjson.com/webhook</loc>
+	<lastmod>2026-07-06T00:00:00+00:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://dummyjson.com/2fa</loc>
-	<lastmod>2026-06-15T00:00:00+00:00</lastmod>
+	<lastmod>2026-07-06T00:00:00+00:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>
 	<loc>https://dummyjson.com/custom-response</loc>
-	<lastmod>2026-06-15T00:00:00+00:00</lastmod>
+	<lastmod>2026-07-06T00:00:00+00:00</lastmod>
 	<priority>1.0</priority>
 </url>
 <url>

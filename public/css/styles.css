@@ -1172,6 +1172,10 @@ section.custom-response .content .changer .selector .method-selector-el.expanded
 }
 section.custom-response .content .code-container {
   position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-width: 0;
 }
 section.custom-response .content .code-container .req-body-helper {
   position: absolute;
@@ -1663,6 +1667,10 @@ section.last-section .social-links img:hover {
   text-align: left;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-width: 0;
 }
 .json-code .json-key {
   color: #80cbae;
@@ -1684,22 +1692,11 @@ section.last-section .social-links img:hover {
   color: #e9eded;
 }
 .json-code pre {
-  margin: 0 auto;
+  margin: 0;
   max-height: 400px;
-  min-width: 300px;
-  max-width: 300px;
-}
-@media (min-width: 576px) {
-  .json-code pre {
-    min-width: 500px;
-    max-width: 500px;
-  }
-}
-@media (min-width: 768px) {
-  .json-code pre {
-    min-width: 600px;
-    max-width: 600px;
-  }
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 .json-code code {
   font-family: "Courier New", Courier, monospace;
@@ -1715,17 +1712,10 @@ section.last-section .social-links img:hover {
   overflow: auto;
   height: calc(100vh - 20rem);
   max-height: 400px;
-  min-width: 300px;
-}
-@media (min-width: 576px) {
-  .json-code code {
-    min-width: 500px;
-  }
-}
-@media (min-width: 768px) {
-  .json-code code {
-    min-width: 600px;
-  }
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 .json-code code * {
   font-family: "Courier New", Courier, monospace;
@@ -1742,7 +1732,244 @@ section.last-section .social-links img:hover {
     border-color: #b6b7fd;
   }
 }
-body.webhook-page {
+section.tool-landing__hero,
+section.tool-marketing {
+  height: auto;
+  min-height: unset;
+  overflow: visible;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.tool-landing__hero {
+  min-height: calc(100vh - 60px);
+  padding-top: calc(60px + 2rem);
+  padding-bottom: 3rem;
+}
+@media screen and (max-height: 600px) {
+  section.tool-landing__hero {
+    display: flex;
+  }
+}
+section.tool-landing__hero .content {
+  width: 100%;
+  height: auto;
+  max-width: 960px;
+  align-items: center;
+  text-align: center;
+}
+
+section.tool-marketing {
+  padding: 4rem 1.5rem;
+}
+section.tool-marketing .content {
+  max-width: 960px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  align-items: center;
+}
+section.tool-marketing__title {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+@media (min-width: 576px) {
+  section.tool-marketing__title {
+    font-size: 2.25rem;
+  }
+}
+section.tool-marketing__title .heading-star {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.tool-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .tool-features {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+.tool-features__item {
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0 #111;
+  padding: 1.5rem;
+}
+.tool-features__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #111;
+}
+.tool-features__item--totp .tool-features__icon {
+  background: rgb(225.8, 226.2, 254.2);
+  color: #494cf3;
+}
+.tool-features__item--custom .tool-features__icon {
+  background: rgb(255, 225, 222.5);
+  color: #ff697c;
+}
+.tool-features__item--webhook .tool-features__icon {
+  background: rgb(178.5, 223.5, 222.6);
+  color: #2a8a88;
+}
+.tool-features__heading {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.tool-features__text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tool-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+}
+.tool-steps__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+.tool-steps__item:last-child {
+  border-bottom: none;
+}
+.tool-steps__number {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: #b6b7fd;
+  border: 2px solid #111;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.tool-steps__heading {
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+.tool-steps__text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tool-faq {
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+}
+.tool-faq__item {
+  border: 2px solid #111;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+}
+.tool-faq__item[open] {
+  box-shadow: 3px 3px 0 #111;
+}
+.tool-faq__item:last-child {
+  margin-bottom: 0;
+}
+.tool-faq__question {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  list-style: none;
+}
+.tool-faq__question::-webkit-details-marker {
+  display: none;
+}
+.tool-faq__question::after {
+  content: "+";
+  float: right;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.tool-faq__item[open] .tool-faq__question::after {
+  content: "−";
+}
+.tool-faq__answer {
+  padding: 0 1.25rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+.tool-faq__answer code {
+  font-family: "Courier New", Courier, monospace;
+  background: #f3f3f3;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+}
+
+.tool-cta {
+  width: 100%;
+  max-width: 560px;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 1rem;
+  box-shadow: 6px 6px 0 #111;
+}
+.tool-cta__title {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 576px) {
+  .tool-cta__title {
+    font-size: 1.5rem;
+  }
+}
+.tool-cta__text {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+.tool-cta .btns-container {
+  justify-content: center;
+  margin-top: 0;
+}
+
+body.webhook-page,
+body.tool-page {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+/*# sourceMappingURL=styles.css.map */

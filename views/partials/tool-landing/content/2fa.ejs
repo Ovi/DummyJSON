@@ -1,0 +1,84 @@
+<%
+const totpFaqs = [
+  {
+    question: 'Is my secret key stored?',
+    answer: 'No. Your secret is only used to generate the current code and is <strong>never stored</strong> on our servers.',
+  },
+  {
+    question: 'Should I use GET or POST?',
+    answer: 'Both work. Prefer <code>POST</code> when calling the API — it keeps secrets out of URLs, server logs, and browser history.',
+  },
+  {
+    question: 'What secret formats are supported?',
+    answer: 'Base32 secrets (e.g. <code>JBSWY3DPEHPK3PXP</code>) and full <code>otpauth://</code> URIs. Spaces and dashes in secrets are stripped automatically.',
+  },
+  {
+    question: 'Which authenticator apps work?',
+    answer: 'Any standard TOTP app — Google Authenticator, Authy, 1Password, Microsoft Authenticator, and others.',
+  },
+  {
+    question: 'Can I use this via API?',
+    answer: 'Yes. Hit <code>/2fa</code> or <code>/totp</code> with your secret via GET query param or POST JSON body. The response includes the code and seconds until refresh.',
+  },
+];
+%>
+
+<%- include('../faq-schema', { faqs: totpFaqs }) %>
+
+<%- include('../features', {
+  title: 'Why use it',
+  items: [
+    {
+      modifier: 'totp',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" /></svg>',
+      heading: 'Real TOTP codes',
+      text: 'Generate the same time-based codes your production apps expect — not mock values.',
+    },
+    {
+      modifier: 'totp',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" /></svg>',
+      heading: '30-second countdown',
+      text: 'A live timer shows exactly when the current code expires, so you never miss the window.',
+    },
+    {
+      modifier: 'totp',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" /></svg>',
+      heading: 'API-ready',
+      text: 'Use the browser tool for quick checks, or call the REST endpoint from your test scripts and CI pipelines.',
+    },
+  ],
+}) %>
+
+<%- include('../steps', {
+  title: 'How it works',
+  steps: [
+    {
+      heading: 'Paste your secret',
+      text: 'Enter a base32 secret or otpauth:// URI from your authenticator setup.',
+    },
+    {
+      heading: 'Generate a code',
+      text: 'Click Generate Code to get the current 6-digit TOTP value with a live refresh timer.',
+    },
+    {
+      heading: 'Copy and test',
+      text: 'Use the code in your app, API test, or login flow — then grab the next one when it rotates.',
+    },
+  ],
+}) %>
+
+<%- include('../faq', { title: 'FAQ', faqs: totpFaqs }) %>
+
+<%- include('../cta', {
+  title: 'Need a code right now?',
+  text: 'Paste your secret above or integrate the API into your test suite.',
+  primaryBtn: {
+    href: '#totp-key',
+    label: 'Try it above',
+    icon: '/public/img/icons/magic-wand.svg',
+  },
+  secondaryLink: {
+    href: '/docs/tools#tools-2fa-get',
+    label: 'API Docs',
+  },
+}) %>

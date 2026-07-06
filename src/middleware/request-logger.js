@@ -9,11 +9,16 @@ import { timeDifference } from '../utils/util.js';
 const { LOG_ENABLED } = process.env;
 
 const counts = {
-  overallRequestCount: 0,
+  apiRequestCount: 0,
   customRouteCount: 0,
+  webhookRequestCount: 0,
   pathCounts: {}, // last minute counts only
   userAgentCounts: {}, // last minute counts only
 };
+
+function isWebhookRoute(path) {
+  return path === '/webhook' || path.startsWith('/webhook/');
+}
 
 function requestLogger(req, res, next) {
   if (isRequestInWhitelist(req)) {
@@ -21,14 +26,19 @@ function requestLogger(req, res, next) {
     return;
   }
 
-  counts.overallRequestCount += 1;
-
   const requestURL = req.originalUrl;
+  const fullPath = requestURL.split('?')[0]?.toLowerCase();
+
+  if (isWebhookRoute(fullPath)) {
+    counts.webhookRequestCount += 1;
+  } else {
+    counts.apiRequestCount += 1;
+  }
+
   if (requestURL.startsWith('/c/') || requestURL.startsWith('/custom-response')) {
     counts.customRouteCount += 1;
   }
 
-  const fullPath = requestURL.split('?')[0]?.toLowerCase();
   counts.pathCounts[fullPath] = (counts.pathCounts[fullPath] || 0) + 1;
 
   // Track user-agent
@@ -137,7 +147,7 @@ function startCountLogger() {
     const diff = timeDifference(startTime, Date.now());
 
     console.log(
-      `[Request Counts] [${diff}] - overallRequestCount: ${counts.overallRequestCount}, customRouteCount: ${counts.customRouteCount}`,
+      `[Request Counts] [${diff}] - apiRequestCount: ${counts.apiRequestCount}, customRouteCount: ${counts.customRouteCount}, webhookRequestCount: ${counts.webhookRequestCount}`,
     );
 
     try {

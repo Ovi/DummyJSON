@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
 
   <title>Free Mock API for Custom JSON Data | DummyJSON</title>
-  <meta name="description" content="Easily create a custom JSON Response REST API with DummyJSON. Perfect for development, testing, prototyping, and mock APIs, this tool lets you generate custom APIs with tailored data." />
+  <meta name="description" content="Create a free mock REST API with your own JSON response. Pick any HTTP method, get a shareable URL instantly, and prototype frontends without a backend." />
 
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -97,11 +97,11 @@
   ></script>
 </head>
 
-<body>
+<body class="tool-page">
   <!-- header -->
   <%- include('./partials/header') %>
 
-  <section class="custom-response standalone">
+  <section class="custom-response standalone tool-landing__hero">
     <div class="content centered">
       <h2>
         <span class="heading-star"></span>
@@ -113,7 +113,7 @@
         Enter your response body below and click <b>"Generate Now"</b> to instantly get your custom API URL.
       </p>
 
-      <div class="code-container">
+      <div class="code-container" id="custom-json-editor">
         <div class="req-body-helper">
           <span>// "response" body, what you expect from your custom API</span>
 
@@ -162,6 +162,8 @@
       </div>
     </div>
   </section>
+
+  <%- include('./partials/tool-landing/content/custom-response') %>
 </body>
 
 <script src="/public/js/custom-json-highlight.min.js" defer></script>

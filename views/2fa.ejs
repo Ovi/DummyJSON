@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
 
   <title>2FA TOTP Code Generator | DummyJSON</title>
-  <meta name="description" content="Generate real TOTP verification codes from your authenticator secret key. Compatible with Google Authenticator and other 2FA apps. Free developer tool by DummyJSON." />
+  <meta name="description" content="Generate real TOTP 2FA codes from your authenticator secret. Free browser tool and API — works with Google Authenticator, Authy, and standard TOTP apps." />
 
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -43,10 +43,10 @@
   ></script>
 </head>
 
-<body>
+<body class="tool-page">
   <%- include('./partials/header') %>
 
-  <section class="custom-response standalone totp-2fa">
+  <section class="custom-response standalone totp-2fa tool-landing__hero">
     <div class="content centered">
       <h2>
         <span class="heading-star"></span>
@@ -91,6 +91,8 @@
       </p>
     </div>
   </section>
+
+  <%- include('./partials/tool-landing/content/2fa') %>
 </body>
 
 <script src="/public/js/common.min.js" defer></script>

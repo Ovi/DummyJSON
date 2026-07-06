@@ -1,0 +1,16 @@
+<section class="tool-marketing tool-marketing--faq no-down-breeze">
+  <div class="content">
+    <h2 class="tool-marketing__title">
+      <span class="heading-star"></span>
+      <%= title %>
+    </h2>
+    <div class="tool-faq">
+      <% faqs.forEach(faq => { %>
+      <details class="tool-faq__item">
+        <summary class="tool-faq__question"><%= faq.question %></summary>
+        <p class="tool-faq__answer"><%- faq.answer %></p>
+      </details>
+      <% }) %>
+    </div>
+  </div>
+</section>

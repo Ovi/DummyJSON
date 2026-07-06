@@ -1,0 +1,24 @@
+<section class="tool-marketing tool-marketing--cta no-top-breeze">
+  <div class="content">
+    <div class="tool-cta">
+      <h2 class="tool-cta__title"><%= title %></h2>
+      <p class="tool-cta__text"><%= text %></p>
+      <div class="btns-container">
+        <% if (primaryBtn.href) { %>
+        <a href="<%= primaryBtn.href %>" class="btn primary"<%= primaryBtn.id ? ` id="${primaryBtn.id}"` : '' %>>
+          <% if (primaryBtn.icon) { %><img src="<%= primaryBtn.icon %>" alt=""><% } %>
+          <%= primaryBtn.label %>
+        </a>
+        <% } else { %>
+        <button class="btn primary"<%= primaryBtn.id ? ` id="${primaryBtn.id}"` : '' %>>
+          <% if (primaryBtn.icon) { %><img src="<%= primaryBtn.icon %>" alt=""><% } %>
+          <%= primaryBtn.label %>
+        </button>
+        <% } %>
+        <% if (secondaryLink) { %>
+        <a href="<%= secondaryLink.href %>" class="btn"><%= secondaryLink.label %></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>

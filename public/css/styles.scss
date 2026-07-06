@@ -828,6 +828,10 @@ section {
 
       .code-container {
         position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        min-width: 0;
 
         .req-body-helper {
           position: absolute;
@@ -1418,6 +1422,10 @@ section {
   text-align: left;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-width: 0;
 
   .json-key {
     color: #80cbae;
@@ -1440,20 +1448,11 @@ section {
   }
 
   pre {
-    margin: 0 auto;
+    margin: 0;
     max-height: 400px;
-    min-width: 300px;
-    max-width: 300px;
-
-    @include breakpoint(sm) {
-      min-width: 500px;
-      max-width: 500px;
-    }
-
-    @include breakpoint(md) {
-      min-width: 600px;
-      max-width: 600px;
-    }
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   code {
@@ -1470,15 +1469,10 @@ section {
     overflow: auto;
     height: calc(100vh - 20rem);
     max-height: 400px;
-    min-width: 300px;
-
-    @include breakpoint(sm) {
-      min-width: 500px;
-    }
-
-    @include breakpoint(md) {
-      min-width: 600px;
-    }
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 
     & * {
       font-family: 'Courier New', Courier, monospace;
@@ -1498,7 +1492,266 @@ section {
   }
 }
 
-body.webhook-page {
+section.tool-landing__hero,
+section.tool-marketing {
+  height: auto;
+  min-height: unset;
+  overflow: visible;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.tool-landing__hero {
+  min-height: calc(100vh - #{$nav_height});
+  padding-top: calc(#{$nav_height} + 2rem);
+  padding-bottom: 3rem;
+
+  @media screen and (max-height: 600px) {
+    display: flex;
+  }
+
+  .content {
+    width: 100%;
+    height: auto;
+    max-width: 960px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+section.tool-marketing {
+  padding: 4rem 1.5rem;
+
+  .content {
+    max-width: 960px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+
+    @include breakpoint(sm) {
+      font-size: 2.25rem;
+    }
+
+    .heading-star {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.tool-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  &__item {
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 0 #111;
+    padding: 1.5rem;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid #111;
+  }
+
+  &__item--totp .tool-features__icon {
+    background: mix($primary-color, #fff, 40%);
+    color: $primary-color-dark;
+  }
+
+  &__item--custom .tool-features__icon {
+    background: mix($secondary-color, #fff, 50%);
+    color: $secondary-color-dark;
+  }
+
+  &__item--webhook .tool-features__icon {
+    background: mix(#55b9b7, #fff, 45%);
+    color: #2a8a88;
+  }
+
+  &__heading {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.tool-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+
+  &__item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__number {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: $primary-color;
+    border: 2px solid #111;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  &__heading {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.tool-faq {
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+
+  &__item {
+    border: 2px solid #111;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+    background: #fff;
+    overflow: hidden;
+
+    &[open] {
+      box-shadow: 3px 3px 0 #111;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__question {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '+';
+      float: right;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+  }
+
+  &__item[open] .tool-faq__question::after {
+    content: '−';
+  }
+
+  &__answer {
+    padding: 0 1.25rem 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background: #f3f3f3;
+      padding: 0.1rem 0.3rem;
+      border-radius: 0.25rem;
+      font-size: 0.85em;
+    }
+  }
+}
+
+.tool-cta {
+  width: 100%;
+  max-width: 560px;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 1rem;
+  box-shadow: 6px 6px 0 #111;
+
+  &__title {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+
+    @include breakpoint(sm) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .btns-container {
+    justify-content: center;
+    margin-top: 0;
+  }
+}
+
+body.webhook-page,
+body.tool-page {
   overflow-x: hidden;
   overflow-y: auto;
 }

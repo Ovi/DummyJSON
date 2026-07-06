@@ -1,0 +1,19 @@
+<section class="tool-marketing tool-marketing--steps no-top-breeze">
+  <div class="content">
+    <h2 class="tool-marketing__title">
+      <span class="heading-star"></span>
+      <%= title %>
+    </h2>
+    <ol class="tool-steps">
+      <% steps.forEach((step, index) => { %>
+      <li class="tool-steps__item">
+        <span class="tool-steps__number"><%= index + 1 %></span>
+        <div class="tool-steps__body">
+          <h3 class="tool-steps__heading"><%= step.heading %></h3>
+          <p class="tool-steps__text"><%= step.text %></p>
+        </div>
+      </li>
+      <% }) %>
+    </ol>
+  </div>
+</section>

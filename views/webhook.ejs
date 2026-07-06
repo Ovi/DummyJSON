@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://cdn.dummyjson.com/public/fav.png" />
 
   <title>Free Webhook Inspector for Testing | DummyJSON</title>
-  <meta name="description" content="Create temporary webhook endpoints to inspect incoming HTTP requests. Perfect for development, testing, and debugging webhooks." />
+  <meta name="description" content="Create free temporary webhook endpoints, capture every HTTP request, and inspect headers, bodies, and query params in a live dashboard. Expires in 24 hours." />
 
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -47,7 +47,7 @@
   <%- include('./partials/header') %>
 
   <section
-    class="custom-response standalone webhook-tool<%= typeof identifier === 'undefined' ? ' webhook-tool--landing' : '' %>"
+    class="custom-response standalone webhook-tool<%= typeof identifier === 'undefined' ? ' webhook-tool--landing tool-landing__hero' : '' %>"
     data-identifier="<%= typeof identifier !== 'undefined' ? identifier : '' %>"
     data-expires-at="<%= typeof expiresAt !== 'undefined' ? expiresAt : '' %>"
   >
@@ -104,6 +104,10 @@
       <% } %>
     </div>
   </section>
+
+  <% if (typeof identifier === 'undefined') { %>
+  <%- include('./partials/tool-landing/content/webhook') %>
+  <% } %>
 </body>
 
 <script src="/public/js/custom-json-highlight.min.js" defer></script>

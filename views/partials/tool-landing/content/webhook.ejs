@@ -1,0 +1,84 @@
+<%
+const webhookFaqs = [
+  {
+    question: 'How long does a webhook stay active?',
+    answer: 'Each webhook endpoint stays live for <strong>24 hours</strong>. Check the <code>x-expires-on</code> response header or the expiry badge in the inspector.',
+  },
+  {
+    question: 'How many requests can I capture?',
+    answer: 'Up to <strong>100 requests</strong> per webhook. When the limit is reached, the oldest requests are removed automatically.',
+  },
+  {
+    question: 'Which HTTP methods are supported?',
+    answer: 'All of them — <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>, <code>OPTIONS</code>, and more.',
+  },
+  {
+    question: 'Is sensitive data stored?',
+    answer: 'Headers like <code>authorization</code>, <code>cookie</code>, and <code>x-api-key</code> are stripped before storage. Maximum payload size is <strong>300 KB</strong>.',
+  },
+  {
+    question: 'Can I use GET requests to my webhook URL?',
+    answer: 'Yes. API clients and tools like <code>curl</code> capture requests normally. Opening the URL in a browser shows the interactive inspector instead.',
+  },
+];
+%>
+
+<%- include('../faq-schema', { faqs: webhookFaqs }) %>
+
+<%- include('../features', {
+  title: 'Why use it',
+  items: [
+    {
+      modifier: 'webhook',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 6.5H18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1h4.5M9 3.5h6v3H9v-3Zm-2 9h4m-4 3h6" /></svg>',
+      heading: 'Every HTTP method',
+      text: 'Send GET, POST, PUT, PATCH, DELETE, or anything else — every request is captured with full headers, query params, and body.',
+    },
+    {
+      modifier: 'webhook',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-7.5 10.5 7.5M12 21V6" /></svg>',
+      heading: 'Live inspector',
+      text: 'Watch requests roll in on a real-time dashboard. Copy JSON, delete entries, and debug integrations without leaving the browser.',
+    },
+    {
+      modifier: 'webhook',
+      icon: '<svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" /></svg>',
+      heading: 'Temporary by design',
+      text: 'Endpoints auto-expire after 24 hours — perfect for quick tests without leaving debug URLs around forever.',
+    },
+  ],
+}) %>
+
+<%- include('../steps', {
+  title: 'How it works',
+  steps: [
+    {
+      heading: 'Create your endpoint',
+      text: 'Click Create Webhook to get a unique URL instantly. No sign-up, no config files.',
+    },
+    {
+      heading: 'Send requests',
+      text: 'Point your app, curl, or third-party service at the URL. Every method and payload is recorded.',
+    },
+    {
+      heading: 'Inspect and debug',
+      text: 'Review captured requests in the live inspector — copy JSON, delete noise, and ship faster.',
+    },
+  ],
+}) %>
+
+<%- include('../faq', { title: 'FAQ', faqs: webhookFaqs }) %>
+
+<%- include('../cta', {
+  title: 'Ready to debug your webhooks?',
+  text: 'Create a free endpoint in one click and start capturing requests right away.',
+  primaryBtn: {
+    href: '#create-webhook-btn',
+    label: 'Create Webhook',
+    icon: '/public/img/icons/magic-wand.svg',
+  },
+  secondaryLink: {
+    href: '/docs/tools#tools-webhook-create',
+    label: 'API Docs',
+  },
+}) %>

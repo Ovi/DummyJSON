@@ -1,0 +1,19 @@
+<section class="tool-marketing tool-marketing--features no-down-breeze">
+  <div class="content">
+    <h2 class="tool-marketing__title">
+      <span class="heading-star"></span>
+      <%= title %>
+    </h2>
+    <ul class="tool-features">
+      <% items.forEach(item => { %>
+      <li class="tool-features__item<%= item.modifier ? ` tool-features__item--${item.modifier}` : '' %>">
+        <% if (item.icon) { %>
+        <div class="tool-features__icon" aria-hidden="true"><%- item.icon %></div>
+        <% } %>
+        <h3 class="tool-features__heading"><%= item.heading %></h3>
+        <p class="tool-features__text"><%= item.text %></p>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
