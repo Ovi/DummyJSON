@@ -3,7 +3,6 @@ import {
   PutObjectCommand,
   GetObjectCommand,
   HeadObjectCommand,
-  DeleteObjectCommand,
   ListObjectsV2Command,
   DeleteObjectsCommand,
 } from '@aws-sdk/client-s3';

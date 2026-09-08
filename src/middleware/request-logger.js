@@ -64,8 +64,7 @@ function requestLogger(req, res, next) {
 
   function logRequest() {
     const referrer = req.headers.referer || req.headers.referrer;
-    const { clientInfo } = req;
-    const { ip, userAgent } = clientInfo || {};
+    const { ip, userAgent: reqUserAgent } = req.clientInfo || {};
 
     const logObject = {
       method: req.method,
@@ -75,7 +74,7 @@ function requestLogger(req, res, next) {
       ip,
       url: requestURL,
       referrer: referrer || '-',
-      user_agent: userAgent || '-',
+      user_agent: reqUserAgent || '-',
     };
 
     log('HTTP Request', logObject);
@@ -146,7 +145,7 @@ function startCountLogger() {
   setInterval(async () => {
     const diff = timeDifference(startTime, Date.now());
 
-    console.log(
+    log(
       `[Request Counts] [${diff}] - apiRequestCount: ${counts.apiRequestCount}, customRouteCount: ${counts.customRouteCount}, webhookRequestCount: ${counts.webhookRequestCount}`,
     );
 

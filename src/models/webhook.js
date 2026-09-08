@@ -61,4 +61,3 @@ webhookSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 const Webhook = mongoose.model('Webhook', webhookSchema);
 
 export default Webhook;
-

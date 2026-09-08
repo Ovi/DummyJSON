@@ -25,7 +25,7 @@ function normalizePath(path) {
 
   // Check if path contains problematic characters (dots or other non-standard chars)
   const hasDots = /\./.test(original);
-  const hasWeirdChars = /[^a-zA-Z0-9_/\-]/.test(original);
+  const hasWeirdChars = /[^a-zA-Z0-9_/-]/.test(original);
   const isWeird = hasDots || hasWeirdChars;
 
   // Replace dots with underscores (dots are MongoDB field separators)
@@ -33,14 +33,14 @@ function normalizePath(path) {
 
   // Replace other problematic characters (but keep slashes, hyphens, and alphanumeric)
   // Keep: a-z, A-Z, 0-9, /, -, _
-  normalized = normalized.replace(/[^a-zA-Z0-9_/\-]/g, '_');
+  normalized = normalized.replace(/[^a-zA-Z0-9_/-]/g, '_');
 
   // Remove consecutive underscores (but keep slashes)
   normalized = normalized.replace(/_+/g, '_');
 
   // Remove leading/trailing underscores (but preserve leading slash)
   if (normalized.startsWith('/')) {
-    normalized = '/' + normalized.slice(1).replace(/^_+|_+$/g, '');
+    normalized = `/${normalized.slice(1).replace(/^_+|_+$/g, '')}`;
   } else {
     normalized = normalized.replace(/^_+|_+$/g, '');
   }

@@ -31,4 +31,3 @@ export function requestContextMiddleware(req, res, next) {
     next();
   });
 }
-

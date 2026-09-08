@@ -29,7 +29,7 @@ const customResponseSchema = new Schema(
     },
     creatorIP: {
       type: String,
-    }
+    },
   },
   { timestamps: true, versionKey: false },
 );
