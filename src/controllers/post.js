@@ -1,60 +1,19 @@
 import { verifyUserHandler, verifyPostHandler } from '../helpers/index.js';
-import {
-  dataInMemory as frozenData,
-  getMultiObjectSubset,
-  getObjectSubset,
-  limitArray,
-  sortArray,
-} from '../utils/util.js';
+import { dataInMemory as frozenData } from '../utils/util.js';
+import { paginateResource, selectFields, markDeleted, nextId } from '../helpers/resource.js';
 
 // get all posts
 export const getAllPosts = _options => {
-  const { limit, skip, select, sortBy, order } = _options;
-
-  let { posts } = frozenData;
-  const total = posts.length;
-
-  posts = sortArray(posts, sortBy, order);
-
-  if (skip > 0) {
-    posts = posts.slice(skip);
-  }
-
-  posts = limitArray(posts, limit);
-
-  if (select) {
-    posts = getMultiObjectSubset(posts, select);
-  }
-
-  const result = { posts, total, skip, limit: posts.length };
-
-  return result;
+  return paginateResource(frozenData.posts, 'posts', _options);
 };
 
 // search posts
 export const searchPosts = ({ q: searchQuery, ..._options }) => {
-  const { limit, skip, select, sortBy, order } = _options;
-
-  let posts = frozenData.posts.filter(p => {
+  const posts = frozenData.posts.filter(p => {
     return p.body.toLowerCase().includes(searchQuery);
   });
-  const total = posts.length;
 
-  posts = sortArray(posts, sortBy, order);
-
-  if (skip > 0) {
-    posts = posts.slice(skip);
-  }
-
-  posts = limitArray(posts, limit);
-
-  if (select) {
-    posts = getMultiObjectSubset(posts, select);
-  }
-
-  const result = { posts, total, skip, limit: posts.length };
-
-  return result;
+  return paginateResource(posts, 'posts', _options);
 };
 
 // get post tag list
@@ -69,63 +28,23 @@ export const getPostTags = () => {
 
 // get posts by tag
 export const getPostsByTag = ({ tag = '', ..._options }) => {
-  const { limit, skip, select, sortBy, order } = _options;
+  const posts = frozenData.posts.filter(p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()));
 
-  let posts = frozenData.posts.filter(p => p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()));
-  const total = posts.length;
-
-  posts = sortArray(posts, sortBy, order);
-
-  if (skip > 0) {
-    posts = posts.slice(skip);
-  }
-
-  posts = limitArray(posts, limit);
-
-  if (select) {
-    posts = getMultiObjectSubset(posts, select);
-  }
-
-  const result = { posts, total, skip, limit: posts.length };
-
-  return result;
+  return paginateResource(posts, 'posts', _options);
 };
 
 // get post by id
 export const getPostById = ({ id, select }) => {
-  let { ...post } = verifyPostHandler(id);
-
-  if (select) {
-    post = getObjectSubset(post, select);
-  }
-
-  return post;
+  return selectFields({ ...verifyPostHandler(id) }, select);
 };
 
 // get posts by userId
 export const getPostsByUserId = ({ userId, ..._options }) => {
-  const { limit, skip, select, sortBy, order } = _options;
-
   verifyUserHandler(userId);
 
-  let posts = frozenData.posts.filter(p => p.userId.toString() === userId);
-  const total = posts.length;
+  const posts = frozenData.posts.filter(p => p.userId.toString() === userId);
 
-  posts = sortArray(posts, sortBy, order);
-
-  if (skip > 0) {
-    posts = posts.slice(skip);
-  }
-
-  posts = limitArray(posts, limit);
-
-  if (select) {
-    posts = getMultiObjectSubset(posts, select);
-  }
-
-  const result = { posts, total, skip, limit: posts.length };
-
-  return result;
+  return paginateResource(posts, 'posts', _options);
 };
 
 // add new post
@@ -133,7 +52,7 @@ export const addNewPost = ({ title, body, userId, tags, reactions }) => {
   verifyUserHandler(userId);
 
   const newPost = {
-    id: frozenData.posts.length + 1,
+    id: nextId('posts'),
     title,
     body,
     userId,
@@ -152,11 +71,11 @@ export const updatePost = ({ id, ...data }) => {
 
   const updatedPost = {
     id: +id, // converting id to number
-    title: title || post.title,
-    body: body || post.body,
-    userId: userId || post.userId,
-    tags: tags || post.tags,
-    reactions: reactions || post.reactions,
+    title: title ?? post.title,
+    body: body ?? post.body,
+    userId: userId ?? post.userId,
+    tags: tags ?? post.tags,
+    reactions: reactions ?? post.reactions,
   };
 
   return updatedPost;
@@ -164,10 +83,5 @@ export const updatePost = ({ id, ...data }) => {
 
 // delete post by id
 export const deletePostById = ({ id }) => {
-  const { ...post } = verifyPostHandler(id);
-
-  post.isDeleted = true;
-  post.deletedOn = new Date().toISOString();
-
-  return post;
+  return markDeleted(verifyPostHandler(id));
 };

@@ -18,14 +18,16 @@ router.get('/', (req, res) => {
 // get cart by user
 router.get('/user/:userId', (req, res) => {
   const { userId } = req.params;
-  const { limit, skip } = req._options;
 
-  res.send(getCartsByUserId({ userId, limit, skip }));
+  res.send(getCartsByUserId({ userId, ...req._options }));
 });
 
 // get cart by id
 router.get('/:id', (req, res) => {
-  res.send(getCartById({ ...req.params }));
+  const { id } = req.params;
+  const { select } = req._options;
+
+  res.send(getCartById({ id, select }));
 });
 
 // add new cart

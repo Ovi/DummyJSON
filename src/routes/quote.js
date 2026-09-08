@@ -15,7 +15,10 @@ router.get('/random/:length?', (req, res) => {
 
 // get quote by id
 router.get('/:id', (req, res) => {
-  res.send(getQuoteById({ ...req.params }));
+  const { id } = req.params;
+  const { select } = req._options;
+
+  res.send(getQuoteById({ id, select }));
 });
 
 export default router;

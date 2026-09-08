@@ -18,8 +18,9 @@ router.get('/', (req, res) => {
 // get comment by id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
+  const { select } = req._options;
 
-  res.send(getCommentById({ id }));
+  res.send(getCommentById({ id, select }));
 });
 
 // get comments by postId

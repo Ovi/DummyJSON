@@ -51,7 +51,7 @@ router.get('/meal-type/:mealType', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-  res.send(addNewRecipe({ ...req.body }));
+  res.status(201).send(addNewRecipe({ ...req.body }));
 });
 
 router.put('/:id', (req, res) => {

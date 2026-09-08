@@ -1,42 +1,15 @@
 import { verifyUserHandler } from '../helpers/index.js';
-import {
-  dataInMemory as frozenData,
-  getMultiObjectSubset,
-  getObjectSubset,
-  getNestedValue,
-  limitArray,
-  sortArray,
-} from '../utils/util.js';
+import { dataInMemory as frozenData, getNestedValue } from '../utils/util.js';
+import { paginateResource, selectFields, markDeleted, nextId } from '../helpers/resource.js';
 
 // get all users
 export const getAllUsers = _options => {
-  const { limit, skip, select, sortBy, order } = _options;
-
-  let users = [...frozenData.users];
-  const total = users.length;
-
-  users = sortArray(users, sortBy, order);
-
-  if (skip > 0) {
-    users = users.slice(skip);
-  }
-
-  users = limitArray(users, limit);
-
-  if (select) {
-    users = getMultiObjectSubset(users, select);
-  }
-
-  const result = { users, total, skip, limit: users.length };
-
-  return result;
+  return paginateResource(frozenData.users, 'users', _options);
 };
 
 // search users
 export const searchUsers = ({ q: searchQuery, ..._options }) => {
-  const { limit, skip, select, sortBy, order } = _options;
-
-  let users = frozenData.users.filter(u => {
+  const users = frozenData.users.filter(u => {
     return (
       u.firstName.toLowerCase().includes(searchQuery) ||
       u.lastName.toLowerCase().includes(searchQuery) ||
@@ -44,61 +17,23 @@ export const searchUsers = ({ q: searchQuery, ..._options }) => {
       u.username.toLowerCase().includes(searchQuery)
     );
   });
-  const total = users.length;
 
-  users = sortArray(users, sortBy, order);
-
-  if (skip > 0) {
-    users = users.slice(skip);
-  }
-
-  users = limitArray(users, limit);
-
-  if (select) {
-    users = getMultiObjectSubset(users, select);
-  }
-
-  const result = { users, total, skip, limit: users.length };
-
-  return result;
+  return paginateResource(users, 'users', _options);
 };
 
 // filter users
 export const filterUsers = ({ key, value, ..._options }) => {
-  const { limit, skip, select, sortBy, order } = _options;
-
-  let users = frozenData.users.filter(u => {
+  const users = frozenData.users.filter(u => {
     const val = getNestedValue(u, key);
     return val && val.toString() === value;
   });
-  const total = users.length;
 
-  users = sortArray(users, sortBy, order);
-
-  if (skip > 0) {
-    users = users.slice(skip);
-  }
-
-  users = limitArray(users, limit);
-
-  if (select) {
-    users = getMultiObjectSubset(users, select);
-  }
-
-  const result = { users, total, skip, limit: users.length };
-
-  return result;
+  return paginateResource(users, 'users', _options);
 };
 
 // get user by id
 export const getUserById = ({ id, select }) => {
-  let { ...user } = verifyUserHandler(id);
-
-  if (select) {
-    user = getObjectSubset(user, select);
-  }
-
-  return user;
+  return selectFields({ ...verifyUserHandler(id) }, select);
 };
 
 // add new user
@@ -134,7 +69,7 @@ export const addNewUser = ({ ...data }) => {
   } = data;
 
   const newUser = {
-    id: frozenData.users.length + 1,
+    id: nextId('users'),
     firstName,
     lastName,
     maidenName,
@@ -317,10 +252,5 @@ export const updateUserById = ({ id, ...data }) => {
 
 // delete user by id
 export const deleteUserById = ({ id }) => {
-  const { ...user } = verifyUserHandler(id);
-
-  user.isDeleted = true;
-  user.deletedOn = new Date().toISOString();
-
-  return user;
+  return markDeleted(verifyUserHandler(id));
 };

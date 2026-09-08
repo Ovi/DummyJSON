@@ -23,20 +23,22 @@ router.get('/random/:length?', (req, res) => {
 
 // get todo by id
 router.get('/:id', (req, res) => {
-  res.send(getTodoById(req.params));
+  const { id } = req.params;
+  const { select } = req._options;
+
+  res.send(getTodoById({ id, select }));
 });
 
 // get todo by userId
 router.get('/user/:userId', (req, res) => {
   const { userId } = req.params;
-  const { limit, skip, select } = req._options;
 
-  res.send(getTodosByUserId({ userId, limit, skip, select }));
+  res.send(getTodosByUserId({ userId, ...req._options }));
 });
 
 // add new todo
 router.post('/add', (req, res) => {
-  res.status(201).send(addNewTodo(req.body));
+  res.status(201).send(addNewTodo({ ...req.body }));
 });
 
 // update todo by id (PUT)

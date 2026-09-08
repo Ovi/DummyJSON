@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import https from 'node:https';
 import { v4 } from 'uuid';
 import { REQUIRED_ENV_VARIABLES, OPTIONAL_ENV_VARIABLES, httpCodes } from '../constants/index.js';
 import { logWarn, logError } from '../helpers/logger.js';
@@ -157,17 +158,17 @@ export const limitArray = (arr, limit) => {
 };
 
 export const sortArray = (arr, sortBy, order) => {
-  const arrCopy = deepCopy(arr);
+  if (!sortBy) return arr;
 
-  const sortedArray = arrCopy.sort((a, b) => {
-    if (a[sortBy] === b[sortBy]) return 0;
-    if (order === 'asc') {
-      return a[sortBy] > b[sortBy] ? 1 : -1;
-    }
-    return a[sortBy] < b[sortBy] ? 1 : -1;
+  const direction = order === 'asc' ? 1 : -1;
+
+  return [...arr].sort((a, b) => {
+    const aVal = getNestedValue(a, sortBy);
+    const bVal = getNestedValue(b, sortBy);
+
+    if (aVal === bVal) return 0;
+    return aVal > bVal ? direction : -direction;
   });
-
-  return sortedArray;
 };
 
 export const capitalize = str => {
@@ -311,7 +312,7 @@ function formatRequestDataForNotification(requestData) {
     const bodyStr = JSON.stringify(requestData.body);
     // Limit body size in notification
     const maxBodyLength = 200;
-    parts.push(`Body: ${bodyStr.length > maxBodyLength ? bodyStr.substring(0, maxBodyLength) + '...' : bodyStr}`);
+    parts.push(`Body: ${bodyStr.length > maxBodyLength ? `${bodyStr.substring(0, maxBodyLength)}...` : bodyStr}`);
   }
   if (requestData.referer) parts.push(`Referer: ${requestData.referer}`);
   if (requestData.timestamp) parts.push(`Time: ${requestData.timestamp}`);

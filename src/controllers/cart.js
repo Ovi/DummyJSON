@@ -1,50 +1,25 @@
 import { verifyUserHandler } from '../helpers/index.js';
 import APIError from '../utils/error.js';
-import { dataInMemory as frozenData, trueTypeOf, isNumber, limitArray } from '../utils/util.js';
+import { dataInMemory as frozenData, trueTypeOf, isNumber } from '../utils/util.js';
+import { paginateResource, findResourceById, selectFields, markDeleted, nextId } from '../helpers/resource.js';
 
 // get carts
-export const getAllCarts = ({ limit, skip }) => {
-  let [...carts] = frozenData.carts;
-  const total = carts.length;
-
-  if (skip > 0) {
-    carts = carts.slice(skip);
-  }
-
-  carts = limitArray(carts, limit);
-
-  const result = { carts, total, skip, limit: carts.length };
-
-  return result;
+export const getAllCarts = _options => {
+  return paginateResource(frozenData.carts, 'carts', _options);
 };
 
 // get carts by user id
-export const getCartsByUserId = ({ userId, limit, skip }) => {
+export const getCartsByUserId = ({ userId, ..._options }) => {
   verifyUserHandler(userId);
 
-  let [...carts] = frozenData.carts.filter(c => c.userId.toString() === userId);
-  const total = carts.length;
+  const carts = frozenData.carts.filter(c => c.userId.toString() === userId);
 
-  if (skip > 0) {
-    carts = carts.slice(skip);
-  }
-
-  carts = limitArray(carts, limit);
-
-  const result = { carts, total, skip, limit: carts.length };
-
-  return result;
+  return paginateResource(carts, 'carts', _options);
 };
 
 // get cart by id
-export const getCartById = ({ id }) => {
-  const cartFrozen = frozenData.carts.find(c => c.id.toString() === id);
-
-  if (!cartFrozen) {
-    throw new APIError(`Cart with id '${id}' not found`, 404);
-  }
-
-  return cartFrozen;
+export const getCartById = ({ id, select }) => {
+  return selectFields(findResourceById('carts', id, 'Cart'), select);
 };
 
 // add new cart
@@ -59,18 +34,12 @@ export const addNewCart = ({ userId, products = [] }) => {
     throw new APIError(`products can not be empty`, 400);
   }
 
-  const productIds = [];
-  const productQty = [];
-
-  // extract product id and quantity
+  // quantity per product id, in the caller's order
+  const quantityById = new Map();
   products.forEach(p => {
-    productIds.push(+(p.id || 0));
-    productQty.push(+(p.quantity || 1));
-  });
-
-  // get all possible products by ids
-  const [...productsByIds] = frozenData.products.filter(p => {
-    return productIds.includes(p.id);
+    const productId = +(p.id || 0);
+    const quantity = +(p.quantity || 1);
+    quantityById.set(productId, (quantityById.get(productId) || 0) + quantity);
   });
 
   // set variables to count the totals of cart by products
@@ -78,10 +47,9 @@ export const addNewCart = ({ userId, products = [] }) => {
   let discountedTotal = 0;
   let totalQuantity = 0;
 
-  // get products in the relevant schema
-  const someProducts = productsByIds.map((p, idx) => {
-    // get quantity of the product
-    const quantity = productQty[idx];
+  const someProducts = [...quantityById].flatMap(([productId, quantity]) => {
+    const p = frozenData.products.find(({ id }) => id === productId);
+    if (!p) return [];
 
     // total price (price * quantity)
     const priceWithQty = p.price * quantity;
@@ -95,21 +63,23 @@ export const addNewCart = ({ userId, products = [] }) => {
     totalQuantity += quantity;
 
     // set product with correct schema
-    return {
-      id: p.id,
-      title: p.title,
-      price: p.price,
-      quantity,
-      total: priceWithQty,
-      discountPercentage: p.discountPercentage,
-      discountedPrice,
-      thumbnail: p.thumbnail,
-    };
+    return [
+      {
+        id: p.id,
+        title: p.title,
+        price: p.price,
+        quantity,
+        total: priceWithQty,
+        discountPercentage: p.discountPercentage,
+        discountedPrice,
+        thumbnail: p.thumbnail,
+      },
+    ];
   });
 
   // prepare cart
   const cart = {
-    id: frozenData.carts.length + 1,
+    id: nextId('carts'),
     products: someProducts,
     total,
     discountedTotal,
@@ -125,12 +95,7 @@ export const addNewCart = ({ userId, products = [] }) => {
 export const updateCartById = ({ id: cartId, ...data }) => {
   const { userId, products: userProducts = [], merge = false } = data;
 
-  const cartFrozen = frozenData.carts.find(c => c.id.toString() === cartId);
-
-  // verify if we have valid cart id
-  if (!cartFrozen) {
-    throw new APIError(`Cart with id '${cartId}' not found`, 404);
-  }
+  const cartFrozen = findResourceById('carts', cartId, 'Cart');
 
   if (userId) {
     verifyUserHandler(userId);
@@ -207,16 +172,5 @@ export const updateCartById = ({ id: cartId, ...data }) => {
 
 // delete cart by id
 export const deleteCartById = ({ id }) => {
-  const cartFrozen = frozenData.carts.find(c => c.id.toString() === id);
-
-  if (!cartFrozen) {
-    throw new APIError(`Cart with id '${id}' not found`, 404);
-  }
-
-  const { ...cart } = cartFrozen;
-
-  cart.isDeleted = true;
-  cart.deletedOn = new Date().toISOString();
-
-  return cart;
+  return markDeleted(findResourceById('carts', id, 'Cart'));
 };

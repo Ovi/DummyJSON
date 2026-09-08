@@ -146,10 +146,7 @@ router.delete('/:identifier/requests/:requestId', async (req, res, next) => {
       return;
     }
 
-    const result = await Webhook.updateOne(
-      { identifier },
-      { $pull: { requests: { requestId } } },
-    );
+    const result = await Webhook.updateOne({ identifier }, { $pull: { requests: { requestId } } });
 
     if (!result.modifiedCount) {
       sendWebhookNotFound(res);

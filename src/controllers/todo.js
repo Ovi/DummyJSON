@@ -1,27 +1,10 @@
 import { verifyUserHandler } from '../helpers/index.js';
-import APIError from '../utils/error.js';
-import {
-  dataInMemory as frozenData,
-  getMultiObjectSubset,
-  limitArray,
-  getRandomFromArray,
-  isValidNumberInRange,
-} from '../utils/util.js';
+import { dataInMemory as frozenData, getRandomFromArray, isValidNumberInRange } from '../utils/util.js';
+import { paginateResource, findResourceById, selectFields, markDeleted, nextId } from '../helpers/resource.js';
 
 // get all todos
-export const getAllTodos = ({ limit, skip }) => {
-  let [...todos] = frozenData.todos;
-  const total = todos.length;
-
-  if (skip > 0) {
-    todos = todos.slice(skip);
-  }
-
-  todos = limitArray(todos, limit);
-
-  const result = { todos, total, skip, limit: todos.length };
-
-  return result;
+export const getAllTodos = _options => {
+  return paginateResource(frozenData.todos, 'todos', _options);
 };
 
 // get random todo(s)
@@ -51,36 +34,17 @@ export const getRandomTodo = ({ length }) => {
 };
 
 // get todo by id
-export const getTodoById = ({ id }) => {
-  const todoFrozen = frozenData.todos.find(u => u.id.toString() === id);
-
-  if (!todoFrozen) {
-    throw new APIError(`Todo with id '${id}' not found`, 404);
-  }
-
-  return todoFrozen;
+export const getTodoById = ({ id, select }) => {
+  return selectFields(findResourceById('todos', id, 'Todo'), select);
 };
 
 // get todos by userId
-export const getTodosByUserId = ({ userId, limit, skip, select }) => {
+export const getTodosByUserId = ({ userId, ..._options }) => {
   verifyUserHandler(userId);
 
-  let [...todos] = frozenData.todos.filter(p => p.userId.toString() === userId);
-  const total = todos.length;
+  const todos = frozenData.todos.filter(p => p.userId.toString() === userId);
 
-  if (skip > 0) {
-    todos = todos.slice(skip);
-  }
-
-  todos = limitArray(todos, limit);
-
-  if (select) {
-    todos = getMultiObjectSubset(todos, select);
-  }
-
-  const result = { todos, total, skip, limit: todos.length };
-
-  return result;
+  return paginateResource(todos, 'todos', _options);
 };
 
 // add new todo
@@ -88,7 +52,7 @@ export const addNewTodo = ({ todo, completed, userId }) => {
   verifyUserHandler(userId);
 
   const newTodo = {
-    id: frozenData.todos.length + 1,
+    id: nextId('todos'),
     todo,
     completed,
     userId,
@@ -101,17 +65,13 @@ export const addNewTodo = ({ todo, completed, userId }) => {
 export const updateTodoById = ({ id, ...data }) => {
   const { todo, completed, userId } = data;
 
-  const foundTodo = frozenData.todos.find(p => p.id.toString() === id);
-
-  if (!foundTodo) {
-    throw new APIError(`Todo with id '${id}' not found`, 404);
-  }
+  const foundTodo = findResourceById('todos', id, 'Todo');
 
   const updatedTodo = {
     id: +id, // converting id to number,
-    todo: todo || foundTodo.todo,
-    completed: completed !== undefined ? completed : foundTodo.completed,
-    userId: userId || foundTodo.userId,
+    todo: todo ?? foundTodo.todo,
+    completed: completed ?? foundTodo.completed,
+    userId: userId ?? foundTodo.userId,
   };
 
   return updatedTodo;
@@ -119,16 +79,5 @@ export const updateTodoById = ({ id, ...data }) => {
 
 // delete todo by id
 export const deleteTodoById = ({ id }) => {
-  const todoFrozen = frozenData.todos.find(p => p.id.toString() === id);
-
-  if (!todoFrozen) {
-    throw new APIError(`Todo with id '${id}' not found`, 404);
-  }
-
-  const { ...todo } = todoFrozen;
-
-  todo.isDeleted = true;
-  todo.deletedOn = new Date().toISOString();
-
-  return todo;
+  return markDeleted(findResourceById('todos', id, 'Todo'));
 };

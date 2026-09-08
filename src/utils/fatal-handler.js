@@ -1,9 +1,8 @@
 // src/utils/process-handlers.js
 import { log, logError } from '../helpers/logger.js';
 import { buildRequestMetaData } from '../middleware/error.js';
-import { getCurrentRequest } from '../utils/request-context.js';
-import { sendProcessErrorPushNotification } from '../utils/util.js';
-import { server } from '../../index.js';
+import { getCurrentRequest } from './request-context.js';
+import { sendProcessErrorPushNotification } from './util.js';
 
 export function registerFatalHandlers() {
   process.on('uncaughtException', err => {
@@ -13,7 +12,9 @@ export function registerFatalHandlers() {
       try {
         const currentReq = getCurrentRequest();
         requestData = buildRequestMetaData(currentReq);
-      } catch {}
+      } catch {
+        // no request in flight
+      }
 
       logError(`Uncaught exception in process ${process.pid}: ${err.message}`, {
         error: err.stack,
@@ -28,6 +29,8 @@ export function registerFatalHandlers() {
         });
       }
     } catch (handlerErr) {
+      // logger itself may be broken here; console is the last resort
+      // eslint-disable-next-line no-console
       console.error('Fatal error in uncaughtException handler:', handlerErr);
     } finally {
       setTimeout(() => {
@@ -41,6 +44,7 @@ export function registerFatalHandlers() {
       logError('Unhandled promise rejection', { reason });
       sendProcessErrorPushNotification(typeof reason === 'string' ? reason : JSON.stringify(reason));
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Fatal error in unhandledRejection handler:', err);
     } finally {
       setTimeout(() => {
@@ -50,15 +54,17 @@ export function registerFatalHandlers() {
   });
 }
 
-// Accept dependencies so this module doesn’t import mongoose directly
-export function registerShutdownHandlers({ disconnectDB }) {
+// Accept dependencies so this module doesn’t import mongoose or index.js directly
+export function registerShutdownHandlers({ disconnectDB, server }) {
   const shutdown = signal => async () => {
     log(`${signal} received: starting graceful shutdown...`, { pid: process.pid });
 
     try {
       // 1. Stop accepting new connections
       if (server) {
-        await new Promise(resolve => server.close(resolve));
+        await new Promise(resolve => {
+          server.close(resolve);
+        });
         log('HTTP server closed');
       }
 

@@ -111,8 +111,12 @@
           You can pass `limit` and `skip` params to limit and skip the
           results for pagination, and use `limit=0` to get all items.
         </p>
+        <p class="res-tip">
+          You can pass `select` as query params with comma-separated values
+          to select specific data
+        </p>
         <pre><code class="language-js">
-          fetch('https://dummyjson.com/quotes?limit=3&skip=10')
+          fetch('https://dummyjson.com/quotes?limit=3&skip=10&select=quote')
           .then(res => res.json())
           .then(console.log);
         </code></pre>
@@ -124,23 +128,53 @@
             "quotes": [
               {
                 "id": 11, // first 10 items were skipped
-                "quote": "We must balance conspicuous consumption with conscious capitalism.",
-                "author": "Kevin Kruse"
+                "quote": "We must balance conspicuous consumption with conscious capitalism."
               },
               {
                 "id": 12,
-                "quote": "Life is what happens to you while you're busy making other plans.",
-                "author": "John Lennon"
+                "quote": "Life is what happens to you while you're busy making other plans."
               },
               {
                 "id": 13,
-                "quote": "We become what we think about.",
-                "author": "Earl Nightingale"
+                "quote": "We become what we think about."
               }
             ],
             "total": 100,
             "skip": 10,
             "limit": 3
+          }
+        </code></pre>
+      </div>
+
+      <div class="resource" id="quotes-sort">
+        <a href="#quotes-sort" class="res-title">Sort quotes</a>
+        <p class="res-tip">
+          You can pass `sortBy` and `order` params to sort the results,
+          `sortBy` should be field name and `order` should be "asc" or "desc"
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/quotes?sortBy=author&order=asc')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "quotes": [
+              {
+                "id": 2,
+                "quote": "The Bay of Bengal is hit frequently by cyclones. The months of November and May, in particular, are dangerous in this regard.",
+                "author": "Abdul Kalam" // sorted by author in ascending order
+              },
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 100,
+            "skip": 0,
+            "limit": 30
           }
         </code></pre>
       </div>

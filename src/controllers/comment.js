@@ -1,50 +1,25 @@
 import { verifyPostHandler, verifyUserHandler } from '../helpers/index.js';
 import APIError from '../utils/error.js';
-import { dataInMemory as frozenData, trueTypeOf, limitArray } from '../utils/util.js';
+import { dataInMemory as frozenData, trueTypeOf } from '../utils/util.js';
+import { paginateResource, findResourceById, selectFields, markDeleted, nextId } from '../helpers/resource.js';
 
 // get all comments
-export const getAllComments = ({ limit, skip }) => {
-  let [...comments] = frozenData.comments;
-  const total = comments.length;
-
-  if (skip > 0) {
-    comments = comments.slice(skip);
-  }
-
-  comments = limitArray(comments, limit);
-
-  const result = { comments, total, skip, limit: comments.length };
-
-  return result;
+export const getAllComments = _options => {
+  return paginateResource(frozenData.comments, 'comments', _options);
 };
 
 // get comment by id
-export const getCommentById = ({ id }) => {
-  const commentFrozen = frozenData.comments.find(u => u.id.toString() === id);
-
-  if (!commentFrozen) {
-    throw new APIError(`Comment with id '${id}' not found`, 404);
-  }
-
-  return commentFrozen;
+export const getCommentById = ({ id, select }) => {
+  return selectFields(findResourceById('comments', id, 'Comment'), select);
 };
 
 // get all comments by postId
-export const getAllCommentsByPostId = ({ postId, limit, skip }) => {
+export const getAllCommentsByPostId = ({ postId, ..._options }) => {
   verifyPostHandler(postId);
 
-  let [...comments] = frozenData.comments.filter(c => c.postId.toString() === postId);
-  const total = comments.length;
+  const comments = frozenData.comments.filter(c => c.postId.toString() === postId);
 
-  if (skip > 0) {
-    comments = comments.slice(skip);
-  }
-
-  comments = limitArray(comments, limit);
-
-  const result = { comments, total, skip, limit: comments.length };
-
-  return result;
+  return paginateResource(comments, 'comments', _options);
 };
 
 // add new comment
@@ -59,7 +34,7 @@ export const addNewComment = ({ body, postId, userId }) => {
   const user = verifyUserHandler(userId);
 
   const newComment = {
-    id: frozenData.comments.length + 1,
+    id: nextId('comments'),
     body,
     postId,
     user: {
@@ -77,12 +52,7 @@ export const updateCommentById = ({ id, ...data }) => {
   const { body, postId, userId } = data;
 
   // see if we can find the comment
-  const commentFrozen = frozenData.comments.find(c => c.id.toString() === id);
-  if (!commentFrozen) {
-    throw new APIError(`Comment with id '${id}' not found`, 404);
-  }
-
-  const { ...updatedComment } = commentFrozen;
+  const updatedComment = findResourceById('comments', id, 'Comment');
 
   if (body && trueTypeOf(body) === 'string') {
     updatedComment.body = body;
@@ -108,16 +78,5 @@ export const updateCommentById = ({ id, ...data }) => {
 
 // delete comment by id
 export const deleteCommentById = ({ id }) => {
-  const commentFrozen = frozenData.comments.find(c => c.id.toString() === id);
-
-  if (!commentFrozen) {
-    throw new APIError(`Comment with id '${id}' not found`, 404);
-  }
-
-  const { ...comment } = commentFrozen;
-
-  comment.isDeleted = true;
-  comment.deletedOn = new Date().toISOString();
-
-  return comment;
+  return markDeleted(findResourceById('comments', id, 'Comment'));
 };
