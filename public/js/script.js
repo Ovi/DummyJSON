@@ -49,7 +49,7 @@ function handleSectionScrollViaArrowIcons() {
 
   arrowIcons.forEach(icon => {
     icon.addEventListener('click', function() {
-      const section = this.closest('section');
+      const section = this.closest('section, .sponsors');
       if (!section) return;
 
       let targetSection = section.nextElementSibling;

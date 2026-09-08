@@ -1,0 +1,52 @@
+<% if (typeof sponsors !== 'undefined' && sponsors) { %>
+<aside class="sponsors" aria-labelledby="sponsors-heading">
+  <div class="sponsors__inner">
+    <p class="sponsors__eyebrow" id="sponsors-heading">
+      <span class="heading-star"></span>
+      <%= sponsors.featured.length ? 'Proudly sponsored by' : 'Supported by the community' %>
+    </p>
+
+    <% if (sponsors.featured.length) { %>
+    <ul class="sponsors__featured sponsors__featured--<%= sponsors.featured.length %>">
+      <% sponsors.featured.forEach(sponsor => { %>
+      <li class="sponsors__card">
+        <a href="<%= sponsor.url %>" target="_blank" rel="sponsored noopener">
+          <img class="sponsors__logo" src="<%= sponsor.logo %>" alt="<%= sponsor.name %>" loading="lazy" height="40" />
+          <div class="sponsors__card-text">
+            <h3><%= sponsor.name %></h3>
+            <% if (sponsor.tagline) { %><p><%= sponsor.tagline %></p><% } %>
+          </div>
+          <svg class="sponsors__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M14.43 5.93L20.5 12l-6.07 6.07" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            <path opacity="0.4" d="M3.5 12h16.83" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <div class="sponsors__supporters">
+      <% if (sponsors.supporters.length) { %>
+      <ul class="sponsors__avatars" aria-label="Supporters">
+        <% sponsors.supporters.forEach(supporter => { %>
+        <li>
+          <a href="<%= supporter.url %>" target="_blank" rel="noopener" title="<%= supporter.name %>">
+            <img src="<%= supporter.avatar %>" alt="<%= supporter.name %>" loading="lazy" width="36" height="36" />
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+      <span class="sponsors__thanks">
+        <%= sponsors.supporters.length %> awesome <%= sponsors.supporters.length === 1 ? 'supporter keeps' : 'supporters keep' %> DummyJSON free.
+      </span>
+      <% } %>
+      <a href="<%= sponsors.cta.url %>" target="_blank" rel="noopener" class="btn sponsors__cta">
+        <%= sponsors.cta.label %>
+      </a>
+    </div>
+  </div>
+
+  <img src="/public/img/icons/arrow-down-1.svg" alt="arrow-down-icon" class="arrow-down">
+</aside>
+<% } %>

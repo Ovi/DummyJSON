@@ -2,17 +2,54 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Router } from 'express';
 import { capitalize } from '../utils/util.js';
+import { logError } from '../helpers/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const router = Router();
 
-const { GOOGLE_TAG_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS } = process.env;
+const { GOOGLE_TAG_ID, GOOGLE_ADS_TXT_CONTENT, BANNER_CONTENT, STATS, SPONSORS_CONTENT } = process.env;
 const commonVariables = {
   googleTagId: GOOGLE_TAG_ID,
   bannerContent: BANNER_CONTENT,
   canonical: 'https://dummyjson.com',
 };
+
+const sponsors = parseSponsors(SPONSORS_CONTENT);
+
+function isSafeUrl(value) {
+  return typeof value === 'string' && (value.startsWith('https://') || value.startsWith('/public/'));
+}
+
+function parseSponsors(raw) {
+  if (!raw) return null;
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    logError('Invalid SPONSORS_CONTENT JSON', { error: error.message });
+    return null;
+  }
+
+  const featured = (Array.isArray(parsed.featured) ? parsed.featured : [])
+    .filter(s => s && typeof s.name === 'string' && isSafeUrl(s.url) && isSafeUrl(s.logo))
+    .slice(0, 3)
+    .map(s => ({ name: s.name, url: s.url, logo: s.logo, tagline: typeof s.tagline === 'string' ? s.tagline : '' }));
+
+  const supporters = (Array.isArray(parsed.supporters) ? parsed.supporters : [])
+    .filter(s => s && typeof s.name === 'string' && isSafeUrl(s.url) && isSafeUrl(s.avatar))
+    .map(s => ({ name: s.name, url: s.url, avatar: s.avatar }));
+
+  if (!featured.length && !supporters.length) return null;
+
+  const cta = {
+    label: typeof parsed.cta?.label === 'string' ? parsed.cta.label : 'Become a sponsor',
+    url: isSafeUrl(parsed.cta?.url) ? parsed.cta.url : 'https://buymeacoffee.com/muhammadovi',
+  };
+
+  return { featured, supporters, cta };
+}
 
 const availableResources = [
   'products',
@@ -30,7 +67,7 @@ const availableResources = [
 ];
 
 router.get('/', (req, res) => {
-  res.render('index', { ...commonVariables, stats: STATS || '100 million' });
+  res.render('index', { ...commonVariables, stats: STATS || '500 million', sponsors });
 });
 
 router.get('/docs', (req, res) => {
