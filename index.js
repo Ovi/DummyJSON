@@ -44,6 +44,7 @@ app.use(errorMiddleware);
 
 // Keep a reference to server so we can close it on SIGINT/SIGTERM
 export const server = app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`[${NODE_ENV}] App running at http://localhost:${PORT}`);
 });
 

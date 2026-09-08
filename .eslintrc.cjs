@@ -20,6 +20,9 @@ module.exports = {
     'no-plusplus': 0,
     'global-require': 0,
     'no-param-reassign': 0,
+    // native ESM requires explicit file extensions on relative imports
+    'import/extensions': ['error', 'ignorePackages'],
+    'import/prefer-default-export': 0,
   },
   ignorePatterns: ['public/js', 'raw/', 'scripts/'],
 };
