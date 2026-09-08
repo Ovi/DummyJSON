@@ -11,6 +11,9 @@ export const OPTIONAL_ENV_VARIABLES = [
   'LOG_ENABLED',
   'BANNER_CONTENT',
   'STATS',
+  'SPONSORS_CONTENT',
+  'CLOUDFLARE_API_TOKEN',
+  'CLOUDFLARE_ZONE_ID',
 ];
 
 export const requestWhitelist = ['/favicon.ico', '/static', '/public', '/fav.png'];

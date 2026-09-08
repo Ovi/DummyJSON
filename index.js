@@ -7,6 +7,7 @@ import routes from './src/routes/index.js';
 import { validateEnvVar, loadDataInMemory } from './src/utils/util.js';
 import { setupCRONJobs } from './src/utils/cron-jobs.js';
 import { registerFatalHandlers, registerShutdownHandlers } from './src/utils/fatal-handler.js';
+import { schedulePurgeCloudflareCacheOnBoot } from './src/utils/cloudflare.js';
 
 const { PORT = 8888, NODE_ENV, GOOGLE_TAG_ID, BANNER_CONTENT } = process.env;
 
@@ -46,6 +47,8 @@ app.use(errorMiddleware);
 export const server = app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`[${NODE_ENV}] App running at http://localhost:${PORT}`);
+
+  schedulePurgeCloudflareCacheOnBoot();
 });
 
 // Process-level handlers
