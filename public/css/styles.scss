@@ -963,8 +963,72 @@ section {
     }
 
     &.totp-2fa {
-      .totp-key-input::after {
-        display: none;
+      .totp-key-input {
+        &::after {
+          display: none;
+        }
+
+        input[type='text'] {
+          padding-right: 3.25rem;
+        }
+      }
+
+      .totp-qr-upload-btn {
+        position: absolute;
+        right: 0.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.6rem;
+        background: transparent;
+        color: #888;
+        cursor: pointer;
+        z-index: 2;
+        transition: color 0.2s ease, background 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+          color: $primary-color-dark;
+          background: #e9e9ff;
+          outline: none;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: wait;
+        }
+      }
+
+      .totp-qr-hint {
+        margin-top: 0.75rem;
+        width: 100%;
+        max-width: 500px;
+        font-size: 0.75rem;
+        color: #999;
+
+        kbd {
+          font-family: 'Courier New', Courier, monospace;
+          background: #f3f3f3;
+          padding: 0 0.3rem;
+          border-radius: 0.25rem;
+        }
+      }
+
+      &.totp-dragover {
+        .totp-key-input input[type='text'] {
+          border-color: $primary-color;
+          background: #f6f6ff;
+        }
+
+        .totp-qr-upload-btn {
+          color: $primary-color-dark;
+        }
       }
 
       .totp-result {

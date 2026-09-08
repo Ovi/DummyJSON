@@ -60,7 +60,15 @@
 
       <div class="input-container totp-key-input">
         <input type="text" id="totp-key" placeholder="Base32 secret or otpauth:// URI" autocomplete="off" spellcheck="false" />
+        <input type="file" id="totp-qr-file" accept="image/*" hidden />
+        <button type="button" class="totp-qr-upload-btn" id="totp-qr-upload-btn" title="Upload a QR code image" aria-label="Upload a QR code image">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 18V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Zm0-2 4.5-4.5a1 1 0 0 1 1.4 0L14 15.5M13 14.5l1.8-1.8a1 1 0 0 1 1.4 0L20 16.5M15.5 8.5h.01" /></svg>
+        </button>
       </div>
+
+      <p class="totp-qr-hint" id="totp-qr-hint">
+        Have a QR code? Click the image icon, drag &amp; drop, or press <kbd>Ctrl</kbd>+<kbd>V</kbd> anywhere.
+      </p>
 
       <div class="totp-result" id="totp-result" hidden>
         <div class="input-container x-copy totp-code-input">
