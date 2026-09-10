@@ -1,9 +1,20 @@
 import { dataInMemory as frozenData } from '../utils/util.js';
-import { paginateResource, findResourceById, selectFields, markDeleted, nextId } from '../helpers/resource.js';
+import {
+  paginateResource,
+  findResourceById,
+  selectFields,
+  markDeleted,
+  nextId,
+  filterByDateRange,
+} from '../helpers/resource.js';
+
+const byModifiedRange = (products, { modifiedAfter, modifiedBefore }) => {
+  return filterByDateRange(products, 'meta.updatedAt', { after: modifiedAfter, before: modifiedBefore });
+}
 
 // get all products
 export const getAllProducts = _options => {
-  return paginateResource(frozenData.products, 'products', _options);
+  return paginateResource(byModifiedRange(frozenData.products, _options), 'products', _options);
 };
 
 // search products
@@ -12,7 +23,7 @@ export const searchProducts = ({ q: searchQuery, ..._options }) => {
     return p.title.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery);
   });
 
-  return paginateResource(products, 'products', _options);
+  return paginateResource(byModifiedRange(products, _options), 'products', _options);
 };
 
 // get product category list
@@ -34,7 +45,7 @@ export const getProductById = ({ id, select }) => {
 export const getProductsByCategoryName = ({ categoryName = '', ..._options }) => {
   const products = frozenData.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
 
-  return paginateResource(products, 'products', _options);
+  return paginateResource(byModifiedRange(products, _options), 'products', _options);
 };
 
 // add new product

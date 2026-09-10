@@ -23,7 +23,19 @@ const cleanRequest = async (req, res, next) => {
     const options = {};
     req._options = options;
 
-    const { sortBy, order: sortOrder, limit = 30, skip = 0, select: selectedFields, q, key, value, delay } = query;
+    const {
+      sortBy,
+      order: sortOrder,
+      limit = 30,
+      skip = 0,
+      select: selectedFields,
+      q,
+      key,
+      value,
+      delay,
+      modifiedAfter,
+      modifiedBefore,
+    } = query;
     let select = selectedFields;
 
     let order = 'asc';
@@ -77,6 +89,22 @@ const cleanRequest = async (req, res, next) => {
       }
     }
 
+    const parseDateParam = (name, raw) => {
+      if (raw === undefined) return undefined;
+      const time = isValidString(raw) ? Date.parse(raw) : NaN;
+      if (Number.isNaN(time)) {
+        throw new APIError(`Invalid '${name}' - should be a valid ISO 8601 date, e.g. 2025-01-01T00:00:00Z`, 400);
+      }
+      return time;
+    };
+
+    const modifiedAfterMs = parseDateParam('modifiedAfter', modifiedAfter);
+    const modifiedBeforeMs = parseDateParam('modifiedBefore', modifiedBefore);
+
+    if (modifiedAfterMs !== undefined && modifiedBeforeMs !== undefined && modifiedAfterMs > modifiedBeforeMs) {
+      throw new APIError(`'modifiedAfter' must be earlier than 'modifiedBefore'`, 400);
+    }
+
     options.sortBy = sortBy;
     options.order = order;
     options.limit = parseInt(limit, 10);
@@ -86,6 +114,8 @@ const cleanRequest = async (req, res, next) => {
     options.key = key;
     options.value = value;
     options.delay = parseInt(delay, 10);
+    options.modifiedAfter = modifiedAfterMs;
+    options.modifiedBefore = modifiedBeforeMs;
 
     // Multipart handling
     const contentType = (headers['content-type'] || '').toLowerCase();

@@ -2,6 +2,7 @@ import APIError from '../utils/error.js';
 import {
   dataInMemory as frozenData,
   getMultiObjectSubset,
+  getNestedValue,
   getObjectSubset,
   limitArray,
   sortArray,
@@ -32,6 +33,19 @@ export const findResourceById = (collection, id, label) => {
 };
 
 export const selectFields = (item, select) => (select ? getObjectSubset(item, select) : item);
+
+// keep items whose `dateKey` (ISO string) falls within [after, before]; bounds are epoch ms or undefined
+export const filterByDateRange = (items, dateKey, { after, before } = {}) => {
+  if (after === undefined && before === undefined) return items;
+
+  return items.filter(item => {
+    const time = Date.parse(getNestedValue(item, dateKey));
+    if (Number.isNaN(time)) return false;
+    if (after !== undefined && time < after) return false;
+    if (before !== undefined && time > before) return false;
+    return true;
+  });
+};
 
 export const markDeleted = item => ({ ...item, isDeleted: true, deletedOn: new Date().toISOString() });
 

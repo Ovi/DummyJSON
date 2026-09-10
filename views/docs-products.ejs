@@ -285,6 +285,45 @@
         </code></pre>
       </div>
 
+      <div class="resource" id="products-modified">
+        <a href="#products-modified" class="res-title">Filter products by last modified date</a>
+        <p class="res-tip">
+          You can pass `modifiedAfter` and/or `modifiedBefore` (ISO 8601 dates) to only get products whose
+          `meta.updatedAt` falls in that range. Works with all products list endpoints, including search
+          and category, and can be combined with `sortBy`, `limit`, `skip` and `select`.
+        </p>
+        <pre><code class="language-js">
+          fetch('https://dummyjson.com/products?modifiedAfter=2026-06-01T00:00:00Z&select=title,meta')
+          .then(res => res.json())
+          .then(console.log);
+        </code></pre>
+
+        <button class="show-output btn">Show Output</button>
+
+        <pre class="output"><code class="language-json">
+          {
+            "products": [
+              {
+                "id": 10,
+                "title": "Gucci Bloom Eau de",
+                "meta": {
+                  "createdAt": "2026-07-19T20:10:42.419Z",
+                  "updatedAt": "2026-07-27T15:21:17.071Z", // modified after 2026-06-01
+                  "barcode": "3170832177880",
+                  "qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
+                }
+              },
+              {...},
+              {...}
+              // 30 items
+            ],
+            "total": 88,
+            "skip": 0,
+            "limit": 30
+          }
+        </code></pre>
+      </div>
+
       <div class="resource" id="products-categories">
         <a href="#products-categories" class="res-title">Get all products categories</a>
         <pre><code class="language-js">

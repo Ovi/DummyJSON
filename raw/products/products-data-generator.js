@@ -6,6 +6,7 @@ const {
   getRandomNumberFloatBetween,
   getRandomFromArray: fromArr,
   generateRandomBarcode,
+  generateRandomTimestamps,
   encodeURLSpaces,
 } = require('../utils');
 const {
@@ -69,8 +70,7 @@ async function generateData() {
         returnPolicy: fromArr(returnPolicies),
         minimumOrderQuantity: getMOQ(item.price),
         meta: {
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          ...generateRandomTimestamps(),
           barcode: generateRandomBarcode(),
           qrCode: 'https://cdn.dummyjson.com/public/qr-code.png',
         },

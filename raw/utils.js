@@ -23,10 +23,20 @@ function encodeURLSpaces(url) {
   return url.replace(/ /g, '%20');
 }
 
+// createdAt within the past `pastDays`, updatedAt between createdAt and now
+function generateRandomTimestamps(pastDays = 730) {
+  const now = Date.now();
+  const createdAt = now - getRandomNumberBetween(0, pastDays * 24 * 60 * 60 * 1000);
+  const updatedAt = getRandomNumberBetween(createdAt, now);
+
+  return { createdAt: new Date(createdAt).toISOString(), updatedAt: new Date(updatedAt).toISOString() };
+}
+
 module.exports = {
   getRandomNumberBetween,
   getRandomNumberFloatBetween,
   getRandomFromArray,
   generateRandomBarcode,
+  generateRandomTimestamps,
   encodeURLSpaces,
 };
