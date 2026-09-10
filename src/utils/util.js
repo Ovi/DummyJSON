@@ -157,6 +157,17 @@ export const limitArray = (arr, limit) => {
   return limit === 0 || limit > arr.length ? arr : arr.slice(0, limit);
 };
 
+// case-insensitive, natural-number aware ("iPhone 5s" < "iPhone 13 Pro")
+const stringCollator = new Intl.Collator('en', { sensitivity: 'base', numeric: true });
+
+const compareValues = (a, b) => {
+  if (a === b) return 0;
+  if (typeof a === 'string' && typeof b === 'string') return stringCollator.compare(a, b);
+  return a > b ? 1 : -1;
+};
+
+const isMissing = value => value === undefined || value === null;
+
 export const sortArray = (arr, sortBy, order) => {
   if (!sortBy) return arr;
 
@@ -166,8 +177,10 @@ export const sortArray = (arr, sortBy, order) => {
     const aVal = getNestedValue(a, sortBy);
     const bVal = getNestedValue(b, sortBy);
 
-    if (aVal === bVal) return 0;
-    return aVal > bVal ? direction : -direction;
+    // items without the field always go last
+    if (isMissing(aVal) || isMissing(bVal)) return isMissing(aVal) - isMissing(bVal);
+
+    return compareValues(aVal, bVal) * direction;
   });
 };
 
