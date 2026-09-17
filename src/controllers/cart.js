@@ -47,9 +47,10 @@ export const addNewCart = ({ userId, products = [] }) => {
   let discountedTotal = 0;
   let totalQuantity = 0;
 
-  const someProducts = [...quantityById].flatMap(([productId, quantity]) => {
-    const p = frozenData.products.find(({ id }) => id === productId);
-    if (!p) return [];
+  // get products in the relevant schema
+  const someProducts = productsByIds.map((p) => {
+    const originalIndex = productIds.indexOf(p.id); // match by id
+    const quantity = productQty[originalIndex];
 
     // total price (price * quantity)
     const priceWithQty = p.price * quantity;
