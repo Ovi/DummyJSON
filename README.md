@@ -6,6 +6,8 @@
 
 📘 Docs: [https://dummyjson.com/docs](https://dummyjson.com/docs)
 
+📄 OpenAPI: [https://dummyjson.com/openapi.json](https://dummyjson.com/openapi.json)
+
 **New**: Now you can generate your own [custom responses](https://dummyjson.com/custom-response) from DummyJSON, [try it now!](https://dummyjson.com/custom-response)
 
 ## Why DummyJSON?

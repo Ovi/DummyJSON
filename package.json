@@ -1,6 +1,6 @@
 {
   "name": "dummyjson",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "main": "index.js",
   "author": "Muhammad Ovi <contact@muhammadovi.com>",

@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { Router } from 'express';
 import { capitalize } from '../utils/util.js';
 import { logError } from '../helpers/logger.js';
+import { getOpenApiSpec } from '../openapi/spec.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,6 +69,14 @@ const availableResources = [
 
 router.get('/', (req, res) => {
   res.render('index', { ...commonVariables, stats: STATS || '500 million', sponsors });
+});
+
+router.get('/openapi.json', (req, res) => {
+  res.set({
+    'Content-Type': 'application/json',
+    'Cache-Control': 'public, max-age=86400',
+  });
+  res.send(getOpenApiSpec());
 });
 
 router.get('/docs', (req, res) => {
