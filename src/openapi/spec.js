@@ -10,11 +10,102 @@ let cachedSpec = null;
 const ref = name => ({ $ref: `#/components/schemas/${name}` });
 const paramRef = name => ({ $ref: `#/components/parameters/${name}` });
 
-const jsonContent = schema => ({
+const jsonContent = (schema, example) => ({
   content: {
-    'application/json': { schema },
+    'application/json': { schema, ...(example !== undefined ? { example } : {}) },
   },
 });
+
+/**
+ * Request-body examples for write operations. Mirrors the snippets on /docs/*.
+ * `required` applies to the add route only; PUT/PATCH accept any subset.
+ */
+const resourceInputs = {
+  product: {
+    required: [],
+    create: { title: 'BMW Pencil', price: 9.99, brand: 'BMW', category: 'stationery' },
+    update: { title: 'iPhone Galaxy +1' },
+  },
+  cart: {
+    required: ['userId', 'products'],
+    create: {
+      userId: 1,
+      products: [
+        { id: 144, quantity: 4 },
+        { id: 98, quantity: 1 },
+      ],
+    },
+    update: { merge: true, products: [{ id: 1, quantity: 1 }] },
+  },
+  user: {
+    required: [],
+    create: { firstName: 'Muhammad', lastName: 'Ovi', age: 250 },
+    update: { lastName: 'Owais' },
+  },
+  post: {
+    required: ['userId'],
+    create: { title: 'I am in love with someone.', userId: 5 },
+    update: { title: 'I think I should shift to the moon' },
+  },
+  comment: {
+    required: ['body', 'postId', 'userId'],
+    create: { body: 'This makes all sense to me!', postId: 3, userId: 5 },
+    update: { body: 'I think I should shift to the moon' },
+  },
+  todo: {
+    required: ['userId'],
+    create: { todo: 'Use DummyJSON in the project', completed: false, userId: 5 },
+    update: { completed: false },
+  },
+  recipe: {
+    required: [],
+    create: { name: 'Tasty Pizza', cuisine: 'Italian', difficulty: 'Easy', servings: 4 },
+    update: { name: 'Tasty Pizza' },
+  },
+};
+
+const anyObject = { type: 'object', additionalProperties: true };
+
+function createBody(Singular, input) {
+  if (!input) return { required: true, ...jsonContent(anyObject) };
+
+  const schema = input.required.length
+    ? { allOf: [ref(`${Singular}Input`), { required: input.required }] }
+    : ref(`${Singular}Input`);
+
+  return {
+    required: true,
+    description:
+      'Fields for the new resource. The response echoes them back with a generated id; nothing is persisted.',
+    ...jsonContent(schema, input.create),
+  };
+}
+
+function updateBody(Singular, input) {
+  if (!input) return { required: true, ...jsonContent(anyObject) };
+
+  return {
+    required: true,
+    description: 'Any subset of fields. Omitted fields keep their current value.',
+    ...jsonContent(ref(`${Singular}Input`), input.update),
+  };
+}
+
+function pickProperties(schema, keys) {
+  const properties = {};
+  keys.forEach(key => {
+    if (schema.properties[key]) properties[key] = schema.properties[key];
+  });
+
+  return { type: 'object', properties };
+}
+
+function omitProperties(schema, keys) {
+  const properties = { ...schema.properties };
+  keys.forEach(key => delete properties[key]);
+
+  return { type: 'object', properties };
+}
 
 const errorResponse = {
   description: 'Error',
@@ -131,6 +222,7 @@ function resourcePaths({
 }) {
   const Singular = capitalize(singular);
   const Schema = schemaName || Singular;
+  const input = resourceInputs[singular];
   const paths = {};
 
   paths[path] = {
@@ -187,10 +279,7 @@ function resourcePaths({
       summary: `Update a ${singular}`,
       operationId: `update${Singular}`,
       parameters: [paramRef('id'), paramRef('delay')],
-      requestBody: {
-        required: true,
-        ...jsonContent({ type: 'object', additionalProperties: true }),
-      },
+      requestBody: updateBody(Singular, input),
       responses: {
         200: {
           description: `Updated ${singular}`,
@@ -205,10 +294,7 @@ function resourcePaths({
       summary: `Partial update a ${singular}`,
       operationId: `patch${Singular}`,
       parameters: [paramRef('id'), paramRef('delay')],
-      requestBody: {
-        required: true,
-        ...jsonContent({ type: 'object', additionalProperties: true }),
-      },
+      requestBody: updateBody(Singular, input),
       responses: {
         200: {
           description: `Updated ${singular}`,
@@ -242,10 +328,7 @@ function resourcePaths({
         summary: `Add a new ${singular}`,
         operationId: `add${Singular}`,
         parameters: [paramRef('delay')],
-        requestBody: {
-          required: true,
-          ...jsonContent({ type: 'object', additionalProperties: true }),
-        },
+        requestBody: createBody(Singular, input),
         responses: {
           201: {
             description: `Created ${singular}`,
@@ -268,6 +351,71 @@ function buildSchemas() {
   const todo = inferSchemaFromSamples(dataInMemory.todos);
   const quote = inferSchemaFromSamples(dataInMemory.quotes);
   const recipe = inferSchemaFromSamples(dataInMemory.recipes);
+
+  // Writable fields per resource; keep in sync with the addNew*/update* controllers.
+  const cartItemInput = {
+    type: 'object',
+    required: ['id'],
+    properties: {
+      id: { type: 'integer', description: 'Product id', example: 144 },
+      quantity: { type: 'integer', minimum: 1, default: 1, example: 4 },
+    },
+  };
+
+  const inputs = {
+    ProductInput: pickProperties(product, [
+      'title',
+      'description',
+      'category',
+      'price',
+      'discountPercentage',
+      'rating',
+      'stock',
+      'brand',
+      'thumbnail',
+      'images',
+    ]),
+    CartInput: {
+      type: 'object',
+      properties: {
+        userId: { type: 'integer', example: 1 },
+        products: { type: 'array', items: cartItemInput },
+        merge: {
+          type: 'boolean',
+          default: false,
+          description: 'PUT/PATCH only: keep the existing cart products and add the new ones.',
+        },
+      },
+    },
+    UserInput: omitProperties(user, ['id']),
+    PostInput: pickProperties(post, ['title', 'body', 'userId', 'tags', 'reactions']),
+    CommentInput: {
+      type: 'object',
+      properties: {
+        body: { type: 'string', example: 'This makes all sense to me!' },
+        postId: { type: 'integer', example: 3 },
+        userId: { type: 'integer', example: 5 },
+      },
+    },
+    TodoInput: pickProperties(todo, ['todo', 'completed', 'userId']),
+    RecipeInput: pickProperties(recipe, [
+      'name',
+      'ingredients',
+      'instructions',
+      'prepTimeMinutes',
+      'cookTimeMinutes',
+      'servings',
+      'difficulty',
+      'cuisine',
+      'caloriesPerServing',
+      'tags',
+      'userId',
+      'image',
+      'rating',
+      'reviewCount',
+      'mealType',
+    ]),
+  };
 
   const authUser = {
     type: 'object',
@@ -299,6 +447,7 @@ function buildSchemas() {
     QuoteList: listEnvelopeSchema('quotes', ref('Quote')),
     Recipe: recipe,
     RecipeList: listEnvelopeSchema('recipes', ref('Recipe')),
+    ...inputs,
     AuthUser: authUser,
     LoginResponse: {
       allOf: [
@@ -1221,18 +1370,21 @@ function toolPaths() {
         operationId: 'generateCustomResponse',
         requestBody: {
           required: true,
-          ...jsonContent({
-            type: 'object',
-            required: ['json'],
-            properties: {
-              json: { description: 'Arbitrary JSON payload (max 300kb)' },
-              method: {
-                type: 'string',
-                enum: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-                default: 'GET',
+          ...jsonContent(
+            {
+              type: 'object',
+              required: ['json'],
+              properties: {
+                json: { description: 'Arbitrary JSON payload (max 300kb)' },
+                method: {
+                  type: 'string',
+                  enum: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+                  default: 'GET',
+                },
               },
             },
-          }),
+            { json: { message: 'Hello from DummyJSON', items: [1, 2, 3] }, method: 'GET' },
+          ),
         },
         responses: {
           200: {
@@ -1300,7 +1452,7 @@ function toolPaths() {
             type: 'object',
             required: ['key'],
             properties: {
-              key: { type: 'string', description: 'Base32 secret or otpauth:// URI' },
+              key: { type: 'string', description: 'Base32 secret or otpauth:// URI', example: 'JBSWY3DPEHPK3PXP' },
             },
           }),
         },
