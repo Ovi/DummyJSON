@@ -10,7 +10,7 @@ import {
 
 const byModifiedRange = (products, { modifiedAfter, modifiedBefore }) => {
   return filterByDateRange(products, 'meta.updatedAt', { after: modifiedAfter, before: modifiedBefore });
-}
+};
 
 // get all products
 export const getAllProducts = _options => {

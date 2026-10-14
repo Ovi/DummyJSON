@@ -1,11 +1,19 @@
 // src/utils/process-handlers.js
-import { log, logError } from '../helpers/logger.js';
+import { log, logError, logWarn } from '../helpers/logger.js';
 import { buildRequestMetaData } from '../middleware/error.js';
 import { getCurrentRequest } from './request-context.js';
+import { isTruncatedMultipartError } from './multipart-guard.js';
 import { sendProcessErrorPushNotification } from './util.js';
 
 export function registerFatalHandlers() {
   process.on('uncaughtException', err => {
+    // A duplicate parser error can still surface after the response was sent.
+    // It must not page or take the process down.
+    if (isTruncatedMultipartError(err)) {
+      logWarn('Ignored truncated multipart request', { error: err.message });
+      return;
+    }
+
     try {
       let requestData = null;
 
@@ -40,6 +48,11 @@ export function registerFatalHandlers() {
   });
 
   process.on('unhandledRejection', reason => {
+    if (isTruncatedMultipartError(reason)) {
+      logWarn('Ignored truncated multipart request', { error: reason?.message || reason });
+      return;
+    }
+
     try {
       logError('Unhandled promise rejection', { reason });
       sendProcessErrorPushNotification(typeof reason === 'string' ? reason : JSON.stringify(reason));

@@ -6,6 +6,7 @@ import { requestWhitelist } from '../constants/index.js';
 import { isNumber, dataInMemory } from '../utils/util.js';
 import APIError from '../utils/error.js';
 import { logError, log } from './logger.js';
+import '../utils/multipart-guard.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

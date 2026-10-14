@@ -97,3 +97,7 @@ firebase.json
 
 # Mac files
 .DS_Store
+
+# Temp files
+temp/
+tmp/

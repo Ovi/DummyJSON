@@ -183,6 +183,7 @@ const cleanRequest = async (req, res, next) => {
 
         next();
       } catch (err) {
+        // The matching duplicate event is swallowed by the multipart parser guard.
         const isMalformed = /unexpected end of form|malformed part header/i.test(err.message);
         if (isMalformed) {
           throw new APIError('Malformed multipart/form-data request', 400);
